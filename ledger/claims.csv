@@ -86,10 +86,10 @@ claim_id,section,statement,claim_type,tier,evidence,status,priority,last_checked
 5.3-vascular-dementia-correlation,5.3,小血管病變型失智與糖萼厚度減少呈正相關。,epidemiology,,,unverified,med,,原文用詞「正相關」與語意方向需釐清
 5.4-iri-biphasic,5.4,缺血再灌注損傷呈雙相模式：缺血期合成減少，再灌注期 ROS 爆發造成更嚴重脫落。,mechanism,,,unverified,med,,
 5.4-s1p-preconditioning,5.4,S1P 預處理可減輕缺血再灌注造成的糖萼脫落並保護移植器官。,therapeutic,,,unverified,high,,文件標示 2025 年研究；治療性宣稱
-5.5-biomarker-endocan,5.5,Endocan 作為生物標記的敏感度為 77%、特異度為 70%，高死亡風險 OR 為 5.06。,epidemiology,,,unverified,high,,OR 5.06 明顯高於 Syndecan-1，須確認族群
-5.5-biomarker-ha-lmw,5.5,低分子量 HA 作為生物標記的敏感度為 80%、特異度為 75%，與認知衰退相關。,epidemiology,,,unverified,high,,
-5.5-biomarker-hs-fragment,5.5,HS 片段作為生物標記的敏感度為 72%、特異度為 81%，與血栓風險正相關。,epidemiology,,,unverified,high,,須確認測定方法與疾病情境
-5.5-biomarker-thrombomodulin,5.5,Thrombomodulin 在 HFpEF 中與住院或死亡的風險比為 2.10。,epidemiology,,,unverified,high,,
+5.5-biomarker-endocan,5.5,Endocan 作為生物標記的敏感度為 77%、特異度為 70%，高死亡風險 OR 為 5.06。,epidemiology,meta,DOI:10.1002/mbo3.70155,partial,high,2026-07-26,"OR 5.06 已驗證：6 篇研究 n=435；95% CI 2.52-10.18；I²=42.5 異質性低。敏感度77%/特異度70% 查無出處，該薈萃分析未報告 endocan 之敏感度特異度。最接近者為重症肺炎預測 ARDS 之 78.7%/70.3%（cutoff 11.6 ng/mL），疾病與終點均不同，疑為跨疾病誤植。建議拆為兩條 claim。"
+5.5-biomarker-ha-lmw,5.5,低分子量 HA 作為生物標記的敏感度為 80%、特異度為 75%，與認知衰退相關。,epidemiology,,,unsupported,high,2026-07-26,"查無出處。血漿認知衰退標記領域由 pTau217、pTau181、NfL、GFAP、Aβ42/40 主導，檢索未出現任何以低分子量透明質酸為認知衰退標記之研究。可能與 5.3-pbr-precedes-cognitive-2-3y 同源。"
+5.5-biomarker-hs-fragment,5.5,HS 片段作為生物標記的敏感度為 72%、特異度為 81%，與血栓風險正相關。,epidemiology,,,unsupported,high,2026-07-26,"查無出處。HS 片段確為內皮損傷標記（危重症、COVID-19 相關 ARDS、移植排斥），但未見建立診斷切點或預測血栓風險之研究。機制上合理（見 2.4-3o-sulfation-atiii）但無臨床驗證，屬把機制推論寫成流行病學數據。"
+5.5-biomarker-thrombomodulin,5.5,Thrombomodulin 在 HFpEF 中與住院或死亡的風險比為 2.10。,epidemiology,human_obs,DOI:10.1161/JAHA.124.040179,partial,high,2026-07-26,"JAHA STANISLAS/MEDIA-DHF/BIOSTAT-CHF 世代。方向與關聯獲支持：perlecan 與 thrombomodulin 較高者 HFpEF 住院與死亡風險顯著上升，校正基線後仍成立。但 HR 2.10 未能在摘要層級確認，需取全文核對世代與 tertile 定義。"
 5.5-pbr-sdc1-correlation,5.5,PBR 升高與血漿 Syndecan-1 升高通常呈正相關。,measurement,,,unverified,med,,若成立則兩者可互為驗證，值得確認相關係數
 6.1-golgi-sulfotransferase-dysfunction,6.1,若內皮代謝環境未被糾正，高爾基體內的硫酸化酶仍功能紊亂，所合成的糖萼仍有功能缺陷。,mechanism,,,unverified,high,,支撐整個「質量修復」策略的關鍵假設
 6.1-heparanase-inhibitor-target,6.1,高特異性肝素酶抑制劑可阻斷發炎-降解的惡性循環。,therapeutic,,,unverified,high,,須確認是否有進入臨床試驗的化合物

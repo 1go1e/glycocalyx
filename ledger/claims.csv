@@ -71,9 +71,9 @@ claim_id,section,statement,claim_type,tier,evidence,status,priority,last_checked
 4.3.1-tmao-direct-damage,4.3.1,腸道菌代謝產物 TMAO 可直接損傷糖萼結構。,mechanism,,,unverified,high,,文件標示 2025 年研究
 4.3.2-microplastic-pyroptosis,4.3.2,穿透糖萼的微塑膠可誘導內皮細胞焦亡並釋放大量發炎介質。,mechanism,,,unverified,high,,
 4.3.2-nanoplastic-penetration,4.3.2,小於 100nm 的奈米塑膠可穿透糖萼層，聚苯乙烯微粒特別容易與 HS 結合。,mechanism,,,unverified,high,,文件標示 2025 年環境醫學研究
-5.1-sdc1-cutoff-40,5.1,血漿 Syndecan-1 濃度大於 40 ng/mL 是預測敗血症死亡率的指標。,epidemiology,,,unverified,high,,最高優先。具體 cutoff，可能被誤用為臨床閾值
-5.1-sdc1-or-204,5.1,血漿 Syndecan-1 升高預測敗血症死亡的優勢比為 2.04。,epidemiology,,,unverified,high,,文件標示為 2025 年薈萃分析
-5.1-sdc1-sens-spec,5.1,以此閾值預測敗血症死亡率的敏感度為 85%、特異度為 78%。,epidemiology,,,unverified,high,,與 5.5 表格數值重複，須確認同源
+5.1-sdc1-cutoff-40,5.1,血漿 Syndecan-1 濃度大於 40 ng/mL 是預測敗血症死亡率的指標。,epidemiology,,,partial,high,2026-07-26,"40 ng/mL 為創傷內皮病變閾值而非敗血症 cutoff；敗血症文獻採用 121-430 ng/mL 不等。敗血症基礎值約 103 ng/mL、敗血性休克約 139 ng/mL，40 在此族群幾無鑑別力。evidence 待補：創傷原始世代之識別碼本次未取得，不得推測填入。詳見 reports/backfill/2026-07-26-5.1.md"
+5.1-sdc1-or-204,5.1,血漿 Syndecan-1 升高預測敗血症死亡的優勢比為 2.04。,epidemiology,meta,DOI:10.1002/mbo3.70155,verified,high,2026-07-26,"Daniyarova et al. 2025 MicrobiologyOpen。OR 2.04 95% CI 1.66-2.51；9 篇研究 n=2167；I²=84% 異質性高。同篇中 SDC-1 與 MODS 及呼吸衰竭均無顯著相關。PMID 未取得，暫以 DOI 記錄。"
+5.1-sdc1-sens-spec,5.1,以此閾值預測敗血症死亡率的敏感度為 85%、特異度為 78%。,epidemiology,,,unsupported,high,2026-07-26,"三次不同措辭檢索均未找到 85%/78%。實際找到：成人敗血症急診 80%/57.8%、重症流感A 81.3%/70.3%、兒童敗血症 78.6%/68.5%（終點為器官功能障礙）、創傷 56.9%/64.6%。無一相符。"
 5.1-sepsis-phase1-elastase,5.1,敗血症 0-6 小時以中性球彈性蛋白酶介導的 Syndecan-1 快速脫落為主。,mechanism,,,unverified,med,,
 5.1-sepsis-phase2-leak,5.1,敗血症 6-24 小時 MMP 與肝素酶全面活化，導致毛細血管滲漏症候群與多器官衰竭。,mechanism,,,unverified,med,,
 5.1-sepsis-phase3-abnormal-repair,5.1,敗血症 24-72 小時的修復期所合成的糖萼常伴隨硫酸化模式異常，可能造成長期血管功能障礙。,mechanism,,,unverified,high,,時序分期是否有直接人體資料支持？

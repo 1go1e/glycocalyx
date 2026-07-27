@@ -4,6 +4,7 @@
 
 ## 每次工作開始前，必讀
 
+- `STATUS.md` — 專案現況、下一批、待決事項。**先讀這份**，它決定本次要做什麼
 - `ledger/SCHEMA.md` — `claims.csv` 的欄位規則與寫入限制
 - `runbooks/backfill.md` — 回填作業程序（執行回填任務時）
 - `source/glycocalyx_v3.md` — 原始文件，判定時的背景脈絡
@@ -37,6 +38,7 @@
 ## 目錄
 
 ```
+STATUS.md   專案現況、下一批、待決事項。每完成一批需更新（見 STATUS.md §7）
 ledger/     claims.csv（主張帳本）、SCHEMA.md（欄位規則）
 runbooks/   作業程序
 source/     原始文件，唯讀

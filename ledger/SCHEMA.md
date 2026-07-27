@@ -1,8 +1,8 @@
 # claims.csv — Schema 與寫入規則
 
 ```
-schema_version: 1
-last_updated: 2026-07-26
+schema_version: 2
+last_updated: 2026-07-27
 applies_to: ledger/claims.csv
 ```
 
@@ -132,7 +132,14 @@ PMID:31234567;!PMID:33445566;PMID:35566778
 | `meta` | 系統性回顧或薈萃分析 |
 | `review` | 敘述性綜述 |
 
-`tier` 反映 `evidence` 中**證據等級最高**的那一篇。
+`tier` 反映 `evidence` 中**未加 `!` 前綴**的 token 裡，證據等級最高的那一篇。
+**反駁文獻（`!` 前綴）不計入 `tier`。**
+
+理由：`tier` 回答的是「支持這條主張的最強證據是什麼等級」。若把反駁文獻計入，
+一條主張被越強的證據推翻，`tier` 看起來越高——方向正好相反。
+
+`status=contested` 的列，其 `note` **必須**寫明反駁文獻的等級與反駁的具體內容
+（是數值不符、條件不同，還是結論相反），因為這項資訊在欄位層已不可見。
 
 > **`review` 不足以單獨支持 `verified`。**
 > 若唯一的支持文獻是敘述性綜述，必須循其引用追到原始研究。

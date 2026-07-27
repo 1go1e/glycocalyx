@@ -7,17 +7,17 @@ claim_id,section,statement,claim_type,tier,evidence,status,priority,last_checked
 1.2-mito-glycocalyx-axis,1.2,內皮線粒體代謝與糖萼結構之間存在雙向調節軸。,mechanism,,,unverified,high,,新興概念，需確認是否已有明確命名此軸的文獻
 1.2-udp-nad-dependency,1.2,糖萼合成依賴 UDP-糖庫可用性與胞質 NAD+/NADH 比值。,mechanism,,,unverified,med,,
 1.3-capillary-recruitment,1.3,糖萼參與微循環的微血管徵召，在血流增加時協助開放更多毛細血管。,mechanism,,,unverified,med,,
-2.1.1-consensus-2-4um,2.1.1,臨床與多數活體測量的共識厚度值落在 2-4 μm。,measurement,,,unverified,high,,衝突：與 2.2「微血管 0.2-0.5 μm」無法同時成立，除非指定血管床
+2.1.1-consensus-2-4um,2.1.1,臨床與多數活體測量的共識厚度值落在 2-4 μm。,measurement,,,unsupported,high,2026-07-27,三次不同措辭檢索均未找到「臨床與活體共識 2-4 μm」。人體臨床測量實際值：舌下 OPS 約 0.5 μm（範圍 0.3-0.75）；GlycoCheck PBR 約 1.8-2.3 μm，但 PBR 是紅血球穿透深度、為逆向指標而非厚度（原文 2.1.2 自己有寫）。綜述給出的範圍為 0.2-2 μm 或 1-5 μm，無一為 2-4。疑為把 PBR 數值誤讀為厚度
 2.1.1-em-underestimate,2.1.1,傳統電子顯微鏡的脫水固定步驟導致糖萼坍塌，因而顯著低估其厚度。,measurement,,,unverified,low,,
-2.1.1-extreme-11um,2.1.1,部分文獻報告糖萼功能性水合層厚度可達 11 μm。,measurement,,,unverified,high,,極端值，需找到原始出處並確認測量方法與血管床
-2.1.1-invivo-0.5-5um,2.1.1,活體測量顯示糖萼有效厚度約為 0.5-5 μm。,measurement,,,unverified,high,,衝突：與 2.2 各血管床數值需對齊
+2.1.1-extreme-11um,2.1.1,部分文獻報告糖萼功能性水合層厚度可達 11 μm。,measurement,in_vitro,PMID:21474821;!PMID:18258858;!PMID:21775768,contested,high,2026-07-27,11 μm 出處確認為 Ebong 2011 RF/FS-TEM，但條件為體外培養牛主動脈內皮細胞（同篇大鼠脂肪墊 EC 5.83 μm；同細胞傳統 TEM 僅 0.040 μm），非腎絲球、非活體。同細胞型別以 μ-PIV 測得流體力學相關厚度僅 0.02±0.04 μm，ATVB 同期評論質疑為技術造成。tier 依主要引用（體外）記為 in_vitro，反駁文獻 PMID:18258858 為動物活體，與 SCHEMA §5「tier 取最高等級」有衝突，見批次報告
+2.1.1-invivo-0.5-5um,2.1.1,活體測量顯示糖萼有效厚度約為 0.5-5 μm。,measurement,animal,PMID:18258858;PMID:18441021;PMID:8781491,partial,high,2026-07-27,下限有支持、上限查無出處。活體「有效厚度」在文獻中專指流體力學相關厚度：小鼠提睪肌小靜脈 0.52±0.28 μm、小動脈 0.38 μm、倉鼠提睪肌微血管 0.4-0.5 μm，皆約 0.5 μm 量級。5 μm 未見於任何活體測量；最接近者為離體小鼠頸動脈雙光子 4.5 μm（PMID:17192719）與體外培養細胞 RF/FS-TEM 5.83 μm（PMID:21474821），兩者皆非活體。Tarbell 2016 綜述給出的 1-5 μm 為「體外與活體合併」範圍。statement 需改為指明測量情境與血管床
 2.1.2-pbr-inverse,2.1.2,PBR 為逆向指標：PBR 升高代表糖萼變薄、受損或屏障功能喪失。,measurement,,,unverified,high,,整套影像評估的邏輯基礎
 2.1.2-pbr-sampling,2.1.2,PBR 分析每 10 μm 設一測量點，每點放置 21 條間隔 0.5 μm 的測量線分析紅血球柱寬度分布。,measurement,,,unverified,med,,
 2.1.2-sdf-540nm,2.1.2,SDF 成像使用 540nm 綠光 LED，該波長被血紅素特異性吸收以顯影微血管網絡。,measurement,,,unverified,low,,
 2.1.2-sdf-optics,2.1.2,SDF 系統配備 5 倍物鏡與 0.2 NA，放大約 325 倍，以每秒 23 幀捕捉影像。,measurement,,,unverified,med,,硬體規格，應可由儀器文獻確認
-2.2-artery-2-3um,2.2,大動脈糖萼厚度可達 2-3 μm。,measurement,,,unverified,med,,
+2.2-artery-2-3um,2.2,大動脈糖萼厚度可達 2-3 μm。,measurement,animal,PMID:22349291;PMID:21273784;PMID:17192719,partial,med,2026-07-27,主動脈實測支持約 2 μm（大鼠與小鼠主動脈 ex vivo 抗-HS 共軛焦），小鼠總頸動脈雙光子 2.3±0.1 μm。但「可達 2-3 μm」的上限不成立：同為頸動脈的雙光子研究報 4.5 μm（PMID:17192719）。另 2025 綜述將 2-3 μm 歸於中等口徑血管、4.5 μm 歸於大血管（DOI:10.1038/s41467-025-66169-x），與原文「大動脈 2-3 μm」的歸屬相反。statement 需改寫
 2.2-brain-1-3um,2.2,腦微血管糖萼厚度約 1-3 μm，為血腦屏障的第一道防線。,measurement,,,unverified,med,,
-2.2-cap-0.2-0.5um,2.2,微血管糖萼厚度約 0.2-0.5 μm。,measurement,,,unverified,high,,衝突：與 2.1.1 共識值 2-4 μm 矛盾
+2.2-cap-0.2-0.5um,2.2,微血管糖萼厚度約 0.2-0.5 μm。,measurement,animal,PMID:12637366;PMID:8781491,verified,high,2026-07-27,0.2-0.5 μm 逐字相符：大鼠左心室心肌微血管 Alcian blue 8GX 電鏡（van den Berg 2003）。倉鼠提睪肌微血管活體 0.4-0.5 μm 獨立支持；人體舌下 OPS 約 0.5 μm 亦一致。分歧值：抗-HS 共軛焦於大鼠腸繫膜微血管測得 0.9±0.1 μm、微血管後小靜脈 1.2±0.3 μm（PMID:22349291），方法與血管床不同。注意與同節「腦微血管 1-3 μm」（2.2-brain-1-3um）不一致，該條應優先查證
 2.2-glomerular-hs-charge,2.2,腎絲球微血管糖萼極厚且富含 HS，藉負電荷排斥白蛋白以維持電荷選擇性屏障。,mechanism,,,unverified,med,,
 2.2-liver-porous-physiological,2.2,肝竇狀血管糖萼薄且多孔屬生理性適應而非病理性受損。,mechanism,,,unverified,med,,此為詮釋性判斷，需確認是否有直接證據或僅為推論
 2.2-lung-thin-sdc1,2.2,肺微血管糖萼相對較薄（約 0.4-0.5 μm）且富含 Syndecan-1，有助氣體交換與中性球快速募集。,mechanism,,,unverified,med,,

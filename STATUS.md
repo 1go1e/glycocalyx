@@ -1,8 +1,9 @@
 # 專案現況
 
 ```
-最後更新: 2026-07-27
-最後 commit: 5cd5e6c
+最後更新: 2026-07-28
+最後 commit: 3a15aa2
+schema_version: 2
 ```
 
 > **新 session 從這裡開始。** 讀完本檔，再依 §6 決定要不要讀其他檔案。
@@ -15,8 +16,8 @@
 unverified   85
 partial       5
 unsupported   4
-contested     1
 verified      2
+contested     1
 ──────────────
 總計         97
 ```
@@ -26,6 +27,8 @@ verified      2
 ```powershell
 Import-Csv ledger/claims.csv | Group-Object status | Select-Object Name, Count
 ```
+
+有 `evidence` 的列共 7 條，去重識別碼 11 個（9 個 PMID、2 個 DOI）。
 
 ---
 
@@ -80,6 +83,28 @@ Import-Csv ledger/claims.csv | Group-Object status | Select-Object Name, Count
 `2.1.1-consensus-2-4um` 與 5.5 節的敏感度/特異度同型：宣稱有共識、但無任何文獻可追。
 真的有共識時，文獻會引用具體綜述或指引。
 
+### 3.5 自我引用式「更新」
+
+新增於 2026-07-28（來源：`reports/revisions/2026-07-28-intake-physiology-md.md`）。
+
+`糖萼層_Glycocalyx_生理.md` 的「表2：糖萼層生物標記臨床更新（基於2025年薈萃分析）」
+與同一份文件前面的「表1」**六列逐字相同**，內文卻寫「endocan 新增 77%/70%；ecSOD 活性 68%/82%」
+——這兩組數字在表1裡本來就有。所謂更新沒有更新任何數值。
+
+**通則**：標題宣稱「更新版」「基於最新薈萃分析」的表格，先與被它取代的表格逐格比對。
+比 §3.4 更隱蔽，因為標題本身就在提供權威性。
+
+### 3.6 歸屬與數值在轉述間漂移
+
+新增於 2026-07-28（同上）。
+
+同一個 11 μm，`v3` 歸給「腎絲球微血管」、生理.md 一處歸給「腦部與腎臟」、另一處寫「腎絲球 4-11 μm」，
+而實查出處（`PMID:21474821`）的樣本是體外培養的牛主動脈內皮細胞。
+同理，syndecan-1 預測死亡的敏感度在生理.md 正文寫 90%、同檔表格寫 85%。
+
+**通則**：同一主張在不同文件（或同一文件不同位置）出現時，先比對數值與歸屬是否一致。
+**漂移本身就是「無原始出處」的指紋**——有出處的數字不會在轉述中換血管床或換百分比。
+
 ---
 
 ## 4. 下一批
@@ -97,6 +122,10 @@ Import-Csv ledger/claims.csv | Group-Object status | Select-Object Name, Count
 2.2-sepsis-shedding-30min
 ```
 
+**本批附加動作**（待 §5 第 1 項核准後生效）：前四條在 `糖萼層_Glycocalyx_生理.md`
+有對應敘述，且數值與 `v3` 未必一致。查證時一併核對兩份文件的說法，
+差異寫入 note，並依 §3.6 檢查歸屬是否漂移。
+
 低成本可併入：`2.1.1-em-underestimate`（priority=low，但 2026-07-27 批次已取得直接證據
 `PMID:21474821`：同一批培養細胞傳統 TEM 0.040 μm vs RF/FS-TEM 11 μm）。
 
@@ -104,24 +133,66 @@ Import-Csv ledger/claims.csv | Group-Object status | Select-Object Name, Count
 
 1. `5.3-pbr-precedes-cognitive-2-3y` — 可能與已判 unsupported 的 `5.5-biomarker-ha-lmw` 同源
 2. `5.5-pbr-sdc1-correlation` — 與上一條同為 PBR 相關，可併批
-3. 七條 `claim_type=therapeutic` — 治療宣稱風險最高，尤其 `4.2.3-hrt-rct-2025`（宣稱為 RCT）
+3. 七條 `claim_type=therapeutic` — 治療宣稱風險最高，尤其 `4.2.3-hrt-rct-2025`（宣稱為 RCT）。
+   生理.md 另有至少 5 條 therapeutic 淨新增（AAV/C1GALT1、empagliflozin、Endocalyx、
+   heparanase 抑制劑、S1P），核准收錄後併入此批
 4. 標示「2025 年研究」的新宣稱群：果糖 ER 壓力、TMAO、微塑膠、S1P、ecSOD
 5. 其餘 `mechanism` 類——查證相對機械，適合批次自動跑
 
+---
+
 ## 5. 待決事項
 
-- **是否刪除 2.1.1 節的「共識 2-4 μm」敘述，並改寫 11 μm 的脈絡。**
-  查無出處，且 11 μm 的實際來源是體外培養牛主動脈內皮細胞，非原文所述之腎絲球活體測量。
-  建議改寫見 `reports/backfill/2026-07-27-2.1.1-2.2.md`。需人工決定。
-- **SCHEMA §5 的 `tier` 是否應排除 `!` 前綴 token。**
-  `2.1.1-extreme-11um` 的支持文獻為 `in_vitro`、反駁文獻為 `animal`，
-  照字面取「最高等級」會反過來抬高該主張的可信度。本次暫記 `in_vitro`。
-  依 SCHEMA §11 須寫提案至 `reports/revisions/`，尚未寫。
-- **是否刪除 5.5 節表格的敏感度／特異度欄位。** 批次報告建議直接刪除而非標註待查，
-  理由是這些數字外觀等同臨床診斷閾值，而讀者不會讀 note。需人工決定。
-  修改 `source/` 前應先在 `reports/revisions/` 寫修訂單。
+### 已定調的政策
+
+**查無出處的數值一律標註，不從原文刪除**（人工裁示 2026-07-27）。
+標註格式規範見 `reports/revisions/2026-07-27-source-2.1.1-thickness.md` §2，
+三種標記 `〔查無出處〕`／`〔條件限定〕`／`〔有爭議〕` 對應 ledger 的 status。
+此政策**推翻**了 5.5 批次報告中「建議直接刪除敏感度／特異度欄位」的建議。
+
+**判定綁 claim，不綁文件**（2026-07-28 提出，待核准）。
+同一主張在多份文件出現時只建一列，不得為了區分文件而複製。
+待 `source_ref` schema 提案核准後生效，見下。
+
+### 待核准 — 原文修訂
+
+- **2.1.1 節四處標註的修訂單**：`reports/revisions/2026-07-27-source-2.1.1-thickness.md`
+  含 §2 標註格式規範（一併待核准）與 §3 的四處具體改動。核准後才可改 `source/`。
+- **5.5 節敏感度／特異度的修訂單：尚未寫。** 依上述政策應改為標註而非刪除，
+  格式套用 2.1.1 修訂單的 §2。
+
+### 待核准 — 新文件收錄（2026-07-28 新增，擋住多文件擴充）
+
+- **`claims.csv` 是否新增 `source_ref` 欄（schema v3）。**
+  多文件之後無法標示主張出處，且同一主張跨文件出現時會產生重複列。
+  提案：`reports/revisions/2026-07-28-schema-source-doc.md`。
+  **此案須先決**，下一項的執行方式依賴它。
+  其 §5「同一主張的認定規則」一併待核准，關鍵條款：數值相同但歸屬不同時不得合併。
+- **`糖萼層_Glycocalyx_生理.md` 如何收錄。**
+  評估結果：該檔是「文章本體＋對該文章的檢視意見」的複合物，且檢視段有兩項自我矛盾
+  （表2 與表1 逐字相同卻宣稱是更新、正文 90% 與表格 85% 不一致）。
+  建議不收為 source，只抽取淨新增主張。
+  提案：`reports/revisions/2026-07-28-intake-physiology-md.md`。
+- **另兩份文件尚未評估**：`glycocalyx_Heparanase.md`（48 KB，機制導向，另有跳脫 markdown
+  `\#\#\#`、`\-` 須先正規化，否則節號抽不出來）、
+  `The_Mitochondria-Glycocalyx_Axis.md`（32 KB，與 v3 §1.2 主題重疊）。各需一次 intake 評估。
+
+### 待辦（承接前批）
+
 - 取得 `DOI:10.1161/JAHA.124.040179` 全文，核對 thrombomodulin 的 HR 2.10
 - 取得 Daniyarova et al. 2025 的 PMID，補入 `5.1-sdc1-or-204` 的 evidence
+  （目前僅有 `DOI:10.1002/mbo3.70155`）
+
+### 已決
+
+保留紀錄，防止下一個 session 重做已經決定過的事。**不要刪除本節條目。**
+
+- ~~SCHEMA §5 的 `tier` 是否排除 `!` 前綴 token~~ → **已決，採選項 A**。
+  schema_version 已升至 2，見 `ledger/CHANGELOG.md` 與
+  `reports/revisions/2026-07-27-schema-tier-refuting-tokens.md`（核准 2026-07-27，commit `d197ffe`）。
+  連帶新增規定：`status=contested` 的列，`note` 必須寫明反駁文獻的等級與反駁內容。
+- ~~是否刪除 2.1.1 節的「共識 2-4 μm」敘述~~ → **已決，改為標註不刪除**。見上方「已定調的政策」。
+- ~~是否刪除 5.5 節表格的敏感度／特異度欄位~~ → **已決，刪除方案作廢**，同上。
 
 ---
 
@@ -132,13 +203,16 @@ Import-Csv ledger/claims.csv | Group-Object status | Select-Object Name, Count
 若在對話介面中執行，上傳以下檔案：
 
 ```
+STATUS.md
 ledger/claims.csv
 ledger/SCHEMA.md
+ledger/CHANGELOG.md
 runbooks/backfill.md
 reports/backfill/2026-07-26-5.1.md
 source/glycocalyx_v3.md
-STATUS.md
 ```
+
+若本次任務涉及 schema 或原文修訂，另加 `reports/revisions/` 中相關的提案檔。
 
 開場指示：
 
@@ -156,5 +230,8 @@ STATUS.md
 
 每完成一批，更新本檔的 §1 帳本狀態、§2 已完成批次、§4 下一批。
 若該批浮現新的系統性模式，加入 §3。
+提案核准或作廢時，把該項從 §5「待核准」移到 §5「已決」並加上刪除線，**不要刪除條目**——
+「已決」的用途是防止下一個 session 重做已經決定過的事。
+若該決定形成通則（適用於未來所有批次，而不只是這一次），另外寫進 §5「已定調的政策」。
 
-本檔與批次報告一同 commit。
+檔頭的「最後 commit」須填實際 HEAD 的短 hash。本檔與批次報告一同 commit。

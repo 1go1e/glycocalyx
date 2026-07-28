@@ -2,7 +2,7 @@
 
 ```
 最後更新: 2026-07-28
-最後 commit: bbaae7e
+最後 commit: (本批次 commit)
 schema_version: 5
 ```
 
@@ -13,10 +13,10 @@ schema_version: 5
 ## 1. 帳本狀態
 
 ```
-unverified  109
-partial       5
-unsupported   4
-verified      2
+unverified  104
+partial       6
+unsupported   5
+verified      5
 contested     1
 ──────────────
 總計        121
@@ -37,12 +37,12 @@ Import-Csv ledger/claims.csv | Where-Object priority -eq 'high' |
 **依優先序的完成率**（這才是專案健康度指標；全體完成率會被大量 low/med 稀釋）：
 
 ```
-high   已判定 11 / 60  = 18%
-med    已判定  1 / 53  =  2%
-low    已判定  0 /  8  =  0%
+high   已判定 12 / 60  = 20%
+med    已判定  4 / 53  =  8%
+low    已判定  1 /  8  = 12%
 ```
 
-有 `evidence` 的列共 7 條，去重識別碼 11 個（9 個 PMID、2 個 DOI）。
+有 `evidence` 的列共 12 條，去重識別碼 14 個（11 個 PMID、3 個 DOI）。
 
 `source_ref` 主要出處：`glycocalyx/v3` 97 列、`intake/2026-07-28-糖萼層生理` 24 列。
 另有 53 列同時標示兩處。
@@ -58,6 +58,7 @@ low    已判定  0 /  8  =  0%
 | 2026-07-27 | 2.1.1 / 2.2 厚度群 | 5 | `reports/backfill/2026-07-27-2.1.1-2.2.md` |
 | 2026-07-28 | 生理.md 收錄（無檢索） | 53 追加 + 24 新建 | `reports/backfill/2026-07-28-intake-physiology.md` |
 | 2026-07-28 | v3 §2.1.1／§2.2 標註（無檢索） | 4 處 | `reports/revisions/2026-07-27-source-2.1.1-thickness.md` |
+| 2026-07-28 | 2.2 腦部與肺部血管床 | 5 | `reports/backfill/2026-07-28-2.2-brain-lung.md` |
 
 **`2026-07-26-5.1.md` 是判定標準的基準範本。** 任何新加入的執行者（人或 agent）
 應先讀它，再開始工作——它示範了判定的細膩度、note 的寫法，
@@ -183,20 +184,41 @@ Get-ChildItem -Recurse -Include *.md,*.csv | Select-String "舊路徑"
 
 ---
 
+### 3.9 定性描述被換算成具體數值
+
+新增於 2026-07-28（來源：`reports/backfill/2026-07-28-2.2-brain-lung.md`）。
+
+`v3` §2.2 稱腦微血管糖萼「1-3 μm」。文獻確實說腦部糖萼**比心、肺更厚更密**
+（Ando 2018：腦內腔覆蓋率 40.1% vs 心 15.1% vs 肺 3.7%），
+但兩項獨立的小鼠硝酸鑭 TEM 直接測量都是次微米級（0.301 μm、0.540 μm）。
+
+**通則**：這與 §3.3「逆向指標被寫反」不同型——那是方向錯，這是**方向對但被賦予了
+一個原文沒有的具體數值**。比方向錯更難察覺，因為敘述讀起來完全合理。
+凡「某部位比別處厚／密」的比較性描述後面跟著一個絕對數值，該數值須獨立查證。
+
+---
+
 ## 4. 下一批
 
 **`2.2` 剩餘條目**（厚度群已完成，其餘 8 條同章節，可共用脈絡）
 
 ```
-2.2-brain-1-3um          ← 與已 verified 的 2.2-cap-0.2-0.5um 文件內部不一致，優先
-2.2-lung-thin-sdc1
-2.2-glomerular-hs-charge
-2.2-liver-porous-physiological
+2.2-glomerular-hs-charge          ← 與 2.1.1-glomerular-4-11um 同批，線索見下
+2.2-liver-porous-physiological    ← 同上
+2.1.1-glomerular-4-11um
 2.2-pathological-50-90pct
 2.2-repair-7-14d
 2.2-sdc1-halflife-2-8h
 2.2-sepsis-shedding-30min
 ```
+
+**現成線索**：`Okada H, et al. Crit Care. 2017;21:261`（`PMID:29058634`）比較連續型（心）、
+開窗型（腎）、竇狀型（肝）三種微血管的糖萼超微結構，涵蓋前三條。
+2026-07-28 批次僅透過 Ando 2018 的轉述得知此文，**未直接讀取，不得據以判定**。
+
+已完成（2026-07-28）：`2.2-brain-1-3um`（unsupported）、`2.2-lung-thin-sdc1`（partial）、
+`2.2-brain-mouse-0.54-0.23`（verified）、`2.1.1-mucin-o-glycosylation-aging`（verified）、
+`2.1.1-em-underestimate`（verified）。
 
 **本批附加動作**（生理.md 收錄已於 2026-07-28 完成，本動作生效）：
 前四條在 `source/intake/2026-07-28-糖萼層生理.md` 有對應敘述，`source_ref` 已標示位置。
@@ -208,9 +230,6 @@ Get-ChildItem -Recurse -Include *.md,*.csv | Select-String "舊路徑"
 
 同理，`2.1.1-extreme-11um`、`2.1.1-extreme-11um-brain-kidney`、`2.1.1-glomerular-4-11um`
 三條同源，同批處理；`5.1-sdc1-sens-spec` 與 `5.1-sdc1-sens-90` 同批。
-
-低成本可併入：`2.1.1-em-underestimate`（priority=low，但 2026-07-27 批次已取得直接證據
-`PMID:21474821`：同一批培養細胞傳統 TEM 0.040 μm vs RF/FS-TEM 11 μm）。
 
 **收錄批次（新增，與回填分離）**
 
@@ -293,9 +312,20 @@ Get-ChildItem -Recurse -Include *.md,*.csv | Select-String "舊路徑"
 
 ### 待核准 — 新文件收錄（2026-07-28 新增，擋住多文件擴充）
 
+### 待核准 — 原文修訂（新增）
+
+- **§2.2 兩處標註的修訂單：尚未寫。** 2026-07-28 批次判定
+  「腦微血管 1-3 μm」為 `unsupported`、「肺微血管 0.4-0.5 μm」為 `partial`，
+  依標註政策應各加一個標記。建議與 §5.5 敏感度／特異度的修訂單合併為一份。
+
 ### 待辦（承接前批）
 
 - 取得 `DOI:10.1161/JAHA.124.040179` 全文，核對 thrombomodulin 的 HR 2.10
+- 取得 Shi et al. 2025 Nature 的 PMID，補入 `2.2-brain-mouse-0.54-0.23` 等三列
+  （目前僅有 `DOI:10.1038/s41586-025-08589-9`）
+- 建立 `ledger/queries.md`：本批次的有效檢索式
+  `brain microvascular endothelial glycocalyx thickness measurement micrometers`
+  一次命中兩篇原始研究，有效原因是同時含「thickness」「measurement」與單位詞
 - 取得 Daniyarova et al. 2025 的 PMID，補入 `5.1-sdc1-or-204` 的 evidence
   （目前僅有 `DOI:10.1002/mbo3.70155`）
 

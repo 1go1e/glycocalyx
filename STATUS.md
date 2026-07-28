@@ -3,7 +3,7 @@
 ```
 最後更新: 2026-07-28
 最後 commit: 3a15aa2
-schema_version: 2
+schema_version: 3
 ```
 
 > **新 session 從這裡開始。** 讀完本檔，再依 §6 決定要不要讀其他檔案。
@@ -29,6 +29,7 @@ Import-Csv ledger/claims.csv | Group-Object status | Select-Object Name, Count
 ```
 
 有 `evidence` 的列共 7 條，去重識別碼 11 個（9 個 PMID、2 個 DOI）。
+97 列的 `source_ref` 均為 `glycocalyx_v3#{section}`（schema v3 回填）。
 
 ---
 
@@ -150,9 +151,12 @@ Import-Csv ledger/claims.csv | Group-Object status | Select-Object Name, Count
 三種標記 `〔查無出處〕`／`〔條件限定〕`／`〔有爭議〕` 對應 ledger 的 status。
 此政策**推翻**了 5.5 批次報告中「建議直接刪除敏感度／特異度欄位」的建議。
 
-**判定綁 claim，不綁文件**（2026-07-28 提出，待核准）。
-同一主張在多份文件出現時只建一列，不得為了區分文件而複製。
-待 `source_ref` schema 提案核准後生效，見下。
+**判定綁 claim，不綁文件**（人工裁示 2026-07-28，schema_version 3）。
+同一主張在多份文件出現時只建一列，所有出現位置寫進 `source_ref`。
+
+**但兩種情況不得合併，須各自建列**：數值相同而**歸屬不同**、
+或同一指標**數值不同**。理由見 §3.6——漂移本身就是證據，
+合併會把它壓進 `note` 而失去可見度。完整規則見 `ledger/SCHEMA.md` §2「一條主張，一列」。
 
 ### 待核准 — 原文修訂
 
@@ -163,11 +167,6 @@ Import-Csv ledger/claims.csv | Group-Object status | Select-Object Name, Count
 
 ### 待核准 — 新文件收錄（2026-07-28 新增，擋住多文件擴充）
 
-- **`claims.csv` 是否新增 `source_ref` 欄（schema v3）。**
-  多文件之後無法標示主張出處，且同一主張跨文件出現時會產生重複列。
-  提案：`reports/revisions/2026-07-28-schema-source-doc.md`。
-  **此案須先決**，下一項的執行方式依賴它。
-  其 §5「同一主張的認定規則」一併待核准，關鍵條款：數值相同但歸屬不同時不得合併。
 - **`糖萼層_Glycocalyx_生理.md` 如何收錄。**
   評估結果：該檔是「文章本體＋對該文章的檢視意見」的複合物，且檢視段有兩項自我矛盾
   （表2 與表1 逐字相同卻宣稱是更新、正文 90% 與表格 85% 不一致）。
@@ -193,6 +192,10 @@ Import-Csv ledger/claims.csv | Group-Object status | Select-Object Name, Count
   連帶新增規定：`status=contested` 的列，`note` 必須寫明反駁文獻的等級與反駁內容。
 - ~~是否刪除 2.1.1 節的「共識 2-4 μm」敘述~~ → **已決，改為標註不刪除**。見上方「已定調的政策」。
 - ~~是否刪除 5.5 節表格的敏感度／特異度欄位~~ → **已決，刪除方案作廢**，同上。
+- ~~`claims.csv` 是否新增 `source_ref` 欄~~ → **已決，採選項 A 含 §5 認定規則**。
+  schema_version 已升至 3，見 `ledger/CHANGELOG.md` 與
+  `reports/revisions/2026-07-28-schema-source-doc.md`（核准 2026-07-28）。
+  97 列已機械化回填 `source_ref = glycocalyx_v3#{section}`，其餘欄位未動。
 
 ---
 

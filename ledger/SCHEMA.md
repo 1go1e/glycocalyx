@@ -35,7 +35,7 @@ ledger 的版本歷史就失去意義——那是整套系統唯一不可替代�
 | # | 欄位 | 可否由 agent 寫入 | 說明 |
 |---|---|---|---|
 | 1 | `claim_id` | 僅新增時 | 永久識別碼。見 §3 |
-| 2 | `section` | 否 | 對應 `source/glycocalyx_v3.md` 的章節編號 |
+| 2 | `section` | 否 | 主要出處的章節編號，等於 `source_ref` 第一個 token 的節號 |
 | 3 | `statement` | 條件性 | 單一、可證偽的敘述。見 §6 |
 | 4 | `claim_type` | 僅新增時 | 見下方列表 |
 | 5 | `tier` | 是 | 證據等級。見 §5 |
@@ -64,11 +64,12 @@ ledger 的版本歷史就失去意義——那是整套系統唯一不可替代�
 格式：`{doc}#{section}`，多個位置以 `;` 分隔，**第一個為主要出處**。
 
 ```
-glycocalyx_v3#5.5
-glycocalyx_v3#5.5;intake/2026-07-28-糖萼層生理#表1
+glycocalyx/v3#5.5
+glycocalyx/v3#5.5;mitochondria/axis#1.2
 ```
 
-- `{doc}`：`source/` 下的相對路徑去掉 `.md`
+- `{doc}`：`source/` 下的相對路徑去掉 `.md`。`source/` 依主題分子目錄
+  （`glycocalyx/`、`mitochondria/`），子目錄前綴同時是網頁分站的依據
 - `{section}`：該文件內的節號。文件無節號時用可辨識的位置標籤（`表1`、`L122-131`）
 
 `section` 欄的值必須等於 `source_ref` 第一個 token 的節號部分。
@@ -281,13 +282,13 @@ run: 2026-08-03 / inbox/2026-08-03.json
 驗證前：
 
 ```csv
-5.1-sdc1-cutoff-40,5.1,血漿 Syndecan-1 濃度大於 40 ng/mL 是預測敗血症死亡率的指標。,epidemiology,,,unverified,high,,最高優先。具體 cutoff，可能被誤用為臨床閾值,glycocalyx_v3#5.1
+5.1-sdc1-cutoff-40,5.1,血漿 Syndecan-1 濃度大於 40 ng/mL 是預測敗血症死亡率的指標。,epidemiology,,,unverified,high,,最高優先。具體 cutoff，可能被誤用為臨床閾值,glycocalyx/v3#5.1
 ```
 
 驗證後（假想）：
 
 ```csv
-5.1-sdc1-cutoff-40,5.1,血漿 Syndecan-1 濃度大於 40 ng/mL 是預測敗血症死亡率的指標。,epidemiology,meta,PMID:36112233;PMID:34556677,partial,high,2026-08-03,原文 cutoff 為 40.4 ng/mL 且族群限於 ICU 成人敗血性休克；statement 需補上族群限定,glycocalyx_v3#5.1
+5.1-sdc1-cutoff-40,5.1,血漿 Syndecan-1 濃度大於 40 ng/mL 是預測敗血症死亡率的指標。,epidemiology,meta,PMID:36112233;PMID:34556677,partial,high,2026-08-03,原文 cutoff 為 40.4 ng/mL 且族群限於 ICU 成人敗血性休克；statement 需補上族群限定,glycocalyx/v3#5.1
 ```
 
 注意這個例子：找到了文獻，但 statement 過度概括，所以是 `partial` 而非 `verified`。

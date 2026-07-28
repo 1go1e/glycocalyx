@@ -1,98 +1,98 @@
-claim_id,section,statement,claim_type,tier,evidence,status,priority,last_checked,note
-1.0-egc-definition,1,內皮糖萼是覆蓋在血管內皮細胞管腔表面、含水且富含碳水化合物的結構層。,definition,,,unverified,low,,
-1.1-dynamic-organelle,1.1,eGC 應被概念化為動態內皮細胞器，而非僅由厚度定義的靜態屏障。,definition,,,unverified,med,,框架性主張；需找到提出此定義的關鍵綜述
-1.1-qualitative-precedes-dysfunction,1.1,糖萼的性質改變（qualitative alterations）先於可偵測的內皮功能障礙出現。,mechanism,,,unverified,high,,全文核心論點，必須有縱向或時序性證據支持
-1.2-ecsod-mito-protection,1.2,糖萼結合的 ecSOD 可阻止外部氧化衝擊傳入細胞，避免線粒體 ROS 誘導的通透性轉換與凋亡。,mechanism,,,unverified,high,,文件標示為 2025 年新興數據，需查證
-1.2-ext-activity-drop,1.2,線粒體功能障礙或氧化壓力會降低 EXT1/EXT2 活性，導致 HS 鏈變短與硫酸化異常。,mechanism,,,unverified,high,,
-1.2-mito-glycocalyx-axis,1.2,內皮線粒體代謝與糖萼結構之間存在雙向調節軸。,mechanism,,,unverified,high,,新興概念，需確認是否已有明確命名此軸的文獻
-1.2-udp-nad-dependency,1.2,糖萼合成依賴 UDP-糖庫可用性與胞質 NAD+/NADH 比值。,mechanism,,,unverified,med,,
-1.3-capillary-recruitment,1.3,糖萼參與微循環的微血管徵召，在血流增加時協助開放更多毛細血管。,mechanism,,,unverified,med,,
-2.1.1-consensus-2-4um,2.1.1,臨床與多數活體測量的共識厚度值落在 2-4 μm。,measurement,,,unsupported,high,2026-07-27,三次不同措辭檢索均未找到「臨床與活體共識 2-4 μm」。人體臨床測量實際值：舌下 OPS 約 0.5 μm（範圍 0.3-0.75）；GlycoCheck PBR 約 1.8-2.3 μm，但 PBR 是紅血球穿透深度、為逆向指標而非厚度（原文 2.1.2 自己有寫）。綜述給出的範圍為 0.2-2 μm 或 1-5 μm，無一為 2-4。疑為把 PBR 數值誤讀為厚度
-2.1.1-em-underestimate,2.1.1,傳統電子顯微鏡的脫水固定步驟導致糖萼坍塌，因而顯著低估其厚度。,measurement,,,unverified,low,,
-2.1.1-extreme-11um,2.1.1,部分文獻報告糖萼功能性水合層厚度可達 11 μm。,measurement,in_vitro,PMID:21474821;!PMID:18258858;!PMID:21775768,contested,high,2026-07-27,11 μm 出處確認為 Ebong 2011 RF/FS-TEM，但條件為體外培養牛主動脈內皮細胞（同篇大鼠脂肪墊 EC 5.83 μm；同細胞傳統 TEM 僅 0.040 μm），非腎絲球、非活體。同細胞型別以 μ-PIV 測得流體力學相關厚度僅 0.02±0.04 μm，ATVB 同期評論質疑為技術造成。tier 依 SCHEMA v2 §5 排除反駁 token，記為 in_vitro。反駁內容：PMID:18258858（animal，小鼠活體 μ-PIV，同細胞型別測得 0.02 μm，數值相差 500 倍）；PMID:21775768（review，同期評論，質疑為標本製備技術所致）
-2.1.1-invivo-0.5-5um,2.1.1,活體測量顯示糖萼有效厚度約為 0.5-5 μm。,measurement,animal,PMID:18258858;PMID:18441021;PMID:8781491,partial,high,2026-07-27,下限有支持、上限查無出處。活體「有效厚度」在文獻中專指流體力學相關厚度：小鼠提睪肌小靜脈 0.52±0.28 μm、小動脈 0.38 μm、倉鼠提睪肌微血管 0.4-0.5 μm，皆約 0.5 μm 量級。5 μm 未見於任何活體測量；最接近者為離體小鼠頸動脈雙光子 4.5 μm（PMID:17192719）與體外培養細胞 RF/FS-TEM 5.83 μm（PMID:21474821），兩者皆非活體。Tarbell 2016 綜述給出的 1-5 μm 為「體外與活體合併」範圍。statement 需改為指明測量情境與血管床
-2.1.2-pbr-inverse,2.1.2,PBR 為逆向指標：PBR 升高代表糖萼變薄、受損或屏障功能喪失。,measurement,,,unverified,high,,整套影像評估的邏輯基礎
-2.1.2-pbr-sampling,2.1.2,PBR 分析每 10 μm 設一測量點，每點放置 21 條間隔 0.5 μm 的測量線分析紅血球柱寬度分布。,measurement,,,unverified,med,,
-2.1.2-sdf-540nm,2.1.2,SDF 成像使用 540nm 綠光 LED，該波長被血紅素特異性吸收以顯影微血管網絡。,measurement,,,unverified,low,,
-2.1.2-sdf-optics,2.1.2,SDF 系統配備 5 倍物鏡與 0.2 NA，放大約 325 倍，以每秒 23 幀捕捉影像。,measurement,,,unverified,med,,硬體規格，應可由儀器文獻確認
-2.2-artery-2-3um,2.2,大動脈糖萼厚度可達 2-3 μm。,measurement,animal,PMID:22349291;PMID:21273784;PMID:17192719,partial,med,2026-07-27,主動脈實測支持約 2 μm（大鼠與小鼠主動脈 ex vivo 抗-HS 共軛焦），小鼠總頸動脈雙光子 2.3±0.1 μm。但「可達 2-3 μm」的上限不成立：同為頸動脈的雙光子研究報 4.5 μm（PMID:17192719）。另 2025 綜述將 2-3 μm 歸於中等口徑血管、4.5 μm 歸於大血管（DOI:10.1038/s41467-025-66169-x），與原文「大動脈 2-3 μm」的歸屬相反。statement 需改寫
-2.2-brain-1-3um,2.2,腦微血管糖萼厚度約 1-3 μm，為血腦屏障的第一道防線。,measurement,,,unverified,med,,
-2.2-cap-0.2-0.5um,2.2,微血管糖萼厚度約 0.2-0.5 μm。,measurement,animal,PMID:12637366;PMID:8781491,verified,high,2026-07-27,0.2-0.5 μm 逐字相符：大鼠左心室心肌微血管 Alcian blue 8GX 電鏡（van den Berg 2003）。倉鼠提睪肌微血管活體 0.4-0.5 μm 獨立支持；人體舌下 OPS 約 0.5 μm 亦一致。分歧值：抗-HS 共軛焦於大鼠腸繫膜微血管測得 0.9±0.1 μm、微血管後小靜脈 1.2±0.3 μm（PMID:22349291），方法與血管床不同。注意與同節「腦微血管 1-3 μm」（2.2-brain-1-3um）不一致，該條應優先查證
-2.2-glomerular-hs-charge,2.2,腎絲球微血管糖萼極厚且富含 HS，藉負電荷排斥白蛋白以維持電荷選擇性屏障。,mechanism,,,unverified,med,,
-2.2-liver-porous-physiological,2.2,肝竇狀血管糖萼薄且多孔屬生理性適應而非病理性受損。,mechanism,,,unverified,med,,此為詮釋性判斷，需確認是否有直接證據或僅為推論
-2.2-lung-thin-sdc1,2.2,肺微血管糖萼相對較薄（約 0.4-0.5 μm）且富含 Syndecan-1，有助氣體交換與中性球快速募集。,mechanism,,,unverified,med,,
-2.2-pathological-50-90pct,2.2,病理狀態下糖萼厚度可減少 50-90%。,measurement,,,unverified,high,,範圍極寬，需確認測量情境
-2.2-repair-7-14d,2.2,糖萼完全重建需要 7-14 天。,mechanism,,,unverified,high,,治療窗口的關鍵依據，須查證物種與模型
-2.2-sdc1-halflife-2-8h,2.2,Syndecan-1 的半衰期約為 2-8 小時。,mechanism,,,unverified,high,,具體動力學數字，需原始出處
-2.2-sepsis-shedding-30min,2.2,敗血症中糖萼可於 30 分鐘內大量脫落。,mechanism,,,unverified,high,,
-2.3.1-cs-10-40pct,2.3.1,硫酸軟骨素約佔 GAG 總量的 10-40%，主要提供結構剛性。,definition,,,unverified,med,,衝突：見 2.3.1-hs-50-90pct
-2.3.1-ha-fragmentation-disease,2.3.1,透明質酸碎片化與老化、發炎及 HFpEF 密切相關。,epidemiology,,,unverified,med,,
-2.3.1-ha-viscoelastic,2.3.1,透明質酸以非共價方式穿插於糖萼中，吸附水分以維持黏彈性與立體結構。,mechanism,,,unverified,med,,
-2.3.1-hs-50-90pct,2.3.1,硫酸乙醯肝素為含量最豐富的 GAG，約佔糖萼 GAG 總量的 50-90%。,definition,,,unverified,high,,衝突：與 CS 的 10-40% 上界相加超過 100%
-2.3.2-glypican-lipid-raft,2.3.2,Glypicans 經 GPI 錨定於脂筏區域，參與 Wnt 訊號與生長因子梯度形成。,mechanism,,,unverified,low,,
-2.3.2-sdc4-mechanotransduction,2.3.2,Syndecan-4 具獨特胞內結構域可直接連接細胞骨架，是機械轉導的關鍵樞紐。,mechanism,,,unverified,high,,
-2.3.3-adhesion-masking,2.3.3,健康狀態下長鏈 GAG 物理遮蔽 ICAM-1 與 VCAM-1，防止非發炎狀態下的白血球黏附。,mechanism,,,unverified,med,,
-2.4-3o-sulfation-atiii,2.4,HS 鏈上的 3-O 硫酸化五醣序列是結合抗凝血酶 III 的關鍵，缺乏此修飾則 HS 總量再多也無抗凝作用。,mechanism,,,unverified,high,,「質重於量」論點的主要支柱
-2.4-6o-sulfation-gf,2.4,6-O 硫酸化主要介導 VEGF、FGF 等生長因子的結合。,mechanism,,,unverified,med,,
-2.4-mispatterning-precedes,2.4,發炎早期內皮可合成總量正常但硫酸化錯位的 HS 鏈，導致 NO 反應失靈與趨化因子錯誤呈現。,mechanism,,,unverified,high,,全文核心論點之一，必須有直接證據
-2.4-n-sulfation-chemokine,2.4,N-硫酸化影響趨化因子呈現與免疫細胞趨化作用。,mechanism,,,unverified,med,,
-2.4-precursor-insufficient,2.4,若細胞內硫酸化酶已受損，單純補充 GAG 前體無法恢復糖萼功能。,therapeutic,,,unverified,high,,直接影響治療策略判斷
-3.1-charge-repulsion-40pct,3.1,正常剪切應力下，糖萼的電荷排斥機制可減少高達 40% 的跨內皮滲漏。,mechanism,,,unverified,high,,文件標示為 2025 年研究；精確百分比須逐字核對
-3.1-revised-starling,3.1,傳統 Starling 定律已修正為糖萼層-內皮表層模型，ESL 才是決定跨毛細血管交換的關鍵區域。,mechanism,,,unverified,med,,
-3.1-steric-70kda,3.1,糖萼以空間位阻阻擋 LDL 及大於 70kDa 的蛋白質靠近內皮細胞膜。,mechanism,,,unverified,med,,
-3.2-enos-ser1177,3.2,鈣離子內流經 Src/PI3K/Akt 級聯導致 eNOS 於 Ser1177 磷酸化並釋放 NO。,mechanism,,,unverified,med,,
-3.2-piezo1-complex,3.2,Syndecan-4/Piezo1/PECAM-1 複合體為核心剪切力感測機器，糖萼變形觸發 Piezo1 開啟致鈣離子內流。,mechanism,,,unverified,high,,
-3.2-sdc4-ko-no-25pct,3.2,CRISPR 敲除 Syndecan-4 的內皮模型中，NO 生物利用度降低 25%。,mechanism,,,unverified,high,,精確數字＋特定模型，須找到原始研究
-3.3-atiii-thousandfold,3.3,HS 的 3-O 硫酸化序列與 ATIII 結合後，可使其抑制凝血酶與因子 Xa 的活性提高數千倍。,mechanism,,,unverified,med,,
-3.3-chemokine-cxcl12,3.3,糖萼結合並呈現 CXCL12 等趨化因子，引導白血球在正確時空遷移。,mechanism,,,unverified,med,,
-3.3-covid-complement,3.3,COVID-19 相關微血管病變中，糖萼損傷導致的補體失調是重要機制。,epidemiology,,,unverified,high,,文件標示 2024-2025 研究
-3.3-factor-h-complement,3.3,糖萼結合 Factor H 等補體調節因子，防止補體系統在內皮表面過度活化。,mechanism,,,unverified,med,,
-3.3-meta2024-platelet,3.3,2024 年薈萃分析證實糖萼完整性與血小板黏附呈顯著反比。,epidemiology,,,unverified,high,,宣稱為薈萃分析，須找到該篇
-3.3-tfpi-binding,3.3,組織因子途徑抑制物結合於糖萼層並抑制外源性凝血途徑。,mechanism,,,unverified,low,,
-3.3-thrombomodulin-proteinc,3.3,血栓調節蛋白結合凝血酶並將其轉化為 Protein C 活化劑。,mechanism,,,unverified,low,,
-3.3-thrombosis-2-3x,3.3,高凝狀態下 HS 降解導致重症患者血栓事件增加 2-3 倍。,epidemiology,,,unverified,high,,
-3.4-ecsod-charge-binding,3.4,ecSOD 經其正電區域與負電 HS 鏈結合而富集於內皮表面，就地清除超氧化物陰離子。,mechanism,,,unverified,med,,
-3.5-metabolic-sensor,3.5,糖萼厚度與品質可作為內皮細胞代謝狀態的指標。,mechanism,,,unverified,med,,詮釋性主張
-4.1-adamts-versican,4.1,ADAMTS-4 與 ADAMTS-5 在動脈粥樣硬化中切割 Versican 與 Aggrecan。,mechanism,,,unverified,med,,
-4.1-cathepsin-low-ph,4.1,組織蛋白酶在斑塊等低 pH 環境中被活化並參與糖萼降解。,mechanism,,,unverified,low,,
-4.1-damp-tlr4-loop,4.1,脫落的 Syndecan-1 外域與 HS 片段作為 DAMPs，經 TLR4/NF-κB 誘導 IL-1β 與 TNF-α，形成發炎-降解正反饋。,mechanism,,,unverified,high,,
-4.1-heparanase-hs,4.1,肝素酶專一降解 HS 鏈，破壞負電荷屏障並導致抗凝功能喪失。,mechanism,,,unverified,high,,
-4.1-hyaluronidase-ha,4.1,透明質酸酶降解 HA 骨架並產生具促炎作用的低分子量片段。,mechanism,,,unverified,med,,原文此項重複列出兩次（第 3 與第 5 項），已合併
-4.1-mmp-shedding,4.1,MMP-9 與 MMP-2 在發炎刺激下切割 Syndecan 的胞外結構域，導致糖萼脫落。,mechanism,,,unverified,med,,
-4.2.1-ages-rage-mmp,4.2.1,AGEs 與 RAGE 結合可誘導 MMP 活化並加速糖萼降解。,mechanism,,,unverified,med,,
-4.2.1-fructose-er-stress,4.2.1,果糖誘導的內質網壓力對糖萼的損傷程度超過葡萄糖。,mechanism,,,unverified,high,,反直覺且標示為 2025 年研究，優先查證
-4.2.1-hexosamine-oglcnac,4.2.1,六糖胺途徑過度活化導致 O-GlcNAc 修飾異常，干擾 EXT1/EXT2 的活性與定位。,mechanism,,,unverified,high,,此為「原料充足但合成反而受阻」的反直覺機制
-4.2.1-hyperglycemia-ext-suppression,4.2.1,高血糖直接抑制 EXT1/EXT2 基因表達，從源頭減少 HS 合成。,mechanism,,,unverified,med,,
-4.2.2-endothelial-ir-ko-mouse,4.2.2,內皮特異性胰島素受體敲除小鼠出現糖萼提早退化。,mechanism,,,unverified,high,,文件標示 2023-2024 年研究
-4.2.2-ir-bidirectional,4.2.2,糖萼損傷與胰島素抵抗互為因果：損傷致 NO 減少而限制骨骼肌葡萄糖攝取。,mechanism,,,unverified,med,,
-4.2.3-estrogen-protection,4.2.3,雌激素維持 GAG 合成並抑制 MMP 活性，停經前女性糖萼較同齡男性完整。,epidemiology,,,unverified,med,,
-4.2.3-hrt-rct-2025,4.2.3,2025 年小型隨機試驗顯示荷爾蒙替代療法與糖萼厚度改善相關。,therapeutic,,,unverified,high,,宣稱為 RCT，證據等級高但須確認確實存在
-4.3.1-lps-tlr4-heparanase,4.3.1,腸屏障受損使 LPS 進入循環，經 TLR4 途徑活化肝素酶並造成全身性糖萼降解。,mechanism,,,unverified,high,,
-4.3.1-tmao-direct-damage,4.3.1,腸道菌代謝產物 TMAO 可直接損傷糖萼結構。,mechanism,,,unverified,high,,文件標示 2025 年研究
-4.3.2-microplastic-pyroptosis,4.3.2,穿透糖萼的微塑膠可誘導內皮細胞焦亡並釋放大量發炎介質。,mechanism,,,unverified,high,,
-4.3.2-nanoplastic-penetration,4.3.2,小於 100nm 的奈米塑膠可穿透糖萼層，聚苯乙烯微粒特別容易與 HS 結合。,mechanism,,,unverified,high,,文件標示 2025 年環境醫學研究
-5.1-sdc1-cutoff-40,5.1,血漿 Syndecan-1 濃度大於 40 ng/mL 是預測敗血症死亡率的指標。,epidemiology,,,partial,high,2026-07-26,"40 ng/mL 為創傷內皮病變閾值而非敗血症 cutoff；敗血症文獻採用 121-430 ng/mL 不等。敗血症基礎值約 103 ng/mL、敗血性休克約 139 ng/mL，40 在此族群幾無鑑別力。evidence 待補：創傷原始世代之識別碼本次未取得，不得推測填入。詳見 reports/backfill/2026-07-26-5.1.md"
-5.1-sdc1-or-204,5.1,血漿 Syndecan-1 升高預測敗血症死亡的優勢比為 2.04。,epidemiology,meta,DOI:10.1002/mbo3.70155,verified,high,2026-07-26,"Daniyarova et al. 2025 MicrobiologyOpen。OR 2.04 95% CI 1.66-2.51；9 篇研究 n=2167；I²=84% 異質性高。同篇中 SDC-1 與 MODS 及呼吸衰竭均無顯著相關。PMID 未取得，暫以 DOI 記錄。"
-5.1-sdc1-sens-spec,5.1,以此閾值預測敗血症死亡率的敏感度為 85%、特異度為 78%。,epidemiology,,,unsupported,high,2026-07-26,"三次不同措辭檢索均未找到 85%/78%。實際找到：成人敗血症急診 80%/57.8%、重症流感A 81.3%/70.3%、兒童敗血症 78.6%/68.5%（終點為器官功能障礙）、創傷 56.9%/64.6%。無一相符。"
-5.1-sepsis-phase1-elastase,5.1,敗血症 0-6 小時以中性球彈性蛋白酶介導的 Syndecan-1 快速脫落為主。,mechanism,,,unverified,med,,
-5.1-sepsis-phase2-leak,5.1,敗血症 6-24 小時 MMP 與肝素酶全面活化，導致毛細血管滲漏症候群與多器官衰竭。,mechanism,,,unverified,med,,
-5.1-sepsis-phase3-abnormal-repair,5.1,敗血症 24-72 小時的修復期所合成的糖萼常伴隨硫酸化模式異常，可能造成長期血管功能障礙。,mechanism,,,unverified,high,,時序分期是否有直接人體資料支持？
-5.2.1-hfpef-microvascular,5.2.1,HFpEF 的核心病理機制為微血管發炎與內皮功能障礙，而非心肌收縮力下降。,mechanism,,,unverified,high,,
-5.2.1-hfpef-rarefaction,5.2.1,糖萼損傷導致冠狀動脈微循環稀疏化與心肌間質纖維化，使心室僵硬度增加。,mechanism,,,unverified,med,,
-5.2.1-hfpef-sdc1-ha-elevated,5.2.1,HFpEF 患者血漿 Syndecan-1 與 HA 片段顯著升高。,epidemiology,,,unverified,high,,
-5.2.2-acs-burst-degradation,5.2.2,ACS 中斑塊破裂導致局部糖萼爆發性降解，脫落碎片可阻塞下游微循環。,mechanism,,,unverified,med,,
-5.3-ad-vascular-hypothesis,5.3,血腦屏障內皮糖萼損傷降低對 Aβ 的轉運與清除能力，導致 Aβ 於腦內累積。,mechanism,,,unverified,high,,與主流 Aβ 假說競合，須謹慎標註證據等級
-5.3-pbr-precedes-cognitive-2-3y,5.3,縱向研究顯示糖萼生物標記異常先於認知功能衰退 2-3 年出現。,epidemiology,,,unverified,high,,宣稱為縱向研究＋具體年數，優先查證
-5.3-vascular-dementia-correlation,5.3,小血管病變型失智與糖萼厚度減少呈正相關。,epidemiology,,,unverified,med,,原文用詞「正相關」與語意方向需釐清
-5.4-iri-biphasic,5.4,缺血再灌注損傷呈雙相模式：缺血期合成減少，再灌注期 ROS 爆發造成更嚴重脫落。,mechanism,,,unverified,med,,
-5.4-s1p-preconditioning,5.4,S1P 預處理可減輕缺血再灌注造成的糖萼脫落並保護移植器官。,therapeutic,,,unverified,high,,文件標示 2025 年研究；治療性宣稱
-5.5-biomarker-endocan,5.5,Endocan 作為生物標記的敏感度為 77%、特異度為 70%，高死亡風險 OR 為 5.06。,epidemiology,meta,DOI:10.1002/mbo3.70155,partial,high,2026-07-26,"OR 5.06 已驗證：6 篇研究 n=435；95% CI 2.52-10.18；I²=42.5 異質性低。敏感度77%/特異度70% 查無出處，該薈萃分析未報告 endocan 之敏感度特異度。最接近者為重症肺炎預測 ARDS 之 78.7%/70.3%（cutoff 11.6 ng/mL），疾病與終點均不同，疑為跨疾病誤植。建議拆為兩條 claim。"
-5.5-biomarker-ha-lmw,5.5,低分子量 HA 作為生物標記的敏感度為 80%、特異度為 75%，與認知衰退相關。,epidemiology,,,unsupported,high,2026-07-26,"查無出處。血漿認知衰退標記領域由 pTau217、pTau181、NfL、GFAP、Aβ42/40 主導，檢索未出現任何以低分子量透明質酸為認知衰退標記之研究。可能與 5.3-pbr-precedes-cognitive-2-3y 同源。"
-5.5-biomarker-hs-fragment,5.5,HS 片段作為生物標記的敏感度為 72%、特異度為 81%，與血栓風險正相關。,epidemiology,,,unsupported,high,2026-07-26,"查無出處。HS 片段確為內皮損傷標記（危重症、COVID-19 相關 ARDS、移植排斥），但未見建立診斷切點或預測血栓風險之研究。機制上合理（見 2.4-3o-sulfation-atiii）但無臨床驗證，屬把機制推論寫成流行病學數據。"
-5.5-biomarker-thrombomodulin,5.5,Thrombomodulin 在 HFpEF 中與住院或死亡的風險比為 2.10。,epidemiology,human_obs,DOI:10.1161/JAHA.124.040179,partial,high,2026-07-26,"JAHA STANISLAS/MEDIA-DHF/BIOSTAT-CHF 世代。方向與關聯獲支持：perlecan 與 thrombomodulin 較高者 HFpEF 住院與死亡風險顯著上升，校正基線後仍成立。但 HR 2.10 未能在摘要層級確認，需取全文核對世代與 tertile 定義。"
-5.5-pbr-sdc1-correlation,5.5,PBR 升高與血漿 Syndecan-1 升高通常呈正相關。,measurement,,,unverified,med,,若成立則兩者可互為驗證，值得確認相關係數
-6.1-golgi-sulfotransferase-dysfunction,6.1,若內皮代謝環境未被糾正，高爾基體內的硫酸化酶仍功能紊亂，所合成的糖萼仍有功能缺陷。,mechanism,,,unverified,high,,支撐整個「質量修復」策略的關鍵假設
-6.1-heparanase-inhibitor-target,6.1,高特異性肝素酶抑制劑可阻斷發炎-降解的惡性循環。,therapeutic,,,unverified,high,,須確認是否有進入臨床試驗的化合物
-6.1-metabolic-reprogramming-target,6.1,改善內皮線粒體功能與抑制六糖胺途徑過度活化，可為糖萼合成提供正確的代謝環境。,therapeutic,,,unverified,med,,目前應屬假說層級
-6.1-microbiome-target,6.1,調節腸道菌群以減少內毒素與 TMAO 可降低對糖萼的攻擊。,therapeutic,,,unverified,med,,目前應屬假說層級
-6.1-sulodexide-mixed,6.1,舒洛地特在部分研究中可增加糖萼厚度，但在重症或嚴重代謝紊亂患者中療效不一。,therapeutic,,,unverified,high,,治療性宣稱，須找到臨床試驗
+claim_id,section,statement,claim_type,tier,evidence,status,priority,last_checked,note,source_ref
+1.0-egc-definition,1,內皮糖萼是覆蓋在血管內皮細胞管腔表面、含水且富含碳水化合物的結構層。,definition,,,unverified,low,,,glycocalyx_v3#1
+1.1-dynamic-organelle,1.1,eGC 應被概念化為動態內皮細胞器，而非僅由厚度定義的靜態屏障。,definition,,,unverified,med,,框架性主張；需找到提出此定義的關鍵綜述,glycocalyx_v3#1.1
+1.1-qualitative-precedes-dysfunction,1.1,糖萼的性質改變（qualitative alterations）先於可偵測的內皮功能障礙出現。,mechanism,,,unverified,high,,全文核心論點，必須有縱向或時序性證據支持,glycocalyx_v3#1.1
+1.2-ecsod-mito-protection,1.2,糖萼結合的 ecSOD 可阻止外部氧化衝擊傳入細胞，避免線粒體 ROS 誘導的通透性轉換與凋亡。,mechanism,,,unverified,high,,文件標示為 2025 年新興數據，需查證,glycocalyx_v3#1.2
+1.2-ext-activity-drop,1.2,線粒體功能障礙或氧化壓力會降低 EXT1/EXT2 活性，導致 HS 鏈變短與硫酸化異常。,mechanism,,,unverified,high,,,glycocalyx_v3#1.2
+1.2-mito-glycocalyx-axis,1.2,內皮線粒體代謝與糖萼結構之間存在雙向調節軸。,mechanism,,,unverified,high,,新興概念，需確認是否已有明確命名此軸的文獻,glycocalyx_v3#1.2
+1.2-udp-nad-dependency,1.2,糖萼合成依賴 UDP-糖庫可用性與胞質 NAD+/NADH 比值。,mechanism,,,unverified,med,,,glycocalyx_v3#1.2
+1.3-capillary-recruitment,1.3,糖萼參與微循環的微血管徵召，在血流增加時協助開放更多毛細血管。,mechanism,,,unverified,med,,,glycocalyx_v3#1.3
+2.1.1-consensus-2-4um,2.1.1,臨床與多數活體測量的共識厚度值落在 2-4 μm。,measurement,,,unsupported,high,2026-07-27,三次不同措辭檢索均未找到「臨床與活體共識 2-4 μm」。人體臨床測量實際值：舌下 OPS 約 0.5 μm（範圍 0.3-0.75）；GlycoCheck PBR 約 1.8-2.3 μm，但 PBR 是紅血球穿透深度、為逆向指標而非厚度（原文 2.1.2 自己有寫）。綜述給出的範圍為 0.2-2 μm 或 1-5 μm，無一為 2-4。疑為把 PBR 數值誤讀為厚度,glycocalyx_v3#2.1.1
+2.1.1-em-underestimate,2.1.1,傳統電子顯微鏡的脫水固定步驟導致糖萼坍塌，因而顯著低估其厚度。,measurement,,,unverified,low,,,glycocalyx_v3#2.1.1
+2.1.1-extreme-11um,2.1.1,部分文獻報告糖萼功能性水合層厚度可達 11 μm。,measurement,in_vitro,PMID:21474821;!PMID:18258858;!PMID:21775768,contested,high,2026-07-27,11 μm 出處確認為 Ebong 2011 RF/FS-TEM，但條件為體外培養牛主動脈內皮細胞（同篇大鼠脂肪墊 EC 5.83 μm；同細胞傳統 TEM 僅 0.040 μm），非腎絲球、非活體。同細胞型別以 μ-PIV 測得流體力學相關厚度僅 0.02±0.04 μm，ATVB 同期評論質疑為技術造成。tier 依 SCHEMA v2 §5 排除反駁 token，記為 in_vitro。反駁內容：PMID:18258858（animal，小鼠活體 μ-PIV，同細胞型別測得 0.02 μm，數值相差 500 倍）；PMID:21775768（review，同期評論，質疑為標本製備技術所致）,glycocalyx_v3#2.1.1
+2.1.1-invivo-0.5-5um,2.1.1,活體測量顯示糖萼有效厚度約為 0.5-5 μm。,measurement,animal,PMID:18258858;PMID:18441021;PMID:8781491,partial,high,2026-07-27,下限有支持、上限查無出處。活體「有效厚度」在文獻中專指流體力學相關厚度：小鼠提睪肌小靜脈 0.52±0.28 μm、小動脈 0.38 μm、倉鼠提睪肌微血管 0.4-0.5 μm，皆約 0.5 μm 量級。5 μm 未見於任何活體測量；最接近者為離體小鼠頸動脈雙光子 4.5 μm（PMID:17192719）與體外培養細胞 RF/FS-TEM 5.83 μm（PMID:21474821），兩者皆非活體。Tarbell 2016 綜述給出的 1-5 μm 為「體外與活體合併」範圍。statement 需改為指明測量情境與血管床,glycocalyx_v3#2.1.1
+2.1.2-pbr-inverse,2.1.2,PBR 為逆向指標：PBR 升高代表糖萼變薄、受損或屏障功能喪失。,measurement,,,unverified,high,,整套影像評估的邏輯基礎,glycocalyx_v3#2.1.2
+2.1.2-pbr-sampling,2.1.2,PBR 分析每 10 μm 設一測量點，每點放置 21 條間隔 0.5 μm 的測量線分析紅血球柱寬度分布。,measurement,,,unverified,med,,,glycocalyx_v3#2.1.2
+2.1.2-sdf-540nm,2.1.2,SDF 成像使用 540nm 綠光 LED，該波長被血紅素特異性吸收以顯影微血管網絡。,measurement,,,unverified,low,,,glycocalyx_v3#2.1.2
+2.1.2-sdf-optics,2.1.2,SDF 系統配備 5 倍物鏡與 0.2 NA，放大約 325 倍，以每秒 23 幀捕捉影像。,measurement,,,unverified,med,,硬體規格，應可由儀器文獻確認,glycocalyx_v3#2.1.2
+2.2-artery-2-3um,2.2,大動脈糖萼厚度可達 2-3 μm。,measurement,animal,PMID:22349291;PMID:21273784;PMID:17192719,partial,med,2026-07-27,主動脈實測支持約 2 μm（大鼠與小鼠主動脈 ex vivo 抗-HS 共軛焦），小鼠總頸動脈雙光子 2.3±0.1 μm。但「可達 2-3 μm」的上限不成立：同為頸動脈的雙光子研究報 4.5 μm（PMID:17192719）。另 2025 綜述將 2-3 μm 歸於中等口徑血管、4.5 μm 歸於大血管（DOI:10.1038/s41467-025-66169-x），與原文「大動脈 2-3 μm」的歸屬相反。statement 需改寫,glycocalyx_v3#2.2
+2.2-brain-1-3um,2.2,腦微血管糖萼厚度約 1-3 μm，為血腦屏障的第一道防線。,measurement,,,unverified,med,,,glycocalyx_v3#2.2
+2.2-cap-0.2-0.5um,2.2,微血管糖萼厚度約 0.2-0.5 μm。,measurement,animal,PMID:12637366;PMID:8781491,verified,high,2026-07-27,0.2-0.5 μm 逐字相符：大鼠左心室心肌微血管 Alcian blue 8GX 電鏡（van den Berg 2003）。倉鼠提睪肌微血管活體 0.4-0.5 μm 獨立支持；人體舌下 OPS 約 0.5 μm 亦一致。分歧值：抗-HS 共軛焦於大鼠腸繫膜微血管測得 0.9±0.1 μm、微血管後小靜脈 1.2±0.3 μm（PMID:22349291），方法與血管床不同。注意與同節「腦微血管 1-3 μm」（2.2-brain-1-3um）不一致，該條應優先查證,glycocalyx_v3#2.2
+2.2-glomerular-hs-charge,2.2,腎絲球微血管糖萼極厚且富含 HS，藉負電荷排斥白蛋白以維持電荷選擇性屏障。,mechanism,,,unverified,med,,,glycocalyx_v3#2.2
+2.2-liver-porous-physiological,2.2,肝竇狀血管糖萼薄且多孔屬生理性適應而非病理性受損。,mechanism,,,unverified,med,,此為詮釋性判斷，需確認是否有直接證據或僅為推論,glycocalyx_v3#2.2
+2.2-lung-thin-sdc1,2.2,肺微血管糖萼相對較薄（約 0.4-0.5 μm）且富含 Syndecan-1，有助氣體交換與中性球快速募集。,mechanism,,,unverified,med,,,glycocalyx_v3#2.2
+2.2-pathological-50-90pct,2.2,病理狀態下糖萼厚度可減少 50-90%。,measurement,,,unverified,high,,範圍極寬，需確認測量情境,glycocalyx_v3#2.2
+2.2-repair-7-14d,2.2,糖萼完全重建需要 7-14 天。,mechanism,,,unverified,high,,治療窗口的關鍵依據，須查證物種與模型,glycocalyx_v3#2.2
+2.2-sdc1-halflife-2-8h,2.2,Syndecan-1 的半衰期約為 2-8 小時。,mechanism,,,unverified,high,,具體動力學數字，需原始出處,glycocalyx_v3#2.2
+2.2-sepsis-shedding-30min,2.2,敗血症中糖萼可於 30 分鐘內大量脫落。,mechanism,,,unverified,high,,,glycocalyx_v3#2.2
+2.3.1-cs-10-40pct,2.3.1,硫酸軟骨素約佔 GAG 總量的 10-40%，主要提供結構剛性。,definition,,,unverified,med,,衝突：見 2.3.1-hs-50-90pct,glycocalyx_v3#2.3.1
+2.3.1-ha-fragmentation-disease,2.3.1,透明質酸碎片化與老化、發炎及 HFpEF 密切相關。,epidemiology,,,unverified,med,,,glycocalyx_v3#2.3.1
+2.3.1-ha-viscoelastic,2.3.1,透明質酸以非共價方式穿插於糖萼中，吸附水分以維持黏彈性與立體結構。,mechanism,,,unverified,med,,,glycocalyx_v3#2.3.1
+2.3.1-hs-50-90pct,2.3.1,硫酸乙醯肝素為含量最豐富的 GAG，約佔糖萼 GAG 總量的 50-90%。,definition,,,unverified,high,,衝突：與 CS 的 10-40% 上界相加超過 100%,glycocalyx_v3#2.3.1
+2.3.2-glypican-lipid-raft,2.3.2,Glypicans 經 GPI 錨定於脂筏區域，參與 Wnt 訊號與生長因子梯度形成。,mechanism,,,unverified,low,,,glycocalyx_v3#2.3.2
+2.3.2-sdc4-mechanotransduction,2.3.2,Syndecan-4 具獨特胞內結構域可直接連接細胞骨架，是機械轉導的關鍵樞紐。,mechanism,,,unverified,high,,,glycocalyx_v3#2.3.2
+2.3.3-adhesion-masking,2.3.3,健康狀態下長鏈 GAG 物理遮蔽 ICAM-1 與 VCAM-1，防止非發炎狀態下的白血球黏附。,mechanism,,,unverified,med,,,glycocalyx_v3#2.3.3
+2.4-3o-sulfation-atiii,2.4,HS 鏈上的 3-O 硫酸化五醣序列是結合抗凝血酶 III 的關鍵，缺乏此修飾則 HS 總量再多也無抗凝作用。,mechanism,,,unverified,high,,「質重於量」論點的主要支柱,glycocalyx_v3#2.4
+2.4-6o-sulfation-gf,2.4,6-O 硫酸化主要介導 VEGF、FGF 等生長因子的結合。,mechanism,,,unverified,med,,,glycocalyx_v3#2.4
+2.4-mispatterning-precedes,2.4,發炎早期內皮可合成總量正常但硫酸化錯位的 HS 鏈，導致 NO 反應失靈與趨化因子錯誤呈現。,mechanism,,,unverified,high,,全文核心論點之一，必須有直接證據,glycocalyx_v3#2.4
+2.4-n-sulfation-chemokine,2.4,N-硫酸化影響趨化因子呈現與免疫細胞趨化作用。,mechanism,,,unverified,med,,,glycocalyx_v3#2.4
+2.4-precursor-insufficient,2.4,若細胞內硫酸化酶已受損，單純補充 GAG 前體無法恢復糖萼功能。,therapeutic,,,unverified,high,,直接影響治療策略判斷,glycocalyx_v3#2.4
+3.1-charge-repulsion-40pct,3.1,正常剪切應力下，糖萼的電荷排斥機制可減少高達 40% 的跨內皮滲漏。,mechanism,,,unverified,high,,文件標示為 2025 年研究；精確百分比須逐字核對,glycocalyx_v3#3.1
+3.1-revised-starling,3.1,傳統 Starling 定律已修正為糖萼層-內皮表層模型，ESL 才是決定跨毛細血管交換的關鍵區域。,mechanism,,,unverified,med,,,glycocalyx_v3#3.1
+3.1-steric-70kda,3.1,糖萼以空間位阻阻擋 LDL 及大於 70kDa 的蛋白質靠近內皮細胞膜。,mechanism,,,unverified,med,,,glycocalyx_v3#3.1
+3.2-enos-ser1177,3.2,鈣離子內流經 Src/PI3K/Akt 級聯導致 eNOS 於 Ser1177 磷酸化並釋放 NO。,mechanism,,,unverified,med,,,glycocalyx_v3#3.2
+3.2-piezo1-complex,3.2,Syndecan-4/Piezo1/PECAM-1 複合體為核心剪切力感測機器，糖萼變形觸發 Piezo1 開啟致鈣離子內流。,mechanism,,,unverified,high,,,glycocalyx_v3#3.2
+3.2-sdc4-ko-no-25pct,3.2,CRISPR 敲除 Syndecan-4 的內皮模型中，NO 生物利用度降低 25%。,mechanism,,,unverified,high,,精確數字＋特定模型，須找到原始研究,glycocalyx_v3#3.2
+3.3-atiii-thousandfold,3.3,HS 的 3-O 硫酸化序列與 ATIII 結合後，可使其抑制凝血酶與因子 Xa 的活性提高數千倍。,mechanism,,,unverified,med,,,glycocalyx_v3#3.3
+3.3-chemokine-cxcl12,3.3,糖萼結合並呈現 CXCL12 等趨化因子，引導白血球在正確時空遷移。,mechanism,,,unverified,med,,,glycocalyx_v3#3.3
+3.3-covid-complement,3.3,COVID-19 相關微血管病變中，糖萼損傷導致的補體失調是重要機制。,epidemiology,,,unverified,high,,文件標示 2024-2025 研究,glycocalyx_v3#3.3
+3.3-factor-h-complement,3.3,糖萼結合 Factor H 等補體調節因子，防止補體系統在內皮表面過度活化。,mechanism,,,unverified,med,,,glycocalyx_v3#3.3
+3.3-meta2024-platelet,3.3,2024 年薈萃分析證實糖萼完整性與血小板黏附呈顯著反比。,epidemiology,,,unverified,high,,宣稱為薈萃分析，須找到該篇,glycocalyx_v3#3.3
+3.3-tfpi-binding,3.3,組織因子途徑抑制物結合於糖萼層並抑制外源性凝血途徑。,mechanism,,,unverified,low,,,glycocalyx_v3#3.3
+3.3-thrombomodulin-proteinc,3.3,血栓調節蛋白結合凝血酶並將其轉化為 Protein C 活化劑。,mechanism,,,unverified,low,,,glycocalyx_v3#3.3
+3.3-thrombosis-2-3x,3.3,高凝狀態下 HS 降解導致重症患者血栓事件增加 2-3 倍。,epidemiology,,,unverified,high,,,glycocalyx_v3#3.3
+3.4-ecsod-charge-binding,3.4,ecSOD 經其正電區域與負電 HS 鏈結合而富集於內皮表面，就地清除超氧化物陰離子。,mechanism,,,unverified,med,,,glycocalyx_v3#3.4
+3.5-metabolic-sensor,3.5,糖萼厚度與品質可作為內皮細胞代謝狀態的指標。,mechanism,,,unverified,med,,詮釋性主張,glycocalyx_v3#3.5
+4.1-adamts-versican,4.1,ADAMTS-4 與 ADAMTS-5 在動脈粥樣硬化中切割 Versican 與 Aggrecan。,mechanism,,,unverified,med,,,glycocalyx_v3#4.1
+4.1-cathepsin-low-ph,4.1,組織蛋白酶在斑塊等低 pH 環境中被活化並參與糖萼降解。,mechanism,,,unverified,low,,,glycocalyx_v3#4.1
+4.1-damp-tlr4-loop,4.1,脫落的 Syndecan-1 外域與 HS 片段作為 DAMPs，經 TLR4/NF-κB 誘導 IL-1β 與 TNF-α，形成發炎-降解正反饋。,mechanism,,,unverified,high,,,glycocalyx_v3#4.1
+4.1-heparanase-hs,4.1,肝素酶專一降解 HS 鏈，破壞負電荷屏障並導致抗凝功能喪失。,mechanism,,,unverified,high,,,glycocalyx_v3#4.1
+4.1-hyaluronidase-ha,4.1,透明質酸酶降解 HA 骨架並產生具促炎作用的低分子量片段。,mechanism,,,unverified,med,,原文此項重複列出兩次（第 3 與第 5 項），已合併,glycocalyx_v3#4.1
+4.1-mmp-shedding,4.1,MMP-9 與 MMP-2 在發炎刺激下切割 Syndecan 的胞外結構域，導致糖萼脫落。,mechanism,,,unverified,med,,,glycocalyx_v3#4.1
+4.2.1-ages-rage-mmp,4.2.1,AGEs 與 RAGE 結合可誘導 MMP 活化並加速糖萼降解。,mechanism,,,unverified,med,,,glycocalyx_v3#4.2.1
+4.2.1-fructose-er-stress,4.2.1,果糖誘導的內質網壓力對糖萼的損傷程度超過葡萄糖。,mechanism,,,unverified,high,,反直覺且標示為 2025 年研究，優先查證,glycocalyx_v3#4.2.1
+4.2.1-hexosamine-oglcnac,4.2.1,六糖胺途徑過度活化導致 O-GlcNAc 修飾異常，干擾 EXT1/EXT2 的活性與定位。,mechanism,,,unverified,high,,此為「原料充足但合成反而受阻」的反直覺機制,glycocalyx_v3#4.2.1
+4.2.1-hyperglycemia-ext-suppression,4.2.1,高血糖直接抑制 EXT1/EXT2 基因表達，從源頭減少 HS 合成。,mechanism,,,unverified,med,,,glycocalyx_v3#4.2.1
+4.2.2-endothelial-ir-ko-mouse,4.2.2,內皮特異性胰島素受體敲除小鼠出現糖萼提早退化。,mechanism,,,unverified,high,,文件標示 2023-2024 年研究,glycocalyx_v3#4.2.2
+4.2.2-ir-bidirectional,4.2.2,糖萼損傷與胰島素抵抗互為因果：損傷致 NO 減少而限制骨骼肌葡萄糖攝取。,mechanism,,,unverified,med,,,glycocalyx_v3#4.2.2
+4.2.3-estrogen-protection,4.2.3,雌激素維持 GAG 合成並抑制 MMP 活性，停經前女性糖萼較同齡男性完整。,epidemiology,,,unverified,med,,,glycocalyx_v3#4.2.3
+4.2.3-hrt-rct-2025,4.2.3,2025 年小型隨機試驗顯示荷爾蒙替代療法與糖萼厚度改善相關。,therapeutic,,,unverified,high,,宣稱為 RCT，證據等級高但須確認確實存在,glycocalyx_v3#4.2.3
+4.3.1-lps-tlr4-heparanase,4.3.1,腸屏障受損使 LPS 進入循環，經 TLR4 途徑活化肝素酶並造成全身性糖萼降解。,mechanism,,,unverified,high,,,glycocalyx_v3#4.3.1
+4.3.1-tmao-direct-damage,4.3.1,腸道菌代謝產物 TMAO 可直接損傷糖萼結構。,mechanism,,,unverified,high,,文件標示 2025 年研究,glycocalyx_v3#4.3.1
+4.3.2-microplastic-pyroptosis,4.3.2,穿透糖萼的微塑膠可誘導內皮細胞焦亡並釋放大量發炎介質。,mechanism,,,unverified,high,,,glycocalyx_v3#4.3.2
+4.3.2-nanoplastic-penetration,4.3.2,小於 100nm 的奈米塑膠可穿透糖萼層，聚苯乙烯微粒特別容易與 HS 結合。,mechanism,,,unverified,high,,文件標示 2025 年環境醫學研究,glycocalyx_v3#4.3.2
+5.1-sdc1-cutoff-40,5.1,血漿 Syndecan-1 濃度大於 40 ng/mL 是預測敗血症死亡率的指標。,epidemiology,,,partial,high,2026-07-26,40 ng/mL 為創傷內皮病變閾值而非敗血症 cutoff；敗血症文獻採用 121-430 ng/mL 不等。敗血症基礎值約 103 ng/mL、敗血性休克約 139 ng/mL，40 在此族群幾無鑑別力。evidence 待補：創傷原始世代之識別碼本次未取得，不得推測填入。詳見 reports/backfill/2026-07-26-5.1.md,glycocalyx_v3#5.1
+5.1-sdc1-or-204,5.1,血漿 Syndecan-1 升高預測敗血症死亡的優勢比為 2.04。,epidemiology,meta,DOI:10.1002/mbo3.70155,verified,high,2026-07-26,Daniyarova et al. 2025 MicrobiologyOpen。OR 2.04 95% CI 1.66-2.51；9 篇研究 n=2167；I²=84% 異質性高。同篇中 SDC-1 與 MODS 及呼吸衰竭均無顯著相關。PMID 未取得，暫以 DOI 記錄。,glycocalyx_v3#5.1
+5.1-sdc1-sens-spec,5.1,以此閾值預測敗血症死亡率的敏感度為 85%、特異度為 78%。,epidemiology,,,unsupported,high,2026-07-26,三次不同措辭檢索均未找到 85%/78%。實際找到：成人敗血症急診 80%/57.8%、重症流感A 81.3%/70.3%、兒童敗血症 78.6%/68.5%（終點為器官功能障礙）、創傷 56.9%/64.6%。無一相符。,glycocalyx_v3#5.1
+5.1-sepsis-phase1-elastase,5.1,敗血症 0-6 小時以中性球彈性蛋白酶介導的 Syndecan-1 快速脫落為主。,mechanism,,,unverified,med,,,glycocalyx_v3#5.1
+5.1-sepsis-phase2-leak,5.1,敗血症 6-24 小時 MMP 與肝素酶全面活化，導致毛細血管滲漏症候群與多器官衰竭。,mechanism,,,unverified,med,,,glycocalyx_v3#5.1
+5.1-sepsis-phase3-abnormal-repair,5.1,敗血症 24-72 小時的修復期所合成的糖萼常伴隨硫酸化模式異常，可能造成長期血管功能障礙。,mechanism,,,unverified,high,,時序分期是否有直接人體資料支持？,glycocalyx_v3#5.1
+5.2.1-hfpef-microvascular,5.2.1,HFpEF 的核心病理機制為微血管發炎與內皮功能障礙，而非心肌收縮力下降。,mechanism,,,unverified,high,,,glycocalyx_v3#5.2.1
+5.2.1-hfpef-rarefaction,5.2.1,糖萼損傷導致冠狀動脈微循環稀疏化與心肌間質纖維化，使心室僵硬度增加。,mechanism,,,unverified,med,,,glycocalyx_v3#5.2.1
+5.2.1-hfpef-sdc1-ha-elevated,5.2.1,HFpEF 患者血漿 Syndecan-1 與 HA 片段顯著升高。,epidemiology,,,unverified,high,,,glycocalyx_v3#5.2.1
+5.2.2-acs-burst-degradation,5.2.2,ACS 中斑塊破裂導致局部糖萼爆發性降解，脫落碎片可阻塞下游微循環。,mechanism,,,unverified,med,,,glycocalyx_v3#5.2.2
+5.3-ad-vascular-hypothesis,5.3,血腦屏障內皮糖萼損傷降低對 Aβ 的轉運與清除能力，導致 Aβ 於腦內累積。,mechanism,,,unverified,high,,與主流 Aβ 假說競合，須謹慎標註證據等級,glycocalyx_v3#5.3
+5.3-pbr-precedes-cognitive-2-3y,5.3,縱向研究顯示糖萼生物標記異常先於認知功能衰退 2-3 年出現。,epidemiology,,,unverified,high,,宣稱為縱向研究＋具體年數，優先查證,glycocalyx_v3#5.3
+5.3-vascular-dementia-correlation,5.3,小血管病變型失智與糖萼厚度減少呈正相關。,epidemiology,,,unverified,med,,原文用詞「正相關」與語意方向需釐清,glycocalyx_v3#5.3
+5.4-iri-biphasic,5.4,缺血再灌注損傷呈雙相模式：缺血期合成減少，再灌注期 ROS 爆發造成更嚴重脫落。,mechanism,,,unverified,med,,,glycocalyx_v3#5.4
+5.4-s1p-preconditioning,5.4,S1P 預處理可減輕缺血再灌注造成的糖萼脫落並保護移植器官。,therapeutic,,,unverified,high,,文件標示 2025 年研究；治療性宣稱,glycocalyx_v3#5.4
+5.5-biomarker-endocan,5.5,Endocan 作為生物標記的敏感度為 77%、特異度為 70%，高死亡風險 OR 為 5.06。,epidemiology,meta,DOI:10.1002/mbo3.70155,partial,high,2026-07-26,OR 5.06 已驗證：6 篇研究 n=435；95% CI 2.52-10.18；I²=42.5 異質性低。敏感度77%/特異度70% 查無出處，該薈萃分析未報告 endocan 之敏感度特異度。最接近者為重症肺炎預測 ARDS 之 78.7%/70.3%（cutoff 11.6 ng/mL），疾病與終點均不同，疑為跨疾病誤植。建議拆為兩條 claim。,glycocalyx_v3#5.5
+5.5-biomarker-ha-lmw,5.5,低分子量 HA 作為生物標記的敏感度為 80%、特異度為 75%，與認知衰退相關。,epidemiology,,,unsupported,high,2026-07-26,查無出處。血漿認知衰退標記領域由 pTau217、pTau181、NfL、GFAP、Aβ42/40 主導，檢索未出現任何以低分子量透明質酸為認知衰退標記之研究。可能與 5.3-pbr-precedes-cognitive-2-3y 同源。,glycocalyx_v3#5.5
+5.5-biomarker-hs-fragment,5.5,HS 片段作為生物標記的敏感度為 72%、特異度為 81%，與血栓風險正相關。,epidemiology,,,unsupported,high,2026-07-26,查無出處。HS 片段確為內皮損傷標記（危重症、COVID-19 相關 ARDS、移植排斥），但未見建立診斷切點或預測血栓風險之研究。機制上合理（見 2.4-3o-sulfation-atiii）但無臨床驗證，屬把機制推論寫成流行病學數據。,glycocalyx_v3#5.5
+5.5-biomarker-thrombomodulin,5.5,Thrombomodulin 在 HFpEF 中與住院或死亡的風險比為 2.10。,epidemiology,human_obs,DOI:10.1161/JAHA.124.040179,partial,high,2026-07-26,JAHA STANISLAS/MEDIA-DHF/BIOSTAT-CHF 世代。方向與關聯獲支持：perlecan 與 thrombomodulin 較高者 HFpEF 住院與死亡風險顯著上升，校正基線後仍成立。但 HR 2.10 未能在摘要層級確認，需取全文核對世代與 tertile 定義。,glycocalyx_v3#5.5
+5.5-pbr-sdc1-correlation,5.5,PBR 升高與血漿 Syndecan-1 升高通常呈正相關。,measurement,,,unverified,med,,若成立則兩者可互為驗證，值得確認相關係數,glycocalyx_v3#5.5
+6.1-golgi-sulfotransferase-dysfunction,6.1,若內皮代謝環境未被糾正，高爾基體內的硫酸化酶仍功能紊亂，所合成的糖萼仍有功能缺陷。,mechanism,,,unverified,high,,支撐整個「質量修復」策略的關鍵假設,glycocalyx_v3#6.1
+6.1-heparanase-inhibitor-target,6.1,高特異性肝素酶抑制劑可阻斷發炎-降解的惡性循環。,therapeutic,,,unverified,high,,須確認是否有進入臨床試驗的化合物,glycocalyx_v3#6.1
+6.1-metabolic-reprogramming-target,6.1,改善內皮線粒體功能與抑制六糖胺途徑過度活化，可為糖萼合成提供正確的代謝環境。,therapeutic,,,unverified,med,,目前應屬假說層級,glycocalyx_v3#6.1
+6.1-microbiome-target,6.1,調節腸道菌群以減少內毒素與 TMAO 可降低對糖萼的攻擊。,therapeutic,,,unverified,med,,目前應屬假說層級,glycocalyx_v3#6.1
+6.1-sulodexide-mixed,6.1,舒洛地特在部分研究中可增加糖萼厚度，但在重症或嚴重代謝紊亂患者中療效不一。,therapeutic,,,unverified,high,,治療性宣稱，須找到臨床試驗,glycocalyx_v3#6.1

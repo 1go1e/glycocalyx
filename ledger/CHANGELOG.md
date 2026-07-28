@@ -4,6 +4,19 @@
 
 ---
 
+## schema_version 4 — 2026-07-28
+
+- **§6**：statement 不得含時間形容詞（「最新」「截至 2025 年 11 月」等），時間資訊入 `note`。
+- **§6**：statement 不得含未具名的權威性宣稱（「國際共識」「新典範」「臨床標準」）。
+  原文提出共識宣稱時，該宣稱本身建成一條 claim，改寫為可指名的形式；
+  檢索不到具名指引或立場聲明時判 `unsupported`。
+- 提案：`reports/revisions/2026-07-28-intake-heparanase-mito.md` §7.4（擴充後核准 2026-07-28）
+- 觸發案例：`source/glycocalyx/heparanase.md` 出現「共識」12 次、「國際共識」7 次，
+  但「指引／guideline」0 次，且未指名任何學會（ADA／EASD／KDIGO／ESC／ISPAD 皆 0 次）
+- 受影響列：既有 97 列的 statement 未含此類措辭，無須回填。
+  規則對後續所有新建列生效，尤其 `heparanase.md` 的抽取批次
+- 同步檢查（§11）：`runbooks/backfill.md` 步驟 1 已同步；STATUS §3.4 已擴充
+
 ## schema_version 3 — 2026-07-28
 
 - **§2**：新增第 11 欄 `source_ref`，記錄主張在原始文件中的出現位置。多值，`;` 分隔，第一個為主要出處。

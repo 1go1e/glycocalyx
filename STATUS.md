@@ -2,7 +2,7 @@
 
 ```
 最後更新: 2026-07-28
-最後 commit: 3a15aa2
+最後 commit: ba4d691
 schema_version: 3
 ```
 
@@ -28,8 +28,24 @@ contested     1
 Import-Csv ledger/claims.csv | Group-Object status | Select-Object Name, Count
 ```
 
+```powershell
+Import-Csv ledger/claims.csv | Where-Object priority -eq 'high' |
+  Group-Object { $_.status -in 'verified','partial','unsupported','contested' } |
+  Select-Object Name, Count
+```
+
+**依優先序的完成率**（這才是專案健康度指標；全體完成率會被大量 low/med 稀釋）：
+
+```
+high   已判定 11 / 50  = 22%
+med    已判定  1 / 40  =  2%
+low    已判定  0 /  7  =  0%
+```
+
 有 `evidence` 的列共 7 條，去重識別碼 11 個（9 個 PMID、2 個 DOI）。
-97 列的 `source_ref` 均為 `glycocalyx_v3#{section}`（schema v3 回填）。
+97 列的 `source_ref` 均為 `glycocalyx/v3#{section}`。
+
+`claim_type` 分布：mechanism 58、epidemiology 15、measurement 13、therapeutic 7、definition 4。
 
 ---
 
@@ -108,6 +124,19 @@ Import-Csv ledger/claims.csv | Group-Object status | Select-Object Name, Count
 
 ---
 
+### 3.7 LLM 產出文件是多次問答的串接
+
+新增於 2026-07-28（來源：`reports/revisions/2026-07-28-intake-heparanase-mito.md`）。
+
+`glycocalyx_Heparanase.md` 有 7 個各自從「一、」開始的章節樹，
+`The_Mitochondria-Glycocalyx_Axis.md` 有 3 個。表面看是一份文件，實際是多次獨立問答的串接。
+
+**通則**：收錄任何 LLM 產出的長文件前，先數「一、」或 `##` 層級的重複次數。
+節號碰撞會讓 `claim_id` 與 `source_ref` 無法唯一定位，必須先重編。
+另檢查 Google Docs 匯出造成的跳脫 markdown（`\#\#\#`、`\-`），否則章節解析不出來。
+
+---
+
 ## 4. 下一批
 
 **`2.2` 剩餘條目**（厚度群已完成，其餘 8 條同章節，可共用脈絡）
@@ -130,6 +159,21 @@ Import-Csv ledger/claims.csv | Group-Object status | Select-Object Name, Count
 低成本可併入：`2.1.1-em-underestimate`（priority=low，但 2026-07-27 批次已取得直接證據
 `PMID:21474821`：同一批培養細胞傳統 TEM 0.040 μm vs RF/FS-TEM 11 μm）。
 
+**收錄批次（新增，與回填分離）**
+
+`source/glycocalyx/heparanase.md`（42 節）與 `source/mitochondria/axis.md`（5 節）
+已歸位但尚未抽 claim。抽取時：
+
+- 只建列、填 `source_ref`、`status=unverified`，**不做查證**
+- `heparanase#5.6`（治療階梯）與 `#5.7`（監測建議）依 `CLAUDE.md` 第 6 條
+  不得為劑量建 claim；藥物與結果的方向性關聯照常建列
+- `mitochondria/axis#1.1`–`#1.3` 與 `glycocalyx/v3` §1.2 主題重疊，
+  依 SCHEMA §2 認定規則先掃描既有列，命中者追加 `source_ref` 而非建新列
+- 預估新增 140–195 條。抽完後 §1 的 high 完成率會下降，**這是預期的**，
+  不得為了讓數字好看而略過任何一節
+
+抽取完成後，回填順序仍依本節既有優先序，新文件不插隊。
+
 **之後的優先序**（不依 claim_id 順序）：
 
 1. `5.3-pbr-precedes-cognitive-2-3y` — 可能與已判 unsupported 的 `5.5-biomarker-ha-lmw` 同源
@@ -150,6 +194,23 @@ Import-Csv ledger/claims.csv | Group-Object status | Select-Object Name, Count
 標註格式規範見 `reports/revisions/2026-07-27-source-2.1.1-thickness.md` §2，
 三種標記 `〔查無出處〕`／`〔條件限定〕`／`〔有爭議〕` 對應 ledger 的 status。
 此政策**推翻**了 5.5 批次報告中「建議直接刪除敏感度／特異度欄位」的建議。
+
+**不得為具體劑量、給藥途徑或用藥時程建立 claim**（人工裁示 2026-07-28）。
+劑量寫入 `note` 供追溯，不進 `statement`、不取得 `status`。
+`claim_type=therapeutic` 的 statement 只描述方向性關聯。
+完整條文見 `CLAUDE.md`「不可違反」第 6 條。
+
+理由：`verified` 是文獻學意義的「有出處」，不是臨床意義的「已驗證可用」。
+這個語意落差在劑量上會造成實際傷害。網頁上線前，`therapeutic` 的讀者層呈現須另行設計。
+
+**單一 repo、單一帳本，主題以 `source/` 子目錄區分**（人工裁示 2026-07-28）。
+不為糖萼、線粒體等主題各自開 repo。理由：分 repo 不減少查證工作量，只縮小分母；
+且會把「一條主張一列」原則搬到跨 repo 層級，失去 `source_ref` 的去重機制。
+糖萼研究的高價值內容多半長在主題**介面**上（糖萼—線粒體、糖萼—凝血、糖萼—免疫），
+依主題切分，切線正好穿過最有價值的地方。
+
+網頁仍分站，由 build 腳本依 `source_ref` 的子目錄前綴從單一 `claims.csv` 產生。
+介面主題的 claim 在多站出現，但指向同一 `claim_id`、同一份判定。
 
 **判定綁 claim，不綁文件**（人工裁示 2026-07-28，schema_version 3）。
 同一主張在多份文件出現時只建一列，所有出現位置寫進 `source_ref`。
@@ -172,9 +233,17 @@ Import-Csv ledger/claims.csv | Group-Object status | Select-Object Name, Count
   （表2 與表1 逐字相同卻宣稱是更新、正文 90% 與表格 85% 不一致）。
   建議不收為 source，只抽取淨新增主張。
   提案：`reports/revisions/2026-07-28-intake-physiology-md.md`。
-- **另兩份文件尚未評估**：`glycocalyx_Heparanase.md`（48 KB，機制導向，另有跳脫 markdown
-  `\#\#\#`、`\-` 須先正規化，否則節號抽不出來）、
-  `The_Mitochondria-Glycocalyx_Axis.md`（32 KB，與 v3 §1.2 主題重疊）。各需一次 intake 評估。
+- **`Heparanase.md` 與 `Mitochondria-Axis.md` 的 claim 抽取尚未執行。**
+  收錄本身已完成（正規化、章節重編、歸位），但**尚未建任何 claim 列**。
+  `claims.csv` 目前仍是 97 列，全部來自 `glycocalyx/v3`。抽取作業見 §4「收錄批次」。
+- **`糖萼層_Glycocalyx_生理.md` 如何收錄。**
+  評估結果：該檔是「文章本體＋對該文章的檢視意見」的複合物，且檢視段有兩項自我矛盾
+  （表2 與表1 逐字相同卻宣稱是更新、正文 90% 與表格 85% 不一致）。
+  建議不收為 source，只抽取淨新增主張。
+  提案：`reports/revisions/2026-07-28-intake-physiology-md.md`。
+- **SCHEMA §6 是否新增「statement 不得含時間形容詞」**（schema 3 → 4）。
+  `Heparanase.md` 多處標示「2025年11月最新共識」，statement 若保留時間形容詞，
+  會隨時間自動變成偽陳述。提案 `2026-07-28-intake-heparanase-mito.md` §7.4。
 
 ### 待辦（承接前批）
 
@@ -192,6 +261,15 @@ Import-Csv ledger/claims.csv | Group-Object status | Select-Object Name, Count
   連帶新增規定：`status=contested` 的列，`note` 必須寫明反駁文獻的等級與反駁內容。
 - ~~是否刪除 2.1.1 節的「共識 2-4 μm」敘述~~ → **已決，改為標註不刪除**。見上方「已定調的政策」。
 - ~~是否刪除 5.5 節表格的敏感度／特異度欄位~~ → **已決，刪除方案作廢**，同上。
+- ~~是否為糖萼／線粒體分開建 repo~~ → **已決，不分**。見上方「已定調的政策」。
+- ~~`Heparanase.md` 是否收為 source~~ → **已決，收**。正規化＋章節重編後存為
+  `source/glycocalyx/heparanase.md`（7 段串接重編為 1.x–7.x，共 42 節）。
+  原檔存 `source/intake/2026-07-28-heparanase-raw.md`。
+- ~~`Mitochondria-Axis.md` 是否收為 source~~ → **已決，只收第 1 段機制論述**，
+  存為 `source/mitochondria/axis.md`（1.1–1.5）。MitoQ、斷食生酮、LDL 判讀、
+  居家自測、個人執行協議**不收**，全檔存 `source/intake/2026-07-28-mitochondria-axis-raw.md`。
+- ~~是否為治療劑量建立 claim~~ → **已決，不得建立**。見上方「已定調的政策」與
+  `CLAUDE.md` 第 6 條，提案 `reports/revisions/2026-07-28-intake-heparanase-mito.md` §2.4。
 - ~~`claims.csv` 是否新增 `source_ref` 欄~~ → **已決，採選項 A 含 §5 認定規則**。
   schema_version 已升至 3，見 `ledger/CHANGELOG.md` 與
   `reports/revisions/2026-07-28-schema-source-doc.md`（核准 2026-07-28）。

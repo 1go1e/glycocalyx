@@ -97,6 +97,10 @@
 更新該列的 `tier`、`evidence`、`status`、`last_checked`、`note`。
 `last_checked` 一律更新為當日，**即使結果是 `unsupported`**。
 
+若本次查證過程中發現該主張也出現在其他 `source/` 文件，在 `source_ref` 追加該位置
+（格式見 SCHEMA §2）。追加前先確認符合 SCHEMA §2「認定規則」的「同一條」標準——
+歸屬不同或數值不同時**不得追加**，應另建一列並在兩列的 `note` 互相標示。
+
 `note` 的撰寫要求：寫下**下一個人需要知道的事**，不是過程流水帳。
 
 - 好：`原文 cutoff 40.4 ng/mL，族群限 ICU 成人敗血性休克；statement 需補族群限定`
@@ -121,7 +125,9 @@
 
 每批次結束時：
 
-1. 更新 `ledger/claims.csv`（依 `claim_id` 重新排序後存檔）
+1. 更新 `ledger/claims.csv`（依 `claim_id` 重新排序後存檔）。
+   新增列必須填 `source_ref`；建列前先以數值為鍵掃描既有列，
+   命中且符合 SCHEMA §2「同一條」標準時，改為在既有列追加 `source_ref`，不建新列
 2. 寫入 `inbox/YYYY-MM-DD-{section}.json`：保留所有檢索的原始回傳，不做刪減
 3. 寫入 `reports/backfill/YYYY-MM-DD-{section}.md`：
 

@@ -1,8 +1,8 @@
 # claims.csv — Schema 與寫入規則
 
 ```
-schema_version: 2
-last_updated: 2026-07-27
+schema_version: 3
+last_updated: 2026-07-28
 applies_to: ledger/claims.csv
 ```
 
@@ -44,6 +44,7 @@ ledger 的版本歷史就失去意義——那是整套系統唯一不可替代�
 | 8 | `priority` | 是 | `high` / `med` / `low`，回填順序 |
 | 9 | `last_checked` | 是 | ISO 8601 `YYYY-MM-DD` |
 | 10 | `note` | 是 | 自由文字。記錄疑點、衝突、限制條件 |
+| 11 | `source_ref` | 是 | 主張在原始文件中的出現位置。多值。見下方 |
 
 ### `claim_type` 合法值
 
@@ -57,6 +58,44 @@ ledger 的版本歷史就失去意義——那是整套系統唯一不可替代�
 
 此欄的用途是**分流檢索策略**。`epidemiology` 與 `therapeutic` 的條目必須以人體研究為
 主要證據；以動物或體外研究充當支持文獻，不得將 `status` 設為 `verified`。
+
+### `source_ref` 格式
+
+格式：`{doc}#{section}`，多個位置以 `;` 分隔，**第一個為主要出處**。
+
+```
+glycocalyx_v3#5.5
+glycocalyx_v3#5.5;intake/2026-07-28-糖萼層生理#表1
+```
+
+- `{doc}`：`source/` 下的相對路徑去掉 `.md`
+- `{section}`：該文件內的節號。文件無節號時用可辨識的位置標籤（`表1`、`L122-131`）
+
+`section` 欄的值必須等於 `source_ref` 第一個 token 的節號部分。
+
+### 一條主張，一列
+
+同一主張在多份文件出現時**只建一列**，把所有位置寫進 `source_ref`。
+不得為了區分文件而複製列。
+
+理由：判定綁 claim，不綁文件。若同一主張有兩列，就會有兩個 `status`、兩份 `evidence`、
+兩段 `note`。日後某列改判 `contested` 時只有一列被更新，另一列繼續顯示 `verified`——
+與撤稿造成的「過期 verified」是同一種失效，只是來源是分身而非撤稿。
+
+**認定規則。** 新增列前，先以數值為鍵掃描既有列：
+
+視為**同一條**（既有列追加 `source_ref`，不建新列）：
+
+- 數值、指標、族群、終點四者皆相同，僅措辭不同
+- 數值相同、措辭不同，且可判定為同一來源的轉述
+
+視為**不同條**（各自建列，兩列的 `note` 互相標示對方的 `claim_id`）：
+
+- 數值相同但**歸屬不同**（例：11 μm 在一份文件歸腎絲球、在另一份歸腦部）
+- 同一指標但**數值不同**（例：syndecan-1 敏感度 85% 與 90%）
+
+第二組不得合併。**歸屬或數值在轉述間漂移，本身就是「無原始出處」的線索**，
+合併會把這項資訊壓進 `note` 而失去可見度。兩列各自查證、互相指認，軌跡才留得下來。
 
 ---
 
@@ -189,6 +228,14 @@ PMID:31234567;!PMID:33445566;PMID:35566778
 - 不得使用「研究顯示」「一般認為」「有證據支持」等無主詞措辭。
   文獻的身分由 `evidence` 欄承載，不寫進 statement。
 
+### 跨文件敘述不一致時
+
+當一條 claim 的 `source_ref` 含多份文件，且各文件的敘述不完全相同時，
+`statement` 應寫成涵蓋各版本的形式，差異寫入 `note`。
+
+若差異已達 §2「認定規則」中「不同條」的標準（歸屬不同或數值不同），
+不得涵蓋——拆成兩列，各自的 `source_ref` 只記自己的出處。
+
 ---
 
 ## 7. Append-only
@@ -234,13 +281,13 @@ run: 2026-08-03 / inbox/2026-08-03.json
 驗證前：
 
 ```csv
-5.1-sdc1-cutoff-40,5.1,血漿 Syndecan-1 濃度大於 40 ng/mL 是預測敗血症死亡率的指標。,epidemiology,,,unverified,high,,最高優先。具體 cutoff，可能被誤用為臨床閾值
+5.1-sdc1-cutoff-40,5.1,血漿 Syndecan-1 濃度大於 40 ng/mL 是預測敗血症死亡率的指標。,epidemiology,,,unverified,high,,最高優先。具體 cutoff，可能被誤用為臨床閾值,glycocalyx_v3#5.1
 ```
 
 驗證後（假想）：
 
 ```csv
-5.1-sdc1-cutoff-40,5.1,血漿 Syndecan-1 濃度大於 40 ng/mL 是預測敗血症死亡率的指標。,epidemiology,meta,PMID:36112233;PMID:34556677,partial,high,2026-08-03,原文 cutoff 為 40.4 ng/mL 且族群限於 ICU 成人敗血性休克；statement 需補上族群限定
+5.1-sdc1-cutoff-40,5.1,血漿 Syndecan-1 濃度大於 40 ng/mL 是預測敗血症死亡率的指標。,epidemiology,meta,PMID:36112233;PMID:34556677,partial,high,2026-08-03,原文 cutoff 為 40.4 ng/mL 且族群限於 ICU 成人敗血性休克；statement 需補上族群限定,glycocalyx_v3#5.1
 ```
 
 注意這個例子：找到了文獻，但 statement 過度概括，所以是 `partial` 而非 `verified`。

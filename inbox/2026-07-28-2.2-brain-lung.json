@@ -1,0 +1,43 @@
+{
+  "batch": "2026-07-28-2.2-brain-lung",
+  "claims": ["2.2-brain-1-3um", "2.2-brain-mouse-0.54-0.23", "2.1.1-mucin-o-glycosylation-aging", "2.2-lung-thin-sdc1", "2.1.1-em-underestimate"],
+  "queries": [
+    {"tool": "web_search", "q": "brain microvascular endothelial glycocalyx thickness measurement micrometers"}
+  ],
+  "sources_fetched": [
+    {
+      "url": "https://www.nature.com/articles/s41598-018-35976-2",
+      "title": "Brain-Specific Ultrastructure of Capillary Endothelial Glycocalyx and Its Possible Contribution for Blood Brain Barrier",
+      "citation": "Ando Y, Okada H, Takemura G, et al. Sci Rep. 2018;8:17523",
+      "pmid": "30504908",
+      "doi": "10.1038/s41598-018-35976-2",
+      "model": "C57BL6 mouse, lanthanum-containing alkaline fixative, SEM/TEM",
+      "extracted": {
+        "glycocalyx_average_length_nm": {"brain": "301.0 +/- 111.8", "heart": "135.5 +/- 59.7", "lung": "65.4 +/- 28.4"},
+        "percent_luminal_area_covered": {"brain": "40.1 +/- 4.5", "heart": "15.1 +/- 3.7", "lung": "3.7 +/- 0.3"},
+        "post_LPS_percent_covered": {"brain": "13.6 +/- 2.0", "heart": "2.8 +/- 0.2", "lung": "0.8 +/- 0.2"},
+        "n_vessels": "6 randomly chosen capillary vessels per group; length measured at 10 points per vessel",
+        "cited_prior_values": {"small_arteries_um": "2-3 (van Haaren 2003, PMID 12907418)", "carotid_um": "4.5 (Megens 2007, PMID 17192719)", "muscle_capillary_um": "0.5 (Vink & Duling 1996, PMID 8781491)"}
+      }
+    },
+    {
+      "url": "https://www.nature.com/articles/s41586-025-08589-9",
+      "title": "Glycocalyx dysregulation impairs blood-brain barrier in ageing and disease",
+      "citation": "Shi SM, Suh RJ, Shon DJ, et al. Nature. 2025;639(8056):985-994",
+      "pmid": null,
+      "doi": "10.1038/s41586-025-08589-9",
+      "model": "C57BL/6 mouse cortical capillaries, TEM with lanthanum nitrate; 3-month vs 21-month; n=4 per group",
+      "extracted": {
+        "glycocalyx_thickness_um": {"young_3mo": "0.540 +/- 0.086", "aged_21mo": "0.232 +/- 0.092"},
+        "glycocalyx_area_fraction_of_lumen": {"young": "0.367 +/- 0.054", "aged": "0.207 +/- 0.047"},
+        "mechanism": "downregulation of mucin-type O-glycan biosynthetic enzymes C1GALT1 and B3GNT3",
+        "intervention": "AAV-B3GNT3 in 17-month-old mice reduced BBB leakage and improved Y-maze and contextual fear conditioning",
+        "note_on_EM": "traditional EM does not enable visualization of the glycocalyx; cationic metal stains (lanthanum nitrate, ruthenium red) required"
+      }
+    }
+  ],
+  "leads_not_pursued": [
+    {"claim": "2.2-glomerular-hs-charge / 2.2-liver-porous-physiological / 2.1.1-glomerular-4-11um", "lead": "Okada H, et al. Crit Care. 2017;21:261. PMID 29058634 — compares continuous (heart), fenestrated (kidney), sinusoidal (liver) capillary glycocalyx ultrastructure. Cited second-hand via Ando 2018; NOT directly read this batch."},
+    {"claim": "2.2-brain-1-3um", "lead": "A 2025 bioRxiv two-photon preprint states reported brain microvessel glycocalyx thickness spans hundreds of nm to several microns; its cited primary sources were not retrieved."}
+  ]
+}

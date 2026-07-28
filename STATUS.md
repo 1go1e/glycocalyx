@@ -69,7 +69,7 @@ low    已判定  0 /  7  =  0%
 
 ### 3.1 跨疾病數值拼接
 
-`source/glycocalyx_v3.md` 第 5.1 節將三個數字並列呈現，讀來像同一項研究的完整表現，
+`source/glycocalyx/v3.md` 第 5.1 節將三個數字並列呈現，讀來像同一項研究的完整表現，
 實際上分別來自：2025 年敗血症薈萃分析（OR 2.04，真）、創傷內皮病變文獻（40 ng/mL，
 真但錯置）、來源不明（85%/78%）。
 
@@ -152,6 +152,30 @@ ADA / EASD / KDIGO / ESC / ISPAD   0 次
 **通則**：收錄任何 LLM 產出的長文件前，先數「一、」或 `##` 層級的重複次數。
 節號碰撞會讓 `claim_id` 與 `source_ref` 無法唯一定位，必須先重編。
 另檢查 Google Docs 匯出造成的跳脫 markdown（`\#\#\#`、`\-`），否則章節解析不出來。
+
+---
+
+### 3.8 搬移檔案會留下過期路徑引用
+
+新增於 2026-07-28。
+
+`source/glycocalyx_v3.md` 改為 `source/glycocalyx/v3.md` 之後，全庫殘留 20 處舊路徑引用。
+
+**通則**：搬移或改名 `source/`、`ledger/`、`runbooks/` 下的任何檔案後，
+立即全庫掃描並分三類處理：
+
+```powershell
+Get-ChildItem -Recurse -Include *.md,*.csv | Select-String "舊路徑"
+```
+
+| 類別 | 處置 |
+|---|---|
+| 活文件（`CLAUDE.md`、`STATUS.md`、`runbooks/`、`ledger/SCHEMA.md`） | **必改**，agent 會照著執行 |
+| 待核准提案（`reports/revisions/` 未核准者） | **必改**，核准後會照著執行 |
+| 歷史紀錄（`reports/backfill/`、`ledger/CHANGELOG.md`、已核准提案） | **不改**，改了就失真 |
+
+〔推論〕第三類是關鍵。批次報告記錄的是當時的檔案狀態，
+把它改成今天的路徑等於竄改紀錄，日後無法還原判定當下看到的是哪份文件。
 
 ---
 
@@ -293,7 +317,8 @@ ADA / EASD / KDIGO / ESC / ISPAD   0 次
 - ~~`claims.csv` 是否新增 `source_ref` 欄~~ → **已決，採選項 A 含 §5 認定規則**。
   schema_version 已升至 3，見 `ledger/CHANGELOG.md` 與
   `reports/revisions/2026-07-28-schema-source-doc.md`（核准 2026-07-28）。
-  97 列已機械化回填 `source_ref = glycocalyx_v3#{section}`，其餘欄位未動。
+  97 列已機械化回填 `source_ref`，其餘欄位未動。
+  2026-07-28 `source/` 改為主題子目錄後，值為 `glycocalyx/v3#{section}`。
 
 ---
 
@@ -310,7 +335,7 @@ ledger/SCHEMA.md
 ledger/CHANGELOG.md
 runbooks/backfill.md
 reports/backfill/2026-07-26-5.1.md
-source/glycocalyx_v3.md
+source/glycocalyx/v3.md
 ```
 
 若本次任務涉及 schema 或原文修訂，另加 `reports/revisions/` 中相關的提案檔。

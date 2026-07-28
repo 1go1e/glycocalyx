@@ -125,7 +125,7 @@
 2. 同一數值在兩篇以上文獻中出現但**互不引用**，無法判斷是否同源
 3. statement 涉及的是**尚未被明確命名或研究的概念**，找不到對應詞彙
 4. 需要修改 statement 的語意才能與文獻相符，而該列已是 `verified`
-5. 檢索結果顯示 `source/glycocalyx_v3.md` 有**內部矛盾**（見 claims.csv 中已標記的厚度與 GAG 佔比問題）
+5. 檢索結果顯示 `source/glycocalyx/v3.md` 有**內部矛盾**（見 claims.csv 中已標記的厚度與 GAG 佔比問題）
 
 ---
 
@@ -167,6 +167,6 @@
 ## 6. 絕對禁止
 
 - 憑記憶或推測寫出 PMID / DOI / NCT 編號。識別碼只能來自檢索工具本次回傳的結構化欄位
-- 修改 `source/glycocalyx_v3.md`。所有修訂建議一律寫入 `reports/`
+- 修改 `source/` 下的任何檔案。所有修訂建議一律寫入 `reports/`
 - 刪除 `claims.csv` 中的任何列
 - 為了讓數字好看而放寬判定標準

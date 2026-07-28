@@ -75,7 +75,7 @@
 
 | 出處 | 歸屬 |
 |---|---|
-| `source/glycocalyx_v3.md` §2.1.1 | 「某些區域（如腎絲球微血管）」 |
+| `source/glycocalyx/v3.md` §2.1.1 | 「某些區域（如腎絲球微血管）」 |
 | 生理.md 行 5 | 「**腦部與腎臟**等微血管中可達 11 μm」 |
 | 生理.md 行 8 附近 | 「腎絲球微血管：富含 heparan sulfate，厚度可達 **4-11 μm**」 |
 | 2026-07-27 批次實查（`PMID:21474821`） | **體外培養的牛主動脈內皮細胞**，非腎絲球、非活體 |
@@ -88,7 +88,7 @@
 
 ## 3. 與既有 97 條的重疊
 
-〔推論〕生理.md 的兩張表與 `source/glycocalyx_v3.md` §5.5 表格是同一組數字。既有判定直接適用，**不應為它們新增 ledger 列**：
+〔推論〕生理.md 的兩張表與 `source/glycocalyx/v3.md` §5.5 表格是同一組數字。既有判定直接適用，**不應為它們新增 ledger 列**：
 
 | 數值 | 對應 claim_id | 現行 status |
 |---|---|---|
@@ -150,7 +150,7 @@
 ### 選項 A：不收為 source，只抽取淨新增主張（建議）
 
 - 檔案存入 `source/intake/2026-07-28-糖萼層生理.md`，唯讀保存，**不列為受追蹤文件**
-- 依 §4 抽取淨新增主張，建列進 `claims.csv`，`source_doc` 記為 `intake/2026-07-28-糖萼層生理`
+- 依 §4 抽取淨新增主張，建列進 `claims.csv`，`source_ref` 記為 `intake/2026-07-28-糖萼層生理#{位置}`
 - §2 的三項內部問題寫入 STATUS §3 作為系統性模式
 - §3 的重疊主張**不建新列**
 
@@ -178,9 +178,9 @@
 
 ## 6. 連帶影響
 
-- **需要 schema 變更**：`claims.csv` 目前無 `source_doc` 欄，多文件後無法標示主張出處。見 `reports/revisions/2026-07-28-schema-source-doc.md`
+- **schema 前提已滿足**：`source_ref` 欄已隨 schema v3 上線（`2026-07-28-schema-source-doc.md` 核准 2026-07-28），本提案可直接執行
 - **STATUS §3 新增兩項系統性模式**：自我引用式「更新」（§2.1）、歸屬與數值在轉述間漂移（§2.2 + §2.3）
-- **`reports/revisions/2026-07-27-source-2.1.1-thickness.md` 不受影響**：該提案針對 `source/glycocalyx_v3.md`，本提案不動它
+- **`reports/revisions/2026-07-27-source-2.1.1-thickness.md` 不受影響**：該提案針對 `source/glycocalyx/v3.md`，本提案不動它
 - **另兩份文件**（`glycocalyx_Heparanase.md`、`The_Mitochondria-Glycocalyx_Axis.md`）需各自做一次同樣的 intake 評估，本提案不涵蓋。`Heparanase.md` 另有跳脫 markdown（`\#\#\#`、`\-`）須先正規化，否則節號抽不出來
 
 ---
@@ -195,4 +195,5 @@
 
 核准人／日期：
 
-核准後執行順序：建 `source/intake/` 並存入原檔 → 更新 STATUS §3、§4、§5 → 決定 `source_doc` schema（另案）→ 依 §4 抽取建列。
+核准後執行順序：存入 `source/intake/2026-07-28-糖萼層生理.md`（目錄已建）→ 更新 STATUS §3、§4、§5 → 依 §4 抽取建列並填 `source_ref`。
+`source_ref` schema 前提已於 2026-07-28 隨 schema v3 滿足。

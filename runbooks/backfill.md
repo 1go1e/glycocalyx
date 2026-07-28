@@ -135,7 +135,8 @@
 
 1. 更新 `ledger/claims.csv`（依 `claim_id` 重新排序後存檔）。
    新增列必須填 `source_ref`；建列前先以數值為鍵掃描既有列，
-   命中且符合 SCHEMA §2「同一條」標準時，改為在既有列追加 `source_ref`，不建新列
+   命中且符合 SCHEMA §2「同一條」標準時，改為在既有列追加 `source_ref`，不建新列。
+   主要出處位於 `intake/` 之下時，`section` 依 SCHEMA §2 例外取主題所屬的受追蹤文件節號
 2. 寫入 `inbox/YYYY-MM-DD-{section}.json`：保留所有檢索的原始回傳，不做刪減
 3. 寫入 `reports/backfill/YYYY-MM-DD-{section}.md`：
 

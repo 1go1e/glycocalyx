@@ -1,7 +1,7 @@
 # claims.csv — Schema 與寫入規則
 
 ```
-schema_version: 4
+schema_version: 5
 last_updated: 2026-07-28
 applies_to: ledger/claims.csv
 ```
@@ -73,6 +73,20 @@ glycocalyx/v3#5.5;mitochondria/axis#1.2
 - `{section}`：該文件內的節號。文件無節號時用可辨識的位置標籤（`表1`、`L122-131`）
 
 `section` 欄的值必須等於 `source_ref` 第一個 token 的節號部分。
+
+**例外：主要出處位於 `intake/` 之下時**，`section` 取該主張**主題所屬的受追蹤文件節號**，
+而非 intake 檔的位置標籤。
+
+```
+claim_id   = 2.2-brain-mouse-0.54-0.23
+section    = 2.2
+source_ref = intake/2026-07-28-糖萼層生理#L154
+```
+
+理由：`section` 是**主題座標**，不是位置指標。批次劃分（STATUS §4）與
+`claim_id` 排序都依賴它把同主題的條目聚在一起。intake 檔多為無節號的敘述性文件，
+其位置標籤（`L154`）不承載主題資訊，填入 `section` 會使該欄失去作用。
+位置資訊由 `source_ref` 承載，不重複。
 
 ### 一條主張，一列
 

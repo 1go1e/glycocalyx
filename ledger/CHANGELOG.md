@@ -4,6 +4,16 @@
 
 ---
 
+## schema_version 5 — 2026-07-28
+
+- **§2**：新增 `section` 取值例外。主要出處位於 `intake/` 之下時，
+  `section` 取主題所屬的受追蹤文件節號，而非 intake 檔的位置標籤。
+- 提案：`reports/backfill/2026-07-28-intake-physiology.md` §4.3（核准 2026-07-28）
+- 觸發案例：`intake/2026-07-28-糖萼層生理` 的 24 條淨新增主張無節號可用，
+  照原規則會產出 `section=L154`，破壞 `section` 作為主題座標的功能
+- 受影響列：既有 97 列的主要出處均為 `glycocalyx/v3`，不適用例外，無須回填
+- 同步檢查（§11）：`runbooks/backfill.md` 步驟 5 已同步
+
 ## schema_version 4 — 2026-07-28
 
 - **§6**：statement 不得含時間形容詞（「最新」「截至 2025 年 11 月」等），時間資訊入 `note`。

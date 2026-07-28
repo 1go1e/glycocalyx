@@ -3,7 +3,7 @@
 ```
 最後更新: 2026-07-28
 最後 commit: 69777b1
-schema_version: 4
+schema_version: 5
 ```
 
 > **新 session 從這裡開始。** 讀完本檔，再依 §6 決定要不要讀其他檔案。
@@ -13,13 +13,13 @@ schema_version: 4
 ## 1. 帳本狀態
 
 ```
-unverified   85
+unverified  109
 partial       5
 unsupported   4
 verified      2
 contested     1
 ──────────────
-總計         97
+總計        121
 ```
 
 隨時可用此指令重新確認：
@@ -37,15 +37,15 @@ Import-Csv ledger/claims.csv | Where-Object priority -eq 'high' |
 **依優先序的完成率**（這才是專案健康度指標；全體完成率會被大量 low/med 稀釋）：
 
 ```
-high   已判定 11 / 50  = 22%
-med    已判定  1 / 40  =  2%
-low    已判定  0 /  7  =  0%
+high   已判定 11 / 60  = 18%
+med    已判定  1 / 53  =  2%
+low    已判定  0 /  8  =  0%
 ```
 
 有 `evidence` 的列共 7 條，去重識別碼 11 個（9 個 PMID、2 個 DOI）。
-97 列的 `source_ref` 均為 `glycocalyx/v3#{section}`。
 
-`claim_type` 分布：mechanism 58、epidemiology 15、measurement 13、therapeutic 7、definition 4。
+`source_ref` 主要出處：`glycocalyx/v3` 97 列、`intake/2026-07-28-糖萼層生理` 24 列。
+另有 53 列同時標示兩處。
 
 ---
 
@@ -56,7 +56,7 @@ low    已判定  0 /  7  =  0%
 | 2026-07-26 | 5.1（校準批次） | 3 | `reports/backfill/2026-07-26-5.1.md` |
 | 2026-07-26 | 5.5 | 4 | `reports/backfill/2026-07-26-5.5.md` |
 | 2026-07-27 | 2.1.1 / 2.2 厚度群 | 5 | `reports/backfill/2026-07-27-2.1.1-2.2.md` |
-| 2026-07-28 | 生理.md 收錄（無檢索） | 53 追加 | `reports/backfill/2026-07-28-intake-physiology.md` |
+| 2026-07-28 | 生理.md 收錄（無檢索） | 53 追加 + 24 新建 | `reports/backfill/2026-07-28-intake-physiology.md` |
 
 **`2026-07-26-5.1.md` 是判定標準的基準範本。** 任何新加入的執行者（人或 agent）
 應先讀它，再開始工作——它示範了判定的細膩度、note 的寫法，
@@ -201,9 +201,12 @@ Get-ChildItem -Recurse -Include *.md,*.csv | Select-String "舊路徑"
 前四條在 `source/intake/2026-07-28-糖萼層生理.md` 有對應敘述，`source_ref` 已標示位置。
 查證時一併核對兩份文件的說法，差異寫入 `note`，並依 §3.6 檢查歸屬是否漂移。
 
-`2.2-brain-1-3um` 另須交叉檢驗：生理.md L154 宣稱腦微血管年輕小鼠 0.54 μm、
-老化 0.23 μm，與同檔 L12 的 1-3 μm 相差一個數量級。
-檢索時同時查小鼠腦微血管的直接測量值，判斷 1-3 μm 是否與 `2.1.1-extreme-11um` 同型。
+`2.2-brain-1-3um` 與新建的 `2.2-brain-mouse-0.54-0.23` **必須同批查證**——
+兩者相差一個數量級，分開查會各自得到看似合理的結論。
+判斷 1-3 μm 是否與 `2.1.1-extreme-11um` 同型（脫離原始樣本條件的放大值）。
+
+同理，`2.1.1-extreme-11um`、`2.1.1-extreme-11um-brain-kidney`、`2.1.1-glomerular-4-11um`
+三條同源，同批處理；`5.1-sdc1-sens-spec` 與 `5.1-sdc1-sens-90` 同批。
 
 低成本可併入：`2.1.1-em-underestimate`（priority=low，但 2026-07-27 批次已取得直接證據
 `PMID:21474821`：同一批培養細胞傳統 TEM 0.040 μm vs RF/FS-TEM 11 μm）。
@@ -280,14 +283,6 @@ Get-ChildItem -Recurse -Include *.md,*.csv | Select-String "舊路徑"
 
 ### 待核准 — 新文件收錄（2026-07-28 新增，擋住多文件擴充）
 
-- **`intake/` 文件的淨新增主張無法建列。**
-  `SCHEMA §2` 要求 `section` 等於 `source_ref` 第一個 token 的節號，
-  但 intake 檔無節號、只有行號標籤（`L154`），照規則會產出 `section=L154`，
-  破壞 `section` 作為主題座標的功能（排序與批次劃分都依賴它）。
-  建議在 §2 補例外：主要出處位於 `intake/` 時，`section` 取主題所屬的受追蹤文件節號。
-  需 schema_version 4 → 5。詳見 `reports/backfill/2026-07-28-intake-physiology.md` §4.3。
-  **此案未決前，24 條淨新增主張無法進入 ledger。**
-
 ### 待辦（承接前批）
 
 - 取得 `DOI:10.1161/JAHA.124.040179` 全文，核對 thrombomodulin 的 HR 2.10
@@ -304,6 +299,8 @@ Get-ChildItem -Recurse -Include *.md,*.csv | Select-String "舊路徑"
   連帶新增規定：`status=contested` 的列，`note` 必須寫明反駁文獻的等級與反駁內容。
 - ~~是否刪除 2.1.1 節的「共識 2-4 μm」敘述~~ → **已決，改為標註不刪除**。見上方「已定調的政策」。
 - ~~是否刪除 5.5 節表格的敏感度／特異度欄位~~ → **已決，刪除方案作廢**，同上。
+- ~~`intake/` 文件的 `section` 如何取值~~ → **已決，採例外條款**，schema_version 5。
+  主要出處位於 `intake/` 時，`section` 取主題所屬的受追蹤文件節號。24 條已建列。
 - ~~`糖萼層_Glycocalyx_生理.md` 如何收錄~~ → **已決，採選項 A**。
   存入 `source/intake/2026-07-28-糖萼層生理.md`，不列為受追蹤文件。
   53 列已追加 `source_ref`，claims.csv 仍為 97 列、status 分布未變。

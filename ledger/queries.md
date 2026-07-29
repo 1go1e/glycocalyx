@@ -126,6 +126,44 @@ sepsis endotoxin LPS glycocalyx degradation early time course "30 min" syndecan-
 〔推論〕這類錯誤數值查核抓不到——數字是真的，疾病是真的，文獻是真的。
 唯一的破綻是過程方向，而方向不在數字裡。見 STATUS §3.13。
 
+### 1.10 數值查不到歸屬時，改查「該分子所屬的類別」與該類別的經典量測法
+
+§1.7 處理的是數值被安到錯的**器官**上，§1.8 處理的是被安到錯的**分子**上。
+本條處理第三種：數值屬於**一整個分子類別**，卻被寫成該類別中最有名的那個成員的屬性。
+
+這種情況下，繼續查該分子本身只會拿到它的機制文獻（本例是 syndecan-1 的脫落調控），
+永遠查不到數值。要換成查類別 + 該類別的經典量測法。
+
+有效範例（2026-07-29 B2b 批次）：
+
+```
+cell surface heparan sulfate proteoglycan turnover half-life 3-8 hours Yanagishita Hascall granulosa cells internalization degradation
+```
+
+命中 `PMID:1533636` 與 `PMID:11755208`——「2-8 小時」屬於細胞表面 HSPG 的周轉時間，
+量測對象是大鼠卵巢顆粒細胞與大鼠肝細胞，兩篇都不是內皮、都不是 syndecan-1。
+
+〔推論〕構成這一式的三個要素缺一不可：類別名（`heparan sulfate proteoglycan`）、
+經典量測法（`turnover`、`internalization`、`degradation`）、以及該領域早期做這件事的實驗室名。
+最後一項特別有效——類別層級的動力學參數通常由少數幾個實驗室在 1980-90 年代做完，
+之後只被引用不被重測，因此人名比關鍵字更能定位原始量測。
+
+### 1.11 查一個時間數字時，先查該過程的完整時間尺度譜系
+
+不要查「7-14 天是否成立」，要查「這個過程總共有幾種、各自多久」。
+
+有效範例（2026-07-29 B2b 批次）：
+
+```
+endothelial glycocalyx recovery after enzymatic degradation heparinase regeneration time course days
+```
+
+一式拿到三種修復型別的定錨值（見 §2.1.1），同時完成了 STATUS §4 要求的歸屬確認——
+知道有哪幾種之後，「7-14 天屬於哪一種」變成對照題而不是檢索題。
+
+〔推論〕這是 §1.9 的前置步驟。§1.9 說證否數字時把數字連同情境一起查，
+但那需要先知道有哪些情境。過程分歧越多的主張（修復、脫落、周轉），越該先建譜系再對號。
+
 ---
 
 ## 2. 分類檢索式
@@ -178,6 +216,34 @@ two-photon laser scanning microscopy glycocalyx thickness 4.5 μm mouse carotid 
 〔推論〕**敗血症是小時級，缺血再灌流是分鐘級。**
 凡看到「敗血症中數分鐘內脫落」，先假設是從缺血再灌流文獻搬過來的（§1.5 交錯領域）。
 
+**修復方向的定錨值**（2026-07-29 B2b 批次建立）：
+
+| 修復型別 | 時間尺度 | 模型與量測 | 出處 |
+|---|---|---|---|
+| 外源補充：脂質體奈米載體輸注 | 30 分鐘 | LPS 小鼠 | 見 B2a 批報告 |
+| 外源補充：體外剪應力下 HS 再生 | 12 h | 培養內皮 | 僅取得引述 |
+| 外源補充：細胞表面 HS 回復 | 20 h | RFPEC | `DOI:10.1371/journal.pone.0186116` |
+| 敗血症後肺 ESL 重建 | 48 h 起，72 h 近原厚度 | 小鼠 CLP，活體顯微 | 僅取得引述 |
+| 酵素或細胞激素消化後的內源性回復 | **5-7 天** | 小鼠提睪肌小靜脈，μ-PIV | `PMID:19443840` |
+
+〔推論〕修復方向的時間尺度跨了三個數量級，且**外源補充永遠遠快於內源性重建**。
+凡看到修復時間的主張，先確認是哪一種；未指明者預設為內源性，對照 5-7 天。
+
+### 2.1.2 病理狀態下的降幅——先分清是哪一種量
+
+| 指標 | 量綱 | 病理降幅 | 出處 |
+|---|---|---|---|
+| 舌下微血管厚度（第一型糖尿病） | μm | 0.9±0.1 → 0.5±0.1，約 44% | `PMID:16567538` |
+| 全身糖萼體積（第一型糖尿病併微量白蛋白尿） | L | 1.5±0.1 → 0.2±0.1，約 87% | 同上 |
+| 舌下厚度（第二型糖尿病） | μm | 0.78 → 0.64，約 18% | 僅取得引述 |
+| 視網膜厚度（第二型糖尿病） | μm | 8.89 → 5.38，約 39% | 僅取得引述 |
+| 主動脈厚度（敗血症小鼠，AFM） | nm | 266±12 → 137±17，約 48% | 僅取得 PMC 編號 |
+
+〔推論〕**厚度降幅集中在 40-50%，體積降幅可達 87%。**
+體積正比於厚度的高次方，兩者降幅本來就不會相等。
+凡「減少 X-Y%」形式的主張，先確認 X 與 Y 是否來自同一種量測。
+本領域四種指標並存且常同篇出現：厚度（μm）、體積（L）、覆蓋率（%）、PBR（μm，逆向）。
+
 ### 2.2 生物標記與效應量
 
 ```
@@ -227,6 +293,25 @@ endothelial glycocalyx "half-life" syndecan-1 "hours" turnover "2" "8" heparan s
 但沒有任何一篇給出細胞表面 syndecan-1 的半衰期數值。
 B2 批次處理 `2.2-sdc1-halflife-2-8h` 時不必重試這兩式，改換角度
 （例：放射標記脈衝追蹤、`pulse-chase`、`metabolic labeling`）。
+
+**2026-07-29 B2b 批次追記**：上述建議的換角度方向**本身也無效**。實測：
+
+```
+syndecan-1 core protein turnover pulse-chase metabolic labeling half-life cell surface proteoglycan hours
+```
+
+方法學詞彙（`pulse-chase`、`metabolic labeling`）的權重蓋過分子名，
+回傳全為 pulse-chase 通用方法論文獻，`syndecan` 整個掉出結果。
+**查特定分子的動力學時，方法名最多放一個。**
+
+```
+"syndecan-1" "half-life" cell surface turnover hours shedding ectodomain endothelial kinetics
+```
+
+命中大量 syndecan-1 脫落機制文獻（構成型脫落、TIMP-3 敏感金屬蛋白酶、plasmin/thrombin 加速），
+全部只陳述「脫落是正常周轉的一部分」，無一給出半衰期數值。
+
+有效的是改查類別而非分子，見 §1.10。`2.2-sdc1-halflife-2-8h` 已於本批判為 `unsupported`。
 
 ## 5. 檢索管道的環境限制
 

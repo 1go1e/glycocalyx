@@ -323,9 +323,8 @@ Get-ChildItem -Recurse -Include *.md,*.csv | Select-String "舊路徑"
 - 取得 `DOI:10.1161/JAHA.124.040179` 全文，核對 thrombomodulin 的 HR 2.10
 - 取得 Shi et al. 2025 Nature 的 PMID，補入 `2.2-brain-mouse-0.54-0.23` 等三列
   （目前僅有 `DOI:10.1038/s41586-025-08589-9`）
-- 建立 `ledger/queries.md`：本批次的有效檢索式
-  `brain microvascular endothelial glycocalyx thickness measurement micrometers`
-  一次命中兩篇原始研究，有效原因是同時含「thickness」「measurement」與單位詞
+- 為 `claim_type=mechanism`（約佔帳本半數）與 `therapeutic` 建立檢索式，
+  補入 `ledger/queries.md` §2.3
 - 取得 Daniyarova et al. 2025 的 PMID，補入 `5.1-sdc1-or-204` 的 evidence
   （目前僅有 `DOI:10.1002/mbo3.70155`）
 
@@ -379,6 +378,7 @@ STATUS.md
 ledger/claims.csv
 ledger/SCHEMA.md
 ledger/CHANGELOG.md
+ledger/queries.md
 runbooks/backfill.md
 reports/backfill/2026-07-26-5.1.md
 source/glycocalyx/v3.md
@@ -389,6 +389,7 @@ source/glycocalyx/v3.md
 開場指示：
 
 > 這是內皮糖萼文獻追蹤專案。先讀 `STATUS.md`，再讀 `SCHEMA.md` 與 `backfill.md`。
+> 開始檢索前讀 `queries.md` §1 通則與 §2.1 的厚度定錨值表。
 > `2026-07-26-5.1.md` 是判定標準的基準範本，請照那個細膩度執行。
 >
 > 特別注意兩點：查無出處時判 `unsupported` 是合格結果，不是失敗；

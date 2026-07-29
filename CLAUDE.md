@@ -52,6 +52,7 @@ ledger/
   claims.csv       主張帳本
   SCHEMA.md        欄位規則（唯讀，變更須經 §11 提案）
   CHANGELOG.md     schema 變更紀錄
+  queries.md       實測檢索式與檢索通則（經驗紀錄，非規格）
 runbooks/          作業程序
 source/            原始文件，唯讀。依主題分子目錄
   glycocalyx/      糖萼相關

@@ -1,7 +1,7 @@
 # 專案現況
 
 ```
-最後更新: 2026-07-28
+最後更新: 2026-07-29
 最後 commit: b785d55
 schema_version: 5
 ```
@@ -13,9 +13,9 @@ schema_version: 5
 ## 1. 帳本狀態
 
 ```
-unverified  104
+unverified  102
 partial       6
-unsupported   5
+unsupported   7
 verified      5
 contested     1
 ──────────────
@@ -37,12 +37,12 @@ Import-Csv ledger/claims.csv | Where-Object priority -eq 'high' |
 **依優先序的完成率**（這才是專案健康度指標；全體完成率會被大量 low/med 稀釋）：
 
 ```
-high   已判定 12 / 60  = 20%
+high   已判定 14 / 60  = 23%
 med    已判定  4 / 53  =  8%
 low    已判定  1 /  8  = 12%
 ```
 
-有 `evidence` 的列共 12 條，去重識別碼 14 個（11 個 PMID、3 個 DOI）。
+有 `evidence` 的列共 14 條，去重識別碼 18 個（15 個 PMID、3 個 DOI）。
 
 `source_ref` 主要出處：`glycocalyx/v3` 97 列、`intake/2026-07-28-糖萼層生理` 24 列。
 另有 53 列同時標示兩處。
@@ -59,6 +59,7 @@ low    已判定  1 /  8  = 12%
 | 2026-07-28 | 生理.md 收錄（無檢索） | 53 追加 + 24 新建 | `reports/backfill/2026-07-28-intake-physiology.md` |
 | 2026-07-28 | v3 §2.1.1／§2.2 標註（無檢索） | 4 處 | `reports/revisions/2026-07-27-source-2.1.1-thickness.md` |
 | 2026-07-28 | 2.2 腦部與肺部血管床 | 5 | `reports/backfill/2026-07-28-2.2-brain-lung.md` |
+| 2026-07-29 | 2.1.1 十一微米歸屬群 | 2 | `reports/backfill/2026-07-29-2.1.1.md` |
 
 **`2026-07-26-5.1.md` 是判定標準的基準範本。** 任何新加入的執行者（人或 agent）
 應先讀它，再開始工作——它示範了判定的細膩度、note 的寫法，
@@ -198,19 +199,43 @@ Get-ChildItem -Recurse -Include *.md,*.csv | Select-String "舊路徑"
 
 ---
 
+### 3.10 通則範圍被接到論文的研究對象上
+
+新增於 2026-07-29（來源：`reports/backfill/2026-07-29-2.1.1.md`）。
+
+`intake/2026-07-28-糖萼層生理` 稱「腦部與腎臟等微血管中可達 11 μm」。
+追溯後，唯一同時提到 11 μm 與這兩個器官的文獻是 `DOI:10.1371/journal.pone.0161610`：
+一篇研究人腦內皮與人腎絲球內皮**奈米粒子攝取**的論文，
+在引言處以通則語氣引用了與器官無關的「0.5-11 μm」，所引四篇無一為腦或腎，
+且該文自己沒有量測任何厚度。
+
+**通則**：這與 §3.6「歸屬漂移」是同一族但機制更具體——
+漂移不必經過多次轉述，**一篇論文就足夠**：
+研究對象寫在標題與摘要，通則數值寫在引言，兩者在同一頁上，接起來就成立。
+凡遇到極端值被安在特定器官上而查無實測，先找這種論文（檢索式見 `queries.md` §1.7）。
+
+〔推論〕這也解釋了為什麼這類錯誤特別難用「查證數值」的方式抓出來：
+數值是真的，論文是真的，論文確實研究該器官——只有「數值屬於該器官」這個連接是假的，
+而那個連接不存在於任何一份文獻裡，是轉述時新生成的。
+
+---
+
 ## 4. 下一批
 
 **`2.2` 剩餘條目**（厚度群已完成，其餘 8 條同章節，可共用脈絡）
 
 ```
-2.2-glomerular-hs-charge          ← 與 2.1.1-glomerular-4-11um 同批，線索見下
+2.2-glomerular-hs-charge          ← 線索見下
 2.2-liver-porous-physiological    ← 同上
-2.1.1-glomerular-4-11um
 2.2-pathological-50-90pct
 2.2-repair-7-14d
 2.2-sdc1-halflife-2-8h
 2.2-sepsis-shedding-30min
 ```
+
+〔推論〕本節現為單一 `section`，符合 `runbooks/backfill.md` §2「一批 5-8 條、限定同一 section」。
+`2.2-glomerular-hs-charge` 可直接沿用 2026-07-29 批次建立的腎絲球定錨值
+（`queries.md` §2.1），該條的爭點在「電荷選擇性」的機制證據，不在厚度。
 
 **現成線索**：`Okada H, et al. Crit Care. 2017;21:261`（`PMID:29058634`）比較連續型（心）、
 開窗型（腎）、竇狀型（肝）三種微血管的糖萼超微結構，涵蓋前三條。
@@ -220,6 +245,10 @@ Get-ChildItem -Recurse -Include *.md,*.csv | Select-String "舊路徑"
 `2.2-brain-mouse-0.54-0.23`（verified）、`2.1.1-mucin-o-glycosylation-aging`（verified）、
 `2.1.1-em-underestimate`（verified）。
 
+已完成（2026-07-29）：`2.1.1-extreme-11um-brain-kidney`（unsupported）、
+`2.1.1-glomerular-4-11um`（unsupported）。**十一微米群三條全部封閉**，
+`2.1.1` 章節無懸空條目。
+
 **本批附加動作**（生理.md 收錄已於 2026-07-28 完成，本動作生效）：
 前四條在 `source/intake/2026-07-28-糖萼層生理.md` 有對應敘述，`source_ref` 已標示位置。
 查證時一併核對兩份文件的說法，差異寫入 `note`，並依 §3.6 檢查歸屬是否漂移。
@@ -228,8 +257,7 @@ Get-ChildItem -Recurse -Include *.md,*.csv | Select-String "舊路徑"
 兩者相差一個數量級，分開查會各自得到看似合理的結論。
 判斷 1-3 μm 是否與 `2.1.1-extreme-11um` 同型（脫離原始樣本條件的放大值）。
 
-同理，`2.1.1-extreme-11um`、`2.1.1-extreme-11um-brain-kidney`、`2.1.1-glomerular-4-11um`
-三條同源，同批處理；`5.1-sdc1-sens-spec` 與 `5.1-sdc1-sens-90` 同批。
+`5.1-sdc1-sens-spec` 與 `5.1-sdc1-sens-90` 同批。
 
 **收錄批次（新增，與回填分離）**
 
@@ -310,13 +338,22 @@ Get-ChildItem -Recurse -Include *.md,*.csv | Select-String "舊路徑"
   這些主張只出現在 `intake/` 文件，`source/glycocalyx/v3.md` 無對應段落可標註。
   網頁上線時，intake-only 的 claim 如何呈現須另行設計。
 
-### 待核准 — 新文件收錄（2026-07-28 新增，擋住多文件擴充）
-
 ### 待核准 — 原文修訂（新增）
 
 - **§2.2 兩處標註的修訂單：尚未寫。** 2026-07-28 批次判定
   「腦微血管 1-3 μm」為 `unsupported`、「肺微血管 0.4-0.5 μm」為 `partial`，
   依標註政策應各加一個標記。建議與 §5.5 敏感度／特異度的修訂單合併為一份。
+
+### 待決 — statement 的無主詞措辭（2026-07-29 新增）
+
+SCHEMA §6 禁止「研究顯示」「一般認為」等無主詞措辭。
+`2.1.1` 三條同源列的 statement 均以「部分文獻報告…」開頭，屬同型。
+2026-07-29 批次**未**改寫，理由見該批報告末節：需先決定
+(1) 是否把無主詞措辭補進 `runbooks/backfill.md` §3 步驟 1 的「改寫檢查」清單；
+(2) 是否做一次全庫掃描的修訂提案，而非在各回填批次裡零星改寫。
+
+〔推論〕建議採全庫掃描。逐批順手改會讓同源列的措辭在不同批次間不一致，
+而措辭不一致本身就會被誤讀為「這幾條的證據強度不同」。
 
 ### 待辦（承接前批）
 
@@ -359,6 +396,8 @@ Get-ChildItem -Recurse -Include *.md,*.csv | Select-String "舊路徑"
   居家自測、個人執行協議**不收**，全檔存 `source/intake/2026-07-28-mitochondria-axis-raw.md`。
 - ~~是否為治療劑量建立 claim~~ → **已決，不得建立**。見上方「已定調的政策」與
   `CLAUDE.md` 第 6 條，提案 `reports/revisions/2026-07-28-intake-heparanase-mito.md` §2.4。
+- ~~`2.1.1` 的 11 μm 是否有腦部或腎絲球出處~~ → **已查，兩條均 `unsupported`**。
+  漂移路徑已追出並記入 STATUS §3.10，見 `reports/backfill/2026-07-29-2.1.1.md`。
 - ~~`claims.csv` 是否新增 `source_ref` 欄~~ → **已決，採選項 A 含 §5 認定規則**。
   schema_version 已升至 3，見 `ledger/CHANGELOG.md` 與
   `reports/revisions/2026-07-28-schema-source-doc.md`（核准 2026-07-28）。

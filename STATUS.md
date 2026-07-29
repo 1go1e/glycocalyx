@@ -2,7 +2,7 @@
 
 ```
 最後更新: 2026-07-28
-最後 commit: 5e7f399
+最後 commit: b785d55
 schema_version: 5
 ```
 

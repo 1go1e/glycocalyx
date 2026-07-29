@@ -1,0 +1,68 @@
+{
+  "run_date": "2026-07-29",
+  "section": "2.2-B2a",
+  "claims": [
+    "2.2-sepsis-shedding-30min"
+  ],
+  "tooling": "web_search（同前兩批）",
+  "searches": [
+    {
+      "n": 1,
+      "query": "endothelial glycocalyx shedding within 30 minutes TNF-alpha ischemia reperfusion guinea pig heart Chappell Rehm",
+      "returned": [
+        {
+          "pmid": "17923576",
+          "source": "pubmed.ncbi.nlm.nih.gov/17923576/",
+          "citation": "Circulation. 2007;116:1896-1906",
+          "title": "Shedding of the endothelial glycocalyx in patients undergoing major vascular surgery with global and regional ischemia",
+          "key_text": "循環停止之整體缺血（n=12），早期再灌流 0 至 15 分鐘內 syndecan-1 升 42 倍、heparan sulfate 升 10 倍；電鏡顯示缺血再灌流後糖萼脫落",
+          "used_as": "note（分鐘級脫落的真正情境）"
+        },
+        {
+          "pmid": "21890663",
+          "source": "pubmed.ncbi.nlm.nih.gov/21890663/",
+          "title": "Shedding of the coronary endothelial glycocalyx: effects of hypoxia/reoxygenation vs ischaemia/reperfusion",
+          "key_text": "天竺鼠離體心臟，20 分鐘停流缺血或缺氧灌流後再灌流；兩者均使 syndecan-1 與 HS 顯著釋出，且缺氧灌流一開始即出現",
+          "used_as": "note"
+        },
+        {
+          "pmid": "18836678",
+          "title": "TNF-alpha induced shedding of the endothelial glycocalyx is prevented by hydrocortisone and antithrombin",
+          "used_as": "未採用；未取得分鐘級時序"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "query": "sepsis endotoxin LPS glycocalyx degradation early time course \"30 min\" syndecan-1 plasma rise minutes after onset",
+      "returned": [
+        {
+          "pmc": "PMC12006053",
+          "title": "Role of the endothelial cell glycocalyx in sepsis-induced acute kidney injury",
+          "type": "review",
+          "key_text": "小鼠高劑量 LPS（20 mg/kg）後血漿 syndecan-1 於 6 小時內開始上升、約 24 小時達峰；48 小時電鏡見腎絲球內皮與足細胞糖萼消失。另述 LNPG 靜脈輸注可使敗血症小鼠糖萼於 30 分鐘內恢復",
+          "used_as": "note（綜述，依 SCHEMA §5 不作 evidence token；30 分鐘指修復而非脫落）"
+        },
+        {
+          "pmc": "PMC10659260",
+          "title": "Patching up a degraded endothelial glycocalyx in sepsis",
+          "type": "commentary",
+          "key_text": "同上，LNPG 於 30 分鐘內恢復糖萼並維持",
+          "used_as": "note"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "query": "（B1 批次既有）Okada 2017 全文之 LPS 時序",
+      "returned": [
+        {
+          "pmid": "29058634",
+          "key_text": "血漿 syndecan-1：12 h 7.8 ± 0.9 ng/ml、24 h 14.4 ± 2.0 ng/ml、48 h 回基線。最早取樣點 12 h",
+          "used_as": "note（無法排除 30 分鐘短暫脫落，故不列為反駁 token）"
+        }
+      ]
+    }
+  ],
+  "verdict": "unsupported；evidence 留空，四筆相關文獻全部寫入 note，理由見批次報告"
+}

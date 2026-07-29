@@ -29,7 +29,7 @@ claim_id,section,statement,claim_type,tier,evidence,status,priority,last_checked
 2.2-pathological-50-90pct,2.2,病理狀態下糖萼厚度可減少 50-90%。,measurement,,,unverified,high,,範圍極寬，需確認測量情境,glycocalyx/v3#2.2;intake/2026-07-28-糖萼層生理#L92
 2.2-repair-7-14d,2.2,糖萼完全重建需要 7-14 天。,mechanism,,,unverified,high,,治療窗口的關鍵依據，須查證物種與模型,glycocalyx/v3#2.2
 2.2-sdc1-halflife-2-8h,2.2,Syndecan-1 的半衰期約為 2-8 小時。,mechanism,,,unverified,high,,具體動力學數字，需原始出處,glycocalyx/v3#2.2
-2.2-sepsis-shedding-30min,2.2,敗血症中糖萼可於 30 分鐘內大量脫落。,mechanism,,,unverified,high,,,glycocalyx/v3#2.2
+2.2-sepsis-shedding-30min,2.2,敗血症中糖萼可於 30 分鐘內大量脫落。,mechanism,,,unsupported,high,2026-07-29,三次不同措辭檢索，未見任何文獻報告敗血症中糖萼於 30 分鐘內大量脫落。敗血症模型的實測時序相反：PMID:29058634（animal，小鼠 LPS 20 mg/kg）血漿 syndecan-1 於 12 小時 7.8 ± 0.9 ng/ml、24 小時 14.4 ± 2.0 ng/ml、48 小時回基線，最早取樣點為 12 小時；綜述另引小鼠 LPS 模型 syndecan-1 於 6 小時起升、約 24 小時達峰。〔推論〕「分鐘級脫落」的實測全部出自缺血再灌流而非敗血症：PMID:17923576（human_obs，人類大血管手術合併循環停止，早期再灌流 0-15 分鐘內 syndecan-1 升 42 倍、heparan sulfate 升 10 倍）、PMID:21890663（animal，天竺鼠離體心臟，缺氧灌流一開始即見 syndecan-1 與 HS 釋出）。依 queries.md §1.5，敗血症與缺血再灌流是已知的交錯領域。〔推論〕「30 分鐘」這個數字本身在敗血症文獻中確實存在，但指的是**修復**而非脫落：LPS 小鼠經靜脈輸注預組裝糖萼脂質體奈米載體後 30 分鐘內糖萼恢復。過程方向相反。evidence 留空的理由：上列四筆均為高度相關但不對位——PMID:29058634 最早取樣為 12 小時，無法排除 30 分鐘的短暫脫落，不足以作為反駁 token；兩筆缺血再灌流文獻反駁的是歸屬而非現象本身,glycocalyx/v3#2.2
 2.3.1-cs-10-40pct,2.3.1,硫酸軟骨素約佔 GAG 總量的 10-40%，主要提供結構剛性。,definition,,,unverified,med,,衝突：見 2.3.1-hs-50-90pct,glycocalyx/v3#2.3.1;intake/2026-07-28-糖萼層生理#L30
 2.3.1-ha-fragmentation-disease,2.3.1,透明質酸碎片化與老化、發炎及 HFpEF 密切相關。,epidemiology,,,unverified,med,,,glycocalyx/v3#2.3.1
 2.3.1-ha-viscoelastic,2.3.1,透明質酸以非共價方式穿插於糖萼中，吸附水分以維持黏彈性與立體結構。,mechanism,,,unverified,med,,,glycocalyx/v3#2.3.1;intake/2026-07-28-糖萼層生理#L32

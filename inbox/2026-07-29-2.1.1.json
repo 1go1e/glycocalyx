@@ -1,0 +1,130 @@
+{
+  "run_date": "2026-07-29",
+  "section": "2.1.1",
+  "claims": [
+    "2.1.1-extreme-11um-brain-kidney",
+    "2.1.1-glomerular-4-11um"
+  ],
+  "tooling": "web_search / web_fetch（本 session 唯一可用的檢索管道；Europe PMC 與 PubMed 的 API 網域不在容器允許清單內，改以網頁檢索命中期刊或 PubMed 頁面後取結構化欄位）",
+  "note_on_completeness": "以下為各次檢索實際回傳的紀錄。識別碼一律取自回傳頁面的結構化欄位（PubMed URL 路徑的 PMID、期刊頁 meta-citation_doi），未憑記憶寫出。",
+  "searches": [
+    {
+      "n": 1,
+      "query": "glomerular endothelial glycocalyx thickness micrometers measurement electron microscopy",
+      "returned": [
+        {
+          "pmid": "17942961",
+          "source": "pubmed.ncbi.nlm.nih.gov/17942961/",
+          "title": "Glomerular endothelial glycocalyx constitutes a barrier to protein permeability",
+          "key_text": "條件性永生化腎絲球內皮細胞（ciGEnC）電子顯微鏡顯示質膜上約 200 nm 厚糖萼；共軛焦顯微鏡亦然。神經胺酸酶處理移除多數糖萼，跨內皮電阻降 59%，白蛋白通量增 207%",
+          "sample": "human ciGEnC, in vitro",
+          "used_as": "refuting token（2.1.1-glomerular-4-11um）"
+        },
+        {
+          "pmid": "26608651",
+          "source": "pubmed.ncbi.nlm.nih.gov/26608651/",
+          "title": "Visualization of the glomerular endothelial glycocalyx by electron microscopy using cationic colloidal thorium dioxide",
+          "key_text": "cThO2 在小鼠腎絲球內皮結合出連續層，週期性密度間距 50-200 nm 隨層厚變動；層厚自 50 nm 以下至 300 nm",
+          "sample": "mouse glomerulus, perfused",
+          "used_as": "primary refuting token（2.1.1-glomerular-4-11um）"
+        },
+        {
+          "pmc": "PMC8139922",
+          "source": "pmc.ncbi.nlm.nih.gov/articles/PMC8139922/",
+          "title": "Three-dimensional electron microscopy for endothelial glycocalyx observation using Alcian blue with silver enhancement",
+          "key_text": "比較腎絲球微血管、腎小管周圍微血管、小動脈、小靜脈的糖萼厚度；引述 Luft 橫膈微血管 20 nm、van den Berg 心肌微血管 200-500 nm、Yang 附睪與腸繫膜 800 nm",
+          "used_as": "未採用（本次未取得 PMID，且數值為引述他人，違反 queries §1.6）"
+        },
+        {
+          "pmc": "PMC10184622",
+          "source": "pmc.ncbi.nlm.nih.gov/articles/PMC10184622/",
+          "title": "The dynamics of the endothelial glycocalyx: a rare snapshot by electron microscopy",
+          "key_text": "小鼠腎臟大血管糖萼束平均約 250 nm；微血管中連續層可達 800 nm，血球通過時被壓縮、通過後再膨脹",
+          "used_as": "見檢索 2，於該次取得 PMID"
+        },
+        {
+          "pmid": "21474821",
+          "source": "pubmed.ncbi.nlm.nih.gov/21474821/",
+          "title": "Imaging the endothelial glycocalyx in vitro by rapid freezing/freeze substitution transmission electron microscopy",
+          "key_text": "傳統固定 BAEC 糖萼約 0.040 μm；RF/FS-TEM 測得 BAEC 約 11 μm、大鼠脂肪墊內皮約 5 μm。PubMed 頁面同時列出評論 An 11-μm-thick glycocalyx?: it's all in the technique!（PMID:21775768）",
+          "used_as": "既有 evidence，確認 2026-07-27 判定"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "query": "two-photon laser scanning microscopy glycocalyx thickness 4.5 μm mouse carotid artery",
+      "returned": [
+        {
+          "source": "ahajournals.org/doi/10.1161/atvbaha.111.225268",
+          "title": "Ebong 2011 全文（同 PMID:21474821）",
+          "key_text": "RFPEC 糖萼 5.83 ± 1.13 μm（範圍 3.6-6.7 μm）。作者稱此值與 Megens 等人的活體研究及 van den Berg 等人的離體研究一致，該兩者以雙光子與共軛焦顯微鏡在小鼠頸動脈測得 4.5 μm",
+          "used_as": "追溯 4 μm 下限的來源"
+        },
+        {
+          "pmid": "17192719",
+          "source": "pubmed.ncbi.nlm.nih.gov/17192719/",
+          "title": "Two-photon microscopy of vital murine elastic and muscular arteries. Combined structural and functional imaging with subcellular resolution",
+          "sample": "mouse carotid / uterine / mesenteric artery",
+          "used_as": "note（4 μm 下限的推定出處）"
+        },
+        {
+          "pmid": "21273784",
+          "source": "pubmed.ncbi.nlm.nih.gov/21273784/",
+          "title": "Endothelial glycocalyx structure in the intact carotid artery: a two-photon laser scanning microscopy study",
+          "key_text": "C57Bl6/J 小鼠總頸動脈糖萼厚度 2.3 ± 0.1 μm；外頸動脈 2.5 ± 0.1 μm；內頸動脈無糖萼覆蓋面積 27.4 ± 5.5%",
+          "used_as": "背景（頸動脈量級參考，非腎絲球）"
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "query": "\"glycocalyx\" brain microvessel thickness \"11 μm\" OR \"11 microns\" kidney glomerular",
+      "returned": [
+        {
+          "doi": "10.1371/journal.pone.0161610",
+          "source": "journals.plos.org/plosone/article?id=10.1371/journal.pone.0161610",
+          "title": "Transport of Gold Nanoparticles by Vascular Endothelium from Different Human Tissues",
+          "key_text": "研究對象為人腦內皮 hCMEC/D3 與人腎絲球內皮 ciGENC 的金奈米粒子攝取。討論糖萼角色時寫其可自 0.5 μm 延伸至 11 μm，引用文獻 35-38：Ebong 2011（PMID:21474821）、van den Berg 2003（PMID:12637366）、van Haaren 2003（PMID:12907418）、Yuan 與 Rigor 教科書章節。全文未量測任何厚度數值",
+          "used_as": "note（漂移來源的推定）",
+          "fetch": "web_fetch 全文，meta-citation_doi 取得識別碼；該頁未列 PMID"
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "query": "Ando 2018 Scientific Reports brain heart lung capillary glycocalyx thickness lanthanum nitrate TEM mice",
+      "returned": [
+        {
+          "pmid": "30504908",
+          "source": "pubmed.ncbi.nlm.nih.gov/30504908/",
+          "title": "Brain-Specific Ultrastructure of Capillary Endothelial Glycocalyx and Its Possible Contribution for Blood Brain Barrier",
+          "key_text": "C57BL6 小鼠以含鑭鹼性固定液處理。腦微血管內腔糖萼覆蓋面積 40.1 ± 4.5%，顯著高於心 15.1 ± 3.7% 與肺 3.7 ± 0.3%",
+          "used_as": "refuting token（2.1.1-extreme-11um-brain-kidney）；與 ledger 既有識別碼一致"
+        },
+        {
+          "doi": "10.1038/s41586-025-08589-9",
+          "source": "nature.com/articles/s41586-025-08589-9",
+          "title": "Glycocalyx dysregulation impairs blood-brain barrier in ageing and disease",
+          "key_text": "硝酸鑭 TEM，小鼠腦皮質微血管糖萼平均厚度 3 月齡 0.540 ± 0.086 μm、21 月齡 0.232 ± 0.092 μm",
+          "used_as": "背景；已記於 2.2-brain-mouse-0.54-0.23，本批未重複列入 evidence。PMID 仍未取得（STATUS §5 待辦）"
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "query": "\"dynamics of the endothelial glycocalyx\" \"rare snapshot by electron microscopy\" Angiogenesis 2023 PMID kidney",
+      "returned": [
+        {
+          "pmid": "37184739",
+          "doi": "10.1007/s10456-023-09880-x",
+          "source": "pubmed.ncbi.nlm.nih.gov/37184739/",
+          "title": "The dynamics of the endothelial glycocalyx: a rare snapshot by electron microscopy",
+          "citation": "Angiogenesis. 2023 Nov;26(4):487-491",
+          "key_text": "小鼠腎臟大血管糖萼束平均約 250 nm；微血管中連續層可達 800 nm",
+          "used_as": "refuting token（兩列皆列入）"
+        }
+      ]
+    }
+  ]
+}

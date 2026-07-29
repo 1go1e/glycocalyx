@@ -1,0 +1,88 @@
+{
+  "run_date": "2026-07-29",
+  "section": "2.2-B1",
+  "claims": [
+    "2.2-glomerular-hs-charge",
+    "2.2-liver-porous-physiological"
+  ],
+  "tooling": "web_search / web_fetch（同 2026-07-29-2.1.1.json；識別碼取自回傳頁面結構化欄位）",
+  "searches": [
+    {
+      "n": 1,
+      "query": "Okada 2017 Critical Care glycocalyx ultrastructure continuous fenestrated sinusoidal capillaries heart kidney liver mice lanthanum",
+      "returned": [
+        {
+          "pmid": "29058634",
+          "doi": "10.1186/s13054-017-1841-8",
+          "source": "pubmed.ncbi.nlm.nih.gov/29058634/",
+          "citation": "Crit Care. 2017;21:261",
+          "title": "Three-dimensional ultrastructure of capillary endothelial glycocalyx under normal and experimental endotoxemic conditions",
+          "used_as": "primary support（兩列）",
+          "fetch": "web_fetch 全文，meta-citation_doi 取得 DOI"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "query": "web_fetch 全文 ccforum.biomedcentral.com/articles/10.1186/s13054-017-1841-8",
+      "extracted": {
+        "method": "10 週齡雄性小鼠，2% glutaraldehyde + 2% sucrose + 0.1 M sodium cacodylate (pH 7.3) + 2% 硝酸鑭，經左心室灌流 1 ml/min；SEM 用冷凍斷裂法，TEM 切片 90 nm",
+        "glycocalyx_area_pct": {
+          "heart_continuous": "13.6 ± 2.0%",
+          "kidney_glomerular_fenestrated": "16.7 ± 1.8%",
+          "liver_sinusoid": "3.7 ± 0.3%"
+        },
+        "sinusoid": "糖萼高度低於連續型與開窗型；不覆蓋開放開窗；同時存在於面向 Disse 腔的一側",
+        "glomerulus": "糖萼使開窗接近閉塞；並覆蓋足細胞表面",
+        "lps_model": "LPS 20 mg/kg 腹腔注射；48 小時存活 8/50 (16%)",
+        "syndecan1_timecourse": "12 h 7.8 ± 0.9 ng/ml；24 h 14.4 ± 2.0 ng/ml；48 h 回到基線。最早取樣點為 12 h",
+        "endothelial_wall_thickness": "sham 101.4 ± 10.1 nm vs LPS 285.4 ± 37.7 nm（此為內皮壁厚度，非糖萼厚度）",
+        "cited_not_measured": [
+          "肝竇內皮表現玻尿酸攝取受體、主動移除 HA 因而無法形成有效糖萼（引 Woodcock 2012 綜述）",
+          "GAG 負電荷使白蛋白遠離管壁（引 Yuan 與 Rigor 教科書）",
+          "腎絲球開窗解剖上達 65 nm，因糖萼存在有效孔徑僅約 15 nm（引綜述）"
+        ],
+        "limitations_stated": "鑭亦結合鈣結合位點，染色非糖萼專一；鑭染色本身可能影響糖萼結構；電鏡視野極小，量化精度有限"
+      }
+    },
+    {
+      "n": 3,
+      "query": "syndecan-1 turnover half-life endothelial cell surface hours shedding kinetics",
+      "result": "無命中。未見任何文獻給出 syndecan-1 的 2-8 小時半衰期",
+      "used_as": "記入 queries.md §4"
+    },
+    {
+      "n": 4,
+      "query": "endothelial glycocalyx \"half-life\" syndecan-1 \"hours\" turnover \"2\" \"8\" heparan sulfate proteoglycan recycling",
+      "result": "無命中（同上）。依 queries.md §1.4 需三次不同措辭方可判 unsupported，本批未達，留 B2",
+      "used_as": "記入 queries.md §4"
+    },
+    {
+      "n": 5,
+      "query": "glomerular endothelial glycocalyx heparan sulfate charge selectivity albumin permeability heparinase in vivo",
+      "returned": [
+        {
+          "pmid": "17942961",
+          "source": "pubmed.ncbi.nlm.nih.gov/17942961/",
+          "citation": "J Am Soc Nephrol. 2007;18:2885-2893",
+          "title": "Glomerular endothelial glycocalyx constitutes a barrier to protein permeability",
+          "key_text": "人類條件性永生化腎絲球內皮細胞 ciGEnC，體外。糖萼約 200 nm。神經胺酸酶：跨內皮電阻降 59%、白蛋白通量增 207%。Heparinase III 與 human heparanase 專一切除 HS：跨內皮電阻無變化、白蛋白通過分別增 40% 與 39%",
+          "used_as": "support（屏障功能）兼 refute（電荷歸給 HS）"
+        },
+        {
+          "doi": "10.1152/ajprenal.00126.2019",
+          "source": "journals.physiology.org/doi/full/10.1152/ajprenal.00126.2019",
+          "title": "Glomerular permeability is not affected by heparan sulfate glycosaminoglycan deficiency in zebrafish embryos",
+          "key_text": "斑馬魚胚胎全身 HS-GAG 缺失，腎絲球過濾大致完好；文中並指出足細胞專一性 HS-GAG 剔除未造成蛋白尿",
+          "used_as": "refuting token",
+          "note": "本次未取得 PMID，識別碼取自回傳 URL 路徑中的 DOI"
+        },
+        {
+          "pmc": "PMC10267401",
+          "title": "Glomerular endothelial glycocalyx-derived heparan sulfate inhibits glomerular leukocyte influx and attenuates experimental glomerulonephritis",
+          "used_as": "未採用；主題為 HS 抑制白血球浸潤，非電荷選擇性"
+        }
+      ]
+    }
+  ]
+}

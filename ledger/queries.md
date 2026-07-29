@@ -89,6 +89,26 @@ COVID 內皮病變 vs 一般敗血症、老化 vs 神經退化。
 轉述者把兩者接起來就成了「該器官可達該數值」。
 凡遇到一個極端值被安在特定器官上而查無實測，先找這種論文，通常一次就中。
 
+### 1.8 查機制歸屬時，查「切掉什麼、結果如何」，不要查機制名稱
+
+查「電荷選擇性」「屏障功能」這類**機制名稱**只會拿到綜述。
+要證否一個機制歸屬，檢索目標是**有酵素對照組的原始實驗**——
+把酵素名（`heparinase`、`neuraminidase`、`hyaluronidase`、`chondroitinase`）放進查詢。
+
+有效範例（2026-07-29 B1 批次）：
+
+```
+glomerular endothelial glycocalyx heparan sulfate charge selectivity albumin permeability heparinase in vivo
+```
+
+命中 `PMID:17942961`。該文同時做了神經胺酸酶（切唾液酸）與 heparinase III／human heparanase
+（切 HS）兩組：前者使跨內皮電阻降 59%、白蛋白通量增 207%，後者對電阻無影響、
+白蛋白通過僅增 40% 與 39%。
+
+〔推論〕正是那組對照推翻了「電荷選擇性由 HS 承擔」。
+若只查機制名稱，拿到的綜述會照著原 statement 的說法複述一遍，反而像是驗證成功。
+**歸屬錯誤不只發生在器官上，也發生在分子上**（STATUS §3.6 的分子版）。
+
 ---
 
 ## 2. 分類檢索式
@@ -166,7 +186,17 @@ Ando 2018 的三個血管床數值全在 Results 正文，摘要只有覆蓋率�
 
 ## 4. 失效或無效的檢索式
 
-（目前無條目。查過但無果的檢索式應記在此，避免下一批重複嘗試。）
+**syndecan-1 半衰期**（2026-07-29 B1 批次，兩式均無果）：
+
+```
+syndecan-1 turnover half-life endothelial cell surface hours shedding kinetics
+endothelial glycocalyx "half-life" syndecan-1 "hours" turnover "2" "8" heparan sulfate proteoglycan recycling
+```
+
+兩式都拿到 syndecan-1 的**脫落機制**與**臨床濃度時序**文獻，
+但沒有任何一篇給出細胞表面 syndecan-1 的半衰期數值。
+B2 批次處理 `2.2-sdc1-halflife-2-8h` 時不必重試這兩式，改換角度
+（例：放射標記脈衝追蹤、`pulse-chase`、`metabolic labeling`）。
 
 ## 5. 檢索管道的環境限制
 

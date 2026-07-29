@@ -1,0 +1,209 @@
+{
+  "run_date": "2026-07-29",
+  "section": "2.2-B2b",
+  "claims": [
+    "2.2-repair-7-14d",
+    "2.2-sdc1-halflife-2-8h",
+    "2.2-pathological-50-90pct"
+  ],
+  "tooling": "web_search（同前三批）。容器網路允許清單不含 eu-europepmc.org / ncbi.nlm.nih.gov，識別碼取自回傳結果的 PubMed URL 路徑，見 queries.md §5",
+  "searches": [
+    {
+      "n": 1,
+      "target": "2.2-repair-7-14d",
+      "query": "endothelial glycocalyx recovery after enzymatic degradation heparinase regeneration time course days",
+      "returned": [
+        {
+          "pmid": "19443840",
+          "source": "pubmed.ncbi.nlm.nih.gov/19443840/",
+          "citation": "Circ Res. 2009 Jun 5;104(11):1318-25. doi:10.1161/CIRCRESAHA.108.191585",
+          "title": "The recovery time course of the endothelial cell glycocalyx in vivo and its implications in vitro",
+          "extracted": "小鼠提睪肌小靜脈，fluorescent micro-PIV，於酵素或細胞激素誘導降解後第 1、3、5、7 天量測流體力學相關厚度。未處理對照組平均厚度 0.52±0.27 μm。結論：急性降解後需 5-7 天內源性回復至原生厚度。酵素為 100 U hyaluronidase 或 1 U heparinase III，細胞激素為 0.2 μg TNF-α。另：HUVEC 培養 7 天後仍無流體力學相關糖萼",
+          "use": "primary reference，填入 evidence"
+        },
+        {
+          "doi": "10.1371/journal.pone.0186116",
+          "source": "journals.plos.org",
+          "title": "Regeneration of glycocalyx by heparan sulfate and sphingosine 1-phosphate restores inter-endothelial communication",
+          "extracted": "RFPEC 經 heparinase III 25 μIU/ml 處理 2 h 後，自體回復實驗給予 24 h；所依據的是 EC 表面 HS 回復所需的 20 小時",
+          "use": "體外時間尺度定錨，未填 evidence"
+        },
+        {
+          "pmid": "28167639",
+          "source": "pubmed.ncbi.nlm.nih.gov/28167639/",
+          "title": "Therapeutic Restoration of Endothelial Glycocalyx in Sepsis",
+          "extracted": "Sulodexide 加速 EG 再生；AFM 測 GAG 移除後 2-12 h 的回復",
+          "use": "外源補充路徑，不對位"
+        },
+        {
+          "pmc": "PMC8476805",
+          "source": "ncbi.nlm.nih.gov/pmc/articles/PMC8476805/",
+          "title": "Time-Dependent Dynamics Required for the Degradation and Restoration of the Vascular Endothelial Glycocalyx Layer in Lipopolysaccharide-Treated Septic Mice",
+          "extracted": "綜整既有回復時間：Giantsos-Adams 報告體外剪應力下 12 h 回復；Potter 報告 5-7 天；Yang 等報告肺 ESL 於敗血症誘導後 48 h 起重建、72 h 近原厚度（FGFR1/EXT1 訊號依賴）",
+          "use": "三種修復型別的時間尺度來源，僅取得 PMC 編號，未填 evidence"
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "target": "2.2-repair-7-14d",
+      "query": "glycocalyx \"complete\" reconstitution \"7 to 14 days\" OR \"7-14 days\" endothelial regeneration",
+      "returned": [
+        {
+          "pmid": "19443840",
+          "note": "重複命中，內容同上"
+        },
+        {
+          "doi": "10.3389/fcvm.2022.897087",
+          "source": "frontiersin.org",
+          "title": "The Endothelial Glycocalyx: A Possible Therapeutic Target in Cardiovascular Disorders",
+          "extracted": "綜述陳述：活體實驗顯示酵素消化後 7 天足以重建糖萼層；並指出重建後組成是否與原本相同尚未被研究",
+          "use": "敘述性綜述，依 SCHEMA §5 不足以單獨支持，且僅覆述 Potter，未填 evidence"
+        },
+        {
+          "pmc": "PMC5710929",
+          "title": "Sulodexide recovers endothelial function through reconstructing glycocalyx in the balloon-injury rat carotid artery model",
+          "extracted": "大鼠頸動脈氣球損傷模型，術後連續七天給藥後 EM 可見糖萼重建",
+          "use": "外源補充路徑；且屬藥物給藥時程，依 CLAUDE.md 第 6 條不建 claim"
+        }
+      ],
+      "result": "未找到任何 7-14 天的重建時程陳述"
+    },
+    {
+      "n": 3,
+      "target": "2.2-repair-7-14d",
+      "query": "endothelial glycocalyx turnover syndecan-1 recovery weeks after cardiac surgery clinical time course restoration",
+      "returned": [
+        {
+          "pmid": "33999952",
+          "title": "Endothelial glycocalyx during early reperfusion in patients undergoing cardiac surgery",
+          "extracted": "主動脈鬆夾後一分鐘動脈 syndecan-1 升 18%、heparan sulfate 降 14%；再灌流 5 與 10 分鐘出現跨冠狀動脈滯留。作者推測反映內源性修復",
+          "use": "分鐘級，屬缺血再灌流情境，不對位"
+        },
+        {
+          "pmc": "PMC3061712",
+          "title": "Endothelial glycocalyx disruption after cardiac surgery in infants",
+          "extracted": "體外循環後 syndecan-1 於停機時達峰（中位 144 ng/ml，為基線六倍），48 小時回到基線",
+          "use": "小時級，且量的是血漿標記非厚度，不對位"
+        }
+      ],
+      "result": "臨床情境未見 7-14 天的重建時程；最長者為體外循環後 48 h 回基線與術後三天微循環未回復"
+    },
+    {
+      "n": 4,
+      "target": "2.2-sdc1-halflife-2-8h",
+      "query": "syndecan-1 core protein turnover pulse-chase metabolic labeling half-life cell surface proteoglycan hours",
+      "returned": [],
+      "result": "無效。方法學詞彙權重蓋過分子名，回傳全為 pulse-chase 通用方法論（PMID:24423267 等）與無關蛋白質半衰期。記入 queries.md §4"
+    },
+    {
+      "n": 5,
+      "target": "2.2-sdc1-halflife-2-8h",
+      "query": "\"syndecan-1\" \"half-life\" cell surface turnover hours shedding ectodomain endothelial kinetics",
+      "returned": [
+        {
+          "source": "rupress.org/jcb/article/148/4/811",
+          "title": "Shedding of Syndecan-1 and -4 Ectodomains Is Regulated by Multiple Signaling Pathways and Mediated by a Timp-3-Sensitive Metalloproteinase",
+          "extracted": "所有受試培養細胞皆有構成型 syndecan 外域脫落，屬正常周轉；以 14 小時試驗比較構成型與加速型脫落。未給出半衰期數值"
+        },
+        {
+          "pmid": "16087677",
+          "title": "Plasmin- and thrombin-accelerated shedding of syndecan-4 ectodomain",
+          "extracted": "HUVEC 構成型表現 syndecan-1、-2、-3、-4，以免疫分析測外域暴露與構成型脫落；plasmin 與 thrombin 加速之。未給出半衰期數值"
+        },
+        {
+          "pmc": "PMC2546870",
+          "title": "Constitutive- and accelerated shedding of murine syndecan-1 is mediated by cleavage of its core protein at a specific juxtamembrane site",
+          "extracted": "外域構成型脫落，可被生長因子受體活化加速。未給出半衰期數值"
+        }
+      ],
+      "result": "命中大量 syndecan-1 脫落機制文獻，無一給出細胞表面 syndecan-1 的半衰期"
+    },
+    {
+      "n": 6,
+      "target": "2.2-sdc1-halflife-2-8h",
+      "query": "cell surface heparan sulfate proteoglycan turnover half-life 3-8 hours Yanagishita Hascall granulosa cells internalization degradation",
+      "returned": [
+        {
+          "pmid": "1533636",
+          "source": "pubmed.ncbi.nlm.nih.gov/1533636/",
+          "citation": "J Biol Chem. 1992 May 15;267(14):9505-11",
+          "title": "Glycosylphosphatidylinositol-anchored and core protein-intercalated heparan sulfate proteoglycans in rat ovarian granulosa cells have distinct secretory, endocytotic, and intracellular degradative pathways",
+          "extracted": "大鼠卵巢顆粒細胞，[35S]sulfate 代謝標記。兩種 HSPG 自 Golgi 至細胞表面平均轉運 12 min。GPI 錨定型內吞 t½ 約 3 h、不脫落、降解 t½ 約 25 min。蛋白嵌入型約 30% 脫落入培養基、約 70% 內吞 t½ 約 4 h，續以 t½ 約 4 h 逐步降解",
+          "use": "寫入 note，非 evidence（不同分子、不同細胞）"
+        },
+        {
+          "pmid": "11755208",
+          "source": "pubmed.ncbi.nlm.nih.gov/11755208/",
+          "title": "Internalization and stepwise degradation of heparan sulfate proteoglycans in rat hepatocytes",
+          "extracted": "大鼠肝細胞，[35S]sulfate 與 [3H]glucosamine 標記脈衝追蹤。完整膜錨定 HSPG 在細胞表面與非降解區室滯留 T½ 約 2-3 h",
+          "use": "寫入 note，非 evidence"
+        },
+        {
+          "source": "link.springer.com/chapter/10.1007/978-1-4899-2444-5_13",
+          "extracted": "綜述引述：新合成 HSPG 自細胞表面內化並代謝，大鼠卵巢顆粒細胞半時 4 至 6 h（Yanagishita & Hascall 1984）；人類結腸癌細胞逾 28 h（Iozzo 1987）",
+          "use": "引述，依 queries.md §1.6 不代替原文，未取得識別碼"
+        },
+        {
+          "source": "sciencedirect.com/science/article/pii/S0021925819757238",
+          "title": "Turnover of heparan sulfate proteoglycan in human colon carcinoma cells",
+          "extracted": "約 55% 釋入培養基 t½ 約 2.5 h，其餘 45% 內化後逐步降解",
+          "use": "未取得識別碼"
+        }
+      ],
+      "result": "找出 2-8 小時的真正歸屬：細胞表面 HSPG 類別的周轉，量測對象皆非內皮、非 syndecan-1"
+    },
+    {
+      "n": 7,
+      "target": "2.2-pathological-50-90pct",
+      "query": "endothelial glycocalyx thickness reduction percentage diabetes patients measured decreased compared healthy controls sublingual",
+      "returned": [
+        {
+          "pmid": "16567538",
+          "source": "pubmed.ncbi.nlm.nih.gov/16567538/",
+          "citation": "Diabetes. 2006 Apr;55(4):1127-32",
+          "title": "Endothelial glycocalyx damage coincides with microalbuminuria in type 1 diabetes",
+          "extracted": "第一型糖尿病併微量白蛋白尿 n=7、無微量白蛋白尿 n=7、年齡配對對照 n=7。全身糖萼體積以可穿透示蹤劑 dextran 40 對比不可穿透的標記紅血球測得，三組依序 1.5±0.1、0.8±0.4、0.2±0.1 L（p<0.05）。舌下微血管糖萼以正交偏振光譜顯微測得，糖尿病 0.5±0.1 vs 對照 0.9±0.1 μm（p<0.05）。血漿 hyaluronan 與 hyaluronidase 升高",
+          "use": "primary reference，填入 evidence。厚度降幅約 44%、體積降幅約 87%"
+        },
+        {
+          "doi": "10.1007/s00125-010-1910-x",
+          "title": "Effect of sulodexide on endothelial glycocalyx and vascular permeability in patients with type 2 diabetes mellitus",
+          "extracted": "第二型糖尿病舌下 0.64 vs 0.78 μm、視網膜 5.38 vs 8.89 μm，均較對照為低",
+          "use": "降幅約 18% 與 39%，未填 evidence"
+        },
+        {
+          "pmc": "PMC10125029",
+          "title": "Endothelial glycocalyx in retina, hyperglycemia, and diabetic retinopathy",
+          "extracted": "綜述：高血糖下核心蛋白表現多半不變，主要是 GAG 鏈尤其 HS 的損失",
+          "use": "與 syndecan-1 半衰期條互為旁證"
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "target": "2.2-pathological-50-90pct",
+      "query": "glycocalyx thickness \"reduced by\" \"50\" \"90\" percent pathological conditions sepsis diabetes ischemia quantitative loss",
+      "returned": [
+        {
+          "pmc": "PMC6337861",
+          "title": "The glycocalyx: a novel diagnostic and therapeutic target in sepsis",
+          "extracted": "引述 Wiesinger 等：LPS 靜脈注射小鼠主動脈糖萼厚度 0.27±0.012 → 0.14±0.017 μm；HUVEC 經 TNF-α 或 LPS 處理厚度減 50%。引述 Nieuwdorp 等：13 名健康志願者低劑量內毒素後舌下糖萼厚度 0.60±0.1 → 0.30±0.1 μm",
+          "use": "引述，依 queries.md §1.6 不代替原文，未填 evidence"
+        },
+        {
+          "pmc": "PMC3835794",
+          "title": "Nanomechanics of the Endothelial Glycocalyx in Experimental Sepsis",
+          "extracted": "AFM 奈米壓痕。敗血症小鼠主動脈厚度 266±12 → 137±17 nm、勁度 0.34±0.03 → 0.21±0.01 pN/nm。體外 HPMEC 經 thrombin、LPS 或 TNF-α 處理厚度減 50%、勁度減 20%",
+          "use": "僅取得 PMC 編號，未取得 PMID，未填 evidence"
+        }
+      ],
+      "result": "厚度降幅集中於 44-50%，無任何一筆接近 90%"
+    }
+  ],
+  "notes": [
+    "STATUS §4 指定的前置動作（確認 7-14 天屬何種修復）已於檢索 1 完成，結論寫入報告 §1",
+    "檢索 4 為無效式，已記入 queries.md §4",
+    "本批發現 2.2-pathological-50-90pct 的 source_ref 第二 token 疑為 2026-07-28 機械回填誤配，未自行修改，列為待決"
+  ]
+}

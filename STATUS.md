@@ -13,11 +13,11 @@ schema_version: 5
 ## 1. 帳本狀態
 
 ```
-unverified  102
-partial       6
+unverified  100
+partial       7
 unsupported   7
 verified      5
-contested     1
+contested     2
 ──────────────
 總計        121
 ```
@@ -38,11 +38,11 @@ Import-Csv ledger/claims.csv | Where-Object priority -eq 'high' |
 
 ```
 high   已判定 14 / 60  = 23%
-med    已判定  4 / 53  =  8%
+med    已判定  6 / 53  = 11%
 low    已判定  1 /  8  = 12%
 ```
 
-有 `evidence` 的列共 14 條，去重識別碼 18 個（15 個 PMID、3 個 DOI）。
+有 `evidence` 的列共 16 條，去重識別碼 21 個（17 個 PMID、4 個 DOI）。
 
 `source_ref` 主要出處：`glycocalyx/v3` 97 列、`intake/2026-07-28-糖萼層生理` 24 列。
 另有 53 列同時標示兩處。
@@ -60,6 +60,7 @@ low    已判定  1 /  8  = 12%
 | 2026-07-28 | v3 §2.1.1／§2.2 標註（無檢索） | 4 處 | `reports/revisions/2026-07-27-source-2.1.1-thickness.md` |
 | 2026-07-28 | 2.2 腦部與肺部血管床 | 5 | `reports/backfill/2026-07-28-2.2-brain-lung.md` |
 | 2026-07-29 | 2.1.1 十一微米歸屬群 | 2 | `reports/backfill/2026-07-29-2.1.1.md` |
+| 2026-07-29 | 2.2-B1 血管床型別機制 | 2 | `reports/backfill/2026-07-29-2.2-b1.md` |
 
 **`2026-07-26-5.1.md` 是判定標準的基準範本。** 任何新加入的執行者（人或 agent）
 應先讀它，再開始工作——它示範了判定的細膩度、note 的寫法，
@@ -220,22 +221,64 @@ Get-ChildItem -Recurse -Include *.md,*.csv | Select-String "舊路徑"
 
 ---
 
+### 3.11 一列多宣稱時，tier 必然誤導
+
+新增於 2026-07-29（來源：`reports/backfill/2026-07-29-2.2-b1.md`）。
+
+`2.2-glomerular-hs-charge` 的 statement 含三個可獨立證偽的宣稱，判定結果各不相同：
+「極厚」被反駁、「富含 HS」未見反駁、「電荷選擇性由 HS 承擔」被同一篇支持文獻的
+對照組推翻。三者共用一個 `tier` 欄。
+
+該列 `tier=animal`，但那個 animal token 只支持結構覆蓋，不涉及電荷機制；
+電荷機制唯一的證據是 in_vitro，而且是反面的。
+
+**通則**：SCHEMA §5 已處理「反駁 token 不得抬高 tier」（v2），
+但沒有處理**同一列內不同子宣稱由不同 token 支持**。`tier` 是欄位層的單一值，
+在混合宣稱列上必然指向其中一個子宣稱，讀者無從得知是哪一個。
+
+〔推論〕這不是新增規則能解決的，正解是不讓這種列存在——
+嚴格執行 SCHEMA §6「一列一個主張」。回填時若發現既有列是混合宣稱，
+先提拆列，不要先判定。本批因判定已完成才發現，故仍寫入判定，
+但拆列提案列為待決（見 §5）。
+
+### 3.12 歸屬漂移也發生在分子層
+
+新增於 2026-07-29（同上）。
+
+§3.6 記錄的漂移是**器官**層（11 μm 從培養細胞漂到腦與腎）。
+本批發現同型錯誤發生在**分子**層：v3 §2.2 把腎絲球的電荷選擇性歸給 heparan sulfate，
+而 `PMID:17942961` 的酵素對照顯示切除 HS 對跨內皮電阻無影響，
+承擔電荷的主要是唾液酸。
+
+**通則**：「某結構藉某分子達成某功能」的三段式宣稱，中間那個分子最容易被替換成
+該領域最有名的那一個。查證時把功能與分子拆開查，檢索式見 `queries.md` §1.8。
+
+---
+
 ## 4. 下一批
 
 **`2.2` 剩餘條目**（厚度群已完成，其餘 8 條同章節，可共用脈絡）
 
+**B2 批（4 條動力學數字）**
+
 ```
-2.2-glomerular-hs-charge          ← 線索見下
-2.2-liver-porous-physiological    ← 同上
 2.2-pathological-50-90pct
 2.2-repair-7-14d
 2.2-sdc1-halflife-2-8h
 2.2-sepsis-shedding-30min
 ```
 
-〔推論〕本節現為單一 `section`，符合 `runbooks/backfill.md` §2「一批 5-8 條、限定同一 section」。
-`2.2-glomerular-hs-charge` 可直接沿用 2026-07-29 批次建立的腎絲球定錨值
-（`queries.md` §2.1），該條的爭點在「電荷選擇性」的機制證據，不在厚度。
+四條全部是時間或比例數字，共用同一種追溯模式：
+依 `queries.md` §1.4，每條需三次不同措辭的證否檢索才寫得下 `unsupported`。
+2026-07-29 B1 批次對 `2.2-sdc1-halflife-2-8h` 已試兩式均無果，
+兩式記入 `queries.md` §4，B2 不必重試，改換脈衝追蹤／代謝標記類的角度。
+
+**現成線索**：`PMID:29058634` 的 LPS 模型中，血漿 syndecan-1 於 12 小時 7.8 ng/ml、
+24 小時 14.4 ng/ml、48 小時回到基線。**最早取樣點為 12 小時，不支持 30 分鐘。**
+`2.2-sepsis-shedding-30min` 若判 unsupported，此篇可作為反駁 token。
+
+〔推論〕B1／B2 的拆分依據是檢索策略而非章節：B1 兩條靠一篇形態學論文的全文即可定案，
+B2 四條每條都要跑滿三次證否檢索。混在一批會讓後四條被前兩條的順利進度帶著放寬標準。
 
 **現成線索**：`Okada H, et al. Crit Care. 2017;21:261`（`PMID:29058634`）比較連續型（心）、
 開窗型（腎）、竇狀型（肝）三種微血管的糖萼超微結構，涵蓋前三條。
@@ -248,6 +291,8 @@ Get-ChildItem -Recurse -Include *.md,*.csv | Select-String "舊路徑"
 已完成（2026-07-29）：`2.1.1-extreme-11um-brain-kidney`（unsupported）、
 `2.1.1-glomerular-4-11um`（unsupported）。**十一微米群三條全部封閉**，
 `2.1.1` 章節無懸空條目。
+同日 B1 批完成 `2.2-liver-porous-physiological`（partial）、
+`2.2-glomerular-hs-charge`（contested）。
 
 **本批附加動作**（生理.md 收錄已於 2026-07-28 完成，本動作生效）：
 前四條在 `source/intake/2026-07-28-糖萼層生理.md` 有對應敘述，`source_ref` 已標示位置。
@@ -340,9 +385,25 @@ Get-ChildItem -Recurse -Include *.md,*.csv | Select-String "舊路徑"
 
 ### 待核准 — 原文修訂（新增）
 
-- **§2.2 兩處標註的修訂單：尚未寫。** 2026-07-28 批次判定
-  「腦微血管 1-3 μm」為 `unsupported`、「肺微血管 0.4-0.5 μm」為 `partial`，
+- **§2.2 四處標註的修訂單：尚未寫。** 2026-07-28 批次判定
+  「腦微血管 1-3 μm」為 `unsupported`、「肺微血管 0.4-0.5 μm」為 `partial`；
+  2026-07-29 B1 批次再判「腎絲球極厚」為 `contested`、「肝竇薄且多孔」為 `partial`。
   依標註政策應各加一個標記。建議與 §5.5 敏感度／特異度的修訂單合併為一份。
+
+### 待決 — 混合宣稱列的拆列程序（2026-07-29 新增）
+
+`2.2-glomerular-hs-charge` 一列含三個判定結果不同的子宣稱，違反 SCHEMA §6
+「一列一個主張」。建議拆為三列，`claim_id` 草案見
+`reports/backfill/2026-07-29-2.2-b1.md`。
+
+須人工決定的是**拆列的程序**，不是要不要拆：
+SCHEMA §3 規定 `claim_id` 永不重用、永不改名，§7 規定不得刪列。
+原列的處置應為 `status=superseded` 並在 `note` 寫明三個新 `claim_id`，
+但「拆列」這個動作在 SCHEMA 無明文，`superseded` 原本設計給「被更強證據取代」，
+語意不完全相同。
+
+〔推論〕這條決定會重複出現——混合宣稱列不會只有這一條。
+建議一次寫進 SCHEMA §6 作為通用程序，而不是逐條處理。
 
 ### 待決 — statement 的無主詞措辭（2026-07-29 新增）
 

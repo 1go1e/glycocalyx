@@ -2,7 +2,7 @@
 
 ```
 最後更新: 2026-07-29
-最後 commit: (待提交) （§1 數字所依據的 ledger commit）
+最後 commit: c339d34 （§1 數字所依據的 ledger commit）
 schema_version: 5
 ```
 

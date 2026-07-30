@@ -7,9 +7,11 @@
 - `STATUS.md` — 專案現況、下一批、待決事項。**先讀這份**，它決定本次要做什麼
 - `ledger/SCHEMA.md` — `claims.csv` 的欄位規則與寫入限制
 - `runbooks/backfill.md` — 回填作業程序（執行回填任務時）
+- `runbooks/source-editing.md` — 受追蹤原文的修改規範（標註／改寫／刪除措辭，修改 `source/` 時）
 - `source/glycocalyx/v3.md` — 主要原始文件，判定時的背景脈絡
 
 未讀過 `ledger/SCHEMA.md` 就不得修改 `ledger/claims.csv`。
+未讀過 `runbooks/source-editing.md` 就不得提出 `source/` 受追蹤檔的修訂單。
 
 ## 不可違反
 
@@ -53,7 +55,9 @@ ledger/
   SCHEMA.md        欄位規則（唯讀，變更須經 §11 提案）
   CHANGELOG.md     schema 變更紀錄
   queries.md       實測檢索式與檢索通則（經驗紀錄，非規格）
-runbooks/          作業程序
+runbooks/
+  backfill.md      回填作業程序
+  source-editing.md 受追蹤原文的修改規範（唯讀，變更須經提案）
 source/            原始文件，唯讀。依主題分子目錄
   glycocalyx/      糖萼相關
   mitochondria/    線粒體相關

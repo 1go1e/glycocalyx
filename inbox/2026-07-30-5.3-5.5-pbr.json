@@ -1,0 +1,48 @@
+{
+  "batch": "2026-07-30-5.3-5.5-pbr",
+  "claims": ["5.3-pbr-precedes-cognitive-2-3y", "5.5-pbr-sdc1-correlation"],
+  "run_date": "2026-07-30",
+  "channel": "對話介面網頁檢索（見 queries.md §5 的環境限制）",
+  "queries": [
+    {
+      "claim": "5.3-pbr-precedes-cognitive-2-3y",
+      "q": "perfused boundary region glycocalyx longitudinal cognitive decline years before",
+      "outcome": "無對位命中。回傳的 PBR 縱向研究終點為死亡率（慢性心衰二年追蹤）、心血管事件、HIV 抗病毒治療前後，無一以認知功能為終點"
+    },
+    {
+      "claim": "5.3-pbr-precedes-cognitive-2-3y",
+      "q": "glycocalyx biomarker precedes cognitive decline dementia longitudinal study years",
+      "outcome": "命中 PMID:39494362（CSF bisecting GlcNAc，β=2.53±0.85 年／2.43±1.01 年）。量級相符但非糖萼標記、非 PBR、且 β 的定義不同"
+    },
+    {
+      "claim": "5.3-pbr-precedes-cognitive-2-3y",
+      "q": "\"perfused boundary region\" OR \"sublingual glycocalyx\" Alzheimer cognitive impairment blood-brain barrier",
+      "outcome": "回傳綜述與腦血管糖萼的手術中量測（顳葉癲癇 PBR 2.64 vs 1.31 µm）。無縱向前導時間資料"
+    },
+    {
+      "claim": "5.3-pbr-precedes-cognitive-2-3y",
+      "q": "\"glycocalyx\" \"2-3 years\" before cognitive decline early screening window Alzheimer",
+      "outcome": "精確字串未命中。再次回傳同一篇 N-醣鏈研究"
+    },
+    {
+      "claim": "5.5-pbr-sdc1-correlation",
+      "q": "perfused boundary region correlation plasma syndecan-1 sublingual glycocalyx correlation coefficient",
+      "outcome": "命中 PMID:29462714（弱相關，r=0.40）與 PMID:36523784（弱相關，PBR 與 HS/E-selectin/thrombomodulin 為中度）"
+    },
+    {
+      "claim": "5.5-pbr-sdc1-correlation",
+      "q": "PBR GlycoCheck syndecan-1 no correlation glycocalyx shedding markers sublingual imaging discordance",
+      "outcome": "命中同一份 ISICEM 增刊的敗血症摘要（n=31）：syndecan-1 與 PBR 不相關，作者自述 apparent discrepancy"
+    }
+  ],
+  "identifiers_obtained": [
+    {"id": "PMID:29462714", "from": "pubmed.ncbi.nlm.nih.gov 路徑"},
+    {"id": "PMID:36523784", "from": "pubmed.ncbi.nlm.nih.gov 路徑"},
+    {"id": "PMID:39494362", "from": "pubmed.ncbi.nlm.nih.gov 路徑"},
+    {"id": "DOI:10.1186/s13054-018-1973-5", "from": "ccforum.biomedcentral.com 文章路徑；為 ISICEM 增刊整卷 DOI，非單篇"}
+  ],
+  "verdicts": {
+    "5.3-pbr-precedes-cognitive-2-3y": "unsupported",
+    "5.5-pbr-sdc1-correlation": "partial"
+  }
+}

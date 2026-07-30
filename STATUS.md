@@ -2,7 +2,7 @@
 
 ```
 最後更新: 2026-07-30
-最後 commit: (待提交) （§1 數字所依據的 ledger commit＝本批的 ledger commit）
+最後 commit: 628b267（ledger: 六列 statement 移除承載措辭）
 schema_version: 5
 ```
 

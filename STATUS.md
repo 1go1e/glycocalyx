@@ -1023,6 +1023,33 @@ append-only 的帳本，改寫的成本與風險高於落差本身。且該落�
   成因是 `source-editing.md` 在第一次 commit 之後又被覆蓋一次，
   當時誤判為整批尚未開始而重跑了同一份訊息。兩者內容互補（後者補上 §1.1），
   diff 全為新增、零刪除
+- `f9f1f0f`（2026-07-31）的 `STATUS.md` **全檔中文為亂碼**，
+  已由 `aeea0f4` 以損毀前的內容重新寫入，兩者之間無任何內容差異。
+  若日後 `git show f9f1f0f` 看到一整檔亂碼，那不是資料遺失，是編碼事故的現場。
 
-〔推論〕兩者都不改寫歷史。commit 訊息是當時的紀錄，重寫它與 §3.8
-「歷史紀錄改了就失真」同型。
+  成因：PowerShell 5.1 的 `Get-Content -Raw` 預設以系統 ANSI（本機為 Big5）讀檔，
+  UTF-8 位元組被誤解成亂碼字串，再由 `[IO.File]::WriteAllText` **正確地**
+  編成 UTF-8 存回。當時執行的是填入檔頭 hash 的一行指令。
+
+  〔推論〕**讀寫必須成對指定編碼，只補一半比兩邊都不補更危險。**
+  兩邊都不補時 `Set-Content` 會存成 Big5，git 立刻報 diff 異常；
+  只補寫入端反而產生一個「格式完全合法、內容全毀」的檔案——
+  無 BOM ✓、無 CRLF ✓、`git status` 乾淨，三項既有驗收全部通過。
+  `(待提交)` 也因已變成亂碼而未被替換，等於連指令的本來目的都沒達成。
+
+  PowerShell 5.1 的正確寫法（讀寫成對）：
+
+  ```powershell
+  # 讀
+  [IO.File]::ReadAllText("$PWD\FILE")          # 或 Get-Content -Raw -Encoding UTF8
+  # 寫
+  [IO.File]::WriteAllText("$PWD\FILE", $text, [Text.UTF8Encoding]::new($false))
+  ```
+
+  **驗收要看中文是否可讀，不能只看 BOM 與行尾。** 檢查用 `Select-String`，
+  不要用 `Get-Content`——後者正是弄壞它的東西。
+
+〔推論〕三者都不改寫歷史。commit 訊息與當時提交的內容都是紀錄，
+重寫它與 §3.8「歷史紀錄改了就失真」同型。
+前兩條是訊息格式問題，第三條是內容全毀——保留它的價值反而更高，
+因為那是這一族失效模式唯一的實例。

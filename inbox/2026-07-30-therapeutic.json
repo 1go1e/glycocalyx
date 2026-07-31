@@ -1,0 +1,205 @@
+{
+  "run_date": "2026-07-30",
+  "batch": "therapeutic",
+  "channel": "對話介面一般網頁檢索（容器網路不含 europepmc / ncbi API，見 queries.md §5）",
+  "queries": [
+    {
+      "n": 1,
+      "claim": "4.2.3-hrt-rct-2025",
+      "q": "hormone replacement therapy endothelial glycocalyx thickness randomized trial postmenopausal",
+      "hit": "未命中主張。命中 Gimblet 2025 Physiol Rep（Endocalyx Pro 事後分析）與 Gimblet 2024 J Appl Physiol 母試驗；母試驗排除近 6 個月內使用荷爾蒙治療者"
+    },
+    {
+      "n": 2,
+      "claim": "4.2.3-hrt-rct-2025",
+      "q": "estrogen menopause endothelial glycocalyx perfused boundary region GlycoCheck women study",
+      "hit": "未命中。回傳 PBR 方法學與 IHD 相關研究"
+    },
+    {
+      "n": 3,
+      "claim": "4.2.3-hrt-rct-2025",
+      "q": "\"glycocalyx\" \"hormone replacement therapy\" OR \"estradiol\" syndecan-1 thickness restore trial 2025",
+      "hit": "未命中。取得 NCT06071728 結構化欄位與 DOI:10.14814/phy2.70428"
+    },
+    {
+      "n": 4,
+      "claim": "4.2.3-hrt-rct-2025 / 2.4-precursor-insufficient",
+      "q": "ovariectomized estrogen treatment endothelial glycocalyx heparan sulfate thickness restored mice",
+      "hit": "未命中雌激素動物實測；意外命中 DSGP 前體補充研究（PMC11687847）"
+    },
+    {
+      "n": 5,
+      "claim": "2.4-precursor-insufficient",
+      "q": "glycosaminoglycan precursor supplementation insufficient impaired sulfotransferase NDST1 heparan sulfate sulfation pattern endothelial function restore",
+      "hit": "僅回傳 Ndst1/Hs2st 基因剔除的發炎表型研究，與前體補充無關"
+    },
+    {
+      "n": 6,
+      "claim": "2.4-precursor-insufficient",
+      "q": "glycocalyx precursor supplementation glucosamine fucoidan human trial fails restore quality sulfation defect diabetes",
+      "hit": "命中 DOI:10.1152/japplphysiol.00651.2024（人體 n=22 陰性、db/db 小鼠陽性）、Gouverneur 2008 體外、Broekhuizen 2010 人體陽性"
+    },
+    {
+      "n": 7,
+      "claim": "5.4-s1p-preconditioning",
+      "q": "sphingosine-1-phosphate preconditioning glycocalyx shedding ischemia reperfusion organ transplantation protection",
+      "hit": "命中 PMID:32017300、PMID:24285115、PMID:33671524、PMID:26364737"
+    },
+    {
+      "n": 8,
+      "claim": "5.4-s1p-preconditioning",
+      "q": "\"sphingosine-1-phosphate\" isolated rat heart ischemia reperfusion glycocalyx syndecan-1 release results infarct size edema Langendorff conclusion",
+      "hit": "取得 PMID:32017300 的 Results 與 Conclusion：梗塞面積縮小但 syndecan-1 無變化，作者明言保護非由糖萼介導"
+    },
+    {
+      "n": 9,
+      "claim": "6.1-heparanase-inhibitor-target",
+      "q": "heparanase inhibitor clinical trial pixatimod roneparstat phase II results specific heparanase inhibitor approved",
+      "hit": "確認人體階段化合物全為 HS mimetic 異質性混合物，適應症皆腫瘤"
+    },
+    {
+      "n": 10,
+      "claim": "6.1-heparanase-inhibitor-target",
+      "q": "heparanase inhibitor preserves endothelial glycocalyx reduces inflammation sepsis diabetic nephropathy mouse model roneparstat",
+      "hit": "命中 OVZ/HS-1638（db/db）、CV122（LPS/CLP 敗血症小鼠）、heparastatin SF4（肺 IRI 小鼠）；全為動物"
+    },
+    {
+      "n": 11,
+      "claim": "6.1-sulodexide-mixed",
+      "q": "sulodexide glycocalyx thickness type 2 diabetes patients Broekhuizen restore trial and sulodexide diabetic nephropathy trial failed Sun-MACRO",
+      "hit": "命中 PMID:20865240 與 Sun-MACRO（後續取得 PMID:22034636）"
+    },
+    {
+      "n": 12,
+      "claim": "6.1-metabolic-reprogramming-target",
+      "q": "hexosamine biosynthetic pathway inhibition endothelial glycocalyx synthesis mitochondrial function restore glycosaminoglycan substrate",
+      "hit": "未命中主張。反向資訊：HBP 產生的 UDP-GlcNAc 是 GAG 合成原料"
+    },
+    {
+      "n": 13,
+      "claim": "6.1-microbiome-target",
+      "q": "gut microbiota modulation TMAO endotoxin reduction protects endothelial glycocalyx degradation study",
+      "hit": "未命中。TMAO 文獻終點為 eNOS/ROS/黏附分子"
+    },
+    {
+      "n": 14,
+      "claim": "6.1-microbiome-target",
+      "q": "\"TMAO\" \"glycocalyx\" endothelial shedding syndecan-1 damage experiment",
+      "hit": "未命中。回傳其他脫落情境（阻塞性黃疸、COVID、創傷、EVLP）"
+    },
+    {
+      "n": 15,
+      "claim": "6.1-microbiome-target",
+      "q": "butyrate short-chain fatty acid probiotic supplementation endothelial glycocalyx protection intervention trial",
+      "hit": "未命中。SCFA 內皮研究終點為 NO 生物可用性"
+    },
+    {
+      "n": 16,
+      "claim": "6.1-metabolic-reprogramming-target",
+      "q": "mitochondria-targeted antioxidant MitoQ endothelial glycocalyx synthesis restoration study glycocalyx thickness",
+      "hit": "命中 Tiemeier 2019（經綜述引述）；MitoQ 本身的糖萼終點研究未見"
+    },
+    {
+      "n": 17,
+      "claim": "6.1-metabolic-reprogramming-target",
+      "q": "Tiemeier 2019 mitochondrial permeability transition pore glycocalyx formation hiPSC endothelial cells pubmed",
+      "hit": "直接取得原文摘要（Stem Cell Reports 13(5):803-816）"
+    },
+    {
+      "n": 18,
+      "claim": "識別碼",
+      "q": "pubmed \"Impact of dietary supplementation of glycocalyx precursors...\"",
+      "hit": "取得 DOI:10.1152/japplphysiol.00651.2024（結構化 DOI 欄）；無 PMID 回傳"
+    },
+    {
+      "n": 19,
+      "claim": "識別碼",
+      "q": "pubmed Packham \"Sulodexide fails to demonstrate renoprotection\" J Am Soc Nephrol 2012 PMID",
+      "hit": "取得 PMID:22034636"
+    },
+    {
+      "n": 20,
+      "claim": "識別碼",
+      "q": "\"Stem Cell Reports\" 2019 Tiemeier \"glycocalyx formation and functional maturation\" doi 10.1016/j.stemcr",
+      "hit": "取得 PMID:31680061"
+    },
+    {
+      "n": 21,
+      "claim": "識別碼",
+      "q": "pubmed \"Heparanase inhibition as a systemic approach to protect the endothelial glycocalyx\" Cardiovascular Diabetology 2024 PMID",
+      "hit": "取得 PMID:38302978，勘誤 PMID:38378538"
+    }
+  ],
+  "identifiers_obtained": [
+    {
+      "id": "PMID:32017300",
+      "source_field": "pubmed.ncbi.nlm.nih.gov URL 路徑",
+      "note": "S1P 預處理對 IRI syndecan-1 無影響（反駁）"
+    },
+    {
+      "id": "PMID:24285115",
+      "source_field": "pubmed.ncbi.nlm.nih.gov URL 路徑",
+      "note": "S1P 經 S1P1 抑制 syndecan-1 脫落（體外，非 IRI）"
+    },
+    {
+      "id": "PMID:33671524",
+      "source_field": "PubMed 相似文獻引文欄",
+      "note": "腎移植 IRI 與糖萼綜述"
+    },
+    {
+      "id": "PMID:26364737",
+      "source_field": "PubMed 相似文獻引文欄",
+      "note": "S1P 誘導內皮糖萼合成，未動用"
+    },
+    {
+      "id": "PMID:20865240",
+      "source_field": "pubmed.ncbi.nlm.nih.gov URL 路徑",
+      "note": "舒洛地特 T2D 糖萼部分恢復"
+    },
+    {
+      "id": "PMID:22034636",
+      "source_field": "PubMed 引文欄（PMID: 22034636）",
+      "note": "Sun-MACRO 陰性"
+    },
+    {
+      "id": "PMID:38302978",
+      "source_field": "pubmed.ncbi.nlm.nih.gov URL 路徑",
+      "note": "OVZ/HS-1638 db/db"
+    },
+    {
+      "id": "PMID:38378538",
+      "source_field": "PubMed 引文欄",
+      "note": "上篇之勘誤"
+    },
+    {
+      "id": "PMID:31680061",
+      "source_field": "PubMed 引文欄（PMID: 31680061）",
+      "note": "Tiemeier 2019 mPTP 與糖萼"
+    },
+    {
+      "id": "DOI:10.1152/japplphysiol.00651.2024",
+      "source_field": "文章頁結構化 DOI 欄",
+      "note": "DSGP 人體 n=22 陰性"
+    },
+    {
+      "id": "DOI:10.14814/phy2.70428",
+      "source_field": "文章頁結構化 DOI 欄",
+      "note": "Gimblet 2025，HRT 條的漂移來源候選，未入 evidence"
+    },
+    {
+      "id": "NCT:NCT06071728",
+      "source_field": "clinicaltrials.gov 結構化 NCT ID 欄",
+      "note": "同上母試驗，未入 evidence"
+    }
+  ],
+  "not_obtained": [
+    {
+      "what": "Diebel 2021 雌激素保護 HUVEC 糖萼",
+      "why": "僅得自 Gimblet 2025 的引述，未直接取得，依 queries §1.6 不得據以判定"
+    },
+    {
+      "what": "CV122 敗血症小鼠、heparastatin SF4 肺 IRI 小鼠",
+      "why": "本批未取識別碼；6.1-heparanase-inhibitor-target 已有更對位的 PMID:38302978，留作日後線索"
+    }
+  ]
+}

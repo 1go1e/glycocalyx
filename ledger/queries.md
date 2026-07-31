@@ -253,13 +253,48 @@ syndecan-1 sepsis mortality meta-analysis odds ratio
 〔推論〕效應量（OR / HR）容易查證，通常一次檢索即命中薈萃分析。
 敏感度／特異度則相反——見 §1.2。
 
-### 2.3 待建立
+### 2.3 治療類（`claim_type=therapeutic`）
+
+2026-07-30 批次建立。注意 `CLAUDE.md` 第 6 條：不得為劑量建 claim，
+檢索目標是介入與結果的方向性關聯。
+
+**基本式＝介入名 ＋ 結構終點 ＋ 物種／族群。** 三者缺一，尤其缺結構終點時，
+回傳會被功能終點（FMD、NO 生物可用性、eNOS）淹沒：
+
+```
+{介入} endothelial glycocalyx thickness OR shedding {物種／族群}
+```
+
+有效範例（各命中該條的決定性文獻）：
+
+```
+glycocalyx precursor supplementation glucosamine fucoidan human trial fails restore quality sulfation defect diabetes
+heparanase inhibitor preserves endothelial glycocalyx reduces inflammation sepsis diabetic nephropathy mouse model roneparstat
+sulodexide glycocalyx thickness type 2 diabetes patients restore trial and sulodexide diabetic nephropathy trial failed Sun-MACRO
+sphingosine-1-phosphate preconditioning glycocalyx shedding ischemia reperfusion organ transplantation protection
+```
+
+**已建立的陰性結果定錨值**（治療類特有，功能同 §2.1 的厚度定錨值）：
+
+| 介入 | 族群／模型 | 結果 | 出處 |
+|---|---|---|---|
+| DSGP 前體補充 8 週 | 第二型糖尿病人 n=22，雙盲隨機安慰劑對照 | 糖萼完整性與血管功能均未優於安慰劑 | `DOI:10.1152/japplphysiol.00651.2024` |
+| DSGP 前體補充 4 週 | db/db 小鼠 | 主動脈糖萼長度恢復（AFM） | 同上 |
+| 舒洛地特 2 個月 | 第二型糖尿病男性 n=10 | 舌下與視網膜糖萼維度部分恢復 | `PMID:20865240` |
+| 舒洛地特 | 顯性糖尿病腎病變 n=1248，RCT | 腎臟複合終點無差異，提前中止 | `PMID:22034636` |
+| S1P 10 nmol/L 缺血前預處理 | 大鼠離體心臟 IRI | 梗塞面積縮小，但 syndecan-1 無變化 | `PMID:32017300` |
+| OVZ/HS-1638 | db/db 小鼠 | 糖萼深度改善，DR/DKD 通透性變化被阻止 | `PMID:38302978` |
+| cyclosporine A 關閉 mPTP | hiPSC 衍生內皮，體外 | 線粒體功能改善並恢復糖萼 | `PMID:31680061` |
+
+〔推論〕這張表的用途與 §2.1 相同但方向相反：§2.1 用來判斷新出現的數值是否合乎量級，
+本表用來判斷新出現的**治療宣稱是否已經被試過而失敗**。
+表中一半的列是陰性結果，這個比例本身就是治療類主張的先驗。
+
+### 2.4 待建立
 
 以下領域尚無實測檢索式，下次觸及時請補上本節：
 
 - 機制類（`claim_type=mechanism`，佔帳本約半數）
-- 治療類（`claim_type=therapeutic`）。注意 `CLAUDE.md` 第 6 條：不得為劑量建 claim，
-  檢索目標是介入與結果的方向性關聯
 - 權威性宣稱的證否。依 SCHEMA §6（v4），「國際共識」須改寫為可指名的形式後檢索，
   即查該學會立場聲明或指引是否存在
 
@@ -430,3 +465,55 @@ glycocalyx biomarker  糖萼生物標記
 
 〔推論〕可操作的篩選規則——PBR 出現在「≈ 某某 μm 的厚度」語境時高風險；
 出現在「PBR 升高／降低」語境時低風險。前者才需要回頭核對方向。
+
+---
+
+## 8. 2026-07-30 批次（therapeutic 群）新增
+
+### 8.1 治療宣稱先查陰性結果，再查陽性結果
+
+治療文獻的分布是偏斜的：陽性結果容易找，找到就容易停手。
+而決定 `verified` 與 `partial` 之別的資訊，通常在陰性那一側。
+
+有效的加詞：`fails`、`no effect`、`not efficacious`、`terminated`、`did not differ`。
+
+本批四條 `partial` 中有三條，是先找到陽性、再靠陰性檢索才把範圍收斂回來的。
+`6.1-sulodexide-mixed` 若只查到 `PMID:20865240` 就會判成 verified 或至少高估；
+是 Sun-MACRO（`PMID:22034636`）把它拉回 partial。
+
+〔推論〕這與 §1.4「證否靠精確字串」是不同的手法。§1.4 用來確認某個數字不存在；
+本條用來確認某個**療效**已經被試過而不成立。前者查字串，後者查試驗名與終止字樣。
+
+### 8.2 判 `unsupported` 前，先確認是「終點不對位」還是「主張不存在」
+
+本批兩條 `unsupported`（`4.2.3-hrt-rct-2025`、`6.1-microbiome-target`）
+都不是查無資料，是查到的資料終點差一站：
+
+| 主張 | 有文獻的部分 | 缺的那一段 |
+|---|---|---|
+| HRT → 糖萼厚度 | 停經後女性 PBR、雌激素體外保護 | 以 HRT 為介入的人體研究 |
+| 腸道菌 → 糖萼 | TMAO → eNOS/ROS/黏附分子；SCFA → NO | 以糖萼為終點的介入研究 |
+
+兩者的 `note` 必須寫明缺的是哪一段，否則下一個人會重跑同樣的檢索然後得到同樣豐富的
+相鄰文獻，再花一次成本才發現它們接不上。
+
+### 8.3 查「某藥有沒有進臨床」時，藥名代號比概念詞有效
+
+一式同時放兩個代號（`pixatimod roneparstat`）就拿到完整管線與各自的終止狀態。
+用 `specific heparanase inhibitor clinical trial` 這種概念詞回傳的是綜述，
+綜述只會說「多個化合物進入臨床試驗」，不會說哪些已經中止。
+
+〔推論〕管線狀態是**否定資訊**——「necuparanib 已終止」不會出現在任何一篇
+以它為主題的論文標題裡，只會出現在列表式的回顧與資料庫。代號是進入那種列表的鑰匙。
+
+### 8.4 介入名被換掉時，靠「其餘要素全中」反查
+
+`4.2.3-hrt-rct-2025` 的漂移來源是靠**不放介入名**找到的：
+查詢裡只放年份、族群、終點、量測法（停經後、糖萼厚度、PBR、GlycoCheck），
+不放 HRT，一式就命中 `DOI:10.14814/phy2.70428`。
+
+〔推論〕這是 §7.2「把詞換掉再查一次」的一般化。§7.2 換的是被誤譯的名詞，
+本條是**整個把可疑的那一項拿掉**，讓其餘要素去定位。
+適用時機：主張的多個要素看起來都很具體（年份＋設計＋規模＋族群＋終點），
+而合起來查卻落空——具體要素越多，落空越可疑，因為它們多半來自某篇真實論文。
+拿掉最可能被替換的那一項（介入、分子、器官），其餘要素通常足以定位原文。

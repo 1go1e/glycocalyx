@@ -2,7 +2,7 @@
 
 ```
 最後更新: 2026-07-30
-最後 commit: 628b267（ledger: 六列 statement 移除承載措辭）
+最後 commit: (待提交)
 schema_version: 5
 ```
 
@@ -13,9 +13,9 @@ schema_version: 5
 ## 1. 帳本狀態
 
 ```
-unverified   94
-partial      10
-unsupported  10
+unverified   88
+partial      14
+unsupported  12
 verified      5
 contested     2
 ──────────────
@@ -37,15 +37,38 @@ Import-Csv ledger/claims.csv | Where-Object priority -eq 'high' |
 **依優先序的完成率**（這才是專案健康度指標；全體完成率會被大量 low/med 稀釋）：
 
 ```
-high   已判定 19 / 60  = 32%
-med    已判定  7 / 53  = 13%
+high   已判定 23 / 60  = 38%
+med    已判定  9 / 53  = 17%
 low    已判定  1 /  8  = 12%
 ```
+
+〔注意〕`5.4-s1p-preconditioning` 已檢索但因 NEEDS-REVIEW 維持 `unverified`
+（`last_checked` 已填）。上表未把它計入已判定，故 high 的實際處理進度比 38% 略高一格。
+`status=unverified` 而 `last_checked` 非空的列，目前只有這一條。
 
 2026-07-30 改寫了六列的 `statement` 措辭（見 §5「已決」），**status 分布與總列數未變**。
 改寫後 `statement` 欄的措辭掃描命中數為 0（原 6）。
 
-有 `evidence` 的列共 19 條，去重識別碼 25 個（21 個 PMID、4 個 DOI）。
+有 `evidence` 的列共 23 條，去重識別碼 27 個（22 個 PMID、5 個 DOI）。
+
+**更正（2026-07-30）**：本行原記「19 條、25 個識別碼（21 PMID、4 DOI）」。
+以上一個 commit 的 `claims.csv` 重算，當時實際為 19 條、**22 個**識別碼（18 PMID、4 DOI）——
+列數正確，PMID 數多記了 3 個。成因不明，推測是手動累加而非重算。
+日後一律以下列指令重算，不手動累加：
+
+```powershell
+$ids = Import-Csv ledger/claims.csv |
+  ForEach-Object { $_.evidence -split ';' } |
+  ForEach-Object { $_.Trim().TrimStart('!') } |
+  Where-Object { $_ } | Sort-Object -Unique
+$ids.Count
+($ids | Where-Object { $_ -like 'PMID:*' }).Count
+($ids | Where-Object { $_ -like 'DOI:*' }).Count
+```
+
+〔推論〕這一欄的用途是回答「帳本背後有多少獨立文獻」，是對外可引用的數字。
+它與 §1 的 status 分布不同——status 分布每批都會被重新計算而自動校正，
+識別碼數沒有任何機制會發現它偏了。凡不會自我校正的計數，都必須附上重算指令。
 另有 3 條列的相關文獻只寫在 `note`，未進 `evidence`（見 §3.13、§3.16 與 §5 觀察中）。
 
 `source_ref` 主要出處：`glycocalyx/v3` 97 列、`intake/2026-07-28-糖萼層生理` 24 列。
@@ -71,6 +94,7 @@ low    已判定  1 /  8  = 12%
 | 2026-07-30 | ledger 六列 statement 措辭改寫（無檢索） | 6 列 | `reports/revisions/2026-07-30-rhetoric-policy.md` §6 |
 | 2026-07-30 | 三個受追蹤檔措辭執行（無檢索） | 29 處 + 12 行 | `reports/revisions/2026-07-30-source-{v3,axis,heparanase}-wording.md` |
 | 2026-07-30 | 5.3／5.5 PBR 群 | 2 | `reports/backfill/2026-07-30-5.3-5.5-pbr.md` |
+| 2026-07-30 | therapeutic 群（跨 section） | 7 | `reports/backfill/2026-07-30-therapeutic.md` |
 
 **`2026-07-26-5.1.md` 是判定標準的基準範本。** 任何新加入的執行者（人或 agent）
 應先讀它，再開始工作——它示範了判定的細膩度、note 的寫法，
@@ -381,6 +405,57 @@ glycocalyx biomarker  糖萼生物標記
 
 ---
 
+### 3.17 介入被換掉，其餘要素全部保留
+
+新增於 2026-07-30（來源：`reports/backfill/2026-07-30-therapeutic.md`）。
+
+`v3` §4.2.3 稱「2025 年的小型隨機試驗顯示，荷爾蒙替代療法與糖萼厚度的改善相關」。
+三式檢索查無任何以 HRT 為介入、糖萼厚度為終點的人體研究。
+但存在一篇六項要素中五項全中的論文（`DOI:10.14814/phy2.70428`，`NCT:NCT06071728`）：
+
+```
+2025 年        ✓    停經後女性        ✓
+小型 n=22      ✓    糖萼厚度改善      ✓
+隨機試驗       ✓    荷爾蒙替代療法    ✗ ← 實為糖萼標靶補充劑
+```
+
+而且該試驗的排除條件明文包含「近 6 個月內使用或曾使用荷爾蒙治療」——
+受試者恰好是**排除了 HRT 的一群人**。
+
+**通則**：這與 §3.13「兩個相反的過程共用同一個數字」同族——那裡假的是動詞，
+本例假的是**主詞（介入）**。檢出難度相近，因為錯的東西同樣不在數值裡：
+年份、規模、設計、族群、終點、效果方向全部可查證且全部為真。
+
+〔推論〕本型的反查手法是「把可疑的那一項拿掉」：查詢裡不放介入名，
+只放年份＋族群＋終點＋量測法，讓其餘要素去定位原文。見 `queries.md` §8.4。
+判準是**具體要素越多、合起來卻查不到，越可疑**——一個憑空捏造的宣稱不會同時
+把年份、樣本數、研究設計、族群與量測法都寫對。
+
+### 3.18 抽 claim 時模態被強化
+
+新增於 2026-07-30（同上）。前十七項記錄的都是原文的問題，本項是**本專案自己的**。
+
+`v3` §2.4 原句是「單純補充 GAG 前體**未必能**恢復功能」，
+抽進 `2.4-precursor-insufficient` 時寫成「**無法**恢復糖萼功能」。
+或然變全稱，模態被強化了一級。
+
+這個差別不是修辭問題。查證結果顯示：人體 n=22 隨機試驗中前體補充無效
+（`DOI:10.1152/japplphysiol.00651.2024`），但同配方在 db/db 小鼠有效，
+且舒洛地特在第二型糖尿病可部分恢復糖萼（`PMID:20865240`）。
+「未必能」與這組證據相容，「無法」不相容。**強化過的 statement 會被自己的證據推翻。**
+
+**通則**：抽 claim 時逐條核對模態詞。原文的
+「未必／可能／傾向於／在部分情況下」不得省略或換成全稱。
+這與 CLAUDE.md 第 4 條「數值必須與原文逐字相符」是同一條規則的非數值版本——
+模態詞承載的是主張的**範圍**，範圍被放大等同於數值被改寫。
+
+〔推論〕這一型在三檔抽 claim（§5「待處理」，約 54 行）之前必須先記下來，
+因為那是本專案至今最大的一次抽取，而抽取正是這型錯誤發生的環節。
+既有的 121 列裡可能還有同型未發現者——凡 statement 讀起來是斷然全稱、
+而原文段落語氣是推測性的列，都值得回頭比對。
+
+---
+
 ## 4. 下一批
 
 **§2.2 已全部封閉。** 2026-07-29 B2b 批完成最後三條，
@@ -417,18 +492,40 @@ unsupported  3   2.2-brain-1-3um
 但回測給出一條更好用的篩選規則：**方向錯誤只出現在把 PBR 當「厚度數值」引用的地方，
 不出現在把 PBR 當「指標」討論的地方**（見 `queries.md` §7.4）。
 
-**下一批建議：七條 `claim_type=therapeutic`**
+**therapeutic 群已於 2026-07-30 完成**（`partial` 4 ／ `unsupported` 2 ／ NEEDS-REVIEW 1）。
+`claim_type=therapeutic` 的七條全部離開初始狀態，其中一條因程序缺口停在 `unverified`：
 
-理由：治療宣稱風險最高，且 `4.2.3-hrt-rct-2025` 宣稱為 RCT——
-該列的 statement 已於 2026-07-30 改寫，但 `note` 明文保留了「原文宣稱為
-2025 年的小型隨機試驗」作為查證對象，正好可以直接開查。
+```
+partial       4   2.4-precursor-insufficient
+                  6.1-heparanase-inhibitor-target
+                  6.1-metabolic-reprogramming-target
+                  6.1-sulodexide-mixed
+unsupported   2   4.2.3-hrt-rct-2025
+                  6.1-microbiome-target
+needs-review  1   5.4-s1p-preconditioning（status 維持 unverified）
+```
 
-〔注意〕若三檔的抽 claim 先做，會再湧入約 5 條 therapeutic（AAV/C1GALT1、
-empagliflozin、Endocalyx、heparanase 抑制劑、S1P），可併批。
-但佇列在批次進行中變動不是好事，建議二選一，不要交錯。
+本批 verified 為 0，這是預期的：SCHEMA §2 規定 `therapeutic` 不得以動物或體外證據
+判 `verified`，而本領域的治療證據絕大多數止於動物。
+治療類的陰性結果定錨值表已建立，見 `queries.md` §2.3。
 
-**檢索前必讀**：`queries.md` §1.4（三次措辭）、§1.9、§1.10、§1.11，
-以及 §2.1 定錨值表末的頸動脈對照列。
+**下一批建議：三檔的 §3.2 抽 claim（`heparanase.md` / `v3.md` / `axis.md`）**
+
+理由：這是目前唯一擋在路上的大工程（約 54 行、預估新增 140–195 條），
+且它會讓回填佇列大幅變動，越早做越好。前一批建議「抽 claim 那批別和 therapeutic 交錯」，
+therapeutic 已完成，交錯的顧慮解除。
+
+〔注意〕抽取前必讀本檔 **§3.18（模態被強化）**——那一型正是抽取環節產生的，
+而這是本專案至今最大的一次抽取。逐條核對原文的「未必／可能／傾向於」，不得換成全稱。
+
+**開始前的兩個小前置**（都不需檢索）：
+
+1. `5.4-s1p-preconditioning` 的拆列——但拆列程序仍是 §5 待決，需人工先裁示
+2. 「相關但不對位」的 `~` 前綴提案——樣本已達六個（§5 觀察中），可開提案
+
+**檢索前必讀**（回填時）：`queries.md` §1.4（三次措辭）、§1.9、§1.10、§1.11、
+§8.1（治療類先查陰性）、§8.4（介入被換掉時的反查），
+以及 §2.1 定錨值表末的頸動脈對照列與 §2.3 的治療類陰性定錨值表。
 
 **現成線索（承接，尚未動用）**：`Okada H, et al. Crit Care. 2017;21:261`（`PMID:29058634`）
 比較連續型（心）、開窗型（腎）、竇狀型（肝）三種微血管的糖萼超微結構。
@@ -471,13 +568,19 @@ empagliflozin、Endocalyx、heparanase 抑制劑、S1P），可併批。
 
 **之後的優先序**（不依 claim_id 順序）：
 
-1. `5.3-pbr-precedes-cognitive-2-3y` — 可能與已判 unsupported 的 `5.5-biomarker-ha-lmw` 同源
-2. `5.5-pbr-sdc1-correlation` — 與上一條同為 PBR 相關，可併批
-3. 七條 `claim_type=therapeutic` — 治療宣稱風險最高，尤其 `4.2.3-hrt-rct-2025`（宣稱為 RCT）。
-   生理.md 另有至少 5 條 therapeutic 淨新增（AAV/C1GALT1、empagliflozin、Endocalyx、
-   heparanase 抑制劑、S1P），核准收錄後併入此批
-4. 標示「2025 年研究」的新宣稱群：果糖 ER 壓力、TMAO、微塑膠、S1P、ecSOD
+1. ~~`5.3-pbr-precedes-cognitive-2-3y`~~ — 已於 2026-07-30 完成
+2. ~~`5.5-pbr-sdc1-correlation`~~ — 同上
+3. ~~七條 `claim_type=therapeutic`~~ — 已於 2026-07-30 完成。
+   三檔抽 claim 後湧入的 therapeutic 淨新增（AAV/C1GALT1、empagliflozin、Endocalyx、
+   heparanase 抑制劑、S1P）另成一批，**不得併入已完成的本批**
+4. 標示「2025 年研究」的新宣稱群：果糖 ER 壓力、TMAO、微塑膠、S1P、ecSOD。
+   〔注意〕TMAO 與 S1P 兩項在 therapeutic 批次已有部分背景：
+   TMAO 對內皮的文獻終點不含糖萼（見 `6.1-microbiome-target` 的 note），
+   S1P 的 IRI 直接實驗為陰性（`PMID:32017300`）。查證前先讀那兩條的 note，可省數次檢索
 5. 其餘 `mechanism` 類——查證相對機械，適合批次自動跑
+6. `intake/2026-07-28-糖萼層生理` 的六糖胺途徑方向可疑句
+   （「過度活化：消耗 UDP-GlcNAc」——過度活化應為產生而非消耗）。
+   於 therapeutic 批次浮現，屬 §3.3 的方向型但主體是代謝通量，三檔抽 claim 時單獨建列
 
 ---
 
@@ -588,7 +691,16 @@ empagliflozin、Endocalyx、heparanase 抑制劑、S1P），可併批。
 它既不支持也不反駁——量的是別的分子（CSF N-醣鏈）、用別的方法（ELLA 非 PBR）、
 給的是別的量（軌跡提前量非前導時間）。但它很可能就是漂移的來源，資訊量最高。
 
-**樣本數已達門檻（5 條）。** 依本節原訂的「再出現三、四條同型再提」，
+**2026-07-30 第六筆**：`4.2.3-hrt-rct-2025` 的 `DOI:10.14814/phy2.70428`。
+年份、規模、設計、族群、終點、方向六項要素中五項與原主張相符，只有介入不對
+（實為糖萼標靶補充劑，且母試驗排除 HRT 使用者）。它既不支持也不反駁，
+但幾乎確定就是原主張的來源。
+
+〔推論〕這一筆對提案的**語意範圍**有直接影響。前五筆的共同點是「量錯了別的東西」，
+本筆是「量對了東西但用錯了藥」。若 `~` 定義為「量測對象不同」會漏掉本筆；
+須定義為「**不足以支持或反駁本主張，但與其來源相關**」才涵蓋得住。
+
+**樣本數已達門檻（6 條）。** 依本節原訂的「再出現三、四條同型再提」，
 下一個 session 可以開提案了。建議的方向不是加欄位，而是在 `evidence` 既有的
 `!` 前綴之外再定義一種前綴語意（例如 `~` 表示「相關但不對位」），
 如此不動欄位數、不影響既有解析，`schema_version` 仍須遞增。
@@ -635,6 +747,15 @@ SCHEMA §3 規定 `claim_id` 永不重用、永不改名，§7 規定不得刪�
 〔推論〕這條決定會重複出現——混合宣稱列不會只有這一條。
 建議一次寫進 SCHEMA §6 作為通用程序，而不是逐條處理。
 
+**2026-07-30 第二個實例，且這次擋下了判定。** `5.4-s1p-preconditioning` 的兩個子宣稱
+（減輕 IRI 脫落／保護移植器官）判定結果相反：前者被 `PMID:32017300` 直接推翻
+（S1P 預處理縮小梗塞面積但對 syndecan-1 無影響，作者明言保護非由糖萼介導），
+後者查無原始研究。依 `backfill.md` §4 第 1 款（方向被推翻不自行判定）標記 NEEDS-REVIEW，
+`status` 維持 `unverified`。
+
+〔推論〕`2.2-glomerular-hs-charge` 是判完才發現混合宣稱，本例是判定前就卡住。
+程序缺口的成本已經從「事後補記」變成「當場停工」，優先序應該提高。
+
 ### 待核准 — `heparanase.md` 接縫前言（2026-07-30 新增）
 
 9 行 17 處，需**句層切割**而非字層刪除，超出 `source-editing.md` §3 的範圍，
@@ -676,14 +797,29 @@ L462「heparanase 是人體已知唯一能剪斷 HS 側鏈的內切糖苷酶」�
 - 取得 `DOI:10.1161/JAHA.124.040179` 全文，核對 thrombomodulin 的 HR 2.10
 - 取得 Shi et al. 2025 Nature 的 PMID，補入 `2.2-brain-mouse-0.54-0.23` 等三列
   （目前僅有 `DOI:10.1038/s41586-025-08589-9`）
-- 為 `claim_type=mechanism`（約佔帳本半數）與 `therapeutic` 建立檢索式，
-  補入 `ledger/queries.md` §2.3
+- ~~為 `claim_type=therapeutic` 建立檢索式~~ → **已完成**，見 `queries.md` §2.3 與 §8。
+  `mechanism`（約佔帳本半數）仍待建立，見 `queries.md` §2.4
+- 取得 Diebel et al. 2021（雌激素保護 HUVEC 糖萼，仿生休克條件）的識別碼，
+  補入 `4.2.3-hrt-rct-2025` 的 `note`。目前僅由 `DOI:10.14814/phy2.70428` 引述得知，
+  依 `queries.md` §1.6 未據以判定
+- 取得 CV122（LPS/CLP 敗血症小鼠）與 heparastatin SF4（肺 IRI 小鼠）的識別碼，
+  作為 `6.1-heparanase-inhibitor-target` 的補充動物證據
+- 取得 `DOI:10.1152/japplphysiol.00651.2024` 的 PMID
 - 取得 Daniyarova et al. 2025 的 PMID，補入 `5.1-sdc1-or-204` 的 evidence
   （目前僅有 `DOI:10.1002/mbo3.70155`）
 
 ### 已決
 
 保留紀錄，防止下一個 session 重做已經決定過的事。**不要刪除本節條目。**
+
+- ~~`2.4-precursor-insufficient` 的 statement 模態與原文不符~~ → **已改**（2026-07-30）。
+  「無法恢復」改回原文 `v3` §2.4 的「未必能恢復」。該列未達 `verified`，
+  依 SCHEMA §6 可自由修訂，未新建 `claim_id`。
+
+  這不是措辭偏好：查證顯示人體 n=22 隨機試驗中前體補充無效，但同配方在 db/db 小鼠有效，
+  且 `PMID:20865240` 顯示舒洛地特在第二型糖尿病可部分恢復糖萼。
+  「未必能」與這組證據相容，「無法」不相容——**強化過的 statement 會被自己的證據推翻**。
+  通則寫進 §3.18。
 
 - ~~三個受追蹤檔的措辭執行單（14 個裁示點）~~ → **已決，全數照建議核准並執行**（2026-07-30）。
   規則層四項寫進 `runbooks/source-editing.md`（§1.1 刪除的唯一例外、§3.1.1 範圍測試、

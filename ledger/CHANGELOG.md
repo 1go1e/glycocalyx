@@ -4,6 +4,32 @@
 
 ---
 
+## schema_version 6 — 2026-07-31
+
+合併兩份提案，一次遞增。
+
+- **§4**：新增 `~` 前綴，表示「不足以支持或反駁本主張，但與其來源相關」的文獻。
+  含六維度判準表、`note` 強制說明不對位維度、禁止用於未直接取得的轉述文獻、前綴可變更。
+- **§4**：主要引用必須為無前綴 token；`evidence` 僅含 `!` 或 `~` 的列沒有主要引用。
+- **§5**：`tier` 改為只反映**未加任何前綴**的 token（原文為「未加 `!` 前綴」）。
+  若漏改此處，`~` 會複製 v2 修掉的失效——`4.2.3-hrt-rct-2025` 的來源是一篇 RCT 事後分析，
+  照舊字面會把一條 `unsupported` 標成 `tier=rct`。
+- **§5**：`~` token 不影響 `status`。
+- **§5**：`superseded` 的條件擴充為涵蓋拆列，規定 `superseded_by:` 與 `split_into:` 兩個固定前綴。
+- **§6**：新增既有列的拆列程序（原列 `superseded` + `split_into`、新列 `split_from`、
+  證據逐 token 歸屬、核准層級依原列是否曾達 `verified`、拆出的 `unsupported` 仍須三式檢索）。
+- **§7**：明訂拆列不違反 append-only；前綴可變更不違反 append-only。
+- 提案：`reports/revisions/2026-07-30-schema-nonaligned-evidence.md`（核准 2026-07-31，選項 A）
+  `reports/revisions/2026-07-30-schema-split-row.md`（核准 2026-07-31，選項 A，含拆 `5.4`）
+- 受影響列：
+  - `~` 回填 4 列：`4.2.3-hrt-rct-2025`、`5.3-pbr-precedes-cognitive-2-3y`、
+    `2.2-sdc1-halflife-2-8h`、`2.2-sepsis-shedding-30min`
+  - 拆列 1 列 → 2 新列：`5.4-s1p-preconditioning`（superseded）→
+    `5.4-s1p-iri-shedding`（contested）、`5.4-s1p-transplant`（unsupported）
+  - 總列數 121 → 123
+- 同步檢查（§11）：`runbooks/backfill.md` 步驟 4 決策樹已增列 `~` 分支；
+  `ledger/queries.md` §1.6 已加交叉引用。目前無前端，agent 端無硬編碼邏輯
+
 ## schema_version 5 — 2026-07-28
 
 - **§2**：新增 `section` 取值例外。主要出處位於 `intake/` 之下時，

@@ -4,8 +4,8 @@
 提案日期: 2026-07-30
 適用檔案: ledger/SCHEMA.md §4、§5
 提出批次: STATUS.md §5「觀察中」（2026-07-29 起累積六筆樣本）
-schema_version: 5 → 6（若核准）
-狀態: 待人工核准
+schema_version: 5 → 6（已核准）
+狀態: 已核准並執行 2026-07-31
 ```
 
 > 本提案與同日的 `2026-07-30-schema-split-row.md` 皆為 schema 變更。
@@ -238,15 +238,33 @@ last_updated: 2026-07-28  →  last_updated: (核准日期)
 
 ## 6. 核准欄
 
-- [ ] 採選項 A（`~` 前綴）
+- [x] 採選項 A（`~` 前綴）
 - [ ] 採選項 B（新增 `related_refs` 欄）
 - [ ] 採選項 C（維持現狀）
 - [ ] 其他：
 
-核准人／日期：
+核准人／日期：Chen, 31/07/2026
 
 核准後執行順序：改 SCHEMA.md §4/§5/檔頭 → 回填四列 `evidence` → 改 `backfill.md` 步驟 4
 → 改 `queries.md` §1.6 交叉引用 → 寫 CHANGELOG → 一個 commit
 （建議訊息：`schema: v6 — evidence 新增 ~ 前綴承載不對位文獻`）。
 
 **另須裁示**：`PMID:29058634` 在兩列間的來源狀態不一致（見 §4 末），是否複查。
+**2026-07-31 執行時仍未裁示**，故該識別碼未寫入 `2.2-sepsis-shedding-30min` 的 `evidence`，
+理由記於該列 `note`。此項留在 STATUS §5 待決。
+
+---
+
+## 7. 執行紀錄（2026-07-31）
+
+四列已回填，與 §4 的預定完全一致：
+
+```
+4.2.3-hrt-rct-2025               ~DOI:10.14814/phy2.70428
+5.3-pbr-precedes-cognitive-2-3y  ~PMID:39494362
+2.2-sdc1-halflife-2-8h           ~PMID:1533636;~PMID:11755208
+2.2-sepsis-shedding-30min        ~PMID:17923576;~PMID:21890663
+```
+
+四列的 `status` 均維持 `unsupported`（`~` 不影響 `status`），`tier` 均維持空白。
+四列的 `note` 均已追加該列不對位維度的明文說明，符合 §3.1 的強制要求。

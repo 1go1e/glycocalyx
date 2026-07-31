@@ -5,8 +5,8 @@
 適用檔案: ledger/SCHEMA.md §6（主要）、§5、§7
 提出批次: reports/backfill/2026-07-29-2.2-b1.md（第一例）
           reports/backfill/2026-07-30-therapeutic.md（第二例，判定前即被擋下）
-schema_version: 5 → 6（若核准）
-狀態: 待人工核准
+schema_version: 5 → 6（已核准）
+狀態: 已核准並執行 2026-07-31（含拆 5.4）
 ```
 
 > 本提案與同日的 `2026-07-30-schema-nonaligned-evidence.md` 皆為 schema 變更。
@@ -228,18 +228,54 @@ STATUS 也建議一併寫進 §2。但兩者的判斷基準不同：拆列處理
 
 ## 6. 核准欄
 
-- [ ] 採選項 A（`superseded` + `split_into`）
+- [x] 採選項 A（`superseded` + `split_into`）
 - [ ] 採選項 B（新增 `status=split`）
 - [ ] 採選項 C（保留原列為最窄子宣稱）
 - [ ] 其他：
 
-核准人／日期：
+核准人／日期：Chen, 31/07/2026
 
 執行範圍（可分開勾選）：
 
 - [ ] 僅寫入 SCHEMA 程序，兩條待拆列另批執行
-- [ ] 同時執行 `5.4-s1p-preconditioning` 的拆解
-- [ ] 同時執行 `2.2-glomerular-hs-charge` 的拆解
+- [x] 同時執行 `5.4-s1p-preconditioning` 的拆解
+- [ ] 同時執行 `2.2-glomerular-hs-charge` 的拆解（保留，待 `PMID:29058634` 來源狀態裁示後執行）
+
+---
+
+## 7. 執行紀錄（2026-07-31）
+
+### 拆列前後對照（SCHEMA §6 要求）
+
+| | claim_id | status | tier | evidence | last_checked |
+|---|---|---|---|---|---|
+| 前 | `5.4-s1p-preconditioning` | unverified | （空） | （空） | 2026-07-30 |
+| 後 | 同上 | **superseded** | （空，保留） | （空，保留） | 2026-07-30（保留） |
+| 新 | `5.4-s1p-iri-shedding` | contested | in_vitro | `PMID:24285115;!PMID:32017300` | 2026-07-31 |
+| 新 | `5.4-s1p-transplant` | unsupported | （空） | （空） | 2026-07-31 |
+
+原列的 `statement`、`evidence`、`tier`、`last_checked` 一律未動，僅 `status` 改為
+`superseded`、`note` 追加 `split_into:`。
+
+### 執行時發現的一件事
+
+§4.1 草案原本要把 `5.4-s1p-transplant` 直接判 `unsupported`，但該子宣稱在
+2026-07-30 的 therapeutic 批次中**只跑過一式檢索**（移植那半句是附帶查到的）。
+`queries.md` §1.4 要求三式才能判 `unsupported`——**原列的檢索紀錄不自動及於子宣稱**。
+
+2026-07-31 補跑兩式後才寫入判定。三式均查無以移植結果為終點的 S1P 預處理原始研究，
+僅得兩篇綜述（`PMID:33671524`、`DOI:10.3390/ijms22084019`），均明言證據多屬實驗性。
+
+〔推論〕這一點已回寫進 SCHEMA §6 的拆列程序作為明文注意事項。
+它是拆列特有的失效模式：原列的 `last_checked` 看起來像是整列都查過了，
+但混合宣稱列的檢索深度在各子宣稱之間本來就可能不均。
+
+### 補跑檢索的副產物
+
+查到一篇方向相反的移植研究：大鼠異位心臟移植，冷保存損傷由 S1P 誘發，
+S1PR3 拮抗劑反而減輕冷損傷。介入為受體拮抗而非給予 S1P、損傷型態為冷保存而非
+缺血再灌注、無糖萼終點，屬「相關但不對位」。本次未取得識別碼，
+故未依 §4 寫入 `~` token，記入 `5.4-s1p-transplant` 的 `note` 待補。
 
 核准後執行順序：改 SCHEMA.md §6/§5/§7/檔頭 → 寫 CHANGELOG → 一個 commit
 （建議訊息：`schema: v6 — 新增混合宣稱列的拆列程序`）；

@@ -1,11 +1,16 @@
 claim_id,section,statement,claim_type,tier,evidence,status,priority,last_checked,note,source_ref
-1.0-egc-definition,1,內皮糖萼是覆蓋在血管內皮細胞管腔表面、含水且富含碳水化合物的結構層。,definition,,,unverified,low,,,glycocalyx/v3#1
+1.0-egc-definition,1,內皮糖萼是覆蓋在血管內皮細胞管腔表面、含水且富含碳水化合物的結構層。,definition,,,unverified,low,,,glycocalyx/v3#1;mitochondria/axis#1.1.1
 1.1-dynamic-organelle,1.1,eGC 應被概念化為動態內皮細胞器，而非僅由厚度定義的靜態屏障。,definition,,,unverified,med,,框架性主張；需找到提出此定義的關鍵綜述,glycocalyx/v3#1.1;intake/2026-07-28-糖萼層生理#L5
 1.1-qualitative-precedes-dysfunction,1.1,糖萼的性質改變（qualitative alterations）先於可偵測的內皮功能障礙出現。,mechanism,,,unverified,high,,全文核心論點，必須有縱向或時序性證據支持,glycocalyx/v3#1.1
 1.2-ecsod-mito-protection,1.2,糖萼結合的 ecSOD 可阻止外部氧化衝擊傳入細胞，避免線粒體 ROS 誘導的通透性轉換與凋亡。,mechanism,,,unverified,high,,文件標示為 2025 年新興數據，需查證,glycocalyx/v3#1.2;intake/2026-07-28-糖萼層生理#L39
 1.2-ext-activity-drop,1.2,線粒體功能障礙或氧化壓力會降低 EXT1/EXT2 活性，導致 HS 鏈變短與硫酸化異常。,mechanism,,,unverified,high,,,glycocalyx/v3#1.2
-1.2-mito-glycocalyx-axis,1.2,內皮線粒體代謝與糖萼結構之間存在雙向調節軸。,mechanism,,,unverified,high,,新興概念，需確認是否已有明確命名此軸的文獻,glycocalyx/v3#1.2;intake/2026-07-28-糖萼層生理#L40
+1.2-mito-glycocalyx-axis,1.2,內皮線粒體代謝與糖萼結構之間存在雙向調節軸。,mechanism,,,unverified,high,,新興概念，需確認是否已有明確命名此軸的文獻,glycocalyx/v3#1.2;intake/2026-07-28-糖萼層生理#L40;mitochondria/axis#1.2
 1.2-udp-nad-dependency,1.2,糖萼合成依賴 UDP-糖庫可用性與胞質 NAD+/NADH 比值。,mechanism,,,unverified,med,,,glycocalyx/v3#1.2
+1.2.1-glycolysis-85-90pct,1.2.1,靜息狀態下內皮細胞 85-90% 的能量來自糖解作用。,fact,,,unverified,high,,具體數值，需查原始測量。內皮偏好糖解為領域共識，但此百分比區間的出處待查,mitochondria/axis#1.1.2
+1.2.1-lung-aorta-mito-density-2-3x,1.2.1,肺微血管內皮的線粒體密度比主動脈內皮高 2-3 倍。,fact,,,unverified,high,,具體數值加解剖歸屬。與 3.3-thrombosis-2-3x 的「2-3 倍」無關（不同量），依 SCHEMA §2 屬不同條,mitochondria/axis#1.1.2
+1.2.1-mito-calcium-apoptosis-ros,1.2.1,內皮線粒體作為細胞內環境傳感器，調節鈣離子濃度與細胞凋亡，並產生適量 ROS 作為信號分子。,mechanism,,,unverified,med,,三個功能並列，可獨立證偽但同屬「線粒體作為感測器」的分述，暫不拆。若查證時三者證據強度不同，依 SCHEMA §6 拆列,mitochondria/axis#1.1.2
+1.2.1-mito-signaling-not-atp,1.2.1,內皮線粒體的主要功能是信號傳遞而非能量生產，在缺氧等壓力下可切換至氧化磷酸化提供輔助能量。,mechanism,,,unverified,med,,原文措辭為「主要功能不是發電而是信號傳遞」，並稱可「快速切換」。「快速」無時間尺度，抽取時未納入 statement,mitochondria/axis#1.1.2
+1.2.1-oxphos-30-40pct,1.2.1,內皮細胞進行血管新生、傷口修復或對抗氧化壓力時，線粒體氧化磷酸化可提供高達 30-40% 的能量。,fact,,,unverified,high,,具體數值。「高達」為原文措辭，保留。三種活化情境（血管新生／傷口修復／抗氧化壓力）是否各自有此數值，原文未區分,mitochondria/axis#1.1.2
 1.3-capillary-recruitment,1.3,糖萼參與微循環的微血管徵召，在血流增加時協助開放更多毛細血管。,mechanism,,,unverified,med,,,glycocalyx/v3#1.3
 2.1.1-aging-10pct-per-decade,2.1.1,40 歲之後糖萼厚度每十年減少約 10%。,epidemiology,,,unverified,high,,未給族群、測量方法與血管床。與 2.2-brain-mouse-0.54-0.23 的老化幅度是否一致須一併核對,intake/2026-07-28-糖萼層生理#L25
 2.1.1-consensus-2-4um,2.1.1,內皮糖萼厚度在臨床與活體測量下落在 2-4 μm。,measurement,,,unsupported,high,2026-07-27,三次不同措辭檢索均未找到「臨床與活體共識 2-4 μm」。人體臨床測量實際值：舌下 OPS 約 0.5 μm（範圍 0.3-0.75）；GlycoCheck PBR 約 1.8-2.3 μm，但 PBR 是紅血球穿透深度、為逆向指標而非厚度（原文 2.1.2 自己有寫）。綜述給出的範圍為 0.2-2 μm 或 1-5 μm，無一為 2-4。疑為把 PBR 數值誤讀為厚度。原 statement 措辭為「臨床與多數活體測量的共識厚度值」，2026-07-30 依 SCHEMA §6 移除未具名權威宣稱「共識」，數值與歸屬未動,glycocalyx/v3#2.1.1
@@ -46,7 +51,11 @@ claim_id,section,statement,claim_type,tier,evidence,status,priority,last_checked
 3.1-charge-repulsion-40pct,3.1,正常剪切應力下，糖萼的電荷排斥機制可減少高達 40% 的跨內皮滲漏。,mechanism,,,unverified,high,,文件標示為 2025 年研究；精確百分比須逐字核對,glycocalyx/v3#3.1;intake/2026-07-28-糖萼層生理#L35
 3.1-revised-starling,3.1,傳統 Starling 定律已修正為糖萼層-內皮表層模型，ESL 才是決定跨毛細血管交換的關鍵區域。,mechanism,,,unverified,med,,,glycocalyx/v3#3.1;intake/2026-07-28-糖萼層生理#L35
 3.1-steric-70kda,3.1,糖萼以空間位阻阻擋 LDL 及大於 70kDa 的蛋白質靠近內皮細胞膜。,mechanism,,,unverified,med,,,glycocalyx/v3#3.1
+3.2-cytoskeleton-mito-calcium,3.2,糖萼的變形經肌動蛋白與微管傳導至線粒體，造成鈣離子流入並調節呼吸鏈。,mechanism,,,unverified,high,,原文稱「細胞骨架作為中介的角色已被證實」，屬未具名權威措辭，依 SCHEMA §6 未納入 statement，記此待查。與 3.2-piezo1-complex、2.3.2-sdc4-mechanotransduction 為不同層級（後兩者止於膜上感測器，本列延伸至線粒體）,mitochondria/axis#1.2.1
+3.2-drp1-fragmentation-marker,3.2,細胞骨架重組導致的線粒體斷裂由 Drp1 蛋白介導，可作為療效標誌。,mechanism,,,unverified,high,,含兩個子宣稱：Drp1 介導斷裂（機制）與可作為療效標誌（應用）。後者為 therapeutic 性質但原文未指任何藥物或終點，暫合列。若查證時兩者證據分歧，依 SCHEMA §6 拆列,mitochondria/axis#1.2.1
 3.2-enos-ser1177,3.2,鈣離子內流經 Src/PI3K/Akt 級聯導致 eNOS 於 Ser1177 磷酸化並釋放 NO。,mechanism,,,unverified,med,,,glycocalyx/v3#3.2;intake/2026-07-28-糖萼層生理#L42
+3.2-mito-anchored-cytoskeleton,3.2,大部分線粒體錨定於細胞骨架，少部分可自由移動。,fact,,,unverified,med,,「大部分／少部分」無量化，原文未給比例。查證時須確認是否有定量研究,mitochondria/axis#1.2.1
+3.2-mito-dynamics-fusion-fission,3.2,線粒體—糖萼軸涉及線粒體融合與分裂的動態平衡以維持穩態。,mechanism,,,unverified,med,,原文以「這軸線還涉及」帶過，無機制細節亦無出處,mitochondria/axis#1.2.1
 3.2-no-hypertension-20-30pct,3.2,糖萼介導的 NO 釋放與高血壓風險降低 20-30% 相關。,epidemiology,,,unverified,high,,原文自述「不是因果關係的直接證據」。百分比未給族群與追蹤期,intake/2026-07-28-糖萼層生理#L42
 3.2-piezo1-complex,3.2,Syndecan-4/Piezo1/PECAM-1 複合體為核心剪切力感測機器，糖萼變形觸發 Piezo1 開啟致鈣離子內流。,mechanism,,,unverified,high,,,glycocalyx/v3#3.2;intake/2026-07-28-糖萼層生理#L40
 3.2-primary-cilia-synergy,3.2,初級纖毛與糖萼在剪切力感測上具協同作用。,mechanism,,,unverified,med,,與 3.2-piezo1-complex 同屬機械感受器複合體群,intake/2026-07-28-糖萼層生理#L40
@@ -62,13 +71,17 @@ claim_id,section,statement,claim_type,tier,evidence,status,priority,last_checked
 3.3-thrombosis-2-3x,3.3,高凝狀態下 HS 降解導致重症患者血栓事件增加 2-3 倍。,epidemiology,,,unverified,high,,,glycocalyx/v3#3.3;intake/2026-07-28-糖萼層生理#L37
 3.4-ecsod-charge-binding,3.4,ecSOD 經其正電區域與負電 HS 鏈結合而富集於內皮表面，就地清除超氧化物陰離子。,mechanism,,,unverified,med,,,glycocalyx/v3#3.4;intake/2026-07-28-糖萼層生理#L39
 3.4-ext-variant-cvd-30-50pct,3.4,EXT1/EXT2 基因變異與心血管疾病風險增加 30-50% 相關。,epidemiology,,,unverified,high,,原文同時提及「EXT 基因多態性導致變異性」，兩句可能互相削弱。族群未指明,intake/2026-07-28-糖萼層生理#L39
+3.4-ros-biphasic-dose,3.4,ROS 對糖萼的調節呈劑量依賴性雙相作用。,mechanism,,,unverified,high,,本列為 1.3.4 節的總括命題，兩個具體閾值另列（3.4-ros-eustress-100nm、3.4-ros-distress-500nm）。依 SCHEMA §2，總括命題與具體數值屬不同條,mitochondria/axis#1.3.4
+3.4-ros-distress-500nm,3.4,高於 500 nM 的 H₂O₂ 屬病理濃度，可激活 NF-κB 上調 MMPs、氧化糖萼的硫酸基團並誘導內皮細胞凋亡。,fact,,,unverified,high,,具體閾值。三個下游效應並列。「氧化硫酸基團」與 2.4 的硫酸化主題相關，查證時交叉比對,mitochondria/axis#1.3.4
+3.4-ros-eustress-100nm,3.4,低於 100 nM 的 H₂O₂ 屬生理濃度，可激活 eNOS 促進 NO 生成並誘導 SOD2 與 Catalase。,fact,,,unverified,high,,具體閾值。原文另稱此濃度可「維持糖萼合成與分解的平衡」，該子句未納入 statement（與前二者證據來源可能不同），記此待查,mitochondria/axis#1.3.4
+3.4-ros-nlrp3-amplification,3.4,ROS 除直接氧化 GAGs 外，並激活 NLRP3 炎症體放大發炎。,mechanism,,,unverified,high,,NLRP3 為具名分子，可查。與 4.1-nets-vicious-cycle 同屬「降解產物放大發炎」但機制不同,mitochondria/axis#1.2.1
 3.5-metabolic-sensor,3.5,糖萼厚度與品質可作為內皮細胞代謝狀態的指標。,mechanism,,,unverified,med,,詮釋性主張,glycocalyx/v3#3.5
 4.1-adamts-versican,4.1,ADAMTS-4 與 ADAMTS-5 在動脈粥樣硬化中切割 Versican 與 Aggrecan。,mechanism,,,unverified,med,,,glycocalyx/v3#4.1;intake/2026-07-28-糖萼層生理#L63
 4.1-cathepsin-low-ph,4.1,組織蛋白酶在斑塊等低 pH 環境中被活化並參與糖萼降解。,mechanism,,,unverified,low,,,glycocalyx/v3#4.1;intake/2026-07-28-糖萼層生理#L65
 4.1-damp-tlr4-loop,4.1,脫落的 Syndecan-1 外域與 HS 片段作為 DAMPs，經 TLR4/NF-κB 誘導 IL-1β 與 TNF-α，形成發炎-降解正反饋。,mechanism,,,unverified,high,,,glycocalyx/v3#4.1;intake/2026-07-28-糖萼層生理#L61
-4.1-heparanase-hs,4.1,肝素酶專一降解 HS 鏈，破壞負電荷屏障並導致抗凝功能喪失。,mechanism,,,unverified,high,,,glycocalyx/v3#4.1;intake/2026-07-28-糖萼層生理#L61
+4.1-heparanase-hs,4.1,肝素酶專一降解 HS 鏈，破壞負電荷屏障並導致抗凝功能喪失。,mechanism,,,unverified,high,,,glycocalyx/v3#4.1;intake/2026-07-28-糖萼層生理#L61;mitochondria/axis#1.3.2
 4.1-hyaluronidase-ha,4.1,透明質酸酶降解 HA 骨架並產生具促炎作用的低分子量片段。,mechanism,,,unverified,med,,原文此項重複列出兩次（第 3 與第 5 項），已合併,glycocalyx/v3#4.1;intake/2026-07-28-糖萼層生理#L61
-4.1-mmp-shedding,4.1,MMP-9 與 MMP-2 在發炎刺激下切割 Syndecan 的胞外結構域，導致糖萼脫落。,mechanism,,,unverified,med,,,glycocalyx/v3#4.1;intake/2026-07-28-糖萼層生理#L61
+4.1-mmp-shedding,4.1,MMP-9 與 MMP-2 在發炎刺激下切割 Syndecan 的胞外結構域，導致糖萼脫落。,mechanism,,,unverified,med,,,glycocalyx/v3#4.1;intake/2026-07-28-糖萼層生理#L61;mitochondria/axis#1.3.2
 4.1-nets-vicious-cycle,4.1,糖萼降解促進 NETs 形成，NETs 所含的組織蛋白酶與彈性蛋白酶進一步破壞糖萼。,mechanism,,,unverified,high,,與 4.1-cathepsin-low-ph 的酶種重疊，查證時併看,intake/2026-07-28-糖萼層生理#L55
 4.1-plasmin-degradation,4.1,Plasmin 在纖維蛋白溶解過程中降解糖萼成分。,mechanism,,,unverified,med,,,intake/2026-07-28-糖萼層生理#L67
 4.2.1-ages-rage-mmp,4.2.1,AGEs 與 RAGE 結合可誘導 MMP 活化並加速糖萼降解。,mechanism,,,unverified,med,,,glycocalyx/v3#4.2.1;intake/2026-07-28-糖萼層生理#L85
@@ -87,6 +100,7 @@ claim_id,section,statement,claim_type,tier,evidence,status,priority,last_checked
 4.3.1-tmao-direct-damage,4.3.1,腸道菌代謝產物 TMAO 可直接損傷糖萼結構。,mechanism,,,unverified,high,,文件標示 2025 年研究,glycocalyx/v3#4.3.1;intake/2026-07-28-糖萼層生理#L73
 4.3.2-microplastic-pyroptosis,4.3.2,穿透糖萼的微塑膠可誘導內皮細胞焦亡並釋放大量發炎介質。,mechanism,,,unverified,high,,,glycocalyx/v3#4.3.2;intake/2026-07-28-糖萼層生理#L79
 4.3.2-nanoplastic-penetration,4.3.2,小於 100nm 的奈米塑膠可穿透糖萼層，聚苯乙烯微粒特別容易與 HS 結合。,mechanism,,,unverified,high,,文件標示 2025 年環境醫學研究,glycocalyx/v3#4.3.2;intake/2026-07-28-糖萼層生理#L79
+5.1-mito-axis-collapse-leak,5.1,敗血症休克的微循環障礙源於線粒體—糖萼軸崩潰導致的血管滲漏與組織水腫。,mechanism,,,unverified,high,,原文續稱「保護糖萼可能比單純升壓更重要」，屬治療策略比較，未建列（無任何試驗支持，且涉及臨床處置優先序，依 CLAUDE.md 第 6 條的精神從嚴）,mitochondria/axis#1.4
 5.1-sdc1-cutoff-40,5.1,血漿 Syndecan-1 濃度大於 40 ng/mL 是預測敗血症死亡率的指標。,epidemiology,,,partial,high,2026-07-26,40 ng/mL 為創傷內皮病變閾值而非敗血症 cutoff；敗血症文獻採用 121-430 ng/mL 不等。敗血症基礎值約 103 ng/mL、敗血性休克約 139 ng/mL，40 在此族群幾無鑑別力。evidence 待補：創傷原始世代之識別碼本次未取得，不得推測填入。詳見 reports/backfill/2026-07-26-5.1.md,glycocalyx/v3#5.1;intake/2026-07-28-糖萼層生理#L96
 5.1-sdc1-or-204,5.1,血漿 Syndecan-1 升高預測敗血症死亡的優勢比為 2.04。,epidemiology,meta,DOI:10.1002/mbo3.70155,verified,high,2026-07-26,Daniyarova et al. 2025 MicrobiologyOpen。OR 2.04 95% CI 1.66-2.51；9 篇研究 n=2167；I²=84% 異質性高。同篇中 SDC-1 與 MODS 及呼吸衰竭均無顯著相關。PMID 未取得，暫以 DOI 記錄。,glycocalyx/v3#5.1;intake/2026-07-28-糖萼層生理#L126
 5.1-sdc1-sens-90,5.1,以血漿 Syndecan-1 大於 40 ng/mL 預測敗血症死亡率的敏感度為 90%。,epidemiology,,,unverified,high,,與 5.1-sdc1-sens-spec（85%/78%，已判 unsupported）同指標不同數值，依 SCHEMA §2 拆列。同一 intake 文件的表格寫 85%、正文寫 90%，數值漂移見 STATUS §3.6,intake/2026-07-28-糖萼層生理#L96
@@ -94,6 +108,7 @@ claim_id,section,statement,claim_type,tier,evidence,status,priority,last_checked
 5.1-sepsis-phase1-elastase,5.1,敗血症 0-6 小時以中性球彈性蛋白酶介導的 Syndecan-1 快速脫落為主。,mechanism,,,unverified,med,,,glycocalyx/v3#5.1
 5.1-sepsis-phase2-leak,5.1,敗血症 6-24 小時 MMP 與肝素酶全面活化，導致毛細血管滲漏症候群與多器官衰竭。,mechanism,,,unverified,med,,,glycocalyx/v3#5.1;intake/2026-07-28-糖萼層生理#L97
 5.1-sepsis-phase3-abnormal-repair,5.1,敗血症 24-72 小時的修復期所合成的糖萼常伴隨硫酸化模式異常，可能造成長期血管功能障礙。,mechanism,,,unverified,high,,時序分期是否有直接人體資料支持？,glycocalyx/v3#5.1
+5.2-disturbed-flow-thinning,5.2,血流擾動區域的糖萼變薄導致線粒體 ROS 增加，是斑塊形成的早期始動因素。,mechanism,,,unverified,high,,「早期始動因素」為強因果宣稱。與 5.2.2-acs-burst-degradation 不同（該列為斑塊破裂後的急性降解，本列為斑塊形成前）,mitochondria/axis#1.4
 5.2.1-hfpef-microvascular,5.2.1,HFpEF 的核心病理機制為微血管發炎與內皮功能障礙，而非心肌收縮力下降。,mechanism,,,unverified,high,,,glycocalyx/v3#5.2.1
 5.2.1-hfpef-rarefaction,5.2.1,糖萼損傷導致冠狀動脈微循環稀疏化與心肌間質纖維化，使心室僵硬度增加。,mechanism,,,unverified,med,,,glycocalyx/v3#5.2.1
 5.2.1-hfpef-sdc1-ha-elevated,5.2.1,HFpEF 患者血漿 Syndecan-1 與 HA 片段顯著升高。,epidemiology,,,unverified,high,,,glycocalyx/v3#5.2.1
@@ -108,6 +123,7 @@ claim_id,section,statement,claim_type,tier,evidence,status,priority,last_checked
 5.3-vascular-dementia-correlation,5.3,小血管病變型失智與糖萼厚度減少呈正相關。,epidemiology,,,unverified,med,,原文用詞「正相關」與語意方向需釐清,glycocalyx/v3#5.3;intake/2026-07-28-糖萼層生理#L111
 5.4-iri-biphasic,5.4,缺血再灌注損傷呈雙相模式：缺血期合成減少，再灌注期 ROS 爆發造成更嚴重脫落。,mechanism,,,unverified,med,,,glycocalyx/v3#5.4;intake/2026-07-28-糖萼層生理#L114
 5.4-iri-organ-specific,5.4,心臟與腎臟的缺血再灌注糖萼損傷模式不同。,mechanism,,,unverified,med,,,intake/2026-07-28-糖萼層生理#L115
+5.4-reperfusion-ros-burst-destroys,5.4,再灌注時的線粒體 ROS 爆發摧毀糖萼，造成再灌注後的水腫與發炎。,mechanism,,,unverified,high,,與 5.4-iri-biphasic 高度相關但非同條：該列講雙相模式的分期，本列講再灌注期的具體機制歸因（線粒體 ROS）。原文措辭「瞬間摧毀」未納入 statement，無時間尺度,mitochondria/axis#1.4
 5.4-s1p-iri-shedding,5.4,S1P 預處理可減輕缺血再灌注造成的糖萼脫落。,therapeutic,in_vitro,PMID:24285115;!PMID:32017300,contested,high,2026-07-31,split_from: 5.4-s1p-preconditioning。支持：PMID:24285115（in_vitro，大鼠脂肪墊內皮，以去除血漿蛋白誘發脫落，S1P >100 nM 經 S1P1 保留 HS、CS 與 syndecan-1 外域，機制為抑制 MMP 活性）——脫落誘因非缺血再灌注，屬條件不同。反駁：PMID:32017300（animal，大鼠離體心臟 Langendorff，S1P 10 nmol/L 缺血前預處理），梗塞面積縮小 P=.01，但冠脈流出液 syndecan-1 濃度與心肌 syndecan-1 免疫染色強度均無影響，作者結論為 S1P 的心臟保護並非由維持糖萼中的 syndecan-1 所介導。依 SCHEMA §5，反駁文獻等級為 animal、反駁型態為「結論相反」，且反駁文獻不計入 tier，故 tier 取支持側的 in_vitro。〔注意〕本列的反駁證據強於支持證據：反駁側是唯一一個真的做了缺血再灌注的實驗，支持側是不相干系統的體外實驗,glycocalyx/v3#5.4;intake/2026-07-28-糖萼層生理#L116
 5.4-s1p-preconditioning,5.4,S1P 預處理可減輕缺血再灌注造成的糖萼脫落並保護移植器官。,therapeutic,,,superseded,high,2026-07-30,文件標示 2025 年研究；治療性宣稱。NEEDS-REVIEW（2026-07-30）：本列含兩個可獨立證偽的子宣稱，判定結果相反，且反駁屬方向層級，依 backfill runbook §4 第 1 款不自行判定。子宣稱一（減輕 IRI 糖萼脫落）：PMID:32017300 大鼠離體心臟 Langendorff，S1P 10 nmol/L 缺血前預處理確實縮小梗塞面積（P=.01），但對冠脈流出液 syndecan-1 濃度與心肌 syndecan-1 免疫染色強度均無影響，作者結論為 S1P 的心臟保護「並非由維持糖萼中的 syndecan-1 所介導」。支持側僅 PMID:24285115（大鼠脂肪墊內皮，以去除血漿蛋白誘發脫落，S1P >100 nM 經 S1P1 保留 HS、CS 與 syndecan-1 外域），為體外且非 IRI 情境。子宣稱二（保護移植器官）：查無原始研究，PMID:33671524 綜述指腎移植 IRI 與糖萼的證據多屬實驗性。拆列程序仍屬 STATUS §5 待決，未自行拆。split_into: 5.4-s1p-iri-shedding;5.4-s1p-transplant（2026-07-31 依 SCHEMA §6 拆列，原列 statement／evidence／tier／last_checked 保留為拆列前的歷史狀態）,glycocalyx/v3#5.4;intake/2026-07-28-糖萼層生理#L116
 5.4-s1p-transplant,5.4,S1P 預處理可保護移植器官。,therapeutic,,,unsupported,high,2026-07-31,"split_from: 5.4-s1p-preconditioning。三式檢索（S1P 預處理＋糖萼脫落＋缺血再灌注＋移植／S1P＋供體器官保存＋移植物功能＋預處理／""S1P""＋glycocalyx＋graft＋機械灌流）查無任何以移植結果為終點的 S1P 預處理原始研究。僅得綜述：PMID:33671524（腎移植 IRI 與糖萼）與 DOI:10.3390/ijms22084019（器官保存與糖萼），兩者均列 S1P 為候選保護分子，並明言現有證據多屬實驗性、缺乏臨床研究；依 SCHEMA §5 綜述不足以單獨支持 verified，循其引用亦未追到移植終點的原始研究。〔注意〕另查到一篇方向相反的移植研究：大鼠異位心臟移植，冷保存損傷由 S1P 誘發，S1PR3 拮抗劑反而減輕冷損傷。該研究介入為受體拮抗而非給予 S1P、損傷型態為冷保存而非缺血再灌注、無糖萼終點，屬相關但不對位；本次未取得識別碼，故未依 §4 寫入 ~ token，待補",glycocalyx/v3#5.4;intake/2026-07-28-糖萼層生理#L116

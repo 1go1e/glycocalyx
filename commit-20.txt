@@ -1,0 +1,13 @@
+ledger: fix claim_type on 6 rows (fact -> epidemiology/measurement)
+
+epidemiology: 5.6.1-dkd-biomarker-uacr-correlation, 5.6.1-dkd-sdc1-100-4-6x,
+              5.6.2-dr-biomarker-severity-correlation, 5.6.2-dr-biomarker-vs-hba1c
+measurement:  5.6.1-dkd-sdf-sublingual-50pct, 5.6.2-dr-octa-thickness-50-80pct
+
+核准依據：STATUS §5 選項 A（2026-08-01）。六列皆未達 verified，
+視為錯字更正而非語意變更。各列 note 末尾註記變更日期與依據。
+
+依核准時的附帶要求執行全帳本掃描，發現 fact 從未列入 SCHEMA §2 合法值，
+仍有 32 列使用。三個處置選項待決，不在本 commit 內執行。
+
+proposal: reports/revisions/2026-08-01-claim-type-fact.md

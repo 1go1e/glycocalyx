@@ -1,8 +1,46 @@
 # claims.csv Schema 變更紀錄
 
-依 `ledger/SCHEMA.md` §11：任何 schema 變更必須遞增 `schema_version`，並在本檔記錄變更內容與日期。
+依 `ledger/SCHEMA.md` §12：任何 schema 變更必須遞增 `schema_version`，並在本檔記錄變更內容與日期。
+（v7 以前該節為 §11，v8 插入 §9 值域檢查後順延。歷史條目中的節號引用維持當時的編號，不追改。）
 
 ---
+
+## schema_version 8 — 2026-08-01
+
+執行 STATUS §5「`claim_type` 六列改派」時，依核准的附帶要求做全帳本掃描而發現。
+
+- **§2**：`claim_type` 新增合法值 `fact`（不涉及因果的事實陳述：狀態、時序、階段、
+  非族群層級的數值），並明訂此欄為**封閉值域**。
+- **§2**：新增「`fact` 與相鄰型別的分界」四條，其中
+  `fact` vs `epidemiology` 一條為硬性規定——主詞為人體族群且動物或體外證據不足以
+  判定者一律 `epidemiology`，理由是只有 `epidemiology`／`therapeutic` 帶有
+  「必須人體證據才能判 `verified`」的約束，填成 `fact` 會使該閘門靜默失效。
+- **新增 §9 值域檢查**：`claim_type`／`status`／`tier`／`priority` 四欄，
+  每次寫入 `claims.csv` 後、commit 之前執行，輸出須為空。原 §9–§11 順延為 §10–§12。
+- 提案：`reports/revisions/2026-08-01-claim-type-fact.md`（核准 2026-08-01，選項 3）
+- 觸發案例：`runbooks/extraction.md` 於 2026-07-31 隨 v7 新建時，
+  欄位表列出 `claim_type = fact / mechanism / therapeutic / epidemiology`，
+  而 `fact` 從 v1 到 v7 從未列入 SCHEMA §2 的合法值。四批抽取共 **38 列**照填，
+  列數、欄數、BOM、CRLF、排序、`section` 交叉驗證六項驗收全部通過。
+  原始 121 列無一使用此值。
+- 受影響列：**18 列**（38 列中）
+  - 2026-08-01 先行核准的 6 列：`5.6.1-dkd-biomarker-uacr-correlation`、
+    `5.6.1-dkd-sdc1-100-4-6x`、`5.6.2-dr-biomarker-severity-correlation`、
+    `5.6.2-dr-biomarker-vs-hba1c` → `epidemiology`；
+    `5.6.1-dkd-sdf-sublingual-50pct`、`5.6.2-dr-octa-thickness-50-80pct` → `measurement`
+  - v8 逐列複核再改 12 列：
+    → `definition` 2（`2.3.2-glypican1-core-protein`、`6.3-sulodexide-composition`）
+    → `mechanism` 2（`3.4-ros-distress-500nm`、`3.4-ros-eustress-100nm`）
+    → `epidemiology` 7（`4.2.1-dm-sdc1-shedding-3-10x`、`4.2.1-dm-thickness-50-70pct`、
+      `5.5-triple-biomarker-elevation`、`5.6.1-dkd-heparanase-10-50x`、
+      `5.6.1-dkd-sdc1-earlier-than-uacr`、`5.6.2-dr-heparanase-20-100x`、
+      `5.6.2-dr-sdc1-earlier-than-fundus`）
+    → `measurement` 1（`5.6.1-dkd-em-early-thinning`）
+  - 維持 `fact` 20 列。各改動列的 `note` 末尾均註記變更日期與依據
+- 同步檢查（§12）：`runbooks/extraction.md` §6 欄位表改為交叉引用 SCHEMA §2
+  （不再複製值域），§7 收尾加入 §9 值域檢查，§8 新增第五個已知失效模式；
+  `CLAUDE.md` 與 `runbooks/backfill.md` 的 SCHEMA 節號引用同步更新
+  （§9 → §10、§11 → §12）。目前無前端
 
 ## schema_version 7 — 2026-07-31
 

@@ -153,3 +153,56 @@ STATUS §5 選項 A 已核准的六列，`claim_type` 已改，並在各列 `not
 1. 若選 1 或 3 → 遞增 `schema_version` 至 8，寫 `CHANGELOG.md`
 2. 32 列的改派（選 2 或 3）另成一批，與 §2.6 補抽合併執行
 3. `runbooks/extraction.md` 的兩項修正隨該批一起 commit
+
+---
+
+## 8. 執行結果（2026-08-01，核准選項 3）
+
+### schema v8
+
+- SCHEMA §2 新增合法值 `fact`；明訂 `claim_type` 為封閉值域
+- SCHEMA §2 新增「`fact` 與相鄰型別的分界」**四**條（提案原列三條，
+  執行時增列 `fact` vs `mechanism`——32 列複核時發現兩列
+  `3.4-ros-eustress-100nm`／`3.4-ros-distress-500nm` 帶完整因果鏈，
+  三條分界皆判不出來）
+- 新增 §9 值域檢查（四欄），原 §9–§11 順延為 §10–§12
+- `CLAUDE.md`、`runbooks/backfill.md` 的 SCHEMA 節號引用同步更新
+
+### 32 列逐列複核：改派 12、維持 20
+
+| → | 列數 | claim_id |
+|---|---:|---|
+| `epidemiology` | 7 | `4.2.1-dm-sdc1-shedding-3-10x`、`4.2.1-dm-thickness-50-70pct`、`5.5-triple-biomarker-elevation`、`5.6.1-dkd-heparanase-10-50x`、`5.6.1-dkd-sdc1-earlier-than-uacr`、`5.6.2-dr-heparanase-20-100x`、`5.6.2-dr-sdc1-earlier-than-fundus` |
+| `definition` | 2 | `2.3.2-glypican1-core-protein`、`6.3-sulodexide-composition` |
+| `mechanism` | 2 | `3.4-ros-distress-500nm`、`3.4-ros-eustress-100nm` |
+| `measurement` | 1 | `5.6.1-dkd-em-early-thinning` |
+| 維持 `fact` | 20 | 時序階段 9、非族群數值 7、狀態陳述 4 |
+
+改派的 7 條 `epidemiology` 全部命中硬性分界：主詞是「糖尿病患者」「DKD 患者」
+或人體篩查前導時間，動物研究無法驗證。**這 7 條原本可以憑動物證據判 `verified`。**
+
+`5.6.2-dr-heparanase-20-100x` 是其中最該注意的一條：原文把「糖尿病患者」與
+「動物模型」併寫成同一個數值範圍。改為 `epidemiology` 之後，
+若最終只找得到動物證據，它只能判 `partial` 而非 `verified`——
+這正是該欄要擋的東西。
+
+### 兩條保留為 `fact` 但邊界模糊者
+
+`5.6.1-dkd-charge-selectivity-70pct`（腎小球 70% 電荷選擇性來自 HS）與
+`5.6.2-dr-brb-barrier-60-80pct`（視網膜 60-80% 電荷與機械屏障）
+是**定量歸因**：形式上是數值，語意上接近「某功能有多少比例由某分子承擔」。
+`fact` vs `mechanism` 的分界（是否含因果連接）判它們為 `fact`，
+但同主題的 `2.2-glomerular-hs-charge`（定性版）是 `mechanism`。
+
+保留 `fact`，理由是 statement 本身不含因果連接詞。
+但查證時這兩條要用 `mechanism` 的檢索取向（酵素對照實驗），不是數值比對——
+已記入兩列的 `note`。若日後出現第三條同型，應提案補一條分界。
+
+### 驗收
+
+```
+230 列 / 11 欄 / 排序正確 / 無 BOM / 無 CRLF
+§9 四欄值域檢查：輸出為空
+claim_type 分布：mechanism 123、epidemiology 33、therapeutic 27、
+                 measurement 21、fact 20、definition 6
+```

@@ -1,8 +1,8 @@
 # claims.csv — Schema 與寫入規則
 
 ```
-schema_version: 7
-last_updated: 2026-07-31
+schema_version: 8
+last_updated: 2026-08-01
 applies_to: ledger/claims.csv
 ```
 
@@ -51,13 +51,37 @@ ledger 的版本歷史就失去意義——那是整套系統唯一不可替代�
 | 值 | 含義 | 檢索取向 |
 |---|---|---|
 | `definition` | 定義或分類 | 綜述、教科書 |
+| `fact` | 不涉及因果的事實陳述：狀態、時序、階段、非族群層級的數值 | 原始研究、綜述 |
 | `mechanism` | 生物機制、因果路徑 | 基礎研究、動物與細胞模型 |
 | `measurement` | 量測方法、儀器規格、數值範圍 | 方法學文獻、儀器驗證研究 |
 | `epidemiology` | 人體族群層級的關聯、預測值、風險比 | 臨床研究、世代研究、薈萃分析 |
 | `therapeutic` | 治療介入的效果 | 臨床試驗、藥理研究 |
 
+**此欄為封閉值域。上表以外的值一律不合法**，抽取與回填收尾均須檢查（見 §9）。
+
 此欄的用途是**分流檢索策略**。`epidemiology` 與 `therapeutic` 的條目必須以人體研究為
 主要證據；以動物或體外研究充當支持文獻，不得將 `status` 設為 `verified`。
+
+### `fact` 與相鄰型別的分界（v8）
+
+`fact` 是五個型別都不貼切時的落點，最容易吸走相鄰型別的條目。四條分界：
+
+| 分界 | 判準 |
+|---|---|
+| `fact` vs `definition` | 陳述某物「是什麼」（組成、分類、成分比例）→ `definition`；陳述「發生了什麼」或「處於什麼狀態」→ `fact` |
+| `fact` vs `mechanism` | statement 含因果連接（「經 X 導致 Y」「活化」「誘導」）→ `mechanism`；只陳述狀態或並列事實 → `fact` |
+| `fact` vs `measurement` | 數值出自 statement 內具名的量測平台，且驗證的核心是「該平台測到什麼」→ `measurement`；否則 → `fact` |
+| `fact` vs `epidemiology` | **主詞為人體族群、且動物或體外證據不足以判定者 → `epidemiology`**；其餘 → `fact` |
+
+> **最後一條是硬性的，不是風格偏好。**
+> `epidemiology` 與 `therapeutic` 帶有「必須人體證據才能判 `verified`」的約束，
+> `fact` 沒有。一條人體族群宣稱若填成 `fact`，那道閘門就不會啟動，
+> 而**沒有任何欄位會顯示它曾經被繞過**。
+> 判準是「這條 statement 能不能用動物研究驗證」——不能，就是 `epidemiology`。
+
+〔注意〕時序與階段宣稱（「高血糖出現後數週內出現 X」）歸 `fact`。
+它們不是因果路徑，也不是族群統計；硬歸 `mechanism` 會使檢索取向指向基礎研究，
+而這類宣稱要查的是臨床觀察與動物模型的時序實驗。
 
 ### `source_ref` 格式
 
@@ -387,7 +411,30 @@ PMID:31234567;~PMID:39494362
 
 ---
 
-## 9. Commit 規範
+## 9. 值域檢查（v8）
+
+`claim_type`、`status`、`tier`、`priority` 四欄皆為封閉值域。
+**每次寫入 `claims.csv` 後、commit 之前必須執行下列檢查，輸出須為空。**
+
+```powershell
+$ct = 'definition','fact','mechanism','measurement','epidemiology','therapeutic'
+$st = 'unverified','verified','partial','contested','superseded','unsupported'
+$ti = '','in_vitro','animal','human_obs','rct','meta','review'
+$pr = 'high','med','low'
+Import-Csv ledger/claims.csv | Where-Object {
+  $_.claim_type -notin $ct -or $_.status -notin $st -or
+  $_.tier -notin $ti -or $_.priority -notin $pr
+} | Select-Object claim_id, claim_type, status, tier, priority
+```
+
+理由：`claim_type=fact` 在 2026-07-31 由 `runbooks/extraction.md` 引入，
+四批抽取共 38 列使用一個當時 SCHEMA 未定義的值，
+而列數、欄數、BOM、CRLF、排序、`section` 交叉驗證六項驗收全部通過。
+**列舉值域是既有驗收唯一沒有涵蓋的一類，而它一行就能檢查。**
+
+---
+
+## 10. Commit 規範
 
 一次檢索執行 = 一個 commit。
 
@@ -405,7 +452,7 @@ run: 2026-08-03 / inbox/2026-08-03.json
 
 ---
 
-## 10. 範例列
+## 11. 範例列
 
 驗證前：
 
@@ -425,7 +472,7 @@ run: 2026-08-03 / inbox/2026-08-03.json
 
 ---
 
-## 11. 變更本 Schema
+## 12. 變更本 Schema
 
 新增欄位一律往後接，不得改動既有欄位的名稱、順序或語意。
 任何變更必須遞增 `schema_version`，並在 `ledger/CHANGELOG.md` 記錄變更內容與日期。

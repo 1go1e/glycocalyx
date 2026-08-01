@@ -2,8 +2,8 @@
 
 ```
 最後更新: 2026-08-01
-最後 commit: <剛才那個短 hash> （§1 數字所依據的 ledger commit）
-schema_version: 7
+最後 commit: 98d757f （§1 數字所依據的 ledger commit）
+schema_version: 8
 topics_version: 1
 ```
 
@@ -985,7 +985,43 @@ L462「heparanase 是人體已知唯一能剪斷 HS 側鏈的內切糖苷酶」�
 
 ---
 
-### 待決 — `claim_type` 與 SCHEMA §2 定義的落差（2026-08-01 新增）
+### ~~待決~~ 已決 — `claim_type=fact` 不在 SCHEMA 合法值之內（2026-08-01 新增，同日核准選項 3）
+
+執行下方選項 A 時全帳本掃描發現：**`fact` 從 v1 到 v7 從未列入 SCHEMA §2 的合法值**
+（`definition`／`mechanism`／`measurement`／`epidemiology`／`therapeutic` 五個）。
+它只出現在 `runbooks/extraction.md` §6 的欄位表，該檔 2026-07-31 隨 schema v7 新建，
+四批抽取全部照它填。改完六列後仍有 **32 列**使用這個未定義的值
+（`axis` 6、`heparanase` 26；原始 121 列無一使用）。
+
+三道既有驗收都不檢查值域：抽取收尾驗列數／欄數／BOM／CRLF／排序，
+`section` 交叉驗證比對的是 `claim_id` 前綴，schema v7 同步檢查看的是 `TOPICS.md` 涵蓋率。
+
+~~**待決**：（1）合法化；（2）廢除並逐列改派；（3）兩者兼做。~~
+
+**已核准選項 3 並執行（2026-08-01，schema v8）。**
+
+- SCHEMA §2 新增合法值 `fact`，明訂 `claim_type` 為封閉值域，
+  並補「`fact` 與相鄰型別的分界」四條。其中 `fact` vs `epidemiology`
+  為**硬性規定**：主詞為人體族群且動物或體外證據不足以判定者一律 `epidemiology`——
+  只有 `epidemiology`／`therapeutic` 帶有「必須人體證據才能判 `verified`」的約束，
+  填成 `fact` 會使該閘門靜默失效，且沒有任何欄位會顯示它被繞過
+- SCHEMA 新增 **§9 值域檢查**（`claim_type`／`status`／`tier`／`priority` 四欄），
+  原 §9–§11 順延為 §10–§12。`CLAUDE.md`、`runbooks/backfill.md` 的節號引用已同步
+- 32 列逐列複核：**改派 12 列**（→`epidemiology` 7、→`definition` 2、
+  →`mechanism` 2、→`measurement` 1），**維持 `fact` 20 列**。
+  改派清單見 `ledger/CHANGELOG.md` v8
+- `runbooks/extraction.md` §6 欄位表改為**交叉引用** SCHEMA §2 而非複製值域，
+  §7 收尾加入值域檢查，§8 新增第五個已知失效模式
+
+〔推論〕本案的價值不在改對 18 列，在於補上**列舉值域**這一類驗收。
+六項既有驗收（列數、欄數、BOM、CRLF、排序、`section` 交叉驗證）
+全部通過，而 38 列填著一個不存在的值——**驗收覆蓋不到的地方，錯誤可以無限期存活**。
+與 §3.19 同族：兩者都是「當下看起來合理、要等第二個東西進來才顯現」，
+差別在 §3.19 等的是第二份文件，本案等的是有人去對照兩份規格。
+
+---
+
+### ~~待決~~ 已決 — `claim_type` 與 SCHEMA §2 定義的落差（2026-08-01 新增，同日核准選項 A）
 
 `5.6.x` 兩節共有六列的 `claim_type` 寫成 `fact`，依 SCHEMA §2 的定義應為
 `epidemiology` 或 `measurement`：
@@ -1006,12 +1042,13 @@ L462「heparanase 是人體已知唯一能剪斷 HS 側鏈的內切糖苷酶」�
 `claim_type` 依 SCHEMA §2 為「僅新增時」可寫入，故第三批未逕行修改，
 以維持 `5.6.1` 與 `5.6.2` 平行列的可比性（要改就六列一起改）。
 
-**待決**：（A）六列一併改為正確型別，視為錯字更正而非語意變更（六列皆未達 `verified`）；
-（B）維持現狀，另在 SCHEMA 補一條「`fact` 不得用於人體族群宣稱」的檢查規則。
+~~**待決**：（A）六列一併改為正確型別；（B）維持現狀另加檢查規則。~~
 
-〔推論〕若選 A，還須全帳本掃一次同型的列——這六列是抽取時發現的，
-不代表既有 121 列裡沒有。掃描鍵：`statement` 含「患者」「族群」「預測」
-而 `claim_type=fact` 者。
+**已核准選項 A 並執行（2026-08-01）。** 六列已改，各列 `note` 末尾註記變更日期與依據。
+六列在上方新待決的三個選項下都成立——它們確實是人體族群宣稱或量測值。
+
+依核准時的附帶要求「全帳本掃一次同型的列」執行掃描，結果即上方新增的待決項：
+問題不是六列分類不當，是 `fact` 這個值本身不合法。**掃描的價值大於原本要修的東西。**
 
 ---
 
@@ -1051,6 +1088,15 @@ L462「heparanase 是人體已知唯一能剪斷 HS 側鏈的內切糖苷酶」�
 ### 已決
 
 保留紀錄，防止下一個 session 重做已經決定過的事。**不要刪除本節條目。**
+
+- **每批開工前先跑 `git status --short`，工作區不乾淨就先查清楚再動手**
+  （核准 2026-08-01）。〔待寫入 §7，與下一批的 STATUS 更新一同 commit〕
+  觸發案例：2026-08-01 套 §3 patch 時，`git apply --check` 意外掀出
+  `reports/2026-07-29-scan-rhetoric.md` 在工作區被刪除（本批未碰該檔，
+  推測為 OneDrive 同步所致），已由 `git checkout --` 還原。
+  若當時直接開始抽 §4，該刪除會混進 §4 的 commit，看起來像是那批刪的。
+  這比 §3.8「搬移檔案留下過期路徑引用」更前面一層：**檔案在 git 之外被動到，
+  只有主動查才看得見**——repo 存放於 OneDrive 同步目錄，此風險長期存在。
 
 - ~~`2.4-precursor-insufficient` 的 statement 模態與原文不符~~ → **已改**（2026-07-30）。
   「無法恢復」改回原文 `v3` §2.4 的「未必能恢復」。該列未達 `verified`，

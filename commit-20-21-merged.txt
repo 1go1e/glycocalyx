@@ -1,0 +1,18 @@
+schema: v8 — claim_type 值域修正與 18 列改派
+
+起因：執行 STATUS §5 六列改派時，依核准的附帶要求做全帳本掃描，
+發現 fact 從 v1 到 v7 從未列入 SCHEMA §2 合法值。該值由
+runbooks/extraction.md（2026-07-31 隨 v7 新建）引入，四批抽取共 38 列照填，
+而列數／欄數／BOM／CRLF／排序／section 交叉驗證六項驗收全部通過。
+
+§2  新增合法值 fact（狀態／時序／階段／非族群數值），明訂為封閉值域
+§2  新增「fact 與相鄰型別的分界」四條；fact vs epidemiology 為硬性規定
+§9  新增值域檢查（claim_type/status/tier/priority），原 §9-§11 順延為 §10-§12
+
+ledger: 38 列複核，改派 18（epidemiology 11、measurement 3、definition 2、
+        mechanism 2），維持 fact 20。各列 note 註記變更依據
+
+runbooks/extraction.md §6 改為交叉引用 SCHEMA §2、§7 加值域檢查、
+§8 新增第五個已知失效模式。CLAUDE.md 與 backfill.md 節號引用同步。
+
+proposal: reports/revisions/2026-08-01-claim-type-fact.md（選項 A + 選項 3）

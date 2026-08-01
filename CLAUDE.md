@@ -55,7 +55,7 @@
 STATUS.md          專案現況、下一批、待決事項。每完成一批需更新（見 STATUS.md §7）
 ledger/
   claims.csv       主張帳本
-  SCHEMA.md        欄位規則（唯讀，變更須經 §11 提案）
+  SCHEMA.md        欄位規則（唯讀，變更須經 §12 提案）
   CHANGELOG.md     schema 變更紀錄
   queries.md       實測檢索式與檢索通則（經驗紀錄，非規格）
 runbooks/
@@ -76,4 +76,4 @@ inbox/             檢索原始回傳，保留不刪減
 
 ## Commit
 
-一次檢索執行 = 一個 commit。格式見 `ledger/SCHEMA.md` §9。
+一次檢索執行 = 一個 commit。格式見 `ledger/SCHEMA.md` §10。

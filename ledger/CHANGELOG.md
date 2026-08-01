@@ -41,6 +41,10 @@
   （不再複製值域），§7 收尾加入 §9 值域檢查，§8 新增第五個已知失效模式；
   `CLAUDE.md` 與 `runbooks/backfill.md` 的 SCHEMA 節號引用同步更新
   （§9 → §10、§11 → §12）。目前無前端
+- **勘誤（2026-08-01）**：本條目的「同步檢查」在 `32ba706` 當下**並未落地**——
+  `runbooks/extraction.md` 的修正版被誤置於 `reports/extraction/extraction.md`，
+  該 runbook 本身仍是舊版。已於後續 commit 歸位。
+  事故經過與檢討見 `STATUS.md` §7。**紀錄與實際不符，而六項驗收全部通過**
 
 ## schema_version 7 — 2026-07-31
 

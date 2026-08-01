@@ -1245,6 +1245,73 @@ append-only 的帳本，改寫的成本與風險高於落差本身。且該落�
 這種無法判斷哪個是真的狀態。日期以 commit 當下的本機日期為準，
 一個批次內所有檔案用同一個日期，這一條寫進 runbook 比事後修正有用。
 
+### 每批的開工與收工檢查（2026-08-01 核准，兩條）
+
+**開工前：**
+
+```powershell
+git status --short
+```
+
+輸出非空就先查清楚再動手，**不要直接開始工作**。
+
+```powershell
+git fetch
+```
+```powershell
+git log --oneline -1 origin/main
+```
+
+確認 `origin/main` 與本機 HEAD 一致。
+
+**收工前：**
+
+```powershell
+git push
+```
+
+理由是兩端的同一件事——**repo 的真實狀態與執行者看到的狀態之間的落差**：
+
+- 本 repo 存放於 OneDrive 同步目錄，檔案可能在 git 之外被動到。
+  2026-08-01 套 §3 patch 時，`git apply --check` 意外掀出
+  `reports/2026-07-29-scan-rhetoric.md` 在工作區被刪除（該批未碰此檔），
+  已由 `git checkout --` 還原。若當時直接開始抽 §4，該刪除會混進 §4 的 commit，
+  看起來像是那批刪的。這比 §3.8「搬移檔案留下過期路徑引用」更前面一層
+- agent 端以 clone `origin/main` 來同步 repo 狀態。**只要本機沒推，agent 讀到的就是舊版。**
+  2026-08-01 該 session 中 `origin/main` 落後本機兩個 commit，
+  是靠人工貼上 `git log` 才發現的
+
+---
+
+### 事故 — v8 的兩個檔案落錯位置（2026-08-01，已修）
+
+`32ba706`（schema v8）推上去後發現：
+
+1. `runbooks/extraction.md` **仍是舊版**，v8 修正過的版本被放到
+   `reports/extraction/extraction.md`。成因是交付檔名為 `extraction.md`，
+   與該批的報告同目錄，歸位時被當成報告
+2. 五個交付用的暫存檔被 `git add -A` 一併提交：
+   `STATUS-5-section-replacement.md`、`commit-20.txt`、`commit-21.txt`、
+   `commit-20-21-merged.txt`（及上述誤置檔）
+
+已於後續 commit 修正：檔案歸位、暫存檔移除。
+
+〔推論〕**這是同一族的第三次**，而且是最刺眼的一次——
+`CHANGELOG.md` 的 v8 條目寫著「同步檢查：`runbooks/extraction.md` §6 欄位表已改為
+交叉引用」，但那個檔案根本沒被改到。**紀錄宣稱做了，實際沒做，而沒有任何驗收會發現。**
+schema v8 才剛因為同型問題新增 §9 值域檢查，同一次 commit 就再犯一次。
+
+差別在前兩次錯在**內容**（節號、值域），本次錯在**路徑**。
+值域檢查擋不住路徑錯誤——`claims.csv` 完全正確，六項驗收全過。
+
+〔待決〕是否加入第三條檢查：**commit 後確認 SCHEMA §12 同步檢查所列的每個檔案
+確實落在宣稱的路徑上**。最小實作是把該次變更觸及的路徑逐一 `git log -1 --oneline -- <path>`，
+確認最後動到它的是本次 commit。成本約五行，擋的是「CHANGELOG 說改了、檔案沒改」這一類。
+另一個更便宜的做法是交付檔名一律帶完整路徑（`runbooks-extraction.md`），
+只擋歸位錯誤，擋不住宣稱與實際的落差。
+
+---
+
 每完成一批，更新本檔的 §1 帳本狀態、§2 已完成批次、§4 下一批。
 若該批浮現新的系統性模式，加入 §3。
 提案核准或作廢時，把該項從 §5「待核准」移到 §5「已決」並加上刪除線，**不要刪除條目**——

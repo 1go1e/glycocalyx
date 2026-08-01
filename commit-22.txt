@@ -1,0 +1,12 @@
+fix: v8 同步檢查未落地，檔案歸位並移除暫存檔
+
+32ba706 宣稱同步了 runbooks/extraction.md，實際上修正版被誤置於
+reports/extraction/extraction.md，該 runbook 仍是舊版（欄位表仍列出
+四個值且與 SCHEMA §2 的封閉值域不符）。
+
+- runbooks/extraction.md 換為 v8 版本
+- 移除誤置檔 reports/extraction/extraction.md
+- 移除四個交付用暫存檔（STATUS-5-section-replacement.md、commit-20/21/20-21-merged.txt）
+- ledger/CHANGELOG.md v8 條目補勘誤，記錄同步檢查未落地
+- STATUS.md §7 新增「每批的開工與收工檢查」兩條（2026-08-01 核准）
+  與本次事故紀錄，含第三條檢查的待決項

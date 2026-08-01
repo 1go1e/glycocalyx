@@ -1,7 +1,7 @@
 # claims.csv — Schema 與寫入規則
 
 ```
-schema_version: 6
+schema_version: 7
 last_updated: 2026-07-31
 applies_to: ledger/claims.csv
 ```
@@ -35,7 +35,7 @@ ledger 的版本歷史就失去意義——那是整套系統唯一不可替代�
 | # | 欄位 | 可否由 agent 寫入 | 說明 |
 |---|---|---|---|
 | 1 | `claim_id` | 僅新增時 | 永久識別碼。見 §3 |
-| 2 | `section` | 否 | 主要出處的章節編號，等於 `source_ref` 第一個 token 的節號 |
+| 2 | `section` | 否 | 主題座標。取自 `ledger/TOPICS.md` 的正規主題樹，**不必等於** `source_ref` 的節號 |
 | 3 | `statement` | 條件性 | 單一、可證偽的敘述。見 §6 |
 | 4 | `claim_type` | 僅新增時 | 見下方列表 |
 | 5 | `tier` | 是 | 證據等級。見 §5 |
@@ -72,21 +72,34 @@ glycocalyx/v3#5.5;mitochondria/axis#1.2
   （`glycocalyx/`、`mitochondria/`），子目錄前綴同時是網頁分站的依據
 - `{section}`：該文件內的節號。文件無節號時用可辨識的位置標籤（`表1`、`L122-131`）
 
-`section` 欄的值必須等於 `source_ref` 第一個 token 的節號部分。
-
-**例外：主要出處位於 `intake/` 之下時**，`section` 取該主張**主題所屬的受追蹤文件節號**，
-而非 intake 檔的位置標籤。
+`section` 欄的值必須是 `ledger/TOPICS.md` 所定義的正規主題樹節號，
+取該主張**主題所屬**的節點，**不必等於** `source_ref` 的節號。
 
 ```
 claim_id   = 2.2-brain-mouse-0.54-0.23
 section    = 2.2
 source_ref = intake/2026-07-28-糖萼層生理#L154
+
+claim_id   = 5.6.2-dr-heparanase-20-100x
+section    = 5.6.2
+source_ref = glycocalyx/heparanase#3.2        ← 來源節號為 3.2，section 取 5.6.2
 ```
 
 理由：`section` 是**主題座標**，不是位置指標。批次劃分（STATUS §4）與
-`claim_id` 排序都依賴它把同主題的條目聚在一起。intake 檔多為無節號的敘述性文件，
-其位置標籤（`L154`）不承載主題資訊，填入 `section` 會使該欄失去作用。
+`claim_id` 排序都依賴它把同主題的條目聚在一起。
+
+受追蹤文件各有自己的節號體系且互相衝突——`v3` 33 節、`heparanase` 64 節、
+`axis` 13 節全部從 `1.1` 起算，重疊 23 個節號而語意不同
+（`v3 §4.1` 是酶介導降解，`heparanase §4.1` 是糖尿病神經病變的時間序）。
+若照抄來源節號，同一個 `section` 會裝進不相干的主張。
+intake 檔的位置標籤（`L154`）同理不承載主題資訊。
 位置資訊由 `source_ref` 承載，不重複。
+
+**`TOPICS.md` 未涵蓋的主題，不得自行造節號。** 暫記於批次報告的
+「待建節點」一節，該批結束後一併寫提案，核准後遞增 `topics_version`。
+
+〔注意〕`topics_version` 與 `schema_version` 各自遞增。
+主題樹隨新文件收錄而擴充，那不是 schema 變更。
 
 ### 一條主張，一列
 
@@ -131,6 +144,8 @@ source_ref = intake/2026-07-28-糖萼層生理#L154
    也是外部引用的錨點。改名等於讓所有既有引用失效。
 3. **章節重編號時不跟著改。** `section` 欄可以更新，`claim_id` 前綴保持原樣。
    ID 的前綴只是出身標記，不是位置指標。
+   自 v7 起 `section` 取正規主題樹節號，來源文件的章節重編號**不再影響** `section`——
+   只有 `TOPICS.md` 本身的變更才會。
 
 ---
 

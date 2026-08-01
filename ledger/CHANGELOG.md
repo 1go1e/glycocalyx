@@ -4,6 +4,25 @@
 
 ---
 
+## schema_version 7 — 2026-07-31
+
+三檔抽 claim 的前置檢查發現 `section` 節號全面碰撞後提出。
+
+- **§2**：`section` 改為取 `ledger/TOPICS.md` 的正規主題樹節號，
+  不必等於 `source_ref` 的節號。原本的 intake 例外併入此通則，不再單列。
+- **§2**：`TOPICS.md` 未涵蓋的主題不得自行造節號，須提案並遞增 `topics_version`。
+- **§3**：補明來源文件的章節重編號自 v7 起不再影響 `section`。
+- **新建 `ledger/TOPICS.md`**（`topics_version: 1`，50 個節點）：
+  v3 的 35 節原樣保留（含未編號總論段的 `1` 與 `1.3`），
+  新增 10 節（`1.2.1`、`4.1.1`–`4.1.3`、`5.6`–`5.6.3`、`5.7`、`6.3`）
+  與頂層節點 `7`（含 `7.1`–`7.4`）。
+  建立後以 `claims.csv` 交叉驗證：帳本用到的 29 個 `section` 值全部有定義。
+- 提案：`reports/revisions/2026-07-31-schema-canonical-topics.md`
+  （核准 2026-07-31，選項 A；§3.2 待決取選項 1，收錄糖萼以外的肝素酶病理）
+- **受影響列：無。** v3 的 33 個節號原樣成為正規樹節點，既有 123 列的 `section` 值不變。
+- 同步檢查（§11）：`CLAUDE.md` 必讀清單已加入 `TOPICS.md`；
+  `runbooks/extraction.md` 新建，含 `section` 歸位步驟。目前無前端。
+
 ## schema_version 6 — 2026-07-31
 
 合併兩份提案，一次遞增。

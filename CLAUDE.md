@@ -6,11 +6,14 @@
 
 - `STATUS.md` — 專案現況、下一批、待決事項。**先讀這份**，它決定本次要做什麼
 - `ledger/SCHEMA.md` — `claims.csv` 的欄位規則與寫入限制
+- `ledger/TOPICS.md` — 正規主題樹，決定 `section` 欄的值（抽 claim 或新增列時必讀）
 - `runbooks/backfill.md` — 回填作業程序（執行回填任務時）
+- `runbooks/extraction.md` — 抽取作業程序（從受追蹤文件建立新列時）
 - `runbooks/source-editing.md` — 受追蹤原文的修改規範（標註／改寫／刪除措辭，修改 `source/` 時）
 - `source/glycocalyx/v3.md` — 主要原始文件，判定時的背景脈絡
 
 未讀過 `ledger/SCHEMA.md` 就不得修改 `ledger/claims.csv`。
+未讀過 `ledger/TOPICS.md` 就不得新增列——`section` 不得憑來源節號填寫。
 未讀過 `runbooks/source-editing.md` 就不得提出 `source/` 受追蹤檔的修訂單。
 
 ## 不可違反

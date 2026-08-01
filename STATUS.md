@@ -2,7 +2,7 @@
 
 ```
 最後更新: 2026-07-31
-最後 commit: 489bf64 （§1 數字所依據的 ledger commit）
+最後 commit: 66bd337 （§1 數字所依據的 ledger commit）
 schema_version: 7
 topics_version: 1
 ```
@@ -14,19 +14,20 @@ topics_version: 1
 ## 1. 帳本狀態
 
 ```
-unverified  126
+unverified  152
 partial      14
 unsupported  13
 verified      5
 contested     3
 superseded    1
 ──────────────
-總計        162
+總計        188
 ```
 
-〔注意〕123 → 139 為 2026-07-31 `axis.md` 抽取的結果（淨新增 16 條，
-另有 4 條追加 `source_ref` 未建新列）。三檔抽 claim 已開始，
-完成率在抽取期間會持續下降，這是預期的——**不要為了數字而略過任何一節**。
+〔注意〕123 → 188 為 2026-07-31 三檔抽 claim 的累計結果：
+`axis` 全檔 16 條、`heparanase` §1 二十三條、§2 二十六條，
+另有 24 條走追加 `source_ref` 未建新列。抽取仍在進行中，
+完成率會持續下降，這是預期的——**不要為了數字而略過任何一節**。
 
 〔注意〕總列數 121 → 123 是 2026-07-31 拆列的結果，不是新抽 claim。
 `superseded` 首次出現：`5.4-s1p-preconditioning` 依 SCHEMA §6（v6）拆為兩列。
@@ -47,8 +48,8 @@ Import-Csv ledger/claims.csv | Where-Object priority -eq 'high' |
 **依優先序的完成率**（這才是專案健康度指標；全體完成率會被大量 low/med 稀釋）：
 
 ```
-high   已判定 26 / 88  = 30%
-med    已判定  9 / 65  = 14%
+high   已判定 26 / 110 = 24%
+med    已判定  9 / 69  = 13%
 low    已判定  1 /  9  = 11%
 ```
 
@@ -110,6 +111,7 @@ $ids.Count
 | 2026-07-31 | schema v7 執行（建 `TOPICS.md`＋`extraction.md`） | 0 | `reports/revisions/2026-07-31-schema-canonical-topics.md` §7 |
 | 2026-07-31 | **抽取** `mitochondria/axis` 全檔 | 16＋4 | `reports/extraction/2026-07-31-axis.md` |
 | 2026-07-31 | **抽取** `glycocalyx/heparanase` §1（總論） | 23＋10 | `reports/extraction/2026-07-31-heparanase-1.md` |
+| 2026-07-31 | **抽取** `glycocalyx/heparanase` §2（DKD） | 26＋10 | `reports/extraction/2026-07-31-heparanase-2.md` |
 
 〔注意〕表中「條數」欄自 2026-07-31 起可能是抽取而非回填。
 抽取批次的報告在 `reports/extraction/`，回填在 `reports/backfill/`。
@@ -575,7 +577,7 @@ therapeutic 已完成，交錯的顧慮解除。
 
 ```
 [x] 1.x      總論與慢性發炎機制         2026-07-31 完成，23＋10
-[ ] 2        糖尿病腎病變               → 5.6.1
+[x] 2        糖尿病腎病變               2026-07-31 完成，26＋10
 [ ] 3        糖尿病視網膜病變           → 5.6.2
 [ ] 4        糖尿病神經病變             → 5.6.3
 [ ] 5.x      早期診斷                   → 5.5 / 5.7 / 2.1.2
@@ -583,15 +585,17 @@ therapeutic 已完成，交錯的顧慮解除。
 [ ] 7        糖萼以外病理               → 7.1–7.4
 ```
 
-**下一批：§2 糖尿病腎病變**，6 個子節。
+**下一批：§3 糖尿病視網膜病變**，6 個子節，主要落在 `5.6.2`。
+
+〔注意〕§3 的結構與 §2 幾乎平行（時間序／機制／核心病理／臨床證據／藥物／結論），
+**平行結構意味著平行數值**。抽取時逐一與 §2 的對應數值比對並在 `note` 互相標註。
 
 〔注意〕`6.3-sglt2-glp1-restore` 已於第一批建立。本檔 §2.5、§3.5、§4.5、§7
 全段皆環繞 SGLT2i／GLP-1 RA 的糖萼保護作用，**後續四批應追加 `source_ref`
 而非另建列**，否則同一主張會在帳本出現五次。
 
-〔注意〕§2 開頭即為「目前國際共識認為：糖萼損傷是糖尿病腎病變最早、
-最核心的病理事件之一」，該段未具名權威措辭的密度是第一批的數倍。
-依 SCHEMA §6（v4）一律改寫並把原措辭記入 `note`。
+〔注意〕§3 開頭即為「2023–2025 年國際共識已將糖萼損傷視為……」，
+兼具時間形容詞與未具名權威，依 SCHEMA §6（v4）一律改寫並把原措辭記入 `note`。
 
 〔注意〕`heparanase.md` 是三檔中承載措辭最密集者（「2025 國際共識」「頭號兇手」
 「唯一能剪斷 HS 的內切糖苷酶」），依 SCHEMA §6（v4）這些一律不得進 `statement`，

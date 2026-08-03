@@ -5,6 +5,44 @@
 
 ---
 
+## schema_version 9 — 2026-08-02
+
+`heparanase.md` §4 抽取時發現、§5 抽取前執行。與 v8 是同一個缺口的另一條路。
+
+- **§2 新增「`claim_type` 的判定順序」**：判定型別時**先過人體閘門，再問型別**。
+  閘門的問題是「這條 statement 的真假能不能用動物或體外研究判定」——
+  不能且主詞為人體族群或人體患者 → `epidemiology`（若陳述治療效果 → `therapeutic`）。
+  適用 `definition`／`fact`／`measurement` 三型；`mechanism` 明文排除
+  （因果路徑本就以動物與細胞模型為主要證據，改判會使檢索取向錯置）。
+- **明訂「具名量測平台 + 人體患者」一律走 `epidemiology`**，平台名稱留在 statement 內。
+  反之，主詞是平台本身（規格、原理、取樣方式、正常參考範圍）者仍為 `measurement`——
+  閘門問的是主詞，不是應用場景。
+- 提案：`reports/revisions/2026-08-02-schema-human-gate.md`（核准 2026-08-02）
+- 觸發案例：v8 的硬性分界只寫在 `fact` vs `epidemiology` 之間，
+  而 `measurement` 的分界寫的是「數值出自 statement 內具名的量測平台」。
+  **「具名平台」與「人體患者」可以同時成立**，
+  「某疾病患者以某儀器測到某值」依字面落入 `measurement`，
+  而 `measurement` 不帶「必須人體證據才能判 `verified`」的約束，閘門於是靜默失效。
+  §2–§4 三批抽取累積 6 列，六項驗收與 v8 新增的 §9 值域檢查全部通過。
+- 受影響列：**8 列**（`measurement` 25 → 17，`epidemiology` 36 → 44）
+  - STATUS §5 已列出的 6 列：`5.6.1-dkd-sdf-sublingual-50pct`、
+    `5.6.1-dkd-em-early-thinning`、`5.6.2-dr-octa-thickness-50-80pct`、
+    `5.6.3-dn-nerve-biopsy-albumin`、`5.6.3-dn-ccm-thickness-40-60pct`、
+    `5.6.3-dn-em-microvascular-near-complete-loss`
+  - 執行時全帳本 `measurement` 逐列複核再增 2 列：`5.6.3-dn-iendf-skin-biopsy`
+    （糖尿病疼痛患者的皮膚活檢）、`5.2.2-longcovid-hs-severity`
+    （長新冠只存在於人體，無動物對應；主詞寫成「循環 HS 片段」而未含「患者」字樣）
+  - 8 列改派前皆為 `unverified` 且 `tier` 為空，無既有判定因改型別而失效
+  - 各列 `note` 末尾註記變更日期與依據
+- 邊界案例（複核後**維持** `measurement`，記此備查）：
+  `5.6.2-dr-adaptive-optics-early-thinning`（主詞為影像平台的能力，非患者族群）、
+  `5.5-pbr-sdc1-correlation`（主詞為兩個指標之間的關係，未限定人體族群）
+- 同步檢查（§12）：`runbooks/extraction.md` §6 欄位表已於 v8 改為交叉引用 SCHEMA §2、
+  不複製值域，本次無需同步；`runbooks/backfill.md` 與 `CLAUDE.md` 未引用型別分界條文。
+  目前無前端
+
+---
+
 ## schema_version 8 — 2026-08-01
 
 執行 STATUS §5「`claim_type` 六列改派」時，依核准的附帶要求做全帳本掃描而發現。

@@ -1,8 +1,8 @@
 # claims.csv — Schema 與寫入規則
 
 ```
-schema_version: 8
-last_updated: 2026-08-01
+schema_version: 9
+last_updated: 2026-08-02
 applies_to: ledger/claims.csv
 ```
 
@@ -61,6 +61,42 @@ ledger 的版本歷史就失去意義——那是整套系統唯一不可替代�
 
 此欄的用途是**分流檢索策略**。`epidemiology` 與 `therapeutic` 的條目必須以人體研究為
 主要證據；以動物或體外研究充當支持文獻，不得將 `status` 設為 `verified`。
+
+### `claim_type` 的判定順序（v9）
+
+判定 `claim_type` 時**先過人體閘門，再問型別**。順序不可對調。
+
+**第一順位 — 人體閘門**
+
+問一個問題：**這條 statement 的真假，能不能用動物或體外研究判定？**
+
+| 情況 | 判定 |
+|---|---|
+| 不能——statement 的主詞是人體族群或人體患者，其真假取決於人體資料 | `epidemiology` |
+| 不能，且該條陳述的是治療介入的效果 | `therapeutic` |
+| 能 | 進入第二順位 |
+
+閘門的適用範圍是 `definition`／`fact`／`measurement` 三型。
+`mechanism` **不受此閘門約束**：因果路徑本就以動物與細胞模型為主要證據，
+把描述人體場景的機制宣稱改判 `epidemiology` 會使檢索取向錯置。
+若一條 `mechanism` 列的 statement 其實不含因果連接、只是人體觀察，
+那它從一開始就不該是 `mechanism`——那是下方的型別分界問題，不是閘門問題。
+
+**第二順位 — 型別分界**
+
+`definition`／`fact`／`mechanism`／`measurement` 四者依下方分界表判定。
+
+> **閘門先於型別，是因為型別分界會把人體宣稱吸走。**
+> v8 只在 `fact` vs `epidemiology` 之間立了這道界線，
+> 但 `measurement` 的分界寫的是「數值出自 statement 內具名的量測平台」——
+> **「具名平台」與「人體患者」可以同時成立**，
+> 一條「某疾病患者以某儀器測到某值」的宣稱會依字面落入 `measurement`，
+> 而 `measurement` 不帶人體證據約束，閘門於是靜默失效。
+> 這與 v8 修補的是同一個缺口，只是在另一條路上。
+
+〔注意〕**「具名量測平台 + 人體患者」一律走 `epidemiology`**，平台名稱留在 statement 內，
+不因改型別而移除。反之，若主詞是平台本身（規格、原理、取樣方式、正常參考範圍），
+即使該平台只用於人體，仍為 `measurement`——閘門問的是主詞，不是應用場景。
 
 ### `fact` 與相鄰型別的分界（v8）
 

@@ -1,0 +1,112 @@
+{
+  "batch": "backfill 4.1.3 (heparanase upstream regulation)",
+  "date": "2026-08-07",
+  "note": "本檔保留本批全部檢索的原始回傳摘要，不做刪減。識別碼一律取自檢索回傳的結構化欄位（PubMed URL 路徑中的 PMID、期刊頁的 DOI），未憑記憶寫出。",
+  "searches": [
+    {
+      "query": "heparanase gene HPSE transcriptional regulation inducers Egr1 NF-kB HIF-1α estrogen review",
+      "hits": [
+        {
+          "id": "PMID:16901744",
+          "title": "Regulation, function and clinical significance of heparanase in cancer metastasis and angiogenesis",
+          "key": "heparanase 啟動子的轉錄活性由去甲基化、EGR1、雌激素、發炎細胞激素與 p53 失活所刺激。65 kDa 前體經蛋白水解生成 8 與 50 kDa 次單元異二聚體。未給任何誘導倍數。"
+        },
+        {
+          "id": "PMID:16093249",
+          "title": "Early growth response gene 1 (EGR1) regulates heparanase gene transcription in tumor cells",
+          "key": "280 bp 啟動子區含兩個功能性 EGR1 位點，EMSA 證實結合；在前列腺、乳腺、結腸癌細胞呈劑量依賴活化，但在黑色素瘤細胞中 EGR1 過度表現呈劑量依賴的啟動子活性抑制。未給誘導倍數。"
+        },
+        {
+          "id": "DOI:10.1093/humrep/del483",
+          "title": "Estradiol induces heparanase-1 expression and heparan sulphate proteoglycan degradation in human endometrium",
+          "key": "人子宮內膜；estradiol 提高 HPR1 表達（RT-PCR 與 luciferase reporter）。未給倍數。"
+        }
+      ]
+    },
+    {
+      "query": "high glucose AGEs induce heparanase expression fold increase endothelial RAGE NF-kB",
+      "hits": [
+        {
+          "id": "DOI:10.1007/s11010-011-0804-7",
+          "title": "Advanced glycation end-products induce heparanase expression in endothelial cells by RAGE and through activation of the FOXO4 transcription factor",
+          "key": "人微血管內皮細胞；AGE-BSA（300／1000／3000 μg/ml）以劑量與時間依賴方式提高 heparanase mRNA 與蛋白；1000 μg/ml 的效果可被 RAGE 中和抗體消除；**預先以 NF-κB 抑制劑或 PI3K 抑制劑處理並不影響** AGE-BSA 誘導的 heparanase 表達。轉錄因子為 FOXO4。未給倍數。"
+        },
+        {
+          "id": "PMC3637127",
+          "title": "Heparanase induced by advanced glycation end products (AGEs) promotes macrophage migration involving RAGE and PI3K/AKT pathway",
+          "key": "Ana-1 巨噬細胞；AGEs 顯著提高 HPA 蛋白與 mRNA，抗 RAGE 抗體可減弱。未給倍數。僅取得 PMC 編號，SCHEMA §4 的 token 形式不含 PMC，故未填入 evidence。"
+        }
+      ]
+    },
+    {
+      "query": "\"heparanase\" TNF-alpha IL-1beta hypoxia HIF-1alpha induction \"fold\" endothelial mRNA upregulation",
+      "hits": [
+        {
+          "id": "DOI:10.1186/s13062-024-00487-w",
+          "title": "Hypoxia-induced activation of HIF-1alpha/IL-1beta axis in microglia promotes glioma progression via NF-κB-mediated upregulation of heparanase expression",
+          "key": "膠質瘤微膠細胞；缺氧經 HIF-1α → IL-1β → **NF-κB** 上調 heparanase。未給倍數。〔對 4.1.3-hif1a-binds-hpa-promoter 有直接關係：該列稱 HIF-1α 直接結合 HPA 啟動子，本文獻的路徑是經 NF-κB 間接。該列不在本批範圍。〕"
+        }
+      ]
+    },
+    {
+      "query": "\"heparanase\" \"10-50 fold\" OR \"10- to 50-fold\" OR \"5-20 fold\" induction expression",
+      "hits": [
+        {
+          "id": "DOI:10.1371/journal.pone.0164183",
+          "title": "Heparanase Overexpression Reduces Hepcidin Expression, Affects Iron Homeostasis and Alters the Response to Inflammation",
+          "key": "字面命中「10 to 50 fold」，但那是**轉染質體造成的 50 kDa 活性型 HPA 過度表現幅度**（HepG2 等肝癌細胞），不是任何刺激因子的誘導倍數。量測對象與介入兩個維度皆不對位，不得採計。"
+        },
+        {
+          "id": "PMC7852308",
+          "title": "Induction of heparanase via IL-10 correlates with CD163+ M2 macrophages in inflammatory breast carcinoma",
+          "key": "實測人體組織的 heparanase mRNA 上升幅度為 5.03–8.9 倍。"
+        },
+        {
+          "id": "DOI:10.1038/s41598-017-00715-6",
+          "title": "The Role of Heparanase in the Pathogenesis of Acute Pancreatitis",
+          "key": "cerulein 誘導的急性胰臟炎，胰臟 heparanase 表達與活性上升「over 6-fold」。"
+        },
+        {
+          "id": "PMC3388984",
+          "title": "PI-88 suppresses angiogenesis by downregulating heparanase and VEGF in an oxygen-induced retinal neovascularization model",
+          "key": "OIR 視網膜 heparanase mRNA 上升 1.71 倍、蛋白 1.49 倍。"
+        }
+      ]
+    },
+    {
+      "query": "angiotensin II induces heparanase expression podocyte glomerular endothelial AT1 receptor PKC",
+      "hits": [
+        {
+          "id": "PMC4978400",
+          "title": "Endothelial Nitric Oxide Synthase Prevents Heparanase Induction and the Development of Proteinuria",
+          "key": "文中把 ROS、angiotensin II、PKC、AGEs、維生素 D、TNF-α 列為 eNOS 與 heparanase 的共同調控因子；維生素 D 為 eNOS 的正向調控者但 heparanase 的負向調控者。未給倍數。僅取得 PMC 編號。"
+        },
+        {
+          "id": "researchgate-record",
+          "title": "Angiotensin II Type 1-Receptor Mediated Changes in Heparan Sulfate Proteoglycans / Adriamycin nephropathy",
+          "key": "AT1 拮抗劑治療顯著降低腎小球 heparanase 表達並回復 HS；羥自由基清除劑 DMTU 亦可防止 heparanase 上升。未給倍數。來源為 ResearchGate 轉載頁，未取得 PMID/DOI，依 queries.md §1.6 僅記於 note，不填 evidence。"
+        }
+      ]
+    },
+    {
+      "query": "\"heparanase\" upstream regulators table fold induction \"5-15\" OR \"10-30\" OR \"5-10 fold\" angiotensin VEGF hypoxia estrogen",
+      "hits": [
+        {
+          "id": "DOI:10.3390/ijms222011096",
+          "title": "The Heparanase Regulatory Network in Health and Disease",
+          "key": "系統性整理 heparanase 的正負向調控者。雌激素經 ER 結合啟動子的雌激素反應元件而上調；**缺氧與 HSV-1 經 NF-κB 上調**；維生素 D 直接結合並抑制啟動子；wild-type BRAF 經抑制 ETS1 而抑制。**全篇未給任何誘導倍數表**。"
+        },
+        {
+          "id": "PMID:16452201",
+          "title": "Heparanase induces vascular endothelial growth factor expression",
+          "key": "heparanase 過度表現使 VEGF 蛋白與 mRNA 上升 **3-6 倍**（HEK293、MDA-MB-435、C6）。方向為 heparanase → VEGF。"
+        },
+        {
+          "id": "PMID:18798279",
+          "title": "Heparanase induces VEGF C and facilitates tumor lymphangiogenesis",
+          "key": "heparanase 過度表現使 VEGF-C 上升 **3-5 倍**。方向為 heparanase → VEGF-C。"
+        }
+      ]
+    }
+  ]
+}

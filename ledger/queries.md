@@ -1,7 +1,7 @@
 # queries.md — 實測檢索式與檢索通則
 
 ```
-last_updated: 2026-07-29
+last_updated: 2026-08-07
 來源: reports/backfill/ 各批次的「本批次有效的檢索詞」一節
 用途: (1) 回填時的起手式  (2) 將來監測迴圈的檢索式來源
 ```
@@ -55,6 +55,42 @@ brain microvascular endothelial glycocalyx thickness measurement micrometers
 
 〔推論〕證否與證實需要不同的檢索策略。證實靠概念詞，證否靠精確字串。
 三次不同措辭都查不到，才寫得下 `unsupported`。
+
+### 1.11 判 `unsupported` 前，先找該題目的「調控者總整理」型綜述
+
+2026-08-07 批次（`4.1.3` 上游調控）確立。要證明某個數值沒有出處，
+比逐個因子各查一輪更有效的是：**找一篇系統性整理該題目全部條目的綜述，
+再看它有沒有那一欄。**
+
+實例：`DOI:10.3390/ijms222011096`「The Heparanase Regulatory Network in Health and Disease」
+系統整理 heparanase 的正負向調控者（雌激素、缺氧、HGF、維生素 D、BRAF/ETS1、HSV-1……），
+**全篇沒有任何誘導倍數**。
+
+〔推論〕這證明的不是「我沒找到」，而是「整理這個題目的人也沒有這種數字」。
+前者是檢索能力的問題，後者是文獻本身的狀態——只有後者撐得起 `unsupported`。
+
+### 1.12 倍數也有「數字接近但情境不同」的陷阱
+
+§1.2 記錄的是敏感度／特異度的版本，倍數同樣會中。
+
+實例：檢索 `"heparanase" "10-50 fold"` 字面命中 PLOS One 2016 的 hepcidin 研究
+（`DOI:10.1371/journal.pone.0164183`），但那是**轉染質體造成的過度表現幅度**，
+不是細胞激素的誘導倍數。量測對象（外源質體 vs 內源基因）與介入（轉染 vs 刺激）
+兩個維度都不對位。
+
+〔注意〕不對位到這種程度**連 `~` 都不填**——`~` 是「相關但不對位」，
+這一筆是「不相關而字面相同」。
+
+### 1.13 查倍數時，一併查反方向
+
+實例：`4.1.3-vegf-5-10x` 稱 VEGF 誘導 heparanase 5-10 倍，
+而文獻密集記載的是 heparanase → VEGF 上升 3-6 倍（`PMID:16452201`）
+與 heparanase → VEGF-C 上升 3-5 倍（`PMID:18798279`）。
+數值範圍相鄰、方向相反。
+
+〔推論〕當 A 與 B 之間確實有雙向關係時，轉述很容易把有實測的那一向的數字
+掛到沒實測的那一向上。**檢索式同時寫 `A induces B` 與 `B induces A`**，
+成本只多一次，卻能區分「查不到」與「查到的是反方向」。
 
 ### 1.5 交錯領域要分開查
 
@@ -352,6 +388,26 @@ syndecan-1 core protein turnover pulse-chase metabolic labeling half-life cell s
 全部只陳述「脫落是正常周轉的一部分」，無一給出半衰期數值。
 
 有效的是改查類別而非分子，見 §1.10。`2.2-sdc1-halflife-2-8h` 已於本批判為 `unsupported`。
+
+## 4.1 2026-08-07 批次（`4.1.3` 上游調控）的無果檢索式
+
+三式專門找 `§6.4` 表的七個誘導倍數，全部無果：
+
+```
+"heparanase" TNF-alpha IL-1beta hypoxia HIF-1alpha induction "fold" endothelial mRNA upregulation
+"heparanase" "10-50 fold" OR "10- to 50-fold" OR "5-20 fold" induction expression
+"heparanase" upstream regulators table fold induction "5-15" OR "10-30" OR "5-10 fold" angiotensin VEGF hypoxia estrogen
+```
+
+三式都拿到 heparanase 調控的**方向性**文獻，沒有任何一篇給出這些倍數範圍。
+第二式的字面命中是誤中，見 §1.12。
+
+〔注意〕實測到的 heparanase 誘導或上升幅度分布於 1.49–8.9 倍
+（OIR 視網膜 1.49–1.71、急性胰臟炎 > 6、發炎性乳癌組織 5.03–8.9）。
+**下一批若再遇到 heparanase 的倍數宣稱，先與這個分布比對**——
+落在 10 倍以上者需要特別強的出處。
+
+---
 
 ## 5. 檢索管道的環境限制
 

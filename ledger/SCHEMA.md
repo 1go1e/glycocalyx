@@ -1,8 +1,8 @@
 # claims.csv — Schema 與寫入規則
 
 ```
-schema_version: 9
-last_updated: 2026-08-02
+schema_version: 10
+last_updated: 2026-08-07
 applies_to: ledger/claims.csv
 ```
 
@@ -447,7 +447,7 @@ PMID:31234567;~PMID:39494362
 
 ---
 
-## 9. 值域檢查（v8）
+## 9. 值域與格式檢查（v10）
 
 `claim_type`、`status`、`tier`、`priority` 四欄皆為封閉值域。
 **每次寫入 `claims.csv` 後、commit 之前必須執行下列檢查，輸出須為空。**
@@ -467,6 +467,31 @@ Import-Csv ledger/claims.csv | Where-Object {
 四批抽取共 38 列使用一個當時 SCHEMA 未定義的值，
 而列數、欄數、BOM、CRLF、排序、`section` 交叉驗證六項驗收全部通過。
 **列舉值域是既有驗收唯一沒有涵蓋的一類，而它一行就能檢查。**
+
+### `source_ref` 格式檢查（v10 新增）
+
+`source_ref` 是自由文字欄，但 §2 對它有明文格式（`{目錄}/{檔名}#{節號}`，多值以分號分隔）。
+**每個 token 必須同時含 `/` 與 `#`。**
+
+```powershell
+Import-Csv ledger/claims.csv | Where-Object {
+  ($_.source_ref -split ';') | Where-Object { $_ -notmatch '/' -or $_ -notmatch '#' }
+} | Select-Object claim_id, source_ref
+```
+
+輸出須為空。
+
+理由：2026-08-02 的 §5B 抽取有 37 列把 `source_ref` 寫成裸節號 `5.5`，
+而**七項既有驗收全部通過**——因為它們只驗四個封閉值域欄，
+沒有任何一項涵蓋自由文字欄的格式。
+
+〔注意〕這個缺陷不影響任何既有檢查會看的東西，但會在回填時才發作：
+`source_ref` 是回填時回頭找原文的唯一座標，而裸節號 `5.5` 在三份受追蹤文件裡都存在，
+指向三個不相干的地方。
+
+〔推論〕本次修訂的一般教訓：**每為欄位寫下一條格式規定，同時問「哪一項檢查會驗它」。**
+本檔目前仍有明文格式而無對應檢查的欄位兩個——`claim_id`（§3 的正規表示式）
+與 `evidence`（§4 的 token 形式）。兩者尚未出過事，但成因結構與本例相同。
 
 ---
 

@@ -1,0 +1,199 @@
+{
+  "batch": "backfill 4.1.3 (heparanase upstream regulation, signalling-pathway column)",
+  "date": "2026-08-09",
+  "note": "本檔保留本批全部檢索的原始回傳摘要，不做刪減。識別碼一律取自檢索回傳的結構化欄位（PubMed URL 路徑中的 PMID、期刊頁的 DOI），未憑記憶寫出。本批完成 4.1.3 節點的最後 6 列，該節點成為本專案第一個完成率 100% 的節點。",
+  "searches": [
+    {
+      "query": "EGR1 binds heparanase HPSE promoter EMSA chromatin immunoprecipitation functional sites",
+      "for": ["4.1.3-egr1-direct-hpa-binding"],
+      "hits": [
+        {
+          "id": "PMID:16093249",
+          "title": "Early growth response gene 1 (EGR1) regulates heparanase gene transcription in tumor cells",
+          "key": "**決定性**。以染色質免疫沉澱（ChIP）證實 EGR1 在活體細胞內結合 heparanase 啟動子（該文自述為首次）；定點突變定出 280 bp 區內兩個功能性 EGR1 位點，EMSA 證實兩個位點皆結合。前列腺／乳腺／結腸癌細胞中呈劑量依賴活化，黑色素瘤細胞中呈劑量依賴抑制。上一批已取得此 token，本批取得的新資訊是 ChIP 這一項——上一批的摘要只記到 EMSA。"
+        },
+        {
+          "id": "no-id-springer-chapter",
+          "title": "Forty Years of Basic and Translational Heparanase Research（專書章節）",
+          "key": "覆述 PMID:16093249 的 ChIP 與 EMSA 結果。轉述來源，依 queries.md §1.6 不採計，僅作為原文已取得的交叉確認。"
+        },
+        {
+          "id": "no-id-faseb-2025",
+          "title": "The Pathophysiological Functions of Heparanases: From Evolution, Structural and Tissue-Specific Perspectives (FASEB J 2025)",
+          "key": "EGR1 在腫瘤細胞與 T 淋巴細胞經 **ERK1/2 依賴**途徑上調 HPSE1，在人與小鼠黑色素瘤細胞則作用相反。另記載啟動子高甲基化與低表達相關，5-azacytidine 去甲基化使 HPSE1 表達上升。〔對 4.1.3-tnfa-il1b-mapk 有關：此處的 ERK1/2 是 EGR1 的上游，刺激為 PMA/ionomycin，非 TNF-α／IL-1β。〕未取得 DOI 以外識別碼，僅記於 note。"
+        }
+      ]
+    },
+    {
+      "query": "estrogen receptor binds heparanase HPSE promoter estrogen response element breast cancer Elkin",
+      "for": ["4.1.3-estrogen-er-hpa-promoter"],
+      "hits": [
+        {
+          "id": "no-pmid-no-doi",
+          "title": "Regulation of Heparanase Gene Expression by Estrogen in Breast Cancer (Elkin et al., Cancer Res 2003;63:8821-8826)",
+          "key": "**本列的原始研究，但四次措辭均未由工具取得 PMID 或 DOI**（AACR 頁面擋機器人，PubMed 搜尋 URL 無法構造）。取得的正文內容：電腦分析 3.5 kb 調控區找出**四個推定的**（putative，與共識序列同源性至少 70%）ERE，位於 -147、-362、-740、-1660 bp；取 -1791/+109 的 1.9 kb 區接 luciferase，在 ER 陽性 MCF-7 中經雌激素處理後轉錄顯著上升，ER 陰性細胞則否。**全文未見 EMSA 或 ChIP**。依 SCHEMA §4 絕對規則，無識別碼即不入 evidence。"
+        },
+        {
+          "id": "DOI:10.3390/ijms222011096",
+          "title": "The Heparanase Regulatory Network in Health and Disease",
+          "key": "圖 1a：雌激素結合 ER 後結合 heparanase 啟動子內的 ERE 而上調 heparanase。綜述，依 SCHEMA §5 不足以單獨支持 verified。同圖另記缺氧（d）與 HSV-1（e）**經 NF-κB** 上調 heparanase、維生素 D 直接結合並抑制啟動子。"
+        }
+      ]
+    },
+    {
+      "query": "heparanase HPSE promoter estrogen response element ChIP EMSA demonstrated ERalpha recruitment MCF-7 direct binding",
+      "for": ["4.1.3-estrogen-er-hpa-promoter"],
+      "hits": [
+        {
+          "id": "PMID:18949048",
+          "title": "Two estrogen response element sequences near the PCNA gene are not responsible for its estrogen-enhanced expression in MCF7 cells",
+          "key": "**方法學警示的直接實例**：兩個演化保守、位於雌激素反應基因附近的推定 ERE，單拷貝或串聯雙拷貝接報導基因皆無 E2 反應，ChIP-PCR 亦測不到 ERα 招募，而同批對照的 TFF1、MYC、GREB1、CTSD 則測得快速招募。作者結論：ERE 的電腦預測即使演化保守、即使鄰近 E2 反應基因，仍必須經生化驗證。標的基因為 PCNA 非 HPSE，量測對象不對位，依 SCHEMA §4 不填 `~`（`~` 限與該主張來源相關者），僅記於 note。"
+        },
+        {
+          "id": "none-for-HPSE",
+          "title": "（無）HPSE 啟動子的 ER 結合實驗",
+          "key": "本式回傳的 ERα 全基因體結合圖譜研究（ChIP-PET、ChIP-Seq、Re-ChIP）皆未指名 HPSE。**查無任何一篇直接證明 ER 結合 HPSE 啟動子。**"
+        }
+      ]
+    },
+    {
+      "query": "HIF-1alpha binds heparanase HPSE promoter hypoxia response element direct transcriptional activation",
+      "for": ["4.1.3-hif1a-binds-hpa-promoter"],
+      "hits": [
+        {
+          "id": "DOI:10.1186/s13062-024-00487-w",
+          "title": "Hypoxia-induced activation of HIF-1alpha/IL-1beta axis in microglia promotes glioma progression via NF-κB-mediated upregulation of heparanase expression",
+          "key": "缺氧 → HIF-1α → IL-1β（微膠細胞分泌）→ **NF-κB** → HPSE（U251／U87 膠質瘤細胞），另以裸鼠異種移植佐證。**HIF-1α 與 HPA 啟動子之間隔了一個細胞激素與另一個轉錄因子**，非直接結合。同時是 4.1.3-tnfa-il1b-nfkb 的支持文獻（IL-1β→NF-κB→HPSE 這一段）。"
+        },
+        {
+          "id": "no-id-pmc10001186",
+          "title": "Transcriptional Response to Hypoxia: The Role of HIF-1-Associated Co-Regulators",
+          "key": "**多數缺氧反應基因在近端啟動子測不到 HIF 結合位點**，相當比例的缺氧轉錄反應是 HIF-1 經誘導其他轉錄調控者間接達成。此為判定「直接結合」主張時的先驗背景，僅取得 PMC 編號，記於 note。"
+        }
+      ]
+    },
+    {
+      "query": "hypoxia upregulates heparanase expression mechanism HIF-1 dependent HPSE promoter luciferase reporter cancer cells",
+      "for": ["4.1.3-hif1a-binds-hpa-promoter"],
+      "hits": [
+        {
+          "id": "none",
+          "title": "（無）HPSE 啟動子的 HIF-1α 報導基因或 HRE 實驗",
+          "key": "本式回傳大量 HIF-1α 直接結合他基因啟動子的實驗（AEG-1、NMBR、SNAI1、CSRP2、ODZ1 皆有報導基因＋EMSA／ChIP 完整證據鏈），**唯獨 HPSE 沒有**。依 queries.md §1.11 的邏輯，這比逐篇找不到更有意義：同一類實驗在這個領域是標準做法，別的基因都做過，這個基因沒有。"
+        }
+      ]
+    },
+    {
+      "query": "VEGF induces heparanase expression endothelial cells upregulation VEGF-A treatment HPSE",
+      "for": ["4.1.3-vegf-positive-feedback"],
+      "hits": [
+        {
+          "id": "no-id-sciencedirect",
+          "title": "Mutual enhancement between heparanase and VEGF: A novel mechanism for melanoma progression（ScienceDirect 頁）",
+          "key": "外源 VEGF 與 cDNA 轉染誘導 heparanase 過度表現，anti-VEGF siRNA 使其下降（A2058、WM793）。本頁未給識別碼，下一式取得 PMID。"
+        },
+        {
+          "id": "PMID:16452201",
+          "title": "Heparanase induces vascular endothelial growth factor expression",
+          "key": "迴圈的另一半：heparanase 過度表現使 VEGF 蛋白與 mRNA 上升 3-6 倍，伴 p38 磷酸化上升；p38 抑制劑不影響，Src 抑制劑完全阻斷。〔對 4.1.3-tnfa-il1b-mapk 有關：**p38 在此是 heparanase 的下游**。〕"
+        }
+      ]
+    },
+    {
+      "query": "\"Mutual enhancement between heparanase and vascular endothelial growth factor\" melanoma Cancer Letters 2011 doi pubmed",
+      "for": ["4.1.3-vegf-positive-feedback"],
+      "hits": [
+        {
+          "id": "PMID:21624769",
+          "title": "Mutual enhancement between heparanase and vascular endothelial growth factor: a novel mechanism for melanoma progression (Cancer Lett 2011;308:100-11)",
+          "key": "**決定性支持**。雙向皆實測：外源 VEGF 與 VEGF cDNA 轉染使 heparanase 上升（western blot ＋ real-time RT-PCR），anti-VEGF siRNA 使其下降；反向的 VEGF 亦受 heparanase 調控。MEK/ERK 抑制劑 PD98059 參與此互增。細胞為 A2058 與 WM793 黑色素瘤細胞株，**非內皮**。"
+        }
+      ]
+    },
+    {
+      "query": "TNF-alpha IL-1beta induce heparanase expression NF-kB dependent endothelial cells inhibitor blocks",
+      "for": ["4.1.3-tnfa-il1b-nfkb"],
+      "hits": [
+        {
+          "id": "none-heparanase-specific",
+          "title": "（無效檢索式）",
+          "key": "回傳全是 TNF-α／IL-1β 在內皮細胞經 NF-κB 調控**黏附分子**（VCAM-1、ICAM-1、IL-6、IL-8）的文獻，無一涉及 heparanase。〔推論〕`TNF-alpha ... endothelial ... NF-kB` 這個組合在內皮發炎文獻中訊噪比極低，heparanase 一詞必須加引號並前置。記入 queries.md §4.2。"
+        }
+      ]
+    },
+    {
+      "query": "\"heparanase\" expression induced by TNF-alpha NF-kB p65 binding HPSE promoter macrophages inflammation mechanism",
+      "for": ["4.1.3-tnfa-il1b-nfkb"],
+      "hits": [
+        {
+          "id": "PMID:29097791",
+          "title": "Heparanase and macrophage interplay in the onset of liver fibrosis (Sci Rep 2017;7:14956)",
+          "key": "U937 巨噬細胞以 IL-1β 與 TNF-α 處理 24 h，real-time RT-PCR 測得 HPSE 表達上升，western blot 證實細胞內與分泌至培養液的 HPSE 皆增加。**未測任何訊號途徑**。DOI:10.1038/s41598-017-14946-0。"
+        },
+        {
+          "id": "no-id-jci-43792",
+          "title": "Heparanase powers a chronic inflammatory circuit that promotes colitis-associated tumorigenesis in mice",
+          "key": "巨噬細胞經 TNF-α 依賴機制誘導 heparanase 的產生與活化，Hpa 轉基因鼠結腸 NF-κB 訊號增強。方向為 heparanase→發炎→heparanase 的循環，非「TNF-α 經 NF-κB 誘導 heparanase」的途徑實驗。未取得 PMID/DOI，記於 note。"
+        }
+      ]
+    },
+    {
+      "query": "heparanase induction ERK p38 MAPK dependent cytokine stimulation HPSE expression inhibitor U0126 PD98059",
+      "for": ["4.1.3-tnfa-il1b-mapk"],
+      "hits": [
+        {
+          "id": "none",
+          "title": "（無）細胞激素經 MAPK 誘導 heparanase 的實驗",
+          "key": "回傳的 MAPK–heparanase 關聯全部位於**下游**（heparanase → ERK → MMP-9；heparanase → 糖尿病腎絲球內皮 EndMT 經 ERK）。無一篇測試 TNF-α 或 IL-1β 誘導 heparanase 是否需要 MAPK。"
+        }
+      ]
+    },
+    {
+      "query": "angiotensin II induces heparanase podocytes glomerular endothelial cells AT1 receptor blocker PKC dependent expression",
+      "for": ["4.1.3-angiotensin2-at1-pkc"],
+      "hits": [
+        {
+          "id": "no-id-pmc6043975",
+          "title": "Angiotensin II-induced podocyte apoptosis is mediated by ER stress/PKC-δ/p38 MAPK pathway activation",
+          "key": "Ang II 經 AT1R 活化 PKC-δ 與 p38 MAPK，終點為足細胞凋亡。**AT1–PKC 這條軸線在腎臟確實存在，但下游終點不是 heparanase。**〔推論〕這正是本列 statement 可能的來源型態：把 Ang II–AT1–PKC 這條在他處成立的通用軸線接到 heparanase 上，與 4.1.3-hyperglycemia-ages-rage-nfkb 的成因結構相同。"
+        }
+      ]
+    },
+    {
+      "query": "Garsen heparanase angiotensin II glomerular endothelial cells induction mechanism proteinuria diabetic nephropathy signaling",
+      "for": ["4.1.3-angiotensin2-at1-pkc"],
+      "hits": [
+        {
+          "id": "PMID:16899518",
+          "title": "Induction of glomerular heparanase expression in rats with adriamycin nephropathy is regulated by reactive oxygen species and the renin-angiotensin system (JASN 2006;17:2513-20)",
+          "key": "**決定性**，且是上一批僅由 ResearchGate 轉載頁得知而未採計的那一筆，本批取得 PubMed 原始摘要。大鼠 adriamycin 腎病變：heparanase 表達上升且與 HS 減少相關；DMTU（羥自由基清除劑）預防了 heparanase 上升、GBM HS 流失與白蛋白尿；**蛋白尿成立後給 AT1 拮抗劑兩週，heparanase 表達顯著下降、腎小球 HS 回復**。作者結論用詞為 suggest involvement。全文未提 PKC。"
+        },
+        {
+          "id": "PMID:19429930",
+          "title": "Regulation of glomerular heparanase expression by aldosterone, angiotensin II and reactive oxygen species",
+          "key": "同一模型的後續研究（lisinopril／spironolactone）。摘要的背景段陳述「AngII 與 ROS 已知在活體內調控 heparanase」，該陳述本身是對 PMID:16899518 的引用而非獨立結果，依 queries.md §1.6 不作為獨立證據，僅記於 note 作為線索。"
+        },
+        {
+          "id": "PMID:27026367",
+          "title": "Endothelin-1 Induces Proteinuria by Heparanase-Mediated Disruption of the Glomerular Glycocalyx",
+          "key": "同一研究群的相鄰機制：內皮素-1 訊號誘導足細胞 heparanase 表達 → 糖萼受損 → 蛋白尿；足細胞專一性敲除內皮素受體可預防糖尿病誘導的腎小球 heparanase 上升與糖萼變薄。**§6.4 的上游調控表完全沒有內皮素這一列**，記為抽取遺漏的候選，不在本批處理範圍。"
+        }
+      ]
+    },
+    {
+      "query": "\"Inflammatory cytokines and fatty acids regulate endothelial cell heparanase expression\" Biochemistry 2004 TNF",
+      "for": ["4.1.3-tnfa-il1b-nfkb", "4.1.3-tnfa-il1b-mapk", "4.1.3-vegf-positive-feedback", "4.1.3-tnfa-il1b-10-50x", "4.1.3-vegf-5-10x"],
+      "hits": [
+        {
+          "id": "DOI:10.1021/bi0356552",
+          "title": "Inflammatory Cytokines and Fatty Acids Regulate Endothelial Cell Heparanase Expression (Chen et al., Biochemistry 2004;43:4971-4977)",
+          "key": "**本批最關鍵的一篇，一次影響五列。** 培養血管內皮細胞：(1) 細胞激素、oxLDL、脂肪酸皆誘導 heparanase mRNA 與蛋白；(2) **TNF-α 或 IL-1β 使培養液中 heparanase 蛋白上升 2-10 倍**（同表宣稱 10-50 倍）；(3) **VEGF 反而使 heparanase 分泌減少**（同表宣稱 VEGF 誘導 5-10 倍）；(4) **NF-κB、PI3-kinase、MAP kinase、JNK 四種抑制劑都不影響 TNF-α 誘導的 heparanase 分泌**（同表宣稱經 NF-κB 與 MAPK 途徑）。〔注意〕本文取得的是期刊頁摘要全文，非他篇轉述。〔注意〕該篇有 PMID 但本次工具未回傳，依 SCHEMA §4 以 DOI 形式入 evidence。"
+        }
+      ]
+    }
+  ],
+  "incidental_findings": [
+    "SCHEMA §9 明列 `claim_id`（§3 正規表示式）與 `evidence`（§4 token 形式）兩欄有明文格式而無對應檢查。本批首次實際執行這兩項檢查：`evidence` 全表 0 違規；`claim_id` 有 **7 列違規**，全部是既有列、成因相同（slug 內嵌含小數點的數值，如 `0.5-5um`、`2.0-2.2`、`0.54-0.23`）。因 SCHEMA §3 規定 claim_id 永不改名，此為不可修復的既成事實，處置需人工裁示。詳見本批報告 §6。",
+    "PMID:27026367 顯示內皮素-1 是腎絲球 heparanase 的上游誘導者且有足細胞專一性敲除的因果證據，而 heparanase.md §6.4 的上游調控表七列中沒有這一項。屬抽取來源本身的遺漏，非本專案的抽取失效，記為原文修訂建議。"
+  ]
+}

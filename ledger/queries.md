@@ -1,7 +1,7 @@
 # queries.md — 實測檢索式與檢索通則
 
 ```
-last_updated: 2026-08-07
+last_updated: 2026-08-09
 來源: reports/backfill/ 各批次的「本批次有效的檢索詞」一節
 用途: (1) 回填時的起手式  (2) 將來監測迴圈的檢索式來源
 ```
@@ -91,6 +91,43 @@ brain microvascular endothelial glycocalyx thickness measurement micrometers
 〔推論〕當 A 與 B 之間確實有雙向關係時，轉述很容易把有實測的那一向的數字
 掛到沒實測的那一向上。**檢索式同時寫 `A induces B` 與 `B induces A`**，
 成本只多一次，卻能區分「查不到」與「查到的是反方向」。
+
+〔2026-08-09 追記〕本條的適用範圍已擴及訊號途徑，但**方法不同**，見 §1.14。
+
+### 1.14 「方向反寫」也發生在**途徑欄**，不只倍數欄
+
+§1.13 記的是倍數版本。2026-08-09 批次確認同型錯誤會出現在訊號途徑上。
+
+實例：`4.1.3-tnfa-il1b-mapk` 稱細胞激素經 MAPK 誘導 heparanase。
+MAPK 在 heparanase 文獻裡出現頻繁，但位置只有兩處，都不是那裡：
+
+- **heparanase 的下游**：heparanase 過度表現伴 p38 磷酸化上升（`PMID:16452201`）、
+  heparanase → ERK → MMP-9、heparanase → ERK → 腎絲球內皮 EndMT
+- **Egr1 的上游**：ERK1/2 → Egr1 → HPSE，但刺激是 PMA／ionomycin，不是細胞激素
+
+〔推論〕倍數欄的反寫可以靠精確字串檢索抓到（§1.4），**途徑欄不行**——
+途徑名是概念詞，正查反查都會命中同一批文獻。
+有效的做法是**查那條途徑的抑制劑對照實驗**：
+`{刺激因子} induced {標的} inhibitor` 這種形式的檢索，回傳的是做過該對照的原始研究，
+而抑制劑無效的結果幾乎只會出現在原始研究裡，綜述不會複述。
+這是 §1.8「查切掉什麼、結果如何」在訊號途徑上的版本。
+
+### 1.15 同一張表分欄查證時，第一批的證據可能要等第二批才到齊
+
+2026-08-07 與 2026-08-09 兩批處理 `heparanase.md` §6.4 的同一張表：
+前者查誘導倍數欄，後者查訊號途徑欄。分開是對的（兩欄的失效模式不同），
+但產生了一個必須預期的副作用。
+
+實例：`DOI:10.1021/bi0356552`（Chen et al., *Biochemistry* 2004）一篇之內同時給出
+內皮細胞的誘導倍數（2-10 倍）、四種抑制劑對照、以及 VEGF 的反向作用——
+**倍數欄與途徑欄的證據都在裡面**。它在第一批沒出現，因為第一批的檢索式全以倍數字串為軸
+（該文摘要寫 `2-10-fold`，字串不命中）；它在第二批第一式就出現，
+因為查途徑時檢索式自然變成「內皮細胞 ＋ 細胞激素 ＋ heparanase 表達調控」。
+
+〔推論〕**成組主張分批查證時，後一批結束後必須回頭掃前一批的列。**
+不是重查，是拿新取得的文獻對照前批判定——本例補上了兩個 `!` token，
+其中一個是該表格那一格**至今唯一的實測值**。
+操作上：後批的批次報告固定加一節「對前批列的附帶修訂」，沒有就寫「無」。
 
 ### 1.5 交錯領域要分開查
 
@@ -406,6 +443,38 @@ syndecan-1 core protein turnover pulse-chase metabolic labeling half-life cell s
 （OIR 視網膜 1.49–1.71、急性胰臟炎 > 6、發炎性乳癌組織 5.03–8.9）。
 **下一批若再遇到 heparanase 的倍數宣稱，先與這個分布比對**——
 落在 10 倍以上者需要特別強的出處。
+
+## 4.2 2026-08-09 批次（`4.1.3` 訊號途徑）的無果檢索式
+
+**一式完全失效**：
+
+```
+TNF-alpha IL-1beta induce heparanase expression NF-kB dependent endothelial cells inhibitor blocks
+```
+
+回傳全部是 TNF-α／IL-1β 在內皮細胞經 NF-κB 調控**黏附分子**
+（VCAM-1、ICAM-1、IL-6、IL-8）的文獻，無一涉及 heparanase。
+
+〔推論〕`TNF-alpha` ＋ `endothelial` ＋ `NF-kB` 這個三元組是內皮發炎領域的
+最大宗主題，訊噪比極低，會把任何第四個詞蓋掉。
+**查 heparanase 在內皮的調控時，`heparanase` 必須加引號並置於句首**，
+或改用該篇論文的完整標題回查（見本批 §7 的第四式）。
+
+**兩式無果但有資訊**（查 HPSE 啟動子的轉錄因子結合實驗）：
+
+```
+heparanase HPSE promoter estrogen response element ChIP EMSA demonstrated ERalpha recruitment MCF-7 direct binding
+hypoxia upregulates heparanase expression mechanism HIF-1 dependent HPSE promoter luciferase reporter cancer cells
+```
+
+兩式都回傳大量**他基因**的完整證據鏈（報導基因 ＋ EMSA ＋ ChIP：
+PCNA、AEG-1、NMBR、SNAI1、CSRP2、ODZ1……），唯獨 HPSE 沒有。
+依 §1.11 的邏輯，這比逐篇找不到更有力：
+**同類實驗在該領域是標準做法，別的基因都做過，這個基因沒做過。**
+
+〔注意〕已建立的定錨值：HPSE 啟動子的轉錄因子結合證據只到三級——
+Egr1 有 ChIP ＋ EMSA、ER 只有報導基因、HIF-1α 兩者皆無。
+下次再遇到「某轉錄因子結合 HPA 啟動子」的主張，先對照這三級。
 
 ---
 

@@ -1,8 +1,8 @@
 # claims.csv — Schema 與寫入規則
 
 ```
-schema_version: 10
-last_updated: 2026-08-07
+schema_version: 11
+last_updated: 2026-08-09
 applies_to: ledger/claims.csv
 ```
 
@@ -447,7 +447,7 @@ PMID:31234567;~PMID:39494362
 
 ---
 
-## 9. 值域與格式檢查（v10）
+## 9. 值域與格式檢查（v11）
 
 `claim_type`、`status`、`tier`、`priority` 四欄皆為封閉值域。
 **每次寫入 `claims.csv` 後、commit 之前必須執行下列檢查，輸出須為空。**
@@ -490,8 +490,61 @@ Import-Csv ledger/claims.csv | Where-Object {
 指向三個不相干的地方。
 
 〔推論〕本次修訂的一般教訓：**每為欄位寫下一條格式規定，同時問「哪一項檢查會驗它」。**
-本檔目前仍有明文格式而無對應檢查的欄位兩個——`claim_id`（§3 的正規表示式）
-與 `evidence`（§4 的 token 形式）。兩者尚未出過事，但成因結構與本例相同。
+
+〔更正（v11，2026-08-09）〕本段原記「`claim_id` 與 `evidence` 兩者尚未出過事」。
+2026-08-09 首次實際執行這兩項檢查後確認：**`evidence` 為 0 違規，`claim_id` 有 7 列違規，
+而且早在 `2.1.x` 那批就已發生。** 該句是錯的，且它正是下一個 agent 判斷要不要跑這條檢查的依據——
+「尚未出過事」讀起來像是可以緩辦。兩項檢查已於 v11 補入本節。
+
+### `claim_id` 格式檢查（v11 新增）
+
+`claim_id` 須符合 §3 的正規表示式。**七列既有例外為永久豁免，不得擴充。**
+
+```powershell
+$exempt = @(
+  '2.1.1-invivo-0.5-5um','2.1.2-pbr-cutoff-2.0-2.2','2.1.2-pbr-normal-1.8',
+  '2.1.2-pbr-screening-cutoff-2.0','2.1.2-pbr-treatment-target-2.0',
+  '2.2-brain-mouse-0.54-0.23','2.2-cap-0.2-0.5um'
+)
+Import-Csv ledger/claims.csv | Where-Object {
+  $_.claim_id -notmatch '^[0-9](\.[0-9]+)*-[a-z0-9]+(-[a-z0-9]+)*$' -and
+  $_.claim_id -notin $exempt
+} | Select-Object claim_id
+```
+
+輸出須為空。
+
+**豁免名單是封閉的。** 新建列一律須通過正規表示式；發現新的違規列即為寫入錯誤，
+應在 commit 前改正，**不得加進名單**。名單存在的唯一理由是 §3「`claim_id` 永不改名」——
+這七個 ID 已進入 repo 歷史，其中數個已被其他列的 `note` 交叉引用，改名會讓既有引用失效。
+
+〔注意〕七列的成因單一：slug 內嵌了含小數點的數值（`0.5-5um`、`2.0-2.2`、`0.54-0.23`），
+而 §3 的正規表示式在第一個 `-` 之後不允許 `.`。
+**新建列若需在 slug 表達含小數的數值，改用 `-` 或去掉小數點**
+（例：`0.5-5um` → `05-5um` 或 `point5-5um`），不要重演。
+
+〔注意〕本次**未**採「放寬正規表示式允許 slug 含 `.`」的做法。理由：
+slug 嵌數值正是這個問題的源頭，放寬等於把源頭合法化，未來的 slug 會更常嵌數值，
+而 §3 的三條規則（永不重用、永不改名、章節重編號不跟著改）全都預設 ID 是穩定的標籤而非資料。
+
+### `evidence` token 形式檢查（v11 新增）
+
+每個 token 去除 `!` 或 `~` 前綴後，須符合 §4 的三種形式之一。
+
+```powershell
+Import-Csv ledger/claims.csv | Where-Object {
+  ($_.evidence -split ';') | Where-Object {
+    $_ -and ($_ -replace '^[!~]','') -notmatch '^(PMID:[0-9]+|DOI:10\..+|NCT:NCT[0-9]+)$'
+  }
+} | Select-Object claim_id, evidence
+```
+
+輸出須為空。2026-08-09 首次執行時全表 0 違規，此檢查為預防性質。
+
+〔注意〕本檢查驗的是**形式**，驗不到 §4 真正的風險——
+一個格式正確但不存在的 PMID。那項在檔案裡與真的完全一樣，
+唯一的防線仍是 §4 的絕對規則（識別碼只能來自檢索工具本次回傳的結構化欄位）。
+**不要因為多了這條檢查就以為 `evidence` 已被驗過。**
 
 ---
 

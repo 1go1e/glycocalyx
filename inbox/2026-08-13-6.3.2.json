@@ -1,0 +1,191 @@
+{
+ "batch": "backfill 6.3.2 (chemical identity and classification of inhibitors)",
+ "date": "2026-08-13",
+ "note": "本檔保留本批全部檢索的原始回傳摘要。識別碼一律取自檢索回傳的結構化欄位（PubMed URL 路徑中的 PMID、期刊頁的 DOI），未憑記憶寫出。本批完成 6.3.2 全節點 8 列，該節點成為本專案第二個完成率 100% 的節點。本節點於同日由 6.3 拆出。",
+ "searches": [
+  {
+   "query": "Pixatimod PG545 PGN626 same compound heparanase inhibitor",
+   "for": [
+    "6.3-pixatimod-pg545-same-compound"
+   ],
+   "hits": [
+    {
+     "id": "PMID:32274726",
+     "title": "Heparanase Inhibition by Pixatimod (PG545): Basic Aspects and Future Perspectives",
+     "key": "標題本身即並置兩個名稱為同一化合物。內文一致以 pixatimod 指稱 PG545。"
+    },
+    {
+     "id": "no-id-chemeurj-2022",
+     "title": "Structural Insights into Pixatimod (PG545) Inhibition of Heparanase (Chem Eur J 2022)",
+     "key": "全文以 Pixatimod (PG545) 形式並置。NMR 與分子動力學研究，膽固醇烷側鏈提供疏水交互作用。未提 PGN626。"
+    }
+   ]
+  },
+  {
+   "query": "PGN626 pixatimod Zucero Progen code name",
+   "for": [
+    "6.3-pixatimod-pg545-same-compound"
+   ],
+   "hits": [
+    {
+     "id": "PMID:29531325",
+     "title": "A Phase I study of the novel immunomodulatory agent PG545 (pixatimod) in subjects with advanced solid tumours",
+     "key": "開發者為 Progen Pharmaceuticals（現 TBG Diagnostics）與 Zucero Therapeutics。全文僅用 PG545 與 pixatimod 兩名稱。"
+    },
+    {
+     "id": "no-id-adisinsight",
+     "title": "Pixatimod - Zucero Therapeutics (AdisInsight 藥物資料庫)",
+     "key": "藥物資料庫條目僅列 Pixatimod (PG 545)。無 PGN626。"
+    }
+   ]
+  },
+  {
+   "query": "\"PGN626\" heparanase",
+   "for": [
+    "6.3-pixatimod-pg545-same-compound"
+   ],
+   "hits": [
+    {
+     "id": "no-hit",
+     "title": "（無命中）",
+     "key": "回傳結果全部為 PG545／pixatimod 或無關的 heparanase 文獻，無一提及 PGN626。第三措辭否證。"
+    }
+   ]
+  },
+  {
+   "query": "\"PGN626\" drug synonym pixatimod cholestanol sulfotetrasaccharide",
+   "for": [
+    "6.3-pixatimod-pg545-same-compound"
+   ],
+   "hits": [
+    {
+     "id": "no-id-pmc6000956",
+     "title": "Immunomodulatory activities of pixatimod (PMC6000956)",
+     "key": "**決定性**：逐字載明 pixatimod 是先前文獻中稱為 PG545 之化合物所獲指定的國際非專利藥名（INN）。同時給出結構：膽固醇烷-硫酸化四醣共軛物，寡醣骨架來自澱粉。未取得 PMID，故不列入 evidence。"
+    },
+    {
+     "id": "no-id-medkoo",
+     "title": "Pixatimod CAS 1144617-49-1 (MedKoo 化學品資料庫)",
+     "key": "化學品資料庫僅列 Pixatimod 與 PG-545。第四措辭仍無 PGN626。"
+    }
+   ]
+  },
+  {
+   "query": "Roneparstat SST0001 100% N-acetylated glycol-split heparin non-anticoagulant",
+   "for": [
+    "6.3-roneparstat-n-acetylated-glycol-split",
+    "6.3-noncoag-heparin-minimal-anticoagulation"
+   ],
+   "hits": [
+    {
+     "id": "PMID:26762172",
+     "title": "Kinetic analysis and molecular modeling of the inhibition mechanism of roneparstat (SST0001) on human heparanase (Glycobiology 2016)",
+     "key": "**逐字命中**：non-anticoagulant 100% N-acetylated and glycol-split heparin。三項描述（100% N-乙醯化、glycol-split、非抗凝肝素）全部對上。另給 IC50 約 3 nM。"
+    },
+    {
+     "id": "PMID:27842848",
+     "title": "Structural features of heparanase-inhibiting non-anticoagulant heparin derivative Roneparstat",
+     "key": "**首次完整結構鑑定**。載明製程：全 N-去硫酸化並 N-乙醯化的肝素，再經高碘酸氧化／硼氫化還原得 glycol-split。此解開 §6.7 與 §5.5 用詞不同的疑點——兩者為同一製程的先後步驟。"
+    }
+   ]
+  },
+  {
+   "query": "Necuparanib M402 glycol-split heparan sulfate mimetic Momenta",
+   "for": [
+    "6.3-necuparanib-glycol-split-mimetic"
+   ],
+   "hits": [
+    {
+     "id": "PMID:21698156",
+     "title": "M402, a novel heparan sulfate mimetic, targets multiple pathways implicated in tumor progression and metastasis (PLoS One 2011)",
+     "key": "M402 的原始表徵論文，Momenta Pharmaceuticals。經理性設計的非細胞毒性 HS mimetic，標的含 VEGF、FGF2、SDF-1α、P-selectin、heparanase。低抗凝血活性。B16F10 鼠肺轉移模型。支持 HS mimetic 一項，未提 glycol-split。"
+    },
+    {
+     "id": "PMID:32907434",
+     "title": "New classes of potent heparanase inhibitors from ligand-based virtual screening (J Enzyme Inhib Med Chem 2020)",
+     "key": "**逐字命中 glycol-split 一項**：necuparanib (M-402) is another glycol-split HS mimetic similar to roneparstat。同一段並定義 muparfostat、pixatimod、roneparstat——一篇同時支持本批四列，屬 queries.md §1.15 的跨列共用來源。"
+    }
+   ]
+  },
+  {
+   "query": "Muparfostat PI-88 sulfated oligosaccharide mixture heparanase inhibitor",
+   "for": [
+    "6.3-muparfostat-sulfated-oligosaccharide"
+   ],
+   "hits": [
+    {
+     "id": "PMID:17000682",
+     "title": "A phase I biological and pharmacologic study of the heparanase inhibitor PI-88 in patients with advanced solid tumors",
+     "key": "述 PI-88 為高度硫酸化寡醣的混合物，抑制 heparanase 與血管生成因子對 HS 的結合。支持「硫酸化寡醣混合物」。"
+    },
+    {
+     "id": "PMID:32907434",
+     "title": "（同上）",
+     "key": "更精確的組成：高度硫酸化的單磷酸化甘露糖寡醣混合物。〔注意〕骨架為甘露糖而非肝素，來源為酵母 Pichia holstii 胞外磷酸甘露聚醣，與其餘三個 HS mimetic 的來源不同。statement 未表達此差異但不因此為假。"
+    }
+   ]
+  },
+  {
+   "query": "sulodexide heparanase inhibitor heparin analog glycosaminoglycan class",
+   "for": [
+    "6.3-heparin-analog-sulodexide-class"
+   ],
+   "hits": [
+    {
+     "id": "DOI:10.1186/1479-5876-10-213",
+     "title": "A new mechanism of action of sulodexide in diabetic nephropathy: inhibits heparanase-1 and prevents FGF-2-induced renal epithelial-mesenchymal transition (J Transl Med 2012)",
+     "key": "**決定性**：以 ELISA 測得 sulodexide 抑制 heparanase-1，IC50 5 μg/mL，並明載抑制活性完全來自其肝素成分（80% LMWH），20% dermatan sulfate 無貢獻。此正面支持「肝素類似物類」的歸類，非僅分類慣例。"
+    },
+    {
+     "id": "no-id-jth-2019",
+     "title": "Sulodexide in venous disease (J Thromb Haemost)",
+     "key": "覆述同一結論（抑制作用專屬肝素成分）。轉述來源，依 queries.md §1.6 不採計。"
+    }
+   ]
+  },
+  {
+   "query": "sulforaphane quercetin natural heparanase inhibitor",
+   "for": [
+    "6.3-natural-inhibitors-sulforaphane-quercetin"
+   ],
+   "hits": [
+    {
+     "id": "no-hit",
+     "title": "（無 heparanase 相關命中）",
+     "key": "回傳大量 sulforaphane／槲皮素文獻，標的為 STAT5、HDAC、BACE1、胰腺癌幹細胞、膀胱癌等，無一為 heparanase。第一措辭否證。"
+    }
+   ]
+  },
+  {
+   "query": "quercetin heparanase HPSE inhibition IC50 flavonoid",
+   "for": [
+    "6.3-natural-inhibitors-sulforaphane-quercetin"
+   ],
+   "hits": [
+    {
+     "id": "no-hit",
+     "title": "（無 heparanase 相關命中）",
+     "key": "槲皮素已記載的酶抑制標的為 MCT6（IC50 25.3 μM）、PI3K、α-amylase（57.37 μg/mL）、sEH、凝血酶。回傳中兩篇 heparanase 抑制劑論文（Roneparstat 腎 I/R、螺雜環化合物）皆與槲皮素無關。第二措辭否證。檢索回傳豐富但主題全不對，依 queries.md §1.12 為強 unsupported 證據。"
+    }
+   ]
+  },
+  {
+   "query": "\"HS-1638\" OR \"OVZ/HS-1638\" heparanase inhibitor Bristol diabetic",
+   "for": [
+    "6.3-ovz-hs1638-more-stable-cheaper"
+   ],
+   "hits": [
+    {
+     "id": "PMID:38302978",
+     "title": "Heparanase inhibition as a systemic approach to protect the endothelial glycocalyx and prevent microvascular complications in diabetes (Cardiovasc Diabetol 2024)",
+     "key": "一手文獻。db/db 第二型糖尿病鼠，14 天腹腔給藥。終點為糖萼厚度（共軛焦與 TEM）、視網膜溶質通量、腎小球白蛋白通透性。**全文未測量穩定度，未提合成成本，未指名比較對象**。以 ~ 標記為相關但不對位。"
+    },
+    {
+     "id": "no-id-pharmacytimes",
+     "title": "Pharmacy Times 二次報導",
+     "key": "轉述研究者說法：相較其他商業抑制劑有穩定度與較低合成成本的競爭優勢，且為待探索事項。同時載明該研究無法確認 OVZ/HS-1638 在體內是否降低 heparanase 活性——此點對 6.3.1 的 6.3-ovz-hs1638-preclinical-small-molecule 有影響，該列回填時應併看。轉述來源，不採計。"
+    }
+   ]
+  }
+ ]
+}

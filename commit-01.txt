@@ -1,0 +1,17 @@
+topics: split node 6.3 into 6.3.1 / 6.3.2 (topics_version 3)
+
+依提案 reports/revisions/2026-08-09-split-6.3.md §3，人工裁示 2026-08-13 核准。
+
+6.3   標靶治療：療效、修復幅度與證據等級   81 列   查證來源：期刊文獻
+6.3.1 藥物開發與法規狀態                   20 列   查證來源：註冊／藥證資料庫、公司公告
+6.3.2 抑制劑的化學身分與分類                8 列   查證來源：藥物資料庫、化學文獻
+
+只改 section 欄 28 列。依 SCHEMA §3 規則 3，claim_id 前綴不跟著改。
+statement、status、evidence、tier 全部不動。
+
+TOPICS.md 補上三者的分界判準：試驗狀態 vs 試驗結果。
+「Roneparstat 的 Phase I 有 1 例 PR」是結果，永久為真，留在 6.3；
+「Roneparstat 最高階段為 Phase I/II」是狀態，隨時被推翻，移入 6.3.1。
+兩者常出現在同一個藥物上，這是拆分時最容易分錯的一處。
+
+6.3.3（證據等級）依裁示不建。

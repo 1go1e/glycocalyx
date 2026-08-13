@@ -1,8 +1,8 @@
 # claims.csv — Schema 與寫入規則
 
 ```
-schema_version: 11
-last_updated: 2026-08-09
+schema_version: 12
+last_updated: 2026-08-13
 applies_to: ledger/claims.csv
 ```
 
@@ -45,6 +45,7 @@ ledger 的版本歷史就失去意義——那是整套系統唯一不可替代�
 | 9 | `last_checked` | 是 | ISO 8601 `YYYY-MM-DD` |
 | 10 | `note` | 是 | 自由文字。記錄疑點、衝突、限制條件 |
 | 11 | `source_ref` | 是 | 主張在原始文件中的出現位置。多值。見下方 |
+| 12 | `stale_after` | 是 | 本列的判定何時應重驗。ISO 8601 `YYYY-MM-DD` 或空。**僅註冊類節點使用**。見 §13 |
 
 ### `claim_type` 合法值
 
@@ -546,6 +547,36 @@ Import-Csv ledger/claims.csv | Where-Object {
 唯一的防線仍是 §4 的絕對規則（識別碼只能來自檢索工具本次回傳的結構化欄位）。
 **不要因為多了這條檢查就以為 `evidence` 已被驗過。**
 
+### `stale_after` 檢查（v12 新增）
+
+兩項。第一項驗格式，第二項驗**該填而未填**。
+
+```powershell
+# (1) 格式：空字串或 YYYY-MM-DD
+Import-Csv ledger/claims.csv | Where-Object {
+  $_.stale_after -ne '' -and $_.stale_after -notmatch '^\d{4}-\d{2}-\d{2}$'
+} | Select-Object claim_id, stale_after
+
+# (2) 註冊類節點中，已檢索過的列必須有 stale_after
+$reg = '6.3.1'
+Import-Csv ledger/claims.csv | Where-Object {
+  $_.section -in $reg -and $_.status -ne 'unverified' -and $_.stale_after -eq ''
+} | Select-Object claim_id, section, status
+
+# (3) 非註冊類節點不得填 stale_after
+Import-Csv ledger/claims.csv | Where-Object {
+  $_.section -notin $reg -and $_.stale_after -ne ''
+} | Select-Object claim_id, section, stale_after
+```
+
+三項輸出皆須為空。`$reg` 的值以 `TOPICS.md` 標記的註冊類節點為準，
+新增註冊類節點時**必須同步更新這一行**——這是本檢查唯一的手工維護點。
+
+〔注意〕檢查 (2) 的條件是 `status -ne 'unverified'` 而非 `-eq 'verified'`。
+`unsupported` 與 `partial` 的列同樣需要重驗日期：對註冊類主張而言
+「查不到登記」極可能只代表**該試驗登記在非英語註冊系統**（見 §13），
+這種 `unsupported` 比文獻類的 `unsupported` 更需要複查。
+
 ---
 
 ## 10. Commit 規範
@@ -592,3 +623,73 @@ run: 2026-08-03 / inbox/2026-08-03.json
 任何變更必須遞增 `schema_version`，並在 `ledger/CHANGELOG.md` 記錄變更內容與日期。
 
 `schema_version` 一旦遞增，前端解析程式與 agent 的提示詞都需同步檢查。
+
+---
+
+## 13. `stale_after`（v12 新增）
+
+### 這一欄解決什麼
+
+`last_checked` 記錄**上次查過**，`stale_after` 記錄**下次該查**。兩者不可互相推導，
+因為重驗間隔取決於主張的內容，不是取決於上次查證的日期。
+
+絕大多數主張查完就固定了——「HS 佔 GAG 的 50–90%」不會因為時間經過而改變。
+但有一類主張是**帶時間戳的狀態快照**：某藥處於 Phase II、某藥在歐洲已核准、
+目前沒有任何特異性抑制劑上市。這類主張的 `verified` 有保存期限，
+而 v11 之前的 schema 沒有任何欄位能表達這件事，只能寫進 `note` 的自由文字，
+無法查詢、無法排程、無法在月報中聚合。
+
+### 適用範圍
+
+**僅 `TOPICS.md` 標記為註冊類的節點**（目前只有 `6.3.1`）。
+其餘節點一律留空，由 §9 檢查 (3) 強制。
+
+範圍收得這麼窄是刻意的。若讓所有節點都可填，這一欄會退化成
+「agent 覺得該複查就填一個日期」的主觀欄位，而主觀欄位無法用於排程。
+
+### 何時寫入
+
+**該列首次脫離 `unverified` 時**，與 `last_checked` 同一次寫入。
+`unverified` 的列不填——尚未查證，就沒有判定可以過期。
+
+〔推論〕v12 導入時 `6.3.1` 的 20 列全部是 `unverified`，
+因此**不需要回溯回填任何一列**。這一欄從第一次 `6.3.1` 回填批次起自然累積。
+
+### 間隔
+
+依主張所斷言的狀態類型，取三個固定值之一：
+
+| 狀態類型 | 間隔 | 判準 | 本節點實例 |
+|---|---:|---|---|
+| 全域否定／唯一性 | **6 個月** | 「沒有任何…」「唯一…」「僅有…」 | `6.3-no-approved-specific-heparanase-inhibitor`、`6.3-sulodexide-only-clinically-available` |
+| 進行中的階段或核准狀態 | **12 個月** | 某藥現處於某階段、已核准、進行中 | `6.3-pixatimod-phase1b-2`、`6.3-sulodexide-approval-eu-asia` |
+| 已終結的狀態 | **24 個月** | 開發終止、試驗中止、計畫停滯 | `6.3-roneparstat-development-stalled` |
+
+第一類間隔最短，因為**單一事件即可推翻**——任何一個藥證核准就讓
+「沒有任何抑制劑獲准上市」為假。後兩類是漸進變化。
+
+第三類仍給日期而非留空，因為終止的開發計畫會被復活（換東家、換適應症）。
+24 個月的成本接近零，換掉的是一組永遠不會被複查的列。
+
+`stale_after` = `last_checked` + 上表間隔。跨月取當月同日；若該日不存在（如 2/30），取當月最後一日。
+
+### 逾期之後
+
+今日 > `stale_after` **不自動改變 `status`**。
+
+理由與 §5 的狀態轉移規則一致：`status` 只由證據決定，時間經過不是證據。
+一條 `verified` 的主張不會因為沒人去看而變成未驗證——它只是**可能**已經過時。
+逾期的作用是**進入回填佇列的最前面**，不是降級。
+
+重驗後兩種結果：
+
+- **事實未變** → 更新 `last_checked` 與 `stale_after`，`status` 與 `evidence` 不動。
+- **事實已變** → 依 §5 轉為 `superseded`，`note` 寫 `superseded_by: {claim_id}`，
+  另立新列承載新狀態。**不要就地改寫 statement**——
+  「2026 年時處於 Phase II」與「2028 年時已終止」是兩條主張，不是同一條的兩個版本，
+  而前者在其時間範圍內仍然為真。
+
+〔注意〕最後這一點是本節與 §6 statement 修改規則的交界。
+註冊類主張過期時走 `superseded` 而非改寫，是因為它們**內含時間界定**
+（見 `reports/revisions/2026-07-30-rhetoric-policy.md` 對時間形容詞的處理）。
+改寫會抹掉那個時間界定，把一條當時為真的主張變成一條現在為假的主張。

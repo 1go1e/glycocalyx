@@ -15,15 +15,20 @@ topics_version: 2
 ## 1. 帳本狀態
 
 ```
-unverified  405
-partial      16
-unsupported  22
-verified      6
+unverified  397
+partial      17
+unsupported  24
+verified     11
 contested     6
 superseded    2
 ──────────────
 總計        457
 ```
+
+〔注意〕2026-08-13 `6.3.2` 全節點回填完成（8 列，0 未判定），
+為本專案**第二個完成率 100% 的節點**（首個為 `4.1.3`）。
+verified 5／partial 1／unsupported 2。拆分提案 §2 的判斷獲證實：
+該節點是其他列的前置依賴，其中一列的判定推翻了原文四處的藥物計數。
 
 〔注意〕2026-08-13 節點 `6.3`（109 列）拆為 `6.3` 81／`6.3.1` 20／`6.3.2` 8。
 只改 `section` 欄，`claim_id`、`statement`、`status`、`evidence` 全部不動，

@@ -684,3 +684,34 @@ glycocalyx biomarker  糖萼生物標記
 2. 若一手文獻也沒指名，判 `unsupported` 並以 `~` 標記該文獻，
    `note` 的不對位維度寫「比較對象未具名」，不要寫成「查無數據」——
    兩者的後續處理不同，前者要回頭修 `statement`，後者要繼續查。
+
+### 8.8 註冊類主張：直接抓註冊記錄的鏡像站，不要用檢索式湊
+
+`6.3.1` 第一批七列全部由**一次完整註冊記錄**定案，不是由檢索式定案。
+
+- `clinicaltrials.gov/study/{NCT}` 是 JS 渲染，`web_fetch` 只會拿到頁面空殼，無任何欄位。
+- `ichgcp.net/clinical-trials-registry/{NCT}` 保留完整欄位：
+  Status、Phase、Conditions、Enrollment (Actual)、Study Start／Completion、
+  Last Update Posted、Last Verified、Sponsor、Other Study ID。
+
+一次取得就同時解決了階段、適應症、狀態、時間戳四個維度——
+而這四個維度正好是 `6.3.1` 全部主張所斷言的東西。
+
+〔推論〕檢索式適合**找到 NCT 編號**，不適合**確認註冊內容**。
+先用一式檢索拿編號（藥名＋代號＋registry），再直接抓記錄。
+把狀態、適應症塞進檢索式反而會拿到二次報導，而二次報導正是原文錯誤的來源。
+
+〔注意〕本條與 `runbooks/backfill.md` §3A 替換 1 的順序一致，但補上了**執行方式**：
+§3A 說「先查 ClinicalTrials.gov」，本條說「怎麼查才拿得到欄位」。
+
+### 8.9 註冊記錄的「缺席」有兩種，證據力不同
+
+- **記錄存在但內容相反**（如 SST0001 登記為 Phase 1／多發性骨髓瘤，
+  而 statement 稱 Phase II／胰腺癌）→ 這是**反駁**，以 `!` 標記該記錄，
+  不需要跑三段式檢索，因為已經有正面記錄了。
+- **完全沒有記錄**（如 Roneparstat 的 Phase II）→ 這是**查無**，
+  才需要 §3A 替換 3 的三段式（全代號、非英語註冊系統、公司公告）。
+
+兩者都會導向 `unsupported` 或 `partial`，但查證成本差一個量級，
+`note` 的寫法也不同：前者寫「與註冊記錄相反」，後者寫「三系統查無」。
+先判是哪一種，再決定要不要跑三段式。

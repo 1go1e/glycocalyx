@@ -15,15 +15,21 @@ topics_version: 2
 ## 1. 帳本狀態
 
 ```
-unverified  397
-partial      17
-unsupported  24
-verified     11
+unverified  390
+partial      21
+unsupported  25
+verified     13
 contested     6
 superseded    2
 ──────────────
 總計        457
 ```
+
+〔注意〕2026-08-13 `6.3.1` 第一批 7 列完成（Pixatimod 與 Roneparstat 聚落），
+為 `backfill.md` §3A 與 schema v12 `stale_after` 的首次實地執行，三檔間隔全部用到。
+查證取得 Roneparstat 期別的註冊基準：`NCT01764880` 為其唯一人體試驗，
+Phase 1、僅多發性骨髓瘤、2016-11 完成——**從未有 Phase II 存在**。
+STATUS §3.20 所記的五個期別表述中，三個把它寫進了不存在的第二期。
 
 〔注意〕2026-08-13 `6.3.2` 全節點回填完成（8 列，0 未判定），
 為本專案**第二個完成率 100% 的節點**（首個為 `4.1.3`）。

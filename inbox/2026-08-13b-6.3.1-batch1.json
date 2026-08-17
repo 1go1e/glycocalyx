@@ -1,0 +1,83 @@
+{
+ "batch": "backfill 6.3.1 batch 1 (Pixatimod and Roneparstat cluster)",
+ "date": "2026-08-13",
+ "note": "本批為 runbooks/backfill.md §3A（註冊類主張回填）與 schema v12 stale_after 的首次實地執行。依 §3A 替換 1，檢索順序為 ClinicalTrials.gov → EU CTR → 藥證資料庫 → 公司公告 → PubMed（僅佐證）。識別碼取自註冊記錄與檢索回傳的結構化欄位。",
+ "searches": [
+  {
+   "query": "Roneparstat SST0001 clinicaltrials.gov NCT01764880 multiple myeloma phase I status",
+   "for": [
+    "6.3-roneparstat-phase1-complete-phase2-halted",
+    "6.3-sst0001-phase2-pancreatic-dkd",
+    "6.3-roneparstat-development-stalled"
+   ],
+   "hits": [
+    {
+     "id": "NCT:NCT01764880",
+     "title": "SST0001 (Roneparstat) in Advanced Multiple Myeloma",
+     "key": "Roneparstat 唯一登記的人體試驗。檢索階段先取得標題與 Phase I First In Man 描述，主辦 Sigma Tau Research Switzerland SA。"
+    },
+    {
+     "id": "no-id-haematologica-2018",
+     "title": "Phase I study of the heparanase inhibitor roneparstat (Haematologica 2018;103(10))",
+     "key": "Phase I 結果論文。載明實驗室代號 G4000／SST0001，開發者 Leadiant Biosciences（前 sigma tau）。化學：100% N-去硫酸化、N-再乙醯化、25% glycol-split 肝素，MW 15000–25000 Da。歐盟編號 EudraCT 2012-001127-12。結果：各劑量皆耐受良好且安全，5 名患者發生 6 件嚴重不良事件。**未將療效不足列為停止開發的理由**。未取得 PMID，不列入 evidence。"
+    }
+   ]
+  },
+  {
+   "query": "（web_fetch）https://ichgcp.net/clinical-trials-registry/NCT01764880",
+   "for": [
+    "6.3-roneparstat-phase1-complete-phase2-halted",
+    "6.3-sst0001-phase2-pancreatic-dkd",
+    "6.3-roneparstat-development-stalled"
+   ],
+   "hits": [
+    {
+     "id": "NCT:NCT01764880",
+     "title": "註冊完整記錄（鏡像站，保留全部欄位）",
+     "key": "**決定性**。Status: Completed｜Phase: Phase 1｜Conditions: Multiple Myeloma（僅此一項）｜Enrollment (Actual): 19｜Study Start 2012-11-01｜Primary & Study Completion (Actual) 2016-11-01｜Last Update Posted 2017-10-23｜Last Verified 2017-10｜Sponsor: Sigma Tau Research Switzerland SA｜Other Study ID: SST0001-STRCH-CR-11-002。**無胰腺癌、無糖尿病腎病變、無 Phase II**。三名主持人分別於義大利、以色列、德國。"
+    },
+    {
+     "id": "no-id-ctgov-direct",
+     "title": "clinicaltrials.gov/study/NCT01764880（官方頁）",
+     "key": "JS 渲染，web_fetch 僅回傳頁面空殼，無資料欄位。記錄此點以免下次重試。"
+    }
+   ]
+  },
+  {
+   "query": "pixatimod Zucero clinical trial 2025 2026 status NCT05061017 completed new trial",
+   "for": [
+    "6.3-pixatimod-phase1b-2",
+    "6.3-pg545-pixatimod-phase2-cancers",
+    "6.3-pixatimod-only-active-oncology-compound",
+    "6.3-pixatimod-no-diabetes-trial"
+   ],
+   "hits": [
+    {
+     "id": "NCT:NCT05061017",
+     "title": "Phase IIA Basket Study of Pixatimod (PG545) + Nivolumab",
+     "key": "Status: Completed｜Phase 2｜三個世代：MSS mCRC（加低劑量 cyclophosphamide）、PD-1 復發／難治黑色素瘤、NSCLC。階段分類歷程 P2a → P2，收案 61 → 14，狀態 Recruiting → Active not recruiting → Completed。最後更新 2023-12-19。"
+    },
+    {
+     "id": "no-id-nct05061017-protocol",
+     "title": "NCT05061017 試驗方案文件（ClinicalTrials.gov 掛載 PDF）",
+     "key": "**決定性**：Zucero 於 2024-02-03 終止，試驗停止收案，主持人決定終止追蹤，方案加註收案提前終止。此直接反駁「仍在積極推進」。"
+    },
+    {
+     "id": "no-id-patsnap",
+     "title": "PG-545 藥物條目（PatSnap Synapse，最後更新 2026-07-18）",
+     "key": "藥物層級彙整：4 個關聯試驗，NCT05061017 為 Completed / Phase 2。截至 2026-07 無新登記試驗。**無糖尿病適應症**。"
+    },
+    {
+     "id": "no-id-globaldata",
+     "title": "Pixatimod 開發適應症清單（GlobalData／Pharmaceutical Technology）",
+     "key": "已開發或曾開發適應症：晚期實體瘤、MSS mCRC、NSCLC、轉移性黑色素瘤、轉移性胰腺癌、登革熱、COVID-19。**清單中無糖尿病或其併發症**，支持 6.3-pixatimod-no-diabetes-trial。"
+    },
+    {
+     "id": "no-id-targetedonc",
+     "title": "Phase 1b MSS mCRC 結果報導",
+     "key": "客觀緩解率 12%，公司自述為初步但令人振奮。與原文「療效有限」方向一致。另記 NCT02042781 與 ACTRN12617001573347 為既有 Phase I 試驗。"
+    }
+   ]
+  }
+ ]
+}

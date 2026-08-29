@@ -1,0 +1,101 @@
+{
+ "batch": "backfill 6.3.1 batch 2 (Sulodexide, alpha-lipoic acid, cross-section phase claims)",
+ "date": "2026-08-13",
+ "note": "本批 5 列中有 2 列（6.3-heparanase-inhibitor-dr-phase1、6.3-heparanase-inhibitor-phase2）由第一批取得的註冊基準直接判定，無新檢索。第一批以原文表格位置分組，漏掉這兩列散落於 §3.5、§4.5 的同化合物期別主張，見批次報告 §1。",
+ "searches": [
+  {
+   "query": "（沿用第一批基準，無新檢索）",
+   "for": [
+    "6.3-heparanase-inhibitor-dr-phase1",
+    "6.3-heparanase-inhibitor-phase2"
+   ],
+   "hits": [
+    {
+     "id": "NCT:NCT01764880",
+     "title": "Roneparstat 唯一登記人體試驗",
+     "key": "Phase 1／多發性骨髓瘤／Completed。用於確認 Roneparstat 進入過 Phase I（真）且從未進入 Phase II（§4.5 之反駁）。"
+    },
+    {
+     "id": "NCT:NCT02042781",
+     "title": "PG545 Phase Ia 單藥試驗（晚期實體瘤）",
+     "key": "確認 PG545 進入過 Phase I。適應症為腫瘤，非糖尿病視網膜病變。"
+    },
+    {
+     "id": "NCT:NCT05061017",
+     "title": "Pixatimod (PG545) + Nivolumab，Phase 2",
+     "key": "確認 PG545 進入過 Phase II。三化合物期別矩陣至此完整。"
+    }
+   ]
+  },
+  {
+   "query": "sulodexide approval countries Italy Spain Russia China regulatory diabetic nephropathy indication",
+   "for": [
+    "6.3-sulodexide-approval-eu-asia",
+    "6.3-sulodexide-phase3-4-as-inhibitor"
+   ],
+   "hits": [
+    {
+     "id": "no-id-sciencedirect-topic",
+     "title": "Sulodexide 概覽（ScienceDirect Topics）",
+     "key": "已於歐洲（西班牙、義大利、東歐各國）、南美與亞洲上市；美國仍在為糖尿病腎病變適應症開發中。"
+    },
+    {
+     "id": "no-id-globaldata-sulodexide",
+     "title": "Sulodexide 開發狀態（GlobalData／Pharmaceutical Technology，2024-12）",
+     "key": "**決定性**。生產者 Alfasigma。核准適應症：血栓風險血管疾病、慢性靜脈潰瘍、慢性靜脈功能不全。**糖尿病腎病變、微量白蛋白尿、第二型糖尿病、CKD 皆列為「曾開發／開發中」而非已核准**。目前 Phase III 適應症為靜脈血栓栓塞。"
+    },
+    {
+     "id": "NCT:NCT06982196",
+     "title": "Sulodexide 控制乾癬復發（Phase 3，招募中，西京醫院）",
+     "key": "試驗方案載明用藥為 Alfa Wassermann（義大利）製 sulodexide 軟膠囊，**中國核准文號 H20140119**，規格 250 LSU。此為亞洲核准的直接證據。"
+    },
+    {
+     "id": "no-id-pmc8999543",
+     "title": "Sulodexide 於輕症 COVID-19 的觀察研究（俄羅斯）",
+     "key": "述其為 80% 快動肝素部分 + 20% dermatan sulfate，已於歐洲核准。用藥為 Alfasigma（義大利）製。佐證俄羅斯臨床可用。"
+    }
+   ]
+  },
+  {
+   "query": "alpha-lipoic acid thioctic acid approved Germany diabetic polyneuropathy prescription drug regulatory status",
+   "for": [
+    "6.3-alpha-lipoic-acid-approval-eu"
+   ],
+   "hits": [
+    {
+     "id": "NCT:NCT02613572",
+     "title": "Alpha Lipoic Acid in Geographic Atrophy 試驗方案",
+     "key": "**決定性**：方案 §1.2 逐字載明 ALA（thioctic acid）多年前即在德國核准用於糖尿病周邊神經病變。"
+    },
+    {
+     "id": "NCT:NCT02439879",
+     "title": "Alpha Lipoic Acid for Treatment of Diabetic Neuropathy",
+     "key": "用藥為 Meda Pharma（德國）製 ALA 600 mg。佐證德國藥廠與處方使用。"
+    },
+    {
+     "id": "no-id-nathan1",
+     "title": "NATHAN 1 四年期 RCT（Diabetes Care 2011）",
+     "key": "使用 Thioctacid HR（MEDA Pharma, Bad Homburg, Germany）600 mg 膜衣錠。36 個中心橫跨美加歐。未取得 PMID，不列入 evidence。"
+    },
+    {
+     "id": "no-id-uspto-7993676",
+     "title": "美國專利 7,993,676 說明書",
+     "key": "外消旋 α-硫辛酸已核准用於肝病與神經病變（含糖尿病多發性神經病變）。第三方獨立佐證。"
+    }
+   ]
+  },
+  {
+   "query": "anti-heparanase monoclonal antibody clinical trial phase I human neutralizing antibody HPSE",
+   "for": [
+    "6.3-anti-heparanase-mab-phase1-2"
+   ],
+   "hits": [
+    {
+     "id": "no-hit",
+     "title": "（無命中）",
+     "key": "回傳全為其他標的之單株抗體試驗（CMV、PD-L1、PAUF、HIV、CD52、BTLA、GD2），無一以 heparanase 為標的。**僅完成第一段檢索**；依 queries.md §8.9，此屬「完全沒有記錄」型，須完成 §3A 替換 3 的三段式才可判 unsupported。本列連同 6.3-sulodexide-only-clinically-available 移至第三批處理，本批不判。"
+    }
+   ]
+  }
+ ]
+}

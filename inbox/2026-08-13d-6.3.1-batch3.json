@@ -1,0 +1,109 @@
+{
+ "batch": "backfill 6.3.1 batch 3 (count, universal and negative claims) - node complete",
+ "date": "2026-08-13",
+ "note": "本批為 backfill.md §3A 替換 3B（先判可判定性，再決定要不要檢索）的首次執行。八列由一次論域列舉全部解決，非八次檢索。6.3.1 節點至此 100% 完成。",
+ "domain_enumeration": {
+  "definition": "曾登記於試驗註冊系統、且以 heparanase 抑制為機制主張的化合物",
+  "result_count": 4,
+  "members": [
+   {
+    "name": "Muparfostat",
+    "code": "PI-88",
+    "max_phase": "Phase III",
+    "indication": "肝癌術後輔助",
+    "status": "未達主要端點"
+   },
+   {
+    "name": "Roneparstat",
+    "code": "SST0001",
+    "max_phase": "Phase I",
+    "indication": "多發性骨髓瘤",
+    "status": "停滯"
+   },
+   {
+    "name": "Necuparanib",
+    "code": "M402",
+    "max_phase": "Phase II",
+    "indication": "胰腺癌",
+    "status": "無效性分析中止"
+   },
+   {
+    "name": "Pixatimod",
+    "code": "PG545",
+    "max_phase": "Phase II",
+    "indication": "實體瘤、MSS mCRC、NSCLC、黑色素瘤",
+    "status": "2024-02 提前終止收案"
+   }
+  ],
+  "excluded_boundary_case": {
+   "name": "pentosan polysulfate sodium (PPS)",
+   "reason": "已核准用於間質性膀胱炎，屬肝素樣多硫酸鹽，但機制載為補充受損尿路上皮 GAG 層，非 heparanase 抑制。排除理由須於重驗時沿用。"
+  }
+ },
+ "searches": [
+  {
+   "query": "heparanase inhibitors clinical trials list PG545 roneparstat necuparanib muparfostat pipeline review 2024 2025",
+   "for": [
+    "6.3-clinical-candidates-hs-mimetic-cancer",
+    "6.3-heparanase-inhibitors-20-plus-trials",
+    "6.3-anti-heparanase-mab-phase1-2",
+    "6.3-no-approved-specific-heparanase-inhibitor",
+    "6.3-sulodexide-only-clinically-available",
+    "6.3-diabetic-complications-no-human-trial"
+   ],
+   "hits": [
+    {
+     "id": "PMID:32907434",
+     "title": "New classes of potent heparanase inhibitors from ligand-based virtual screening (J Enzyme Inhib Med Chem 2020)",
+     "key": "**決定性**：逐字稱 muparfostat、necuparanib、roneparstat、pixatimod 為迄今唯一到達臨床試驗階段的 HPSE 抑制劑。本批八列的論域基準。同一文獻已於 6.3.2 批次使用，屬 queries.md §1.15 的跨批共用來源。"
+    },
+    {
+     "id": "no-id-pmc5374561",
+     "title": "Triazolo-thiadiazoles as heparanase inhibitors (PMC5374561)",
+     "key": "獨立覆述同樣四個化合物為進入臨床者，並給出各自最高階段：Muparfostat Phase III（肝癌術後）、PG545 Phase I（晚期實體瘤）、Roneparstat Phase I（骨髓瘤）、Necuparanib Phase I/II（胰腺癌）。未取得 PMID。"
+    },
+    {
+     "id": "no-id-pmc5922397",
+     "title": "PDX predict heparanase-based therapy for lung cancer (PMC5922397)",
+     "key": "**反駁抗體列的來源**：逐字載明 heparanase 中和單株抗體處於**前臨床研究**（pre-clinical studies），小分子抑制劑則基於已解出的晶體結構開發中。未取得 PMID，反駁以 !PMID:32907434 的列舉不含抗體承載。"
+    },
+    {
+     "id": "no-id-sciencedirect-hpse-inhibitor",
+     "title": "Heparanase Inhibitor 概覽（ScienceDirect Topics）",
+     "key": "Muparfostat 2007 年獲 FDA 孤兒藥資格（第三/四期黑色素瘤），並完成肝炎病毒相關肝癌術後輔助的 Phase III。四者皆為異質混合物，此特性限制其表徵與標準化。"
+    },
+    {
+     "id": "no-id-ppS-context",
+     "title": "GAG mimetics 綜述中的 pentosan polysulfate sodium",
+     "key": "PPS 已核准用於間質性膀胱炎／膀胱疼痛症候群，作用為補充受損尿路上皮 GAG 層。列為 6.3-sulodexide-only-clinically-available 的邊界個案並排除。"
+    }
+   ]
+  },
+  {
+   "query": "（無檢索）",
+   "for": [
+    "6.3-next-gen-inhibitors-5-8-ind-enabling"
+   ],
+   "hits": [
+    {
+     "id": "no-search",
+     "title": "依 §3A 替換 3B 第三類，零檢索直接判定",
+     "key": "IND-enabling 為遞件前階段，法律上無公開揭露義務，公開來源結構性地不存在完整清單。「5-8 個」既無法證真亦無法證偽。本列的 unsupported 屬「不可能查到」型，永遠不會翻案，重驗時不應重跑檢索。"
+    }
+   ]
+  },
+  {
+   "query": "（沿用第一批）",
+   "for": [
+    "6.3-ovz-hs1638-preclinical-small-molecule"
+   ],
+   "hits": [
+    {
+     "id": "PMID:38302978",
+     "title": "Heparanase inhibition to protect endothelial glycocalyx in diabetes (Cardiovasc Diabetol 2024)",
+     "key": "db/db 鼠，14 天腹腔給藥，終點為糖萼厚度、視網膜溶質通量、腎小球白蛋白通透性。確認前臨床動物模型階段。開發者布里斯托大學。"
+    }
+   ]
+  }
+ ]
+}

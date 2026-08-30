@@ -15,15 +15,23 @@ topics_version: 2
 ## 1. 帳本狀態
 
 ```
-unverified  385
+unverified  377
 partial      23
-unsupported  25
-verified     16
+unsupported  28
+verified     21
 contested     6
 superseded    2
 ──────────────
 總計        457
 ```
+
+〔注意〕2026-08-13 `6.3.1` 第三批 8 列完成，**節點 100%（20 列）**，
+本專案第三個完成的節點。為 `backfill.md` §3A 替換 3B（先判可判定性）的首次執行：
+八列由**一次論域列舉**全部解決，非八次檢索。
+論域列舉結果——曾進入臨床試驗的 heparanase 抑制劑**僅四個**
+（Muparfostat、Roneparstat、Necuparanib、Pixatimod），多篇獨立綜述一致。
+據此同時解決本檔四組長期衝突，並確認 §6.6「至少 20 個以上進入臨床試驗」
+與事實差五倍、§6.5 抗體「Phase I-II」實為前臨床。
 
 〔注意〕2026-08-13 `6.3.1` 第二批 5 列完成（進度 12/20）。其中 2 列由第一批
 註冊基準直接判定、無新檢索——第一批以原文表格位置分組，漏掉散落於 §3.5、§4.5

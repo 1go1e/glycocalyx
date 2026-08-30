@@ -1,0 +1,75 @@
+{
+ "batch": "backfill 6.3 batch 1 (SGLT2i glycocalyx thickness and named trials)",
+ "date": "2026-08-13",
+ "note": "6.3 拆分後首批。核心發現：人體糖萼研究的標準計量為 PBR（微米），與厚度成反比且非厚度本身，文獻不做 PBR→厚度恢復% 的換算，故「厚度恢復 30-50%」這類表述在來源文獻中沒有對應的量。",
+ "searches": [
+  {
+   "query": "SGLT2 inhibitor endothelial glycocalyx thickness perfused boundary region GlycoCheck diabetes clinical trial",
+   "for": [
+    "6.3-sglt2-dkd-thickness-30-50pct",
+    "6.3-sglt2-dr-thickness-40-60pct",
+    "6.3-sglt2-thickness-30-60pct"
+   ],
+   "hits": [
+    {
+     "id": "PMID:32326806",
+     "title": "Effects of GLP-1RA, SGLT-2i, and Their Combination on Endothelial Glycocalyx, Arterial Function, and Myocardial Work Index in T2DM After 12-Month Treatment (J Am Heart Assoc 2020)",
+     "key": "**最相關的人體 RCT**。160 名 T2DM 隨機分派為 insulin(40)／liraglutide(40)／empagliflozin(40)／併用(40)，加在 metformin 之上。測量時點：基線、**4 個月、12 個月**（無 6 個月）。計量為 PBR 5-25 μm。範例個案 PBR 由 2.24 降至 1.79 μm。**厚度增加者為 GLP-1RA+SGLT2i 併用組**。以 ~ 標記，不對位維度三項：單位、時間窗、介入。"
+    },
+    {
+     "id": "no-id-plosone-2021",
+     "title": "Endothelial glycocalyx and cardio-renal risk factors in type 1 diabetes (PLOS One)",
+     "key": "覆述 Ikonomidis 研究：**併用**治療增加糖萼厚度（以 PBR 評估）。並說明 PBR 計算式 (Dperf − RBCW)/2，PBR 越大厚度越薄。確認全領域以 PBR 為標準計量，未見厚度恢復百分比。"
+    },
+    {
+     "id": "NCT:NCT07469943",
+     "title": "SGLT2i 對 STEMI 後動脈硬度與糖萼厚度之影響（進行中）",
+     "key": "empagliflozin 10mg，12 個月追蹤，以 GlycoCheck 測 PBR。再次確認計量為 PBR 而非百分比。"
+    }
+   ]
+  },
+  {
+   "query": "EMPA-REG CANVAS DECLARE secondary analysis diabetic neuropathy incidence outcome prespecified endpoint",
+   "for": [
+    "6.3-sglt2-dn-trials-30-50pct",
+    "6.3-sglt2-dkd-progression-40-50pct"
+   ],
+   "hits": [
+    {
+     "id": "PMID:33217335",
+     "title": "Effects of empagliflozin on first and recurrent clinical events: secondary analysis of EMPA-REG OUTCOME (Lancet Diabetes Endocrinol)",
+     "key": "**反駁神經病變列**。主要終點為 MACE 複合；預先設定分析為 MACE、心肌梗塞、中風、心衰住院之總事件數；事後分析為其他心血管與住院終點。**神經病變不在任何終點清單中**。"
+    },
+    {
+     "id": "no-id-diabetologia-2018",
+     "title": "Empagliflozin in women with T2D and CVD — EMPA-REG OUTCOME 次分析",
+     "key": "**支持腎病變列**：EMPA-REG 顯示心血管死亡降低 38%、心衰住院降低 35%、**新發或惡化腎病變複合終點降低 39%**。39% 落在所稱 40-50% 的下界之外。"
+    },
+    {
+     "id": "no-id-diabetesther-2017",
+     "title": "SGLT2 Inhibitors Through the Windows of EMPA-REG and CANVAS Trials",
+     "key": "說明 CVOT 慣例：分析預先設定的主要終點，另加少數探索性變項（心衰住院、全因死亡等），且這些變項的統計檢定力可能不足。神經病變不在探索性變項之列。"
+    }
+   ]
+  },
+  {
+   "query": "\"DERBI\" trial dapagliflozin diabetic retinopathy OR \"DELIGHT\" trial dapagliflozin albuminuria",
+   "for": [
+    "6.3-sglt2-dr-trials-macular-edema",
+    "6.3-sglt2-dr-thickness-40-60pct"
+   ],
+   "hits": [
+    {
+     "id": "no-hit-derbi",
+     "title": "DERBI（查無任何記載）",
+     "key": "檢索結果全部為 DELIGHT 相關文獻，**無一提及 DERBI**。未見於試驗註冊系統、文獻或藥廠資料。"
+    },
+    {
+     "id": "PMID:30992195",
+     "title": "Albuminuria-lowering effect of dapagliflozin alone and with saxagliptin in T2D and CKD (DELIGHT) — Lancet Diabetes Endocrinol 2019",
+     "key": "**反駁證據**。DELIGHT 為真實試驗但屬白蛋白尿／CKD 領域：116 個中心、461 人隨機分派、24 週療程；收案條件 UACR 30-3500 mg/g、eGFR 25-75、HbA1c 7.0-11.0%；**主要終點為第 24 週的 UACR 與 HbA1c**。無任何視網膜或黃斑終點。"
+    }
+   ]
+  }
+ ]
+}

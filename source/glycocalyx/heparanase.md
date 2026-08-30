@@ -266,6 +266,10 @@
 
 6. 未來候選藥物    
    - Heparanase 抑制劑（Roneparstat、PG545）已在動物模型完全阻止 DR 發生，目前進入人體一期  
+     〔查證限定｜6.3-heparanase-inhibitor-dr-phase1｜2026-08-13〕兩者確實都進入過人體一期，
+     但**該兩項人體試驗的登錄適應症皆為腫瘤**（Roneparstat：多發性骨髓瘤 NCT01764880；
+     PG545：晚期實體瘤 NCT02042781），**並無糖尿病視網膜病變適應症的人體試驗**。
+     本檔 §6.7 前言「糖尿病…領域目前僅有動物/前臨床數據，尚未有正式人體試驗」為正確表述。  
 
 ### 3.6 結論
 - 糖萼損傷是糖尿病視網膜病變的「最早可偵測事件」與「核心驅動因素」    
@@ -347,7 +351,10 @@
    - 小規模 RCT：顯著改善神經傳導速度與疼痛，可能透過補充 HS 類似物  
 
 5. 未來候選藥物    
-   - Heparanase 抑制劑（PG545、Roneparstat）在糖尿病鼠完全阻止神經病變，目前進入人體二期（2025 年正在進行）
+   - Heparanase 抑制劑（PG545、Roneparstat）在糖尿病鼠完全阻止神經病變，目前進入人體二期（2025 年正在進行）  
+     〔條件限定｜6.3-heparanase-inhibitor-phase2｜2026-08-13〕PG545 成立（NCT05061017，Phase 2）；
+     **Roneparstat 從未進入人體二期**，其唯一登記試驗 NCT01764880 為 Phase 1。
+     且該兩項試驗的適應症皆為腫瘤，非糖尿病神經病變。
 
 ### 4.6 結論
 - 糖尿病神經病變從一開始就不是「代謝性神經病變」，而是「微血管糖萼 + 神經內糖萼病變」    
@@ -431,7 +438,7 @@
 | 1 | SGLT2抑制劑 | • 降低腎小球/視網膜/神經內高濾過→減少剪應力損傷 • 強力抑制heparanase表達（最強） • 減少ROS、TNF-α | 1A（多項CVOT、DKD、DR子分析） | 30–60%厚度恢復 | 首選！所有糖尿病、CKD、心衰患者 empagliflozin 10–25mg/d、dapagliflozin 10mg/d |
 | 1 | GLP-1受體激動劑 | • 抑制內皮與周細胞heparanase、MMP-9 • 直接抗發炎（↓TNF-α、IL-6） • 促進HAS2表達（增加透明質酸） | 1A（LEADER、REWIND、STEP試驗子分析） | 25–50% | 併發心血管高風險、肥胖、DR、神經病變者 semaglutide 0.5–1mg/w或2.4mg/w、dulaglutide 1.5–4.5mg/w |
 | 1 | Sulodexide（歐洲/亞洲已核准） | • 80%快動低分子肝素+20%dermatan sulfate • 直接補充HS類似物+強力抑制heparanase（IC50極低） | 1B（多項DKD、DR、微量白蛋白尿RCT） | 40–70%（人體最高） | 糖尿病微量/顯性蛋白尿、DR、慢性靜脈疾病 250 LSU bid，口服或注射 |
-| 2 | 非抗凝修飾肝素（研究中藥物） | • N-去硫酸化/乙醯化肝素，幾乎無抗凝血作用 • 目前最強heparanase抑制劑（比sulodexide強10–100倍） | 2A（動物完全阻止DKD/DR，Phase II進行中） | 70–90% | 未來最有潛力（SST0001、M402、Roneparstat、PG545） |
+| 2 | 非抗凝修飾肝素（研究中藥物） | • N-去硫酸化/乙醯化肝素，幾乎無抗凝血作用 • 目前最強heparanase抑制劑（比sulodexide強10–100倍） | 2A（動物完全阻止DKD/DR，Phase II進行中） | 70–90% | 未來最有潛力（SST0001／Roneparstat、M402、PG545） 〔查證限定｜6.3-roneparstat-n-acetylated-glycol-split｜2026-08-13〕原列「SST0001、M402、Roneparstat、PG545」四個藥名實為**三個化合物**——SST0001 與 Roneparstat 是同一化合物的代號與正式名 |
 | 2 | Fenofibrate（PPAR-α激動劑） | • 抑制NF-κB→減少heparanase、MMPs • 改善脂毒性 | 1B（FIELD、ACCORD-Eye：DR進展減少30–40%） | 30–50% | 高三酸甘油酯合併DR或CKD者 145–200mg/d |
 | 2 | α-硫辛酸（Alpha-lipoic acid） | • 超強抗氧化，直接保護HS側鏈不被氧化 • 減少神經內糖萼降解 | 1B（歐洲核准糖尿病神經病變） | 30–50% | 糖尿病神經病變，600–1800mg/d IV或口服 |
 | 3 | 低劑量直接口服抗凝血劑（DOAC） | • rivaroxaban 2.5mg bid + aspirin（COMPASS試驗） • 抑制凝血酶誘導的heparanase與MMPs | 1B（降低MACE，觀察到syndecan-1下降） | 20–40% | 已證實心血管疾病者，可off-label考慮 |
@@ -543,13 +550,18 @@ heparanase是糖尿病糖萼損傷的「第一兇手」：
 
 ### 6.5 Heparanase抑制策略（2025年臨床進展）
 
-| 類型 | 代表藥物 | 抑制強度 | 臨床階段（2025） |
-| ----- | ----- | ----- | ----- |
-| 肝素類似物 | Sulodexide | ++ | 已核准（歐洲/亞洲） |
-| 非抗凝肝素 | SST0001（Roneparstat） | ++++ | Phase II（胰腺癌、DKD） |
-| 小分子抑制劑 | PG545、Pixatimod | ++++ | Phase II（多種癌症） |
-| 中和抗體 | 抗heparanase單株抗體 | +++++ | Phase I/II |
-| 天然抑制劑 | 高劑量sulforaphane、槲皮素 | + | 輔助治療 |
+| 類型 | 代表藥物 | 抑制強度 | 臨床階段（2025） | 查證狀態 |
+| ----- | ----- | ----- | ----- | ----- |
+| 肝素類似物 | Sulodexide | ++ | 已核准（歐洲/亞洲） | 已核准屬實（西班牙、義大利、東歐；中國核准文號 H20140119）。〔條件限定｜6.3-sulodexide-phase3-4-as-inhibitor｜2026-08-13〕核准適應症為血栓風險血管疾病與慢性靜脈疾病，**非**糖尿病腎病變 |
+| 非抗凝肝素 | SST0001（Roneparstat） | ++++ | Phase II（胰腺癌、DKD） | ⚠️ 〔查無出處｜6.3-sst0001-phase2-pancreatic-dkd｜2026-08-13〕階段與兩個適應症三項全與註冊記錄相反。NCT01764880 為其唯一人體試驗：Phase 1、多發性骨髓瘤、2016-11 完成，**從未有 Phase II** |
+| 小分子抑制劑 | PG545、Pixatimod | ++++ | Phase II（多種癌症） | 〔條件限定｜6.3-pg545-pixatimod-phase2-cancers｜2026-08-13〕Phase II 與多種癌症屬實，但 **PG545 與 Pixatimod 為同一化合物**（Pixatimod 是 PG545 的 INN），本列並列為兩個藥名 |
+| 中和抗體 | 抗heparanase單株抗體 | +++++ | Phase I/II | ⚠️ 〔查無出處｜6.3-anti-heparanase-mab-phase1-2｜2026-08-13〕綜述載明此類抗體處於**前臨床**。本檔 §5.5 總表列為「實驗階段」才是正確的 |
+| 天然抑制劑 | 高劑量sulforaphane、槲皮素 | + | 輔助治療 | ⚠️ 〔查無出處｜6.3-natural-inhibitors-sulforaphane-quercetin｜2026-08-13〕兩化合物均查無任何 heparanase 抑制文獻 |
+
+〔查證附註｜2026-08-13〕**「抑制強度」欄與實際開發階段呈反向**，判讀時請注意：
+中和抗體給 `+++++`（全表最高）卻是全表唯一未進入人體者；
+天然抑制劑給 `+` 而該類查無 heparanase 抑制文獻。
+此欄非可查證的數值，未建 claim，依「標註不刪除」政策原樣保留。
 
 ### 6.6 結論
 - 生理狀態：heparanase是「低量、嚴格調控」的正常酵素  
@@ -560,17 +572,23 @@ heparanase是糖尿病糖萼損傷的「第一兇手」：
 
 目前全世界至少20個以上heparanase抑制劑進入臨床試驗階段，預計2030年前將有第一個特異性抑制劑上市，徹底改變糖尿病併發症與多種癌症的治療典範。
 
+⚠️ 〔查無出處｜6.3-heparanase-inhibitors-20-plus-trials｜2026-08-13〕
+「至少20個以上」查無出處。曾登記於試驗註冊系統且以 heparanase 抑制為機制主張的
+化合物，論域列舉結果為**四個**：Muparfostat (PI-88)、Roneparstat (SST0001)、
+Necuparanib (M402)、Pixatimod (PG545)，差距達五倍。本檔 §6.7 管線總表自身亦僅列六個。
+（後半「預計2030年前上市」為預測，不在本標記範圍。）
+
 以下為腫瘤科＋新陳代謝科＋腎臟內科＋病理學教授觀點，2025年11月22日最新、基於ClinicalTrials.gov、PubMed、公司公告與國際會議的「**heparanase抑制劑臨床試驗管線完整總表**」。    
 目前**沒有任何heparanase特異性抑制劑獲得核准上市**，所有進入臨床的候選藥物均以「HS mimetic（肝素樣化合物）」為主，主要針對癌症；糖尿病腎病變/視網膜病變/神經病變領域目前僅有動物/前臨床數據，尚未有正式人體試驗。
 
-| 藥物名稱（代號） | 公司/開發者 | 類型 | 最高臨床階段（2025年11月） | 主要適應症 | 關鍵試驗細節與結果 | 狀態與備註 |
-| ----- | ----- | ----- | ----- | ----- | ----- | ----- |
-| **Sulodexide** | 多國（歐洲/亞洲已核准非腫瘤適應症） | 口服GAGs混合物（80%低分子肝素類似物） | 已核准（糖尿病微量蛋白尿、慢性靜脈疾病） 作為heparanase抑制劑：Phase III/IV | 糖尿病腎病變、視網膜病變、慢性靜脈疾病 | 多項RCT（DIAB-10、Sulodexide Microalbuminuria Trial）證實降低蛋白尿30–50% 機制：部分抑制heparanase + 補充HS | 歐洲/俄羅斯/中國已核准用於DKD 2025年仍為唯一「臨床可用」的heparanase抑制劑 |
-| **Pixatimod (PG545, PGN626)** | Zucero Therapeutics（前Progen） | 小分子cholestanol-四醣共軛物（雙重heparanase + TLR9激動劑） | Phase Ib/II | 晚期實體瘤、MSS結直腸癌、胰腺癌、黑色素瘤、NSCLC | NCT05061017（Phase Ib與nivolumab聯用） • 2023結果：25mg + nivolumab耐受良好 • MSS mCRC cohort：3例PR、8例SD • mPDAC cohort：無客觀緩解 單藥Phase Ia (NCT02042781)：耐受至100mg，6例SD | 2025年仍在進行Phase II擴大cohort（MSS mCRC最有潛力） 無糖尿病試驗 |
-| **Roneparstat (SST0001)** | Leadiant Biosciences（前sigma-tau） | 100% N-acetylated, glycol-split非抗凝肝素 | Phase I（完成） Phase II（中止或未繼續） | 多發性骨髓瘤（MM）、實體瘤 | NCT01764880（Phase I，晚期MM） • 劑量達400mg/天耐受良好 • 1例PR、2例長期SD（與低劑量dexamethasone聯用） 動物模型：對DKD/DR極佳療效 | 2025年無新試驗登記 開發停滯於Phase I/II，主要因腫瘤療效有限 |
-| **Necuparanib (M402)** | Momenta（現Johnson & Johnson） | Glycol-split HS mimetic | Phase II（失敗，中止） | 胰腺癌 | NCT01621243（Phase I/II與gemcitabine + nab-paclitaxel聯用） • 中期無效分析未達療效，2016年中止 | 開發完全終止 |
-| **Muparfostat (PI-88)** | 前Progen | 硫酸化寡醣混合物 | Phase III（失敗） | 肝癌術後輔助 | 多項Phase III（肝癌、黑色素瘤）均未達主要端點 | 開發終止 |
-| **OVZ/HS-1638** | 布里斯托大學（學術） | 新一代小分子heparanase抑制劑 | 前臨床（動物模型） | 糖尿病腎病變 + 視網膜病變 | 2024 Cardiovascular Diabetology論文： • db/db鼠完全阻止蛋白尿與視網膜滲漏 • 比商業抑制劑更穩定、合成成本更低 | 2025年正準備IND申請，預計2026–2027進入Phase I（糖尿病併發症） 最被看好的糖尿病專屬候選藥 |
+| 藥物名稱（代號） | 公司/開發者 | 類型 | 最高臨床階段（2025年11月） | 主要適應症 | 關鍵試驗細節與結果 | 狀態與備註 | 查證狀態 |
+| ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
+| **Sulodexide** | 多國（歐洲/亞洲已核准非腫瘤適應症） | 口服GAGs混合物（80%低分子肝素類似物） | 已核准（糖尿病微量蛋白尿、慢性靜脈疾病） 作為heparanase抑制劑：Phase III/IV | 糖尿病腎病變、視網膜病變、慢性靜脈疾病 | 多項RCT（DIAB-10、Sulodexide Microalbuminuria Trial）證實降低蛋白尿30–50% 機制：部分抑制heparanase + 補充HS | 歐洲/俄羅斯/中國已核准用於DKD 2025年仍為唯一「臨床可用」的heparanase抑制劑 | 〔條件限定｜6.3-sulodexide-phase3-4-as-inhibitor｜2026-08-13〕核准與「唯一臨床可用」屬實，但**核准適應症為血栓風險血管疾病、慢性靜脈潰瘍與慢性靜脈功能不全**；糖尿病腎病變／微量白蛋白尿在主要市場為「開發中」而非已核准。所有 Phase III 皆為抗血栓或血管適應症框架，非以 heparanase 抑制為終點；Phase IV 查無登記 |
+| **Pixatimod (PG545, PGN626)** | Zucero Therapeutics（前Progen） | 小分子cholestanol-四醣共軛物（雙重heparanase + TLR9激動劑） | Phase Ib/II | 晚期實體瘤、MSS結直腸癌、胰腺癌、黑色素瘤、NSCLC | NCT05061017（Phase Ib與nivolumab聯用） • 2023結果：25mg + nivolumab耐受良好 • MSS mCRC cohort：3例PR、8例SD • mPDAC cohort：無客觀緩解 單藥Phase Ia (NCT02042781)：耐受至100mg，6例SD | 2025年仍在進行Phase II擴大cohort（MSS mCRC最有潛力） 無糖尿病試驗 | 〔條件限定｜6.3-pixatimod-only-active-oncology-compound｜2026-08-13〕「無糖尿病試驗」屬實。但 **NCT05061017 已於 2024-02-03 提前終止收案**（收案數 61 降為 14，主持人終止追蹤），現狀為 Completed，非「仍在進行」。另 **代號 PGN626 經四種來源類型檢索均無任何記載** |
+| **Roneparstat (SST0001)** | Leadiant Biosciences（前sigma-tau） | 100% N-acetylated, glycol-split非抗凝肝素 | Phase I（完成） Phase II（中止或未繼續） | 多發性骨髓瘤（MM）、實體瘤 | NCT01764880（Phase I，晚期MM） • 劑量達400mg/天耐受良好 • 1例PR、2例長期SD（與低劑量dexamethasone聯用） 動物模型：對DKD/DR極佳療效 | 2025年無新試驗登記 開發停滯於Phase I/II，主要因腫瘤療效有限 | 〔條件限定｜6.3-roneparstat-development-stalled｜2026-08-13〕停滯屬實（註冊記錄最後更新 2017-10-23）。但**從未有 Phase II 登記存在**，「Phase II 中止」應為「未曾進入」；「主要因腫瘤療效有限」查無出處，Phase I 結果論文僅記載各劑量耐受良好且安全 |
+| **Necuparanib (M402)** | Momenta（現Johnson & Johnson） | Glycol-split HS mimetic | Phase II（失敗，中止） | 胰腺癌 | NCT01621243（Phase I/II與gemcitabine + nab-paclitaxel聯用） • 中期無效分析未達療效，2016年中止 | 開發完全終止 | （待查證，屬節點 `6.3`） |
+| **Muparfostat (PI-88)** | 前Progen | 硫酸化寡醣混合物 | Phase III（失敗） | 肝癌術後輔助 | 多項Phase III（肝癌、黑色素瘤）均未達主要端點 | 開發終止 | （待查證，屬節點 `6.3`） |
+| **OVZ/HS-1638** | 布里斯托大學（學術） | 新一代小分子heparanase抑制劑 | 前臨床（動物模型） | 糖尿病腎病變 + 視網膜病變 | 2024 Cardiovascular Diabetology論文： • db/db鼠完全阻止蛋白尿與視網膜滲漏 • 比商業抑制劑更穩定、合成成本更低 | 2025年正準備IND申請，預計2026–2027進入Phase I（糖尿病併發症） 最被看好的糖尿病專屬候選藥 | 前臨床（動物模型）屬實（PMID:38302978，db/db 鼠）。⚠️ 〔查無出處｜6.3-ovz-hs1638-more-stable-cheaper｜2026-08-13〕「比商業抑制劑更穩定、合成成本更低」無一手數據，一手文獻未測穩定度與成本，且比較對象未具名 |
 
 ### 6.7 2025年11月臨床試驗現況總結
 - **腫瘤領域**：Pixatimod是唯一仍在積極推進的化合物（Phase Ib/II），但療效仍有限，主要在「免疫冷腫瘤」與PD-1抑制劑聯用。  

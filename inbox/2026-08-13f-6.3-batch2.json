@@ -1,0 +1,118 @@
+{
+ "batch": "backfill 6.3 batch 2 (§5.5 repair-magnitude column sampling)",
+ "date": "2026-08-13",
+ "note": "本批為抽樣定性而非逐列查證。抽 5 列跨越不同藥物、不同文獻圈、不同證據強度，問「這一類主張是否可能有出處」。結果：三個獨立文獻圈（PBR 糖尿病、Sulodexide 糖尿病、重症醫學敗血症）無一使用「厚度恢復百分比」此一計量。",
+ "column_finding": {
+  "column": "§5.5 治療總表「修復幅度（動物/人體）」",
+  "total_rows": 10,
+  "sampled": 5,
+  "all_unsupported": true,
+  "actual_metrics_by_literature": [
+   {
+    "circle": "PBR 糖尿病",
+    "metric": "PBR，微米",
+    "example": "2.24 → 1.79 μm"
+   },
+   {
+    "circle": "Sulodexide 糖尿病",
+    "metric": "糖萼尺寸，微米",
+    "example": "舌下 0.93 μm、視網膜 5.88 μm"
+   },
+   {
+    "circle": "重症醫學敗血症",
+    "metric": "syndecan-1 濃度，ng/mL",
+    "example": "554±93 → 187±36 ng/mL"
+   }
+  ],
+  "qualitative_wording": [
+   "partially restored（部分恢復）",
+   "restores to baseline thickness（恢復至基線厚度）"
+  ],
+  "inverse_ordering": "修復幅度排序與臨床證據強度呈反向：實驗階段（全部前臨床）80-100% 為全欄最高；非抗凝修飾肝素（停滯 Phase I）70-90% 次高；而有隨機分派試驗的 GLP-1 與 SGLT2i 僅 25-50%、30-60%。與 §6.5 表「抑制強度」欄的反向現象同型。"
+ },
+ "searches": [
+  {
+   "query": "sulodexide endothelial glycocalyx thickness restoration human trial perfused boundary region diabetic",
+   "for": [
+    "6.3-sulodexide-thickness-40-70pct"
+   ],
+   "hits": [
+    {
+     "id": "PMID:20865240",
+     "title": "Effect of sulodexide on endothelial glycocalyx and vascular permeability in patients with type 2 diabetes mellitus (Diabetologia 2010)",
+     "key": "**一手研究，確實存在**。T2DM 口服 sulodexide 8 週，同時測舌下與視網膜。結果為絕對值：舌下增至 0.93 [0.83-0.99] μm、視網膜增至 5.88 [5.33-6.26] μm，p<0.05。另 TERalb 趨向正常化、血漿 hyaluronidase 下降。**全文無任何百分比**。以 ~ 標記，不對位維度：計量單位。"
+    },
+    {
+     "id": "no-id-iecr-2021",
+     "title": "Regeneration and Assessment of the Endothelial Glycocalyx（ACS I&EC Res 2021 綜述）",
+     "key": "覆述 Broekhuizen 研究：治療兩個月後糖萼厚度顯著改善，**接近健康對照的水準**。措辭為定性，無百分比。並說明 PBR 為紅血球滲入程度，PBR 下降代表厚度改善。"
+    },
+    {
+     "id": "no-id-pmc10125029",
+     "title": "Endothelial glycocalyx in retina, hyperglycemia, and diabetic retinopathy",
+     "key": "**可能的數字來源**：載明第 2 型糖尿病患視網膜糖萼**流失 50%**，經 sulodexide **部分恢復**（partially restored）。50% 為流失幅度而非恢復幅度；若轉述時方向倒置，40-70% 恰把 50 包在中間。此推論僅記為線索，未作為判定依據。"
+    }
+   ]
+  },
+  {
+   "query": "fresh frozen plasma albumin resuscitation glycocalyx restoration sepsis syndecan-1 shedding critical care",
+   "for": [
+    "6.3-ffp-albumin-acute-50-80pct"
+   ],
+   "hits": [
+    {
+     "id": "no-id-pmc3158765",
+     "title": "Modulation of Syndecan-1 Shedding after Hemorrhagic Shock and Resuscitation (PLoS One 2011)",
+     "key": "重症患者 syndecan-1 由 554±93 ng/mL（受傷後）降至 187±36（復甦後），正常捐血者 27±1。計量為濃度，非百分比。模型為出血性休克，非敗血症。"
+    },
+    {
+     "id": "no-id-pmc6337861",
+     "title": "The glycocalyx: a novel diagnostic and therapeutic target in sepsis",
+     "key": "**重要**：明載未發現任何探討白蛋白預防敗血症糖萼降解的**臨床**研究；FFP 的保護效果證據來自**非敗血症模型**。此直接反駁 statement 所稱的敗血症人體證據。"
+    },
+    {
+     "id": "no-id-icmx-2022",
+     "title": "Fingolimod does not prevent syndecan-4 shedding（ICM Experimental 2022）",
+     "key": "對 FFP 效果的標準表述為定性：FFP restores the damaged EG to **baseline thickness**，且明言其機制未明。無百分比。"
+    },
+    {
+     "id": "no-id-icmx-2016",
+     "title": "Effects of FFP, Ringer's acetate and albumin following haemorrhagic shock in rats",
+     "key": "大鼠模型，計量為循環 syndecan-1 與硫酸乙醯肝素濃度。再次確認該文獻圈不使用厚度百分比。"
+    }
+   ]
+  },
+  {
+   "query": "（沿用第一批）",
+   "for": [
+    "6.3-glp1-thickness-25-50pct"
+   ],
+   "hits": [
+    {
+     "id": "PMID:32326806",
+     "title": "Ikonomidis 等，160 人隨機分派（liraglutide 為其中一組）",
+     "key": "計量為 PBR 微米，時點 4 與 12 個月。無百分比。"
+    },
+    {
+     "id": "NCT:NCT03010683",
+     "title": "GLP-1R 促效劑對動脈硬度、糖萼與冠脈血流儲備之影響",
+     "key": "已張貼結果：liraglutide 組 PBR 於基線、3、6、12 個月為 2.1±0.29 → 2.07±0.3 → 2.5±0.2 → 2.04±0.2 μm；metformin 組 2.13 → 2.15 → 2.13 → 2.10。**計量為微米**，且 6 個月時點的數值反而高於基線。"
+    }
+   ]
+  },
+  {
+   "query": "（依 6.3.1 節點已確認之基準，無新檢索）",
+   "for": [
+    "6.3-noncoag-heparin-thickness-70-90pct",
+    "6.3-experimental-thickness-80-100pct"
+   ],
+   "hits": [
+    {
+     "id": "no-search",
+     "title": "6.3.1 節點基準",
+     "key": "非抗凝修飾肝素三成員（Roneparstat 停滯 Phase I、Necuparanib Phase II 2016 中止、Pixatimod Phase II 2024-02 提前終止）登錄終點皆為腫瘤療效，無糖萼終點。實驗階段三成員（抗 heparanase 單株抗體、HS-mimetic 多醣、EXT1 基因治療載體）全部前臨床。欄標題為「動物/人體」但人體部分不存在。〔檢索範圍〕未對此二類的動物文獻做窮盡檢索。"
+    }
+   ]
+  }
+ ]
+}

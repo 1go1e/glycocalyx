@@ -15,15 +15,30 @@ topics_version: 2
 ## 1. 帳本狀態
 
 ```
-unverified  366
+unverified  361
 partial      24
-unsupported  38
+unsupported  43
 verified     21
 contested     6
 superseded    2
 ──────────────
 總計        457
 ```
+
+〔注意〕2026-08-13 `6.3` 第三批 5 列完成（進度 16/81）。**§5.5「修復幅度」欄十列已全部判定，
+全欄無一有出處。**本批依第二批規劃改變檢索目標——不找那個百分比，
+而問「該藥是否有任何一手糖萼數據」——結果顯出區別：
+DOAC（rivaroxaban）**確有**一手數據（PMID:39496251，HUVEC 中抑制 syndecan-1 脫落，
+IQGAP1/PAR1-2/PI3K-Akt 途徑），其餘四項連一篇把該藥與糖萼連起來的研究都沒有。
+若逕依抽樣結論一起判掉，這個區別會消失。
+
+〔注意〕**本批更正前兩批 3 列違反 SCHEMA §7 的 `tier` 填寫**
+（`6.3-sglt2-dkd-progression-40-50pct`、`6.3-sulodexide-thickness-40-70pct`、
+`6.3-glp1-thickness-25-50pct`，evidence 僅有 `~` token 卻填了 tier）。
+未被攔下的原因是驗收條件的排除子句剛好繞開要抓的對象，
+已改為嚴格版並全表掃描（另 5 列混合 token 者確認合規）。
+此為 §3.23「規格寫了、檢查沒驗」的變體：**檢查存在但條件寫錯**，
+建議另立一條，見批次報告 §7 待裁示第 2 項。
 
 〔注意〕2026-08-13 `6.3` 第二批 5 列完成（進度 11/81），全數 unsupported。
 本批為**抽樣定性**而非逐列查證：抽 5 列跨越三個獨立文獻圈

@@ -1,0 +1,91 @@
+{
+ "batch": "backfill 6.3 batch 4 (§5.5 evidence-grade column)",
+ "date": "2026-08-13",
+ "note": "§3.25 定案後首次應用，也是第一次以「表格欄位」為分批軸。依 §3.25 程序先排序該欄對照實際證據強度——結果排序未反向，§3.25 不適用，改逐列查。逐列查完後成因一致：等級是為別的終點給的。",
+ "column_finding": {
+  "column": "§5.5 治療總表「臨床證據等級（2025）」",
+  "step1_ordering_check": "排序未反向。1A 給有 CVOT 的藥、2C 給保健品、2A 給前臨床化合物，大致追蹤真實證據強度。§3.25 不適用。",
+  "why_this_matters": "同一張表，修復幅度欄反向而證據等級欄合理——若兩欄用同一種方式構造，它們會彼此相關。方向不同代表來源不同，此為 §3.25 解讀的強佐證。",
+  "actual_finding": "等級是為別的終點給的。七列的具名依據其終點分別為 MACE、體重、蛋白尿、視網膜滲漏、神經傳導、腫瘤療效——無一為糖萼。",
+  "relation_to_3_24": "與 §3.24 結構相同、軸不同。§3.24 的軸是細胞類型（腫瘤 vs 血管內皮），本例的軸是終點（心腎眼神經 vs 糖萼）。兩者皆為「證據真實但不對位」。",
+  "sole_exception": "6.3-sulodexide-evidence-1b — 全欄唯一有直接糖萼終點人體資料者（PMID:20865240）。十個項目只有一個有直接證據，卻給了十個等級。"
+ },
+ "searches": [
+  {
+   "query": "LEADER REWIND STEP trial sub-analysis endothelial glycocalyx liraglutide semaglutide secondary endpoint",
+   "for": [
+    "6.3-glp1-evidence-1a"
+   ],
+   "hits": [
+    {
+     "id": "no-id-pmc8300846",
+     "title": "Effect of Liraglutide on Arterial Inflammation Assessed as [18F]FDG Uptake in Patients With Type 2 Diabetes: A Randomized, Double-Blind, Placebo-Controlled Trial",
+     "key": "**反駁記錄**。該 RCT 以 GlycoCheck（Maastricht）測量糖萼完整性，列為支持性次要終點。結果：反應性充血指數、**糖萼完整性**、發炎與動脈硬化生物標記於兩治療組間**皆無差異**。另測 CACS 與 CIMT 亦無差異。僅取得 PMC 編號未取得 PMID，依 SCHEMA §4 不得憑推測寫入 evidence，故留空並記於 note。"
+    },
+    {
+     "id": "no-id-pmc7754406",
+     "title": "LEADER 與 SUSTAIN 6 依 BMI 分層的心血管與腎臟結果",
+     "key": "子分析主題為 BMI 分層。無糖萼。"
+    },
+    {
+     "id": "no-id-diabetescare-2023",
+     "title": "Semaglutide 對白蛋白尿與腎功能的影響：STEP 1、2、3 探索性分析",
+     "key": "STEP 系列的探索性分析主題為白蛋白尿與腎功能。無糖萼。"
+    },
+    {
+     "id": "no-id-diabetescare-2022",
+     "title": "Dulaglutide 與反映動脈硬化的複合終點：REWIND 事後分析",
+     "key": "REWIND 事後分析主題為動脈硬化複合終點、cIMT。無糖萼。"
+    },
+    {
+     "id": "no-id-pmc9052629",
+     "title": "Semaglutide 與 metformin 併用的次群分析（SUSTAIN 6、PIONEER 6）",
+     "key": "確認七項 GLP-1RA CVOT（SUSTAIN 6、PIONEER 6、HARMONY、LEADER、REWIND、EXSCEL、AMPLITUDE-O）**主要終點全部為 MACE**。無糖萼終點。"
+    }
+   ]
+  },
+  {
+   "query": "（沿用前三批基準，無新檢索）",
+   "for": [
+    "6.3-sglt2-evidence-1a",
+    "6.3-noncoag-heparin-evidence-2a",
+    "6.3-fenofibrate-evidence-1b",
+    "6.3-alpha-lipoic-acid-evidence-1b",
+    "6.3-ffp-albumin-evidence-2b",
+    "6.3-sulodexide-evidence-1b"
+   ],
+   "hits": [
+    {
+     "id": "PMID:32326806",
+     "title": "SGLT2i 現有糖萼人體資料",
+     "key": "160 人，PBR 微米。糖萼厚度增加見於 GLP-1RA＋SGLT2i 併用組而非 SGLT2i 單用。"
+    },
+    {
+     "id": "PMID:33217335",
+     "title": "EMPA-REG 次要分析",
+     "key": "終點清單為 MACE、心肌梗塞、中風、心衰住院。無糖萼終點。"
+    },
+    {
+     "id": "NCT:NCT01764880",
+     "title": "Roneparstat 唯一人體試驗",
+     "key": "Phase 1、多發性骨髓瘤、2016 完成。反駁「Phase II 進行中」。"
+    },
+    {
+     "id": "PMID:20865240",
+     "title": "Sulodexide 直接糖萼測量",
+     "key": "**全欄唯一直接證據**。T2DM 口服 8 週，舌下 0.93 μm、視網膜 5.88 μm，顯著改善。"
+    },
+    {
+     "id": "no-search-1",
+     "title": "Fenofibrate 與 α-硫辛酸",
+     "key": "6.3 第三批已確認：兩藥皆未找到任何與糖萼連結的一手研究。"
+    },
+    {
+     "id": "no-search-2",
+     "title": "FFP／白蛋白",
+     "key": "6.3 第二批已確認：綜述明載未發現任何探討白蛋白預防敗血症糖萼降解的臨床研究；FFP 證據來自非敗血症模型。"
+    }
+   ]
+  }
+ ]
+}
